@@ -1,0 +1,361 @@
+{
+  "id": "fecuso4",
+  "title": "铁与硫酸铜溶液的反应",
+  "subtitle": "初中化学虚拟实验 · 置换反应与湿法炼铜",
+  "badges": ["Fe + CuSO₄", "溶液蓝→浅绿", "满分 100 分"],
+  "viewBox": "0 0 600 360",
+
+  "equipments": [
+    { "id": "tube",      "name": "试管",           "need": true },
+    { "id": "cuso4",     "name": "硫酸铜溶液",     "need": true },
+    { "id": "iron",      "name": "铁丝（钉）",     "need": true },
+    { "id": "tweezers",  "name": "镊子",           "need": true },
+    { "id": "cu",        "name": "铜丝",           "need": false },
+    { "id": "marble",    "name": "大理石",         "need": false },
+    { "id": "alcohol",   "name": "无水乙醇",       "need": false }
+  ],
+
+  "dims": [
+    { "key": "skill",  "name": "操作规范" },
+    { "key": "safety", "name": "安全意识" }
+  ],
+
+  "scoreItems": [
+    { "key": "equip",   "name": "器材选择",           "max": 10, "dim": "skill" },
+    { "key": "tube",    "name": "放置试管",           "max": 8,  "dim": "skill" },
+    { "key": "cuso4",   "name": "加入硫酸铜溶液",     "max": 12, "dim": "skill" },
+    { "key": "iron",    "name": "放入铁丝",           "max": 14, "dim": "skill" },
+    { "key": "observe", "name": "描述实验现象",       "max": 14, "dim": "skill" },
+    { "key": "judge",   "name": "判断红色物质与溶液", "max": 16, "dim": "skill" },
+    { "key": "mass",    "name": "质量变化判断",       "max": 10, "dim": "skill" },
+    { "key": "summary", "name": "归纳置换规律",       "max": 16, "dim": "skill" }
+  ],
+
+  "initialStage": {
+    "tubeOn": false, "blueIn": false, "ironIn": false,
+    "react": 0, "dep": 0, "wrongCu": false
+  },
+
+  "dropZones": {
+    "bench":    { "x": 210, "y": 216, "w": 190, "h": 108 },
+    "tubeZone": { "x": 256, "y": 126, "w": 90,  "h": 184 }
+  },
+
+  "scene": [
+    { "tag": "rect", "x": 30, "y": 322, "width": 540, "height": 14, "rx": 5, "fill": "url(#gMetal)" },
+    { "tag": "rect", "x": 30, "y": 322, "width": 540, "height": 4, "rx": 2, "fill": "#e8eef2", "opacity": 0.75 },
+
+    { "tag": "g", "when": "stage.tubeOn", "children": [
+      { "tag": "path", "d": "M268 148 L268 284 Q268 300 284 300 L316 300 Q332 300 332 284 L332 148 Z", "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.4 },
+      { "tag": "rect", "x": 262, "y": 138, "width": 76, "height": 11, "rx": 4, "fill": "url(#gGlassH)", "stroke": "#7ba7c7", "stroke-width": 1.6 },
+      { "tag": "path", "d": "M278 170 L278 282", "stroke": "#ffffff", "stroke-width": 2.2, "opacity": 0.8, "fill": "none" },
+
+      { "tag": "rect", "when": "stage.blueIn", "x": 272, "y": 200, "width": 56, "height": 94, "rx": 4, "fill": "@ stage.react>=3 ? 'url(#gGreenP)' : (stage.react>=2 ? '#8db98a' : (stage.react>=1 ? '#5f9bd0' : 'url(#gBlue)'))", "opacity": 0.9 },
+
+      { "tag": "g", "when": "stage.ironIn", "children": [
+        { "tag": "rect", "x": 296, "y": 168, "width": 10, "height": 126, "rx": 2, "fill": "#b0bec5", "stroke": "#546e7a", "stroke-width": 1.2 },
+        { "tag": "rect", "when": "stage.dep>0", "x": 294, "y": "@ 294 - 78*stage.dep/3", "width": 14, "height": "@ 78*stage.dep/3", "rx": 2, "fill": "#c1440e", "opacity": 0.92 },
+        { "tag": "circle", "when": "stage.dep>=2", "cx": 293, "cy": 258, "r": 3.2, "fill": "#e65100" },
+        { "tag": "circle", "when": "stage.dep>=2", "cx": 310, "cy": 272, "r": 2.8, "fill": "#bf360c" },
+        { "tag": "circle", "when": "stage.dep>=3", "cx": 309, "cy": 240, "r": 3, "fill": "#d84315" },
+        { "tag": "text", "when": "stage.dep>=2", "x": 340, "y": 254, "font-size": 11.5, "fill": "#bf360c", "font-weight": 700, "text": "表面覆盖红色物质 → Cu" }
+      ]},
+
+      { "tag": "g", "when": "stage.react>=1 && stage.react<3", "children": [
+        { "tag": "text", "x": 244, "y": 226, "font-size": 11, "text-anchor": "end", "fill": "#0277bd", "font-weight": 700, "text": "颜色正在变化…" }
+      ]},
+      { "tag": "text", "when": "stage.blueIn && stage.react===0", "x": 244, "y": 226, "font-size": 11, "text-anchor": "end", "fill": "#1565c0", "font-weight": 700, "text": "蓝色溶液" },
+      { "tag": "text", "when": "stage.react>=3", "x": 244, "y": 226, "font-size": 11, "text-anchor": "end", "fill": "#33691e", "font-weight": 700, "text": "已变浅绿色" },
+      { "tag": "text", "x": 300, "y": 344, "font-size": 12, "text-anchor": "middle", "fill": "#455a64", "font-weight": 700, "text": "试管：Fe + CuSO₄ 溶液" }
+    ]},
+
+    { "tag": "g", "when": "stage.wrongCu", "children": [
+      { "tag": "text", "x": 430, "y": 190, "font-size": 11.5, "fill": "#dc2626", "font-weight": 700, "text": "铜不能置换出自己：" },
+      { "tag": "text", "x": 430, "y": 208, "font-size": 11.5, "fill": "#dc2626", "font-weight": 700, "text": "Cu 与 CuSO₄ 不反应" }
+    ]}
+  ],
+
+  "report": [
+    { "title": "实验记录", "lines": [
+      "实验名称：铁与硫酸铜溶液的反应",
+      "反应原理：Fe + CuSO₄ = FeSO₄ + Cu",
+      "操作：试管中加入硫酸铜溶液，用镊子夹取打磨过的铁丝浸入溶液中",
+      "注意：反应在常温下进行，不需要加热，也不需要催化剂"
+    ]},
+    { "title": "现象记录", "lines": [
+      "1. 铁丝表面覆盖一层红色的物质（铜）",
+      "2. 溶液由蓝色逐渐变成浅绿色（生成 FeSO₄）",
+      "3. 铁丝逐渐变细，试管底部可以看到少量红色固体沉积",
+      "4. 若把铜丝放进硫酸铜溶液，则什么现象都没有"
+    ]},
+    { "title": "实验结论", "lines": [
+      "铁的活动性比铜强，能把铜从它的盐溶液中置换出来。",
+      "这是置换反应，也是古代湿法炼铜的原理：Fe + CuSO₄ = FeSO₄ + Cu。",
+      "若反应在密闭容器中进行，反应前后物质的总质量保持不变（质量守恒）。"
+    ]}
+  ],
+
+  "errorTable": [
+    { "op": "用铜丝代替铁丝",         "phen": "铜不能置换出自己",     "result": "始终无现象，实验失败",     "score": 14 },
+    { "op": "铁丝未打磨直接放入",     "phen": "表面有锈、油污",       "result": "反应慢、现象不明显",       "score": 14 },
+    { "op": "误以为溶液变黄色",       "phen": "Fe³⁺ 才显黄色",        "result": "生成的是浅绿色 FeSO₄",     "score": 16 },
+    { "op": "认为红色物质是铁锈",     "phen": "铁锈是红棕色且疏松",   "result": "那是有光泽的金属铜",       "score": 16 },
+    { "op": "以为反应后总质量变大了", "phen": "铜附着在铁丝上",       "result": "总质量不变（质量守恒）",   "score": 10 },
+    { "op": "误加无水乙醇或大理石",   "phen": "与本反应无关",         "result": "药品选择错误",             "score": 12 }
+  ],
+
+  "steps": [
+    {
+      "id": "cover", "type": "cover", "title": "准备开始", "progress": 0,
+      "headline": "铁与硫酸铜溶液的反应",
+      "subtitle": "一根铁丝泡进蓝水里，竟能捞出红色的铜",
+      "buttons": [{ "t": "开始实验", "c": "primary", "goto": "goal" }]
+    },
+
+    {
+      "id": "goal", "type": "doc", "title": "实验目标", "progress": 6,
+      "cols": [
+        { "title": "实验目标", "lines": [
+          "1. 认识置换反应 Fe + CuSO₄ = FeSO₄ + Cu",
+          "2. 记住 Cu²⁺ 溶液蓝色、Fe²⁺ 溶液浅绿色",
+          "3. 理解「活动性强的金属置换弱的」",
+          "4. 知道这就是古代湿法炼铜的原理",
+          "5. 用质量守恒解释反应前后总质量的变化"
+        ]},
+        { "title": "操作方式", "lines": [
+          "● 拖拽试剂到试管的高亮区域",
+          "● 遇到思考题时点选项作答",
+          "● 右侧显示当前实验阶段",
+          "● 卡住时点右下角“？”获取提示"
+        ]},
+        { "title": "安全提示", "lines": [
+          "⚠ 硫酸铜溶液有毒，不能入口，避免接触伤口",
+          "⚠ 用镊子夹取铁丝，不要直接用手拿",
+          "⚠ 铁丝事先要用砂纸打磨，除去锈和油污",
+          "⚠ 取用过的铁丝不要放回原试剂瓶"
+        ]}
+      ],
+      "buttons": [
+        { "t": "下一步", "c": "primary", "goto": "equip" },
+        { "t": "返回封面", "c": "ghost", "goto": "cover" }
+      ]
+    },
+
+    {
+      "id": "equip", "type": "equip", "title": "选择实验器材", "progress": 12,
+      "tip": "这是一种盐溶液 + 一种金属，还要有夹持工具——想一想该准备什么",
+      "buttons": [
+        { "t": "确认器材", "c": "primary", "do": [{ "do": "checkEquip", "key": "equip", "goto": "tubeStep" }] }
+      ]
+    },
+
+    {
+      "id": "tubeStep", "type": "stage", "title": "放置试管", "progress": 18,
+      "shelf": ["tube"],
+      "desc": "把试管放在桌面上，作为这次反应的容器。",
+      "help": "把试管拖到桌面中间的高亮区域。这个反应在常温下就能进行，不需要加热。",
+      "zones": ["bench"],
+      "drop": [
+        { "equip": "tube", "zone": "bench", "do": [
+          { "do": "set", "k": "tubeOn", "v": true },
+          { "do": "score", "key": "tube" },
+          { "do": "tip", "text": "试管已放好 ✓" },
+          { "do": "goto", "id": "blue", "delay": 1000 }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要放的是反应容器。" }] }
+      ]
+    },
+
+    {
+      "id": "blue", "type": "stage", "title": "加入硫酸铜溶液", "progress": 26,
+      "shelf": ["cuso4"],
+      "desc": "向试管中倒入约 1/3 体积的硫酸铜溶液，记住它现在的颜色。",
+      "help": "把硫酸铜溶液拖到试管口。含 Cu²⁺ 的溶液显蓝色，先记住这个起点颜色，后面才好对比。",
+      "zones": ["tubeZone"],
+      "drop": [
+        { "equip": "cuso4", "zone": "tubeZone", "do": [
+          { "do": "set", "k": "blueIn", "v": true },
+          { "do": "score", "key": "cuso4" },
+          { "do": "tip", "text": "蓝色溶液已加入 ✓ 这是 Cu²⁺ 的颜色" },
+          { "do": "goto", "id": "ironStep", "delay": 1200 }
+        ]},
+        { "equip": "alcohol", "zone": "tubeZone", "do": [
+          { "do": "err", "text": "无水乙醇与本反应无关，这里要加的是含 Cu²⁺ 的蓝色溶液。" }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要加入的是含铜离子的蓝色溶液。" }] }
+      ]
+    },
+
+    {
+      "id": "ironStep", "type": "stage", "title": "放入打磨过的铁丝", "progress": 38,
+      "shelf": ["iron", "tweezers"],
+      "desc": "用镊子夹取打磨过的铁丝，浸入硫酸铜溶液中，静置观察。",
+      "help": "把铁丝拖到试管里。铁丝表面若有铁锈或油污，要先用砂纸打磨干净，否则会挡住反应、看不到明显现象。",
+      "zones": ["tubeZone"],
+      "drop": [
+        { "equip": "iron", "zone": "tubeZone", "do": [
+          { "do": "set", "k": "ironIn", "v": true },
+          { "do": "set", "k": "react", "v": 1, "delay": 900 },
+          { "do": "set", "k": "dep", "v": 1, "delay": 1400 },
+          { "do": "set", "k": "react", "v": 2, "delay": 1900 },
+          { "do": "set", "k": "dep", "v": 2, "delay": 2300 },
+          { "do": "set", "k": "react", "v": 3, "delay": 2900 },
+          { "do": "set", "k": "dep", "v": 3, "delay": 3300 },
+          { "do": "score", "key": "iron" },
+          { "do": "tip", "text": "铁丝表面开始出现红色物质，蓝色溶液在慢慢变浅绿 ✓" },
+          { "do": "goto", "id": "observe", "delay": 3800 }
+        ]},
+        { "equip": "cu", "zone": "tubeZone", "do": [
+          { "do": "set", "k": "wrongCu", "v": true },
+          { "do": "err", "text": "铜不能置换出铜自己！铁的活动性比铜强，所以要用的是铁丝。" }
+        ]},
+        { "equip": "tweezers", "zone": "tubeZone", "do": [
+          { "do": "err", "text": "镊子是用来夹取药品的工具，本身不放进试管。要放进去的是铁丝。" }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要放入的是一种比铜活泼的金属。" }] }
+      ]
+    },
+
+    {
+      "id": "observe", "type": "doc", "title": "你看到了什么？", "progress": 52,
+      "cols": [
+        { "title": "观察要点", "lines": [
+          "铁丝表面发生了什么变化？",
+          "溶液颜色从什么色变成了什么色？",
+          "反应过程中有没有加热、有没有加催化剂？"
+        ]},
+        { "title": "提示", "lines": [
+          "红色有光泽的物质 —— 金属铜",
+          "浅绿色的溶液 —— 生成的硫酸亚铁 FeSO₄",
+          "整个反应在常温下自己就发生了。"
+        ]}
+      ],
+      "buttons": [
+        { "t": "铁丝表面覆盖红色物质，溶液由蓝变浅绿", "c": "primary", "do": [
+          { "do": "score", "key": "observe" },
+          { "do": "tip", "text": "现象描述完整准确 ✓" },
+          { "do": "goto", "id": "judge", "delay": 1500 }
+        ]},
+        { "t": "铁丝表面变黑，溶液由蓝变黄", "c": "ghost", "do": [
+          { "do": "err", "text": "析出的铜是红色的，Fe²⁺ 溶液是浅绿色的（Fe³⁺ 才是黄色）。再看一遍。" }
+        ]},
+        { "t": "铁丝溶解消失，溶液颜色不变", "c": "ghost", "do": [
+          { "do": "err", "text": "溶液颜色明显变了。而且铁丝只是变细，同时有红色物质在它表面长出来。" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "judge", "type": "doc", "title": "红色物质和浅绿色溶液各是什么？", "progress": 66,
+      "cols": [
+        { "title": "分析", "lines": [
+          "Fe + CuSO₄ = FeSO₄ + Cu",
+          "铁原子失去电子变成 Fe²⁺ 进入溶液",
+          "铜离子得到电子变成铜原子析出在铁丝表面"
+        ]},
+        { "title": "颜色口诀", "lines": [
+          "Cu²⁺ 溶液：蓝色",
+          "Fe²⁺ 溶液：浅绿色",
+          "Fe³⁺ 溶液：黄色",
+          "单质铜：红色（紫红色）固体"
+        ]}
+      ],
+      "buttons": [
+        { "t": "红色物质是 Cu，浅绿色溶液是 FeSO₄", "c": "primary", "do": [
+          { "do": "score", "key": "judge" },
+          { "do": "tip", "text": "完全正确 ✓ 记住这几个颜色，中考常考" },
+          { "do": "goto", "id": "mass", "delay": 1500 }
+        ]},
+        { "t": "红色物质是铁锈，浅绿色溶液是 FeCl₂", "c": "ghost", "do": [
+          { "do": "err", "text": "铁锈是红棕色疏松的，而这里是有光泽的红色金属；溶液里也没有氯离子，不会是 FeCl₂。" }
+        ]},
+        { "t": "红色物质是 Cu，浅绿色溶液是 Fe₂(SO₄)₃", "c": "ghost", "do": [
+          { "do": "err", "text": "Fe₂(SO₄)₃ 里是 Fe³⁺，溶液显黄色。铁与盐溶液发生置换时生成的是亚铁盐。" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "mass", "type": "doc", "title": "质量会变吗？", "progress": 76,
+      "cols": [
+        { "title": "情景", "lines": [
+          "把整个试管连同里面的东西一起放在天平上，",
+          "反应前后称量（不打开塞子、不洒出一滴液体）。",
+          "铁丝变细了，铜析出了，物质在互相转化。"
+        ]},
+        { "title": "依据", "lines": [
+          "质量守恒定律：参加化学反应的各物质质量总和，",
+          "等于反应后生成的各物质质量总和。"
+        ]}
+      ],
+      "buttons": [
+        { "t": "总质量不变", "c": "primary", "do": [
+          { "do": "score", "key": "mass" },
+          { "do": "tip", "text": "对！析出多少铜，就消耗多少铁并生成相应的 FeSO₄，总账是平的 ✓" },
+          { "do": "goto", "id": "summary", "delay": 1600 }
+        ]},
+        { "t": "总质量变大（析出了铜）", "c": "ghost", "do": [
+          { "do": "err", "text": "铜不是凭空来的，它来自溶液中减少的 Cu²⁺。有增必有减，总质量守恒。" }
+        ]},
+        { "t": "总质量变小（铁被消耗）", "c": "ghost", "do": [
+          { "do": "err", "text": "铁减少的同时，溶液中多了 Fe²⁺。所有变化都要算进去。" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "summary", "type": "doc", "title": "置换反应的规律", "progress": 88,
+      "cols": [
+        { "title": "规律", "lines": [
+          "活动性强的金属，能把活动性弱的金属",
+          "从它的盐溶液中置换出来。",
+          "Fe 在 Cu 之前 → 铁能置换出铜",
+          "Cu 在 Ag 之前 → 铜能置换出银",
+          "反之则不发生反应。"
+        ]},
+        { "title": "应用", "lines": [
+          "● 湿法炼铜：Fe + CuSO₄ = FeSO₄ + Cu",
+          "● 我国西汉时期就有「曾青得铁则化为铜」的记载",
+          "● 不能用铁桶盛放硫酸铜溶液（会被腐蚀）"
+        ]}
+      ],
+      "buttons": [
+        { "t": "强置换弱：Fe 比 Cu 活泼，所以能把铜置换出来", "c": "primary", "do": [
+          { "do": "score", "key": "summary" },
+          { "do": "tip", "text": "抓住了规律 ✓ 这正是金属活动性顺序的核心用途" },
+          { "do": "goto", "id": "report", "delay": 1600 }
+        ]},
+        { "t": "只要两种金属碰在一起就会置换", "c": "ghost", "do": [
+          { "do": "err", "text": "必须强置换弱。刚才把铜丝放进硫酸铜溶液，一点变化都没有。" }
+        ]},
+        { "t": "与活动性无关，只看谁的量更多", "c": "ghost", "do": [
+          { "do": "err", "text": "量多量少只影响能反应多少，能不能反应由活动性顺序决定。" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "report", "type": "report", "title": "实验报告", "progress": 94,
+      "buttons": [
+        { "t": "提交报告", "c": "primary", "do": [{ "do": "finish" }, { "do": "goto", "id": "score" }] }
+      ]
+    },
+
+    {
+      "id": "score", "type": "score", "title": "实验评分", "progress": 100,
+      "buttons": [
+        { "t": "导出本次成绩", "c": "ghost", "do": [{ "do": "export" }] },
+        { "t": "查看常见错误", "c": "ghost", "goto": "errtable" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    },
+
+    {
+      "id": "errtable", "type": "errors", "title": "常见错误与后果", "progress": 100,
+      "buttons": [
+        { "t": "返回评分", "c": "ghost", "goto": "score" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    }
+  ]
+}

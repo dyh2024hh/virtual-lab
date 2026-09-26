@@ -121,6 +121,9 @@ td{color:#334155}
 .name-input:focus{outline:none;border-color:#2563eb}
 
 .exp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.grp-hd{grid-column:1/-1;display:flex;align-items:center;gap:10px;margin:8px 0 -2px;font-size:13.5px;font-weight:700;color:#334155;letter-spacing:.5px}
+.grp-hd em{font-style:normal;font-weight:500;font-size:12px;color:#94a3b8}
+.grp-hd i{flex:1;height:1px;background:#e2e8f0}
 .exp-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.07);cursor:pointer;transition:.18s;border:1.5px solid transparent;text-align:left}
 .exp-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(30,58,138,.10);border-color:#93c5fd}
 .exp-card .ic{width:52px;height:52px;border-radius:12px;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:12px}

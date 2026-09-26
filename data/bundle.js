@@ -8,7 +8,7 @@ window.LAB_BUNDLE = {
       "iconEmoji": "🔥",
       "desc": "固体加热型发生装置，排水法收集，带火星木条检验。",
       "method": "排水法",
-      "group": "氧气制取",
+      "group": "气体制取与检验",
       "max": 100
     },
     {
@@ -18,7 +18,7 @@ window.LAB_BUNDLE = {
       "iconEmoji": "💧",
       "desc": "固液常温型发生装置，MnO₂ 催化，排水法收集。",
       "method": "排水法",
-      "group": "氧气制取",
+      "group": "气体制取与检验",
       "max": 100
     },
     {
@@ -28,7 +28,7 @@ window.LAB_BUNDLE = {
       "iconEmoji": "🫧",
       "desc": "固液常温型发生装置，向上排空气法收集，澄清石灰水检验。",
       "method": "向上排空气法",
-      "group": "二氧化碳制取",
+      "group": "气体制取与检验",
       "max": 100
     },
     {
@@ -38,7 +38,7 @@ window.LAB_BUNDLE = {
       "iconEmoji": "🎈",
       "desc": "锌粒与稀硫酸，向下排空气法收集，点燃前必须验纯。",
       "method": "向下排空气法",
-      "group": "氢气制取",
+      "group": "气体制取与检验",
       "max": 100
     },
     {
@@ -48,7 +48,7 @@ window.LAB_BUNDLE = {
       "iconEmoji": "📏",
       "desc": "红磷燃烧消耗氧气，水倒吸入集气瓶，测得氧气约占 1/5。",
       "method": "压强法",
-      "group": "空气中氧气含量",
+      "group": "气体制取与检验",
       "max": 100
     },
     {
@@ -58,7 +58,87 @@ window.LAB_BUNDLE = {
       "iconEmoji": "⚡",
       "desc": "通直流电分解水，正氧负氢、体积比 1:2，推出水的元素组成。",
       "method": "电解法",
-      "group": "水的组成",
+      "group": "气体制取与检验",
+      "max": 100
+    },
+    {
+      "id": "co2naoh",
+      "name": "二氧化碳与氢氧化钠反应",
+      "file": "data/co2naoh.json",
+      "iconEmoji": "🥤",
+      "desc": "没有明显现象的反应：用塑料瓶变瘪和对照实验把它显示出来。",
+      "method": "压强法 + 对照",
+      "group": "性质探究",
+      "max": 100
+    },
+    {
+      "id": "cao",
+      "name": "生石灰与水反应放热",
+      "file": "data/cao.json",
+      "iconEmoji": "🌡️",
+      "desc": "CaO + H₂O = Ca(OH)₂，温度计飙升的背后是干燥剂的原理。",
+      "method": "温度变化法",
+      "group": "性质探究",
+      "max": 100
+    },
+    {
+      "id": "neutral",
+      "name": "酸和碱的中和反应",
+      "file": "data/neutral.json",
+      "iconEmoji": "🧪",
+      "desc": "酚酞变红后逐滴加酸至恰好褪色，看懂 H⁺ + OH⁻ = H₂O。",
+      "method": "指示剂法",
+      "group": "性质探究",
+      "max": 100
+    },
+    {
+      "id": "metalacid",
+      "name": "金属与稀盐酸的反应",
+      "file": "data/metalacid.json",
+      "iconEmoji": "⚙️",
+      "desc": "三支试管同时比气泡：Mg > Zn > Fe，顺便点燃检验氢气。",
+      "method": "对比实验法",
+      "group": "性质探究",
+      "max": 100
+    },
+    {
+      "id": "fecuso4",
+      "name": "铁与硫酸铜溶液的反应",
+      "file": "data/fecuso4.json",
+      "iconEmoji": "🪙",
+      "desc": "铁丝表面长出红色的铜，蓝溶液变浅绿：这就是湿法炼铜。",
+      "method": "置换法",
+      "group": "性质探究",
+      "max": 100
+    },
+    {
+      "id": "ions",
+      "name": "硫酸根与氯离子的检验",
+      "file": "data/ions.json",
+      "iconEmoji": "🔎",
+      "desc": "BaCl₂ 和 AgNO₃ 各显本领，稀硝酸负责排除碳酸根的干扰。",
+      "method": "沉淀加酸法",
+      "group": "性质探究",
+      "max": 100
+    },
+    {
+      "id": "precip",
+      "name": "碱与盐的沉淀反应",
+      "file": "data/precip.json",
+      "iconEmoji": "🎨",
+      "desc": "蓝色、红褐色、白色三种沉淀，一次记牢复分解的发生条件。",
+      "method": "沉淀法",
+      "group": "性质探究",
+      "max": 100
+    },
+    {
+      "id": "cuso4water",
+      "name": "无水硫酸铜检验水",
+      "file": "data/cuso4water.json",
+      "iconEmoji": "💠",
+      "desc": "白色粉末遇水变蓝，对照无水乙醇，学会检验水的存在。",
+      "method": "显色法",
+      "group": "性质探究",
       "max": 100
     }
   ],
@@ -9902,6 +9982,9389 @@ window.LAB_BUNDLE = {
         "type": "report",
         "title": "实验报告",
         "progress": 96,
+        "buttons": [
+          {
+            "t": "提交报告",
+            "c": "primary",
+            "do": [
+              {
+                "do": "finish"
+              },
+              {
+                "do": "goto",
+                "id": "score"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "score",
+        "type": "score",
+        "title": "实验评分",
+        "progress": 100,
+        "buttons": [
+          {
+            "t": "导出本次成绩",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "export"
+              }
+            ]
+          },
+          {
+            "t": "查看常见错误",
+            "c": "ghost",
+            "goto": "errtable"
+          },
+          {
+            "t": "重做实验",
+            "c": "primary",
+            "do": [
+              {
+                "do": "reset"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "errtable",
+        "type": "errors",
+        "title": "常见错误与后果",
+        "progress": 100,
+        "buttons": [
+          {
+            "t": "返回评分",
+            "c": "ghost",
+            "goto": "score"
+          },
+          {
+            "t": "重做实验",
+            "c": "primary",
+            "do": [
+              {
+                "do": "reset"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "exp_co2naoh": {
+    "id": "co2naoh",
+    "title": "二氧化碳与氢氧化钠溶液反应",
+    "subtitle": "初中化学虚拟实验 · 无明显现象反应的验证",
+    "badges": [
+      "压强法",
+      "对照实验",
+      "满分 100 分"
+    ],
+    "viewBox": "0 0 600 360",
+    "equipments": [
+      {
+        "id": "cogas",
+        "name": "装满CO₂的塑料瓶",
+        "need": true
+      },
+      {
+        "id": "naoh",
+        "name": "氢氧化钠溶液",
+        "need": true
+      },
+      {
+        "id": "water2",
+        "name": "蒸馏水",
+        "need": true
+      },
+      {
+        "id": "acid",
+        "name": "稀盐酸",
+        "need": true
+      },
+      {
+        "id": "phenol",
+        "name": "酚酞试液",
+        "need": false
+      },
+      {
+        "id": "limewater",
+        "name": "澄清石灰水",
+        "need": false
+      },
+      {
+        "id": "marble",
+        "name": "大理石",
+        "need": false
+      }
+    ],
+    "dims": [
+      {
+        "key": "skill",
+        "name": "操作规范"
+      },
+      {
+        "key": "safety",
+        "name": "安全意识"
+      }
+    ],
+    "scoreItems": [
+      {
+        "key": "equip",
+        "name": "器材选择",
+        "max": 10,
+        "dim": "skill"
+      },
+      {
+        "key": "place",
+        "name": "分组放置两瓶气体",
+        "max": 8,
+        "dim": "skill"
+      },
+      {
+        "key": "pour",
+        "name": "实验组加入氢氧化钠",
+        "max": 14,
+        "dim": "skill"
+      },
+      {
+        "key": "control",
+        "name": "对照组加入等体积水",
+        "max": 12,
+        "dim": "skill"
+      },
+      {
+        "key": "cap",
+        "name": "立即盖紧瓶盖并振荡",
+        "max": 14,
+        "dim": "safety"
+      },
+      {
+        "key": "observe",
+        "name": "解释瓶子变瘪的原因",
+        "max": 12,
+        "dim": "skill"
+      },
+      {
+        "key": "verify",
+        "name": "加稀盐酸检验碳酸盐",
+        "max": 16,
+        "dim": "skill"
+      },
+      {
+        "key": "summary",
+        "name": "归纳这类实验的思路",
+        "max": 14,
+        "dim": "skill"
+      }
+    ],
+    "initialStage": {
+      "bottleOn": false,
+      "naohPour": false,
+      "ctlWater": false,
+      "capped": false,
+      "openLeft": false,
+      "cA": 0,
+      "cB": 0,
+      "gasCheck": false
+    },
+    "dropZones": {
+      "placeAll": {
+        "x": 110,
+        "y": 128,
+        "w": 392,
+        "h": 196
+      },
+      "pmain": {
+        "x": 148,
+        "y": 92,
+        "w": 104,
+        "h": 74
+      },
+      "pctl": {
+        "x": 358,
+        "y": 92,
+        "w": 104,
+        "h": 74
+      }
+    },
+    "scene": [
+      {
+        "tag": "rect",
+        "x": 30,
+        "y": 322,
+        "width": 540,
+        "height": 14,
+        "rx": 5,
+        "fill": "url(#gMetal)"
+      },
+      {
+        "tag": "rect",
+        "x": 30,
+        "y": 322,
+        "width": 540,
+        "height": 4,
+        "rx": 2,
+        "fill": "#e8eef2",
+        "opacity": 0.75
+      },
+      {
+        "tag": "g",
+        "when": "stage.bottleOn",
+        "children": [
+          {
+            "tag": "path",
+            "d": "@ 'M152 148 L248 148 L248 196 Q' + (248 - 15*stage.cA) + ' 232 248 264 L248 302 Q248 312 238 312 L162 312 Q152 312 152 302 L152 264 Q' + (152 + 15*stage.cA) + ' 232 152 196 Z'",
+            "fill": "url(#gGlass)",
+            "stroke": "#26a69a",
+            "stroke-width": 2.4
+          },
+          {
+            "tag": "rect",
+            "x": 193,
+            "y": 108,
+            "width": 24,
+            "height": 14,
+            "rx": 3,
+            "fill": "#80cbc4",
+            "stroke": "#00897b",
+            "stroke-width": 1.8
+          },
+          {
+            "tag": "rect",
+            "x": 196,
+            "y": 120,
+            "width": 18,
+            "height": 30,
+            "fill": "url(#gGlassH)",
+            "stroke": "#26a69a",
+            "stroke-width": 1.6
+          },
+          {
+            "tag": "rect",
+            "x": 156,
+            "y": 152,
+            "width": 88,
+            "height": 118,
+            "fill": "#e0f7fa",
+            "opacity": 0.55
+          },
+          {
+            "tag": "text",
+            "when": "!stage.naohPour",
+            "x": 200,
+            "y": 214,
+            "font-size": 13,
+            "text-anchor": "middle",
+            "fill": "#00695c",
+            "font-weight": 700,
+            "text": "CO₂"
+          },
+          {
+            "tag": "rect",
+            "when": "stage.naohPour",
+            "x": 156,
+            "y": 276,
+            "width": 88,
+            "height": 32,
+            "rx": 4,
+            "fill": "@ stage.gasCheck ? 'url(#gWater)' : '#f5f5f5'",
+            "opacity": 0.9
+          },
+          {
+            "tag": "g",
+            "when": "stage.gasCheck",
+            "children": [
+              {
+                "tag": "circle",
+                "class": "bub",
+                "cx": 178,
+                "cy": 288,
+                "r": 4,
+                "fill": "#ffffff",
+                "opacity": 0.9,
+                "style": "animation-delay:0s"
+              },
+              {
+                "tag": "circle",
+                "class": "bub",
+                "cx": 200,
+                "cy": 292,
+                "r": 5,
+                "fill": "#ffffff",
+                "opacity": 0.9,
+                "style": "animation-delay:.35s"
+              },
+              {
+                "tag": "circle",
+                "class": "bub",
+                "cx": 222,
+                "cy": 289,
+                "r": 3.5,
+                "fill": "#ffffff",
+                "opacity": 0.9,
+                "style": "animation-delay:.7s"
+              },
+              {
+                "tag": "text",
+                "x": 200,
+                "y": 258,
+                "font-size": 11.5,
+                "text-anchor": "middle",
+                "fill": "#0277bd",
+                "font-weight": 700,
+                "text": "产生气泡 → 有碳酸盐"
+              }
+            ]
+          },
+          {
+            "tag": "text",
+            "x": 200,
+            "y": 344,
+            "font-size": 12,
+            "text-anchor": "middle",
+            "fill": "#b71c1c",
+            "font-weight": 700,
+            "text": "实验组：加氢氧化钠溶液"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.bottleOn",
+        "children": [
+          {
+            "tag": "path",
+            "d": "@ 'M362 148 L458 148 L458 196 Q' + (458 - 15*stage.cB) + ' 232 458 264 L458 302 Q458 312 448 312 L372 312 Q362 312 362 302 L362 264 Q' + (362 + 15*stage.cB) + ' 232 362 196 Z'",
+            "fill": "url(#gGlass)",
+            "stroke": "#78909c",
+            "stroke-width": 2.4
+          },
+          {
+            "tag": "rect",
+            "x": 403,
+            "y": 108,
+            "width": 24,
+            "height": 14,
+            "rx": 3,
+            "fill": "#cfd8dc",
+            "stroke": "#607d8b",
+            "stroke-width": 1.8
+          },
+          {
+            "tag": "rect",
+            "x": 406,
+            "y": 120,
+            "width": 18,
+            "height": 30,
+            "fill": "url(#gGlassH)",
+            "stroke": "#78909c",
+            "stroke-width": 1.6
+          },
+          {
+            "tag": "rect",
+            "x": 366,
+            "y": 152,
+            "width": 88,
+            "height": 118,
+            "fill": "#eceff1",
+            "opacity": 0.5
+          },
+          {
+            "tag": "text",
+            "when": "!stage.ctlWater",
+            "x": 410,
+            "y": 214,
+            "font-size": 13,
+            "text-anchor": "middle",
+            "fill": "#455a64",
+            "font-weight": 700,
+            "text": "CO₂"
+          },
+          {
+            "tag": "rect",
+            "when": "stage.ctlWater",
+            "x": 366,
+            "y": 276,
+            "width": 88,
+            "height": 32,
+            "rx": 4,
+            "fill": "url(#gWater)",
+            "opacity": 0.85
+          },
+          {
+            "tag": "text",
+            "x": 410,
+            "y": 344,
+            "font-size": 12,
+            "text-anchor": "middle",
+            "fill": "#455a64",
+            "font-weight": 700,
+            "text": "对照组：加等量蒸馏水"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.capped",
+        "children": [
+          {
+            "tag": "text",
+            "x": 300,
+            "y": 96,
+            "font-size": 12,
+            "text-anchor": "middle",
+            "fill": "#0277bd",
+            "font-weight": 700,
+            "text": "振荡，使CO₂与溶液充分接触"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.openLeft",
+        "children": [
+          {
+            "tag": "circle",
+            "class": "bub",
+            "cx": 205,
+            "cy": 96,
+            "r": 5,
+            "fill": "#b2dfdb",
+            "opacity": 0.9,
+            "style": "animation-delay:0s"
+          },
+          {
+            "tag": "circle",
+            "class": "bub",
+            "cx": 218,
+            "cy": 88,
+            "r": 4,
+            "fill": "#b2dfdb",
+            "opacity": 0.9,
+            "style": "animation-delay:.5s"
+          },
+          {
+            "tag": "text",
+            "x": 236,
+            "y": 84,
+            "font-size": 11.5,
+            "fill": "#dc2626",
+            "font-weight": 700,
+            "text": "CO₂ 从瓶口跑掉了"
+          }
+        ]
+      }
+    ],
+    "report": [
+      {
+        "title": "实验记录",
+        "lines": [
+          "实验名称：二氧化碳与氢氧化钠溶液反应",
+          "反应原理：CO₂ + 2NaOH = Na₂CO₃ + H₂O",
+          "实验组：向充满 CO₂ 的塑料瓶中加入约 1/5 体积 NaOH 溶液，立即盖紧振荡",
+          "对照组：向同样充满 CO₂ 的塑料瓶中加入等体积蒸馏水，盖紧振荡",
+          "检验：向反应后的溶液中滴加稀盐酸，产生气泡"
+        ]
+      },
+      {
+        "title": "现象记录",
+        "lines": [
+          "1. 实验组：加入 NaOH 溶液并振荡后，塑料瓶明显变瘪，瓶壁向内凹陷",
+          "2. 对照组：加入蒸馏水振荡后，塑料瓶只有极轻微的变化",
+          "3. 向实验组反应后的液体中滴加稀盐酸，有大量气泡产生"
+        ]
+      },
+      {
+        "title": "实验结论",
+        "lines": [
+          "二氧化碳能与氢氧化钠溶液反应，被吸收后瓶内气体减少、压强变小，",
+          "外界大气压把塑料瓶压瘪了。因为反应本身没有颜色变化、没有沉淀，",
+          "所以要借助「压强变化」这个看得见的现象来间接证明反应确实发生。",
+          "生成的碳酸钠能与稀盐酸反应放出二氧化碳，这是检验该产物的依据。"
+        ]
+      }
+    ],
+    "errorTable": [
+      {
+        "op": "加完溶液后敞口不盖瓶盖",
+        "phen": "瓶内外压强始终相通",
+        "result": "瓶子不变瘪，实验失败",
+        "score": 14
+      },
+      {
+        "op": "没有做对照组",
+        "phen": "分不清是谁的作用",
+        "result": "无法排除水也能吸收CO₂",
+        "score": 12
+      },
+      {
+        "op": "用酚酞检验产物",
+        "phen": "过量NaOH也能使其变红",
+        "result": "不能证明生成了碳酸盐",
+        "score": 16
+      },
+      {
+        "op": "只在实验组加很多NaOH",
+        "phen": "对照组水量不等",
+        "result": "变量不唯一，对比无效",
+        "score": 12
+      },
+      {
+        "op": "用大理石和稀盐酸",
+        "phen": "那是制取CO₂的药品",
+        "result": "本实验要用已收集好的CO₂",
+        "score": 10
+      },
+      {
+        "op": "用澄清石灰水代替NaOH溶液",
+        "phen": "石灰水用于检验CO₂",
+        "result": "不是本实验要研究的反应",
+        "score": 12
+      }
+    ],
+    "steps": [
+      {
+        "id": "cover",
+        "type": "cover",
+        "title": "准备开始",
+        "progress": 0,
+        "headline": "二氧化碳与氢氧化钠溶液反应",
+        "subtitle": "看不见现象的反应，怎么证明它真的发生了？",
+        "buttons": [
+          {
+            "t": "开始实验",
+            "c": "primary",
+            "goto": "goal"
+          }
+        ]
+      },
+      {
+        "id": "goal",
+        "type": "doc",
+        "title": "实验目标",
+        "progress": 6,
+        "cols": [
+          {
+            "title": "实验目标",
+            "lines": [
+              "1. 知道 CO₂ 与 NaOH 反应但无明显现象",
+              "2. 学会用「压强变化」把看不见的反应显示出来",
+              "3. 体会对照实验中「变量唯一」的思想",
+              "4. 学会检验产物：碳酸盐遇酸会产生气泡",
+              "5. 写出方程式：CO₂ + 2NaOH = Na₂CO₃ + H₂O"
+            ]
+          },
+          {
+            "title": "操作方式",
+            "lines": [
+              "● 拖拽试剂到对应瓶口的高亮区域",
+              "● 遇到思考题时点选项作答",
+              "● 右侧显示当前实验阶段",
+              "● 卡住时点右下角“？”获取提示"
+            ]
+          },
+          {
+            "title": "安全提示",
+            "lines": [
+              "⚠ 氢氧化钠有强腐蚀性，不能用手直接接触",
+              "⚠ 沾到皮肤上要立即用大量水冲洗，再涂硼酸溶液",
+              "⚠ 塑料瓶要盖紧后再振荡，防止液体溅出",
+              "⚠ 振荡时不要对着人"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "下一步",
+            "c": "primary",
+            "goto": "equip"
+          },
+          {
+            "t": "返回封面",
+            "c": "ghost",
+            "goto": "cover"
+          }
+        ]
+      },
+      {
+        "id": "equip",
+        "type": "equip",
+        "title": "选择实验器材",
+        "progress": 12,
+        "tip": "NaOH 有强腐蚀性、要对照、还要能证明产物是碳酸盐——想一想都要用到哪些东西",
+        "buttons": [
+          {
+            "t": "确认器材",
+            "c": "primary",
+            "do": [
+              {
+                "do": "checkEquip",
+                "key": "equip",
+                "goto": "place"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "place",
+        "type": "stage",
+        "title": "取两瓶相同的二氧化碳",
+        "progress": 20,
+        "shelf": [
+          "cogas"
+        ],
+        "desc": "实验要分成两组：一组加氢氧化钠溶液，一组加等体积的水做对照。",
+        "help": "把两瓶充满二氧化碳的塑料瓶拖到桌面上。两个瓶子必须完全相同（同材质、同体积、同样集满气体），对比才有意义。",
+        "zones": [
+          "placeAll"
+        ],
+        "drop": [
+          {
+            "equip": "cogas",
+            "zone": "placeAll",
+            "do": [
+              {
+                "do": "set",
+                "k": "bottleOn",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "place"
+              },
+              {
+                "do": "tip",
+                "text": "两瓶相同的二氧化碳已放好：左边做实验组，右边做对照组 ✓"
+              },
+              {
+                "do": "goto",
+                "id": "pour",
+                "delay": 1200
+              }
+            ]
+          },
+          {
+            "equip": "cogas",
+            "do": [
+              {
+                "do": "err",
+                "text": "塑料瓶要放在桌面中央的高亮区域。"
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步需要的是已经收集满二氧化碳的塑料瓶。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pour",
+        "type": "stage",
+        "title": "加入等体积的液体",
+        "progress": 32,
+        "shelf": [
+          "naoh",
+          "water2"
+        ],
+        "desc": "实验组加入氢氧化钠溶液，对照组加入等体积的蒸馏水。这就是变量。",
+        "help": "把氢氧化钠溶液拖到左边瓶口，把蒸馏水拖到右边瓶口。两组加入的液体体积必须相同，否则就不是一个变量的对比了。",
+        "zones": [
+          "pmain",
+          "pctl"
+        ],
+        "drop": [
+          {
+            "equip": "naoh",
+            "zone": "pmain",
+            "do": [
+              {
+                "do": "set",
+                "k": "naohPour",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "pour"
+              },
+              {
+                "do": "tip",
+                "text": "实验组加入氢氧化钠溶液 ✓ 对照组还没加水"
+              },
+              {
+                "do": "if",
+                "cond": "stage.ctlWater",
+                "then": [
+                  {
+                    "do": "goto",
+                    "id": "cap",
+                    "delay": 1100
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "equip": "water2",
+            "zone": "pctl",
+            "do": [
+              {
+                "do": "set",
+                "k": "ctlWater",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "control"
+              },
+              {
+                "do": "tip",
+                "text": "对照组加入等体积蒸馏水 ✓ 现在两组只有一个变量不同"
+              },
+              {
+                "do": "if",
+                "cond": "stage.naohPour",
+                "then": [
+                  {
+                    "do": "goto",
+                    "id": "cap",
+                    "delay": 1100
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "equip": "water2",
+            "zone": "pmain",
+            "do": [
+              {
+                "do": "err",
+                "text": "实验组要加的是氢氧化钠溶液，水请加到右边的对照组里。"
+              }
+            ]
+          },
+          {
+            "equip": "naoh",
+            "zone": "pctl",
+            "do": [
+              {
+                "do": "err",
+                "text": "对照组只能加等体积的水，这样才能和实验组形成单一变量对比。"
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要加的是液体：实验组氢氧化钠溶液，对照组蒸馏水。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cap",
+        "type": "doc",
+        "title": "盖紧瓶盖后该怎么办？",
+        "progress": 44,
+        "cols": [
+          {
+            "title": "想一想",
+            "lines": [
+              "液体已经加进去了，接下来两种做法：",
+              "A. 立刻盖紧瓶盖，然后振荡，让气体和液体充分接触",
+              "B. 敞口放一会儿，让反应慢慢进行",
+              "",
+              "选哪种？为什么？"
+            ]
+          },
+          {
+            "title": "提示",
+            "lines": [
+              "反应只发生在气体与液体的接触面上。",
+              "振荡能大大增加接触面积，让反应更快更完全。",
+              "而敞口放置的话，瓶内压强始终和外界相通，",
+              "即使气体被吸收，外面的空气也会补进去。"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "立即盖紧瓶盖并振荡",
+            "c": "primary",
+            "do": [
+              {
+                "do": "set",
+                "k": "capped",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "cap"
+              },
+              {
+                "do": "tip",
+                "text": "盖紧并振荡，CO₂ 正在被氢氧化钠溶液吸收…"
+              },
+              {
+                "do": "set",
+                "k": "cA",
+                "v": 0.8,
+                "delay": 900
+              },
+              {
+                "do": "set",
+                "k": "cA",
+                "v": 1.6,
+                "delay": 1700
+              },
+              {
+                "do": "set",
+                "k": "cB",
+                "v": 0.5,
+                "delay": 1900
+              },
+              {
+                "do": "set",
+                "k": "cA",
+                "v": 2,
+                "delay": 2500
+              },
+              {
+                "do": "tip",
+                "text": "看！实验组瓶子明显瘪了，对照组几乎没变化",
+                "delay": 2700
+              },
+              {
+                "do": "goto",
+                "id": "observe",
+                "delay": 3600
+              }
+            ]
+          },
+          {
+            "t": "敞口放一会儿再说",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "set",
+                "k": "openLeft",
+                "v": true
+              },
+              {
+                "do": "err",
+                "text": "敞口时瓶内外压强相通，气体被吸收也没人看得出来，瓶子不会变瘪。而且 CO₂ 还会跑掉。"
+              },
+              {
+                "do": "goto",
+                "id": "observe",
+                "delay": 4200
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "observe",
+        "type": "doc",
+        "title": "为什么会变瘪？",
+        "progress": 56,
+        "cols": [
+          {
+            "title": "现象",
+            "lines": [
+              "实验组：塑料瓶明显变瘪，瓶壁向内凹陷",
+              "对照组：几乎看不出变化",
+              "",
+              "同样的两瓶气体，为什么差别这么大？"
+            ]
+          },
+          {
+            "title": "分析",
+            "lines": [
+              "瓶内气体被吸收 → 气体分子数减少",
+              "→ 瓶内压强变小 → 小于外界大气压",
+              "→ 大气压把软塑料瓶压瘪",
+              "水只能溶解很少的 CO₂，所以对照瓶几乎不变"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "CO₂被NaOH吸收，气体减少、压强变小",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "observe"
+              },
+              {
+                "do": "tip",
+                "text": "说对了！这正是把「看不见的反应」变成「看得见的形变」的关键 ✓"
+              },
+              {
+                "do": "goto",
+                "id": "verify",
+                "delay": 1600
+              }
+            ]
+          },
+          {
+            "t": "氢氧化钠把塑料瓶腐蚀软了",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "氢氧化钠确实有腐蚀性，但在这么短的时间内不会把塑料腐蚀变形。想想对照组也没变化——它也加了液体。"
+              }
+            ]
+          },
+          {
+            "t": "振荡时手把瓶子捏瘪了",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "两瓶都振荡了，对照组却几乎没变。所以形变不是手捏出来的，而是瓶内气体减少造成的。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "verify",
+        "type": "stage",
+        "title": "检验生成的新物质",
+        "progress": 70,
+        "shelf": [
+          "acid"
+        ],
+        "desc": "如果 CO₂ 真的和 NaOH 反应生成了碳酸钠，那么往里面加稀盐酸就会产生气泡。",
+        "help": "把稀盐酸拖到实验组瓶口。想一想：为什么不能用酚酞来证明？（氢氧化钠过量也会让酚酞变红）",
+        "zones": [
+          "pmain"
+        ],
+        "drop": [
+          {
+            "equip": "acid",
+            "zone": "pmain",
+            "do": [
+              {
+                "do": "set",
+                "k": "gasCheck",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "verify"
+              },
+              {
+                "do": "tip",
+                "text": "产生大量气泡：Na₂CO₃ + 2HCl = 2NaCl + H₂O + CO₂↑ ✓"
+              },
+              {
+                "do": "goto",
+                "id": "summary",
+                "delay": 2200
+              }
+            ]
+          },
+          {
+            "equip": "phenol",
+            "zone": "pmain",
+            "do": [
+              {
+                "do": "err",
+                "text": "酚酞会变红，但过量的氢氧化钠同样能让酚酞变红，所以它不能证明生成了新的物质。"
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要用能检验碳酸盐的试剂：加入后会放出气体。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "summary",
+        "type": "doc",
+        "title": "这类实验的关键思路",
+        "progress": 82,
+        "cols": [
+          {
+            "title": "小结",
+            "lines": [
+              "CO₂ + 2NaOH = Na₂CO₃ + H₂O",
+              "这个反应没有沉淀、没有颜色变化、没有气体放出，",
+              "肉眼什么都看不到。",
+              "所以必须借助某个「能看见的变化」来间接证明。"
+            ]
+          },
+          {
+            "title": "可用的间接证据",
+            "lines": [
+              "● 压强变化：密闭容器内气体减少 → 瓶子变瘪",
+              "● 检验产物：加酸有气泡 → 生成了碳酸盐",
+              "● 设置对照：排除水本身也能吸收 CO₂ 的可能",
+              "这三个思路合在一起，结论才站得住。"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "用压强变化+检验产物+对照实验来间接证明",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "summary"
+              },
+              {
+                "do": "tip",
+                "text": "完全正确 ✓ 这就是研究「无明显现象反应」的通用方法"
+              },
+              {
+                "do": "goto",
+                "id": "report",
+                "delay": 1600
+              }
+            ]
+          },
+          {
+            "t": "盯着看，看到现象就说明反应了",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "这类反应恰恰看不到现象。要主动制造一个能被观察到的变化。"
+              }
+            ]
+          },
+          {
+            "t": "用天平称量反应前后的总质量",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "这个体系总质量本来就不变（质量守恒），称不出差别。要用能变化的现象。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "report",
+        "type": "report",
+        "title": "实验报告",
+        "progress": 92,
+        "buttons": [
+          {
+            "t": "提交报告",
+            "c": "primary",
+            "do": [
+              {
+                "do": "finish"
+              },
+              {
+                "do": "goto",
+                "id": "score"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "score",
+        "type": "score",
+        "title": "实验评分",
+        "progress": 100,
+        "buttons": [
+          {
+            "t": "导出本次成绩",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "export"
+              }
+            ]
+          },
+          {
+            "t": "查看常见错误",
+            "c": "ghost",
+            "goto": "errtable"
+          },
+          {
+            "t": "重做实验",
+            "c": "primary",
+            "do": [
+              {
+                "do": "reset"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "errtable",
+        "type": "errors",
+        "title": "常见错误与后果",
+        "progress": 100,
+        "buttons": [
+          {
+            "t": "返回评分",
+            "c": "ghost",
+            "goto": "score"
+          },
+          {
+            "t": "重做实验",
+            "c": "primary",
+            "do": [
+              {
+                "do": "reset"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "exp_cao": {
+    "id": "cao",
+    "title": "生石灰与水反应放热",
+    "subtitle": "初中化学虚拟实验 · 化合反应与干燥剂",
+    "badges": [
+      "CaO + H₂O",
+      "放热反应",
+      "满分 100 分"
+    ],
+    "viewBox": "0 0 600 360",
+    "equipments": [
+      {
+        "id": "quicklime",
+        "name": "生石灰（块状）",
+        "need": true
+      },
+      {
+        "id": "beaker",
+        "name": "烧杯",
+        "need": true
+      },
+      {
+        "id": "water2",
+        "name": "蒸馏水",
+        "need": true
+      },
+      {
+        "id": "rod",
+        "name": "玻璃棒",
+        "need": true
+      },
+      {
+        "id": "thermo",
+        "name": "温度计",
+        "need": true
+      },
+      {
+        "id": "spoon",
+        "name": "药匙",
+        "need": true
+      },
+      {
+        "id": "phenol",
+        "name": "酚酞试液",
+        "need": true
+      },
+      {
+        "id": "flask",
+        "name": "锥形瓶",
+        "need": false
+      },
+      {
+        "id": "lamp",
+        "name": "酒精灯",
+        "need": false
+      },
+      {
+        "id": "acid",
+        "name": "稀盐酸",
+        "need": false
+      }
+    ],
+    "dims": [
+      {
+        "key": "skill",
+        "name": "操作规范"
+      },
+      {
+        "key": "safety",
+        "name": "安全意识"
+      }
+    ],
+    "scoreItems": [
+      {
+        "key": "equip",
+        "name": "器材选择",
+        "max": 10,
+        "dim": "skill"
+      },
+      {
+        "key": "beaker",
+        "name": "放置烧杯",
+        "max": 6,
+        "dim": "skill"
+      },
+      {
+        "key": "lime",
+        "name": "取用块状生石灰",
+        "max": 10,
+        "dim": "skill"
+      },
+      {
+        "key": "thermo",
+        "name": "先测水的初温",
+        "max": 8,
+        "dim": "skill"
+      },
+      {
+        "key": "water",
+        "name": "把水加入生石灰",
+        "max": 12,
+        "dim": "skill"
+      },
+      {
+        "key": "judge",
+        "name": "判断反应放热",
+        "max": 12,
+        "dim": "safety"
+      },
+      {
+        "key": "stir",
+        "name": "用玻璃棒搅拌",
+        "max": 12,
+        "dim": "skill"
+      },
+      {
+        "key": "verify",
+        "name": "酚酞检验生成的碱",
+        "max": 14,
+        "dim": "skill"
+      },
+      {
+        "key": "summary",
+        "name": "归纳用途与原理",
+        "max": 16,
+        "dim": "skill"
+      }
+    ],
+    "initialStage": {
+      "beakerOn": false,
+      "limeIn": false,
+      "thermoIn": false,
+      "lvl": 0,
+      "waterIn": false,
+      "temp": 20,
+      "hot": false,
+      "stirred": false,
+      "sampleOn": false,
+      "phenolIn": false,
+      "pink": false
+    },
+    "dropZones": {
+      "bench": {
+        "x": 180,
+        "y": 206,
+        "w": 200,
+        "h": 118
+      },
+      "mouth": {
+        "x": 244,
+        "y": 146,
+        "w": 112,
+        "h": 86
+      },
+      "thzone": {
+        "x": 274,
+        "y": 96,
+        "w": 58,
+        "h": 196
+      },
+      "sample": {
+        "x": 424,
+        "y": 150,
+        "w": 108,
+        "h": 168
+      }
+    },
+    "scene": [
+      {
+        "tag": "rect",
+        "x": 30,
+        "y": 322,
+        "width": 540,
+        "height": 14,
+        "rx": 5,
+        "fill": "url(#gMetal)"
+      },
+      {
+        "tag": "rect",
+        "x": 30,
+        "y": 322,
+        "width": 540,
+        "height": 4,
+        "rx": 2,
+        "fill": "#e8eef2",
+        "opacity": 0.75
+      },
+      {
+        "tag": "g",
+        "when": "stage.beakerOn",
+        "children": [
+          {
+            "tag": "path",
+            "d": "M240 178 L240 298 Q240 312 254 312 L346 312 Q360 312 360 298 L360 178 Z",
+            "fill": "url(#gGlass)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 2.4
+          },
+          {
+            "tag": "rect",
+            "x": 234,
+            "y": 168,
+            "width": 132,
+            "height": 12,
+            "rx": 5,
+            "fill": "url(#gGlassH)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 1.6
+          },
+          {
+            "tag": "path",
+            "d": "M234 174 L226 168 L234 162",
+            "fill": "none",
+            "stroke": "#7ba7c7",
+            "stroke-width": 2
+          },
+          {
+            "tag": "path",
+            "d": "M248 190 L248 292",
+            "stroke": "#ffffff",
+            "stroke-width": 2.2,
+            "opacity": 0.8,
+            "fill": "none"
+          },
+          {
+            "tag": "g",
+            "when": "stage.limeIn && !stage.waterIn",
+            "children": [
+              {
+                "tag": "circle",
+                "cx": 268,
+                "cy": 296,
+                "r": 14,
+                "fill": "#ffffff",
+                "stroke": "#cfd8dc",
+                "stroke-width": 1.4
+              },
+              {
+                "tag": "circle",
+                "cx": 300,
+                "cy": 292,
+                "r": 12,
+                "fill": "#fafafa",
+                "stroke": "#cfd8dc",
+                "stroke-width": 1.4
+              },
+              {
+                "tag": "circle",
+                "cx": 332,
+                "cy": 297,
+                "r": 13,
+                "fill": "#f5f5f5",
+                "stroke": "#cfd8dc",
+                "stroke-width": 1.4
+              },
+              {
+                "tag": "path",
+                "d": "M262 292 L274 300 M326 293 L338 301",
+                "stroke": "#e0e0e0",
+                "stroke-width": 1.2,
+                "fill": "none"
+              }
+            ]
+          },
+          {
+            "tag": "rect",
+            "when": "stage.lvl>0",
+            "x": 243,
+            "y": "@ 306 - 78*stage.lvl/100",
+            "width": 114,
+            "height": "@ 78*stage.lvl/100",
+            "rx": 3,
+            "fill": "@ stage.stirred ? '#eceff1' : 'url(#gWater)'",
+            "opacity": "@ stage.stirred ? 0.95 : 0.85"
+          },
+          {
+            "tag": "g",
+            "when": "stage.waterIn && stage.lvl>60",
+            "children": [
+              {
+                "tag": "circle",
+                "class": "bub",
+                "cx": 272,
+                "cy": 288,
+                "r": 4,
+                "fill": "#ffffff",
+                "opacity": 0.85,
+                "style": "animation-delay:0s"
+              },
+              {
+                "tag": "circle",
+                "class": "bub",
+                "cx": 300,
+                "cy": 284,
+                "r": 5,
+                "fill": "#ffffff",
+                "opacity": 0.85,
+                "style": "animation-delay:.4s"
+              },
+              {
+                "tag": "circle",
+                "class": "bub",
+                "cx": 328,
+                "cy": 288,
+                "r": 3.5,
+                "fill": "#ffffff",
+                "opacity": 0.85,
+                "style": "animation-delay:.8s"
+              }
+            ]
+          },
+          {
+            "tag": "g",
+            "when": "stage.stirred",
+            "children": [
+              {
+                "tag": "rect",
+                "x": 243,
+                "y": 286,
+                "width": 114,
+                "height": 22,
+                "rx": 4,
+                "fill": "#ffffff",
+                "opacity": 0.9
+              },
+              {
+                "tag": "text",
+                "x": 328,
+                "y": 248,
+                "font-size": 10.5,
+                "text-anchor": "middle",
+                "fill": "#455a64",
+                "text": "白色糊状"
+              }
+            ]
+          },
+          {
+            "tag": "text",
+            "x": 300,
+            "y": 344,
+            "font-size": 12,
+            "text-anchor": "middle",
+            "fill": "#455a64",
+            "font-weight": 700,
+            "text": "烧杯：生石灰 + 水"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.hot",
+        "children": [
+          {
+            "tag": "circle",
+            "class": "bub",
+            "cx": 268,
+            "cy": 152,
+            "r": 6,
+            "fill": "#ffffff",
+            "opacity": 0.75,
+            "style": "animation-delay:0s"
+          },
+          {
+            "tag": "circle",
+            "class": "bub",
+            "cx": 300,
+            "cy": 146,
+            "r": 7,
+            "fill": "#ffffff",
+            "opacity": 0.7,
+            "style": "animation-delay:.5s"
+          },
+          {
+            "tag": "circle",
+            "class": "bub",
+            "cx": 332,
+            "cy": 152,
+            "r": 5.5,
+            "fill": "#ffffff",
+            "opacity": 0.75,
+            "style": "animation-delay:1s"
+          },
+          {
+            "tag": "text",
+            "x": 280,
+            "y": 118,
+            "font-size": 11.5,
+            "text-anchor": "end",
+            "fill": "#b71c1c",
+            "font-weight": 700,
+            "text": "冒出大量白汽 · 放出大量的热"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.thermoIn",
+        "children": [
+          {
+            "tag": "rect",
+            "x": 287,
+            "y": 108,
+            "width": 8,
+            "height": 170,
+            "rx": 4,
+            "fill": "url(#gGlass)",
+            "stroke": "#90a4ae",
+            "stroke-width": 1.4
+          },
+          {
+            "tag": "rect",
+            "x": 289,
+            "y": "@ 268 - 1.24*stage.temp",
+            "width": 4,
+            "height": "@ 12 + 1.24*stage.temp",
+            "fill": "#ef5350"
+          },
+          {
+            "tag": "circle",
+            "cx": 291,
+            "cy": 272,
+            "r": 8,
+            "fill": "#ef5350",
+            "stroke": "#c62828",
+            "stroke-width": 1.2
+          },
+          {
+            "tag": "path",
+            "d": "M297 124 L302 124 M297 140 L302 140 M297 156 L302 156 M297 172 L302 172 M297 188 L302 188",
+            "stroke": "#607d8b",
+            "stroke-width": 1,
+            "fill": "none"
+          },
+          {
+            "tag": "text",
+            "x": 316,
+            "y": "@ 272 - 1.24*stage.temp",
+            "font-size": 12,
+            "fill": "@ stage.temp>45 ? '#b71c1c' : '#0277bd'",
+            "font-weight": 700,
+            "text": "@ Math.round(stage.temp) + ' ℃'"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.sampleOn",
+        "children": [
+          {
+            "tag": "path",
+            "d": "M452 176 L452 284 Q452 298 466 298 L494 298 Q508 298 508 284 L508 176 Z",
+            "fill": "url(#gGlass)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 2
+          },
+          {
+            "tag": "rect",
+            "x": 448,
+            "y": 168,
+            "width": 64,
+            "height": 10,
+            "rx": 4,
+            "fill": "url(#gGlassH)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 1.4
+          },
+          {
+            "tag": "rect",
+            "x": 455,
+            "y": 218,
+            "width": 50,
+            "height": 76,
+            "rx": 3,
+            "fill": "@ stage.pink ? 'url(#gPink)' : '#f5f5f5'",
+            "opacity": 0.9
+          },
+          {
+            "tag": "text",
+            "x": 480,
+            "y": 344,
+            "font-size": 11.5,
+            "text-anchor": "middle",
+            "fill": "#455a64",
+            "font-weight": 700,
+            "text": "上层清液"
+          },
+          {
+            "tag": "text",
+            "when": "stage.pink",
+            "x": 480,
+            "y": 160,
+            "font-size": 11.5,
+            "text-anchor": "middle",
+            "fill": "#ad1457",
+            "font-weight": 700,
+            "text": "变红 → 溶液显碱性"
+          }
+        ]
+      }
+    ],
+    "report": [
+      {
+        "title": "实验记录",
+        "lines": [
+          "实验名称：生石灰与水反应",
+          "反应原理：CaO + H₂O = Ca(OH)₂（化合反应，放出大量的热）",
+          "操作：烧杯中放块状生石灰 → 插入温度计记下初温 → 倒入水 → 观察读数与白汽",
+          "检验：取上层清液滴加酚酞，溶液变红，说明生成了碱性的氢氧化钙"
+        ]
+      },
+      {
+        "title": "现象记录",
+        "lines": [
+          "1. 加水后块状生石灰逐渐变成白色粉末，最后成白色糊状",
+          "2. 温度计示数迅速上升，烧杯外壁发烫，有大量白汽冒出",
+          "3. 上层清液滴加酚酞后变红"
+        ]
+      },
+      {
+        "title": "实验结论",
+        "lines": [
+          "生石灰与水发生化合反应生成熟石灰 Ca(OH)₂，同时放出大量的热。",
+          "因为反应放热且能吸水，生石灰常被用作食品等物品的干燥剂。",
+          "熟石灰的水溶液就是澄清石灰水，显碱性，能使酚酞变红。"
+        ]
+      }
+    ],
+    "errorTable": [
+      {
+        "op": "先把水倒进烧杯再加生石灰",
+        "phen": "块状固体沉底、可能溅出",
+        "result": "操作顺序不规范，容易烫伤",
+        "score": 12
+      },
+      {
+        "op": "没测水的初温就加水",
+        "phen": "不知道升高了多少",
+        "result": "无法证明反应放热",
+        "score": 8
+      },
+      {
+        "op": "直接用手触摸烧杯外壁",
+        "phen": "反应剧烈放热",
+        "result": "容易烫伤皮肤",
+        "score": 12
+      },
+      {
+        "op": "加水后不使用玻璃棒搅拌",
+        "phen": "固体结块沉底",
+        "result": "反应不充分、局部过热",
+        "score": 12
+      },
+      {
+        "op": "误用酒精灯加热",
+        "phen": "本反应常温自发剧烈进行",
+        "result": "装置与操作选择错误",
+        "score": 10
+      },
+      {
+        "op": "用锥形瓶代替烧杯",
+        "phen": "口径小，不便搅拌与取样",
+        "result": "器材选择不当",
+        "score": 6
+      },
+      {
+        "op": "用稀盐酸代替水",
+        "phen": "那是与碱反应",
+        "result": "研究对象错误",
+        "score": 14
+      }
+    ],
+    "steps": [
+      {
+        "id": "cover",
+        "type": "cover",
+        "title": "准备开始",
+        "progress": 0,
+        "headline": "生石灰与水反应放热",
+        "subtitle": "一块白石头，遇水竟能烧开水？",
+        "buttons": [
+          {
+            "t": "开始实验",
+            "c": "primary",
+            "goto": "goal"
+          }
+        ]
+      },
+      {
+        "id": "goal",
+        "type": "doc",
+        "title": "实验目标",
+        "progress": 6,
+        "cols": [
+          {
+            "title": "实验目标",
+            "lines": [
+              "1. 认识化合反应 CaO + H₂O = Ca(OH)₂",
+              "2. 通过温度计示数变化确认反应放热",
+              "3. 学会用酚酞检验碱性物质",
+              "4. 理解生石灰作干燥剂的原因",
+              "5. 知道熟石灰的水溶液就是澄清石灰水"
+            ]
+          },
+          {
+            "title": "操作方式",
+            "lines": [
+              "● 拖拽器材和试剂到高亮区域",
+              "● 遇到思考题时点选项作答",
+              "● 右侧显示当前实验阶段",
+              "● 卡住时点右下角“？”获取提示"
+            ]
+          },
+          {
+            "title": "安全提示",
+            "lines": [
+              "⚠ 该反应放出大量热，切勿用手直接触摸烧杯外壁",
+              "⚠ 生石灰和熟石灰都有腐蚀性，避免接触皮肤和眼睛",
+              "⚠ 块状固体要沿杯壁缓慢放入，防止水花飞溅",
+              "⚠ 加料顺序：先放固体，后加液体"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "下一步",
+            "c": "primary",
+            "goto": "equip"
+          },
+          {
+            "t": "返回封面",
+            "c": "ghost",
+            "goto": "cover"
+          }
+        ]
+      },
+      {
+        "id": "equip",
+        "type": "equip",
+        "title": "选择实验器材",
+        "progress": 12,
+        "tip": "要能看到温度的变化、要能搅拌、还要能检验生成的碱——想一想都要哪些东西",
+        "buttons": [
+          {
+            "t": "确认器材",
+            "c": "primary",
+            "do": [
+              {
+                "do": "checkEquip",
+                "key": "equip",
+                "goto": "beaker"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "beaker",
+        "type": "stage",
+        "title": "放置烧杯",
+        "progress": 18,
+        "shelf": [
+          "beaker"
+        ],
+        "desc": "先把反应容器放在桌面上。烧杯口径大，方便投料、搅拌和取样。",
+        "help": "把烧杯拖到桌面中间的高亮区域。想一想：为什么要用烧杯而不是锥形瓶？",
+        "zones": [
+          "bench"
+        ],
+        "drop": [
+          {
+            "equip": "beaker",
+            "zone": "bench",
+            "do": [
+              {
+                "do": "set",
+                "k": "beakerOn",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "beaker"
+              },
+              {
+                "do": "tip",
+                "text": "烧杯已放好 ✓ 接下来先放固体"
+              },
+              {
+                "do": "goto",
+                "id": "lime",
+                "delay": 1000
+              }
+            ]
+          },
+          {
+            "equip": "flask",
+            "zone": "bench",
+            "do": [
+              {
+                "do": "err",
+                "text": "锥形瓶口径太小，不便于投放块状固体和搅拌。本实验用烧杯更合适。"
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要放的是反应容器。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "lime",
+        "type": "stage",
+        "title": "取用块状生石灰",
+        "progress": 26,
+        "shelf": [
+          "quicklime",
+          "spoon"
+        ],
+        "desc": "用药匙取几块生石灰放入烧杯。加料顺序是：先固体，后液体。",
+        "help": "把生石灰拖到烧杯里。生石灰是白色块状固体，化学式 CaO，俗称「白石头」。",
+        "zones": [
+          "mouth"
+        ],
+        "drop": [
+          {
+            "equip": "quicklime",
+            "zone": "mouth",
+            "do": [
+              {
+                "do": "set",
+                "k": "limeIn",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "lime"
+              },
+              {
+                "do": "tip",
+                "text": "已放入几块生石灰 ✓ 白色块状固体"
+              },
+              {
+                "do": "goto",
+                "id": "thermo",
+                "delay": 1100
+              }
+            ]
+          },
+          {
+            "equip": "spoon",
+            "zone": "mouth",
+            "do": [
+              {
+                "do": "err",
+                "text": "药匙是用来取药品的工具，本身不是药品。要放进去的是生石灰。"
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要取用的是白色块状固体——生石灰。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "thermo",
+        "type": "stage",
+        "title": "插入温度计，记下初温",
+        "progress": 34,
+        "shelf": [
+          "thermo"
+        ],
+        "desc": "先把温度计插进去，记下加水前的温度。没有对照读数，后面就看不出升高了多少。",
+        "help": "把温度计拖到烧杯上方的位置。温度计的玻璃泡要完全浸没在液体中，且不能碰到杯底和杯壁。",
+        "zones": [
+          "thzone"
+        ],
+        "drop": [
+          {
+            "equip": "thermo",
+            "zone": "thzone",
+            "do": [
+              {
+                "do": "set",
+                "k": "thermoIn",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "thermo"
+              },
+              {
+                "do": "tip",
+                "text": "温度计已放好，当前室温约 20 ℃ ✓"
+              },
+              {
+                "do": "goto",
+                "id": "water",
+                "delay": 1200
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要把温度计放进去，先测出加水前的初温。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "water",
+        "type": "stage",
+        "title": "加入水",
+        "progress": 44,
+        "shelf": [
+          "water2"
+        ],
+        "desc": "沿烧杯壁把水倒入，观察生石灰的变化和温度计读数。",
+        "help": "把蒸馏水拖到烧杯口。注意安全：反应会放出大量的热，千万不要用手去摸烧杯外壁。",
+        "zones": [
+          "mouth"
+        ],
+        "drop": [
+          {
+            "equip": "water2",
+            "zone": "mouth",
+            "do": [
+              {
+                "do": "set",
+                "k": "waterIn",
+                "v": true
+              },
+              {
+                "do": "set",
+                "k": "lvl",
+                "v": 45,
+                "delay": 400
+              },
+              {
+                "do": "set",
+                "k": "lvl",
+                "v": 100,
+                "delay": 1000
+              },
+              {
+                "do": "set",
+                "k": "temp",
+                "v": 46,
+                "delay": 1200
+              },
+              {
+                "do": "set",
+                "k": "hot",
+                "v": true,
+                "delay": 1500
+              },
+              {
+                "do": "set",
+                "k": "temp",
+                "v": 72,
+                "delay": 2000
+              },
+              {
+                "do": "set",
+                "k": "temp",
+                "v": 94,
+                "delay": 2800
+              },
+              {
+                "do": "score",
+                "key": "water"
+              },
+              {
+                "do": "tip",
+                "text": "温度迅速上升！块状固体变成白色粉末，白汽冒出"
+              },
+              {
+                "do": "goto",
+                "id": "judge",
+                "delay": 3400
+              }
+            ]
+          },
+          {
+            "equip": "acid",
+            "zone": "mouth",
+            "do": [
+              {
+                "do": "err",
+                "text": "稀盐酸会与生成的碱发生反应，这里要研究的是生石灰与水。"
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要加入的是水。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "judge",
+        "type": "doc",
+        "title": "这是什么变化？",
+        "progress": 54,
+        "cols": [
+          {
+            "title": "看到的现象",
+            "lines": [
+              "块状固体逐渐松散，变成白色粉末",
+              "温度计示数从 20 ℃ 一路升到 90 ℃ 以上",
+              "烧杯口冒出大量白汽，杯壁发烫"
+            ]
+          },
+          {
+            "title": "想一想",
+            "lines": [
+              "温度升高说明反应过程中能量怎样变化？",
+              "白汽其实是水蒸气遇冷凝成的小水珠，",
+              "说明水被反应放出的热加热了。"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "反应放出热量（放热反应）",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "judge"
+              },
+              {
+                "do": "tip",
+                "text": "正确！CaO + H₂O = Ca(OH)₂，这是典型的放热反应 ✓"
+              },
+              {
+                "do": "goto",
+                "id": "stir",
+                "delay": 1500
+              }
+            ]
+          },
+          {
+            "t": "反应吸收热量（吸热反应）",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "吸热反应的温度应该下降。现在示数一路飙升，说明能量是释放出来的。"
+              }
+            ]
+          },
+          {
+            "t": "温度升高是水太多导致的",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "水只会吸收热量、让温度升得更慢。真正让水变热的，是反应放出的能量。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "stir",
+        "type": "stage",
+        "title": "用玻璃棒搅拌",
+        "progress": 64,
+        "shelf": [
+          "rod"
+        ],
+        "desc": "搅拌能让固体与水充分接触，防止结块、防止局部过热。",
+        "help": "把玻璃棒拖到烧杯里搅拌。注意：搅拌时玻璃棒不要碰到杯壁发出响声，更不能用温度计代替玻璃棒搅拌。",
+        "zones": [
+          "mouth"
+        ],
+        "drop": [
+          {
+            "equip": "rod",
+            "zone": "mouth",
+            "do": [
+              {
+                "do": "set",
+                "k": "stirred",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "stir"
+              },
+              {
+                "do": "tip",
+                "text": "搅拌后固体全部变成熟石灰 Ca(OH)₂，呈白色糊状 ✓"
+              },
+              {
+                "do": "goto",
+                "id": "verify",
+                "delay": 1400
+              }
+            ]
+          },
+          {
+            "equip": "thermo",
+            "zone": "mouth",
+            "do": [
+              {
+                "do": "err",
+                "text": "温度计是用来测温度的，它的玻璃泡很薄，搅拌很容易打碎。"
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要用搅拌工具。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "verify",
+        "type": "stage",
+        "title": "取上层清液检验",
+        "progress": 76,
+        "shelf": [
+          "phenol"
+        ],
+        "desc": "静置后取上层清液，滴加酚酞试液，看它是否变红。",
+        "help": "先拖动右侧的试管完成取样，再把酚酞滴进去。无色酚酞遇碱性溶液变红，这是检验碱的常用方法。",
+        "zones": [
+          "sample"
+        ],
+        "drop": [
+          {
+            "equip": "phenol",
+            "zone": "sample",
+            "do": [
+              {
+                "do": "set",
+                "k": "sampleOn",
+                "v": true
+              },
+              {
+                "do": "set",
+                "k": "phenolIn",
+                "v": true
+              },
+              {
+                "do": "set",
+                "k": "pink",
+                "v": true,
+                "delay": 600
+              },
+              {
+                "do": "score",
+                "key": "verify"
+              },
+              {
+                "do": "tip",
+                "text": "酚酞变红 → 上层清液显碱性 → 生成了 Ca(OH)₂ ✓"
+              },
+              {
+                "do": "goto",
+                "id": "summary",
+                "delay": 1800
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要滴加酚酞试液来检验清液的酸碱性。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "summary",
+        "type": "doc",
+        "title": "生石灰有什么用？",
+        "progress": 86,
+        "cols": [
+          {
+            "title": "反应本质",
+            "lines": [
+              "CaO + H₂O = Ca(OH)₂",
+              "两种物质生成一种物质，属于化合反应。",
+              "反应过程中放出大量的热。"
+            ]
+          },
+          {
+            "title": "生活中的应用",
+            "lines": [
+              "● 作干燥剂：能吸收水分（食品、服装、精密仪器包装中常见）",
+              "● 自热食品：放热特性用来加热饭菜",
+              "● 生成物熟石灰：砌砖抹墙、改良酸性土壤",
+              "● 熟石灰的水溶液就是实验室常用的澄清石灰水"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "既能吸水又放热，可作干燥剂和发热剂",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "summary"
+              },
+              {
+                "do": "tip",
+                "text": "回答完整 ✓ 生石灰的两大用途都抓住了"
+              },
+              {
+                "do": "goto",
+                "id": "report",
+                "delay": 1500
+              }
+            ]
+          },
+          {
+            "t": "只用来砌墙抹灰",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "砌墙抹灰用的是生成物熟石灰，生石灰本身的价值不止于此。再想想它吸水的本领。"
+              }
+            ]
+          },
+          {
+            "t": "只因为它便宜，没有特别的地方",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "便宜不能解释温度计为什么飙升。关键性质是吸水并放热。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "report",
+        "type": "report",
+        "title": "实验报告",
+        "progress": 92,
+        "buttons": [
+          {
+            "t": "提交报告",
+            "c": "primary",
+            "do": [
+              {
+                "do": "finish"
+              },
+              {
+                "do": "goto",
+                "id": "score"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "score",
+        "type": "score",
+        "title": "实验评分",
+        "progress": 100,
+        "buttons": [
+          {
+            "t": "导出本次成绩",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "export"
+              }
+            ]
+          },
+          {
+            "t": "查看常见错误",
+            "c": "ghost",
+            "goto": "errtable"
+          },
+          {
+            "t": "重做实验",
+            "c": "primary",
+            "do": [
+              {
+                "do": "reset"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "errtable",
+        "type": "errors",
+        "title": "常见错误与后果",
+        "progress": 100,
+        "buttons": [
+          {
+            "t": "返回评分",
+            "c": "ghost",
+            "goto": "score"
+          },
+          {
+            "t": "重做实验",
+            "c": "primary",
+            "do": [
+              {
+                "do": "reset"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "exp_neutral": {
+    "id": "neutral",
+    "title": "酸和碱的中和反应",
+    "subtitle": "初中化学虚拟实验 · 酚酞显色 + 逐滴滴定",
+    "badges": [
+      "NaOH + HCl",
+      "酚酞作指示剂",
+      "满分 100 分"
+    ],
+    "viewBox": "0 0 600 360",
+    "equipments": [
+      {
+        "id": "flask",
+        "name": "锥形瓶",
+        "need": true
+      },
+      {
+        "id": "naoh",
+        "name": "氢氧化钠溶液",
+        "need": true
+      },
+      {
+        "id": "phenol",
+        "name": "酚酞试液",
+        "need": true
+      },
+      {
+        "id": "dropper",
+        "name": "胶头滴管",
+        "need": true
+      },
+      {
+        "id": "acid",
+        "name": "稀盐酸",
+        "need": true
+      },
+      {
+        "id": "rod",
+        "name": "玻璃棒",
+        "need": true
+      },
+      {
+        "id": "thermo",
+        "name": "温度计",
+        "need": true
+      },
+      {
+        "id": "limewater",
+        "name": "澄清石灰水",
+        "need": false
+      },
+      {
+        "id": "marble",
+        "name": "大理石",
+        "need": false
+      },
+      {
+        "id": "water2",
+        "name": "蒸馏水",
+        "need": false
+      }
+    ],
+    "dims": [
+      {
+        "key": "skill",
+        "name": "操作规范"
+      },
+      {
+        "key": "safety",
+        "name": "安全意识"
+      }
+    ],
+    "scoreItems": [
+      {
+        "key": "equip",
+        "name": "器材选择",
+        "max": 10,
+        "dim": "skill"
+      },
+      {
+        "key": "flask",
+        "name": "放置锥形瓶",
+        "max": 6,
+        "dim": "skill"
+      },
+      {
+        "key": "pour",
+        "name": "加入氢氧化钠溶液",
+        "max": 14,
+        "dim": "skill"
+      },
+      {
+        "key": "phenol",
+        "name": "滴加酚酞显红色",
+        "max": 8,
+        "dim": "skill"
+      },
+      {
+        "key": "thermo",
+        "name": "插入温度计",
+        "max": 8,
+        "dim": "skill"
+      },
+      {
+        "key": "howto",
+        "name": "选对滴加方式",
+        "max": 12,
+        "dim": "safety"
+      },
+      {
+        "key": "drip",
+        "name": "滴加至红色恰好褪去",
+        "max": 12,
+        "dim": "skill"
+      },
+      {
+        "key": "judge",
+        "name": "解释褪色的含义",
+        "max": 14,
+        "dim": "skill"
+      },
+      {
+        "key": "summary",
+        "name": "说出中和反应实质",
+        "max": 16,
+        "dim": "skill"
+      }
+    ],
+    "initialStage": {
+      "flaskOn": false,
+      "naohIn": false,
+      "red": false,
+      "thermoIn": false,
+      "temp": 20,
+      "helperIn": false,
+      "dripping": false,
+      "neutral": false,
+      "over": false
+    },
+    "dropZones": {
+      "bench": {
+        "x": 180,
+        "y": 200,
+        "w": 240,
+        "h": 120
+      },
+      "mouth": {
+        "x": 236,
+        "y": 142,
+        "w": 128,
+        "h": 96
+      },
+      "thzone": {
+        "x": 254,
+        "y": 102,
+        "w": 60,
+        "h": 210
+      }
+    },
+    "scene": [
+      {
+        "tag": "rect",
+        "x": 30,
+        "y": 322,
+        "width": 540,
+        "height": 14,
+        "rx": 5,
+        "fill": "url(#gMetal)"
+      },
+      {
+        "tag": "rect",
+        "x": 30,
+        "y": 322,
+        "width": 540,
+        "height": 4,
+        "rx": 2,
+        "fill": "#e8eef2",
+        "opacity": 0.75
+      },
+      {
+        "tag": "g",
+        "when": "stage.flaskOn",
+        "children": [
+          {
+            "tag": "path",
+            "d": "M288 164 L312 164 L312 206 L360 300 Q364 310 354 310 L246 310 Q236 310 240 300 L288 206 Z",
+            "fill": "url(#gGlass)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 2.4
+          },
+          {
+            "tag": "rect",
+            "x": 284,
+            "y": 156,
+            "width": 32,
+            "height": 10,
+            "rx": 4,
+            "fill": "url(#gGlassH)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 1.6
+          },
+          {
+            "tag": "path",
+            "d": "M294 220 L294 290",
+            "stroke": "#ffffff",
+            "stroke-width": 2.4,
+            "opacity": 0.8,
+            "fill": "none"
+          },
+          {
+            "tag": "path",
+            "when": "stage.naohIn",
+            "d": "M262 258 L338 258 L354 298 Q358 308 348 308 L252 308 Q242 308 246 298 Z",
+            "fill": "@ stage.neutral ? '#f1f3f5' : (stage.red ? 'url(#gPink)' : '#fafafa')",
+            "opacity": "@ stage.red ? 0.92 : 0.6"
+          },
+          {
+            "tag": "text",
+            "when": "stage.red && !stage.neutral",
+            "x": 300,
+            "y": 290,
+            "font-size": 13,
+            "text-anchor": "middle",
+            "fill": "#880e4f",
+            "font-weight": 700,
+            "text": "红色（碱性）"
+          },
+          {
+            "tag": "text",
+            "when": "stage.neutral",
+            "x": 300,
+            "y": 290,
+            "font-size": 13,
+            "text-anchor": "middle",
+            "fill": "#455a64",
+            "font-weight": 700,
+            "text": "无色（恰好反应）"
+          },
+          {
+            "tag": "text",
+            "x": 300,
+            "y": 344,
+            "font-size": 12,
+            "text-anchor": "middle",
+            "fill": "#455a64",
+            "font-weight": 700,
+            "text": "锥形瓶：中和反应"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.helperIn",
+        "children": [
+          {
+            "tag": "rect",
+            "x": 294,
+            "y": 54,
+            "width": 14,
+            "height": 20,
+            "rx": 6,
+            "fill": "#8d6e63"
+          },
+          {
+            "tag": "rect",
+            "x": 297,
+            "y": 72,
+            "width": 8,
+            "height": 52,
+            "rx": 3,
+            "fill": "url(#gGlass)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 1.4
+          },
+          {
+            "tag": "path",
+            "d": "M297 122 L305 122 L303 146 L299 146 Z",
+            "fill": "url(#gGlass)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 1.4
+          },
+          {
+            "tag": "rect",
+            "x": 298,
+            "y": 92,
+            "width": 6,
+            "height": 30,
+            "fill": "url(#gAcid)",
+            "opacity": 0.9
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.dripping",
+        "children": [
+          {
+            "tag": "circle",
+            "cx": 301,
+            "cy": 156,
+            "r": 3.4,
+            "fill": "#a5d6a7",
+            "opacity": 0.95
+          },
+          {
+            "tag": "circle",
+            "cx": 301,
+            "cy": 178,
+            "r": 2.6,
+            "fill": "#a5d6a7",
+            "opacity": 0.9
+          },
+          {
+            "tag": "text",
+            "x": 436,
+            "y": 188,
+            "font-size": 11,
+            "fill": "#33691e",
+            "font-weight": 700,
+            "text": "逐滴加入并振荡"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.thermoIn",
+        "children": [
+          {
+            "tag": "rect",
+            "x": 268,
+            "y": 100,
+            "width": 8,
+            "height": 176,
+            "rx": 4,
+            "fill": "url(#gGlass)",
+            "stroke": "#90a4ae",
+            "stroke-width": 1.4
+          },
+          {
+            "tag": "rect",
+            "x": 270,
+            "y": "@ 268 - 1.24*stage.temp",
+            "width": 4,
+            "height": "@ 12 + 1.24*stage.temp",
+            "fill": "#ef5350"
+          },
+          {
+            "tag": "circle",
+            "cx": 272,
+            "cy": 272,
+            "r": 8,
+            "fill": "#ef5350",
+            "stroke": "#c62828",
+            "stroke-width": 1.2
+          },
+          {
+            "tag": "text",
+            "x": 240,
+            "y": "@ 272 - 1.24*stage.temp",
+            "font-size": 12,
+            "text-anchor": "end",
+            "fill": "@ stage.temp>25 ? '#b71c1c' : '#0277bd'",
+            "font-weight": 700,
+            "text": "@ Math.round(stage.temp) + ' ℃'"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.over",
+        "children": [
+          {
+            "tag": "text",
+            "x": 470,
+            "y": 220,
+            "font-size": 11.5,
+            "fill": "#dc2626",
+            "font-weight": 700,
+            "text": "酸已过量"
+          }
+        ]
+      },
+      {
+        "tag": "text",
+        "when": "stage.naohIn && !stage.red",
+        "x": 470,
+        "y": 200,
+        "font-size": 11.5,
+        "fill": "#475569",
+        "text": "无色溶液（看不出酸碱性）"
+      }
+    ],
+    "report": [
+      {
+        "title": "实验记录",
+        "lines": [
+          "实验名称：酸和碱的中和反应",
+          "反应原理：NaOH + HCl = NaCl + H₂O",
+          "指示剂：无色酚酞（遇碱变红，遇酸和中性均不变色）",
+          "终点判断：溶液恰好由红色变为无色",
+          "温度计示数上升，说明中和反应放热"
+        ]
+      },
+      {
+        "title": "现象记录",
+        "lines": [
+          "1. 向 NaOH 溶液中滴入无色酚酞，溶液变成红色",
+          "2. 用滴管逐滴加入稀盐酸并不断振荡，红色逐渐变浅",
+          "3. 当最后一滴使红色刚好褪去时，反应恰好完全",
+          "4. 温度计示数上升，试管（烧瓶）外壁微微发热"
+        ]
+      },
+      {
+        "title": "实验结论",
+        "lines": [
+          "酸与碱作用生成盐和水的反应叫做中和反应，它放出热量。",
+          "中和反应的微观实质：酸中的 H⁺ 与碱中的 OH⁻ 结合生成 H₂O。",
+          "酚酞的作用是借助颜色变化判断肉眼看不见的反应是否恰好完全。"
+        ]
+      }
+    ],
+    "errorTable": [
+      {
+        "op": "把盐酸一次性倒入",
+        "phen": "局部过量，红色突变",
+        "result": "错过恰好反应的时刻",
+        "score": 12
+      },
+      {
+        "op": "滴加时不振荡",
+        "phen": "酸在局部聚集",
+        "result": "褪色过早或不均匀，终点不准",
+        "score": 12
+      },
+      {
+        "op": "忘记加酚酞",
+        "phen": "反应本身无颜色变化",
+        "result": "完全无法判断何时恰好反应",
+        "score": 8
+      },
+      {
+        "op": "红色褪去后继续大量加酸",
+        "phen": "酸过量",
+        "result": "溶质不再是纯净的 NaCl",
+        "score": 14
+      },
+      {
+        "op": "用石蕊试液代替酚酞",
+        "phen": "紫色到红色变化不明显",
+        "result": "终点难以判断",
+        "score": 8
+      },
+      {
+        "op": "误用大理石、石灰水",
+        "phen": "那是制取CO₂的药品",
+        "result": "本实验研究的是酸碱中和",
+        "score": 10
+      }
+    ],
+    "steps": [
+      {
+        "id": "cover",
+        "type": "cover",
+        "title": "准备开始",
+        "progress": 0,
+        "headline": "酸和碱的中和反应",
+        "subtitle": "两种无色液体混在一起，什么也看不出来 —— 酚酞来帮忙",
+        "buttons": [
+          {
+            "t": "开始实验",
+            "c": "primary",
+            "goto": "goal"
+          }
+        ]
+      },
+      {
+        "id": "goal",
+        "type": "doc",
+        "title": "实验目标",
+        "progress": 6,
+        "cols": [
+          {
+            "title": "实验目标",
+            "lines": [
+              "1. 认识中和反应：酸 + 碱 → 盐 + 水",
+              "2. 学会用酚酞判断反应是否恰好完全",
+              "3. 掌握逐滴滴加并不断振荡的操作",
+              "4. 知道中和反应放热",
+              "5. 理解实质：H⁺ + OH⁻ = H₂O"
+            ]
+          },
+          {
+            "title": "操作方式",
+            "lines": [
+              "● 拖拽试剂到锥形瓶口的高亮区域",
+              "● 遇到思考题时点选项作答",
+              "● 右侧显示当前实验阶段",
+              "● 卡住时点右下角“？”获取提示"
+            ]
+          },
+          {
+            "title": "安全提示",
+            "lines": [
+              "⚠ 氢氧化钠和盐酸都有腐蚀性，不能接触皮肤和衣物",
+              "⚠ 沾到皮肤立即用大量水冲洗",
+              "⚠ 滴管要垂直悬空在瓶口上方，不能伸进瓶内",
+              "⚠ 滴加过程中要不断振荡，使反应充分"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "下一步",
+            "c": "primary",
+            "goto": "equip"
+          },
+          {
+            "t": "返回封面",
+            "c": "ghost",
+            "goto": "cover"
+          }
+        ]
+      },
+      {
+        "id": "equip",
+        "type": "equip",
+        "title": "选择实验器材",
+        "progress": 12,
+        "tip": "既然反应本身没有颜色变化，就要靠指示剂；还要一滴一滴加进去才抓得住终点",
+        "buttons": [
+          {
+            "t": "确认器材",
+            "c": "primary",
+            "do": [
+              {
+                "do": "checkEquip",
+                "key": "equip",
+                "goto": "flask"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "flask",
+        "type": "stage",
+        "title": "放置锥形瓶",
+        "progress": 18,
+        "shelf": [
+          "flask"
+        ],
+        "desc": "锥形瓶口小底大，振荡时液体不容易溅出，很适合做滴定类实验。",
+        "help": "把锥形瓶拖到桌面中间的高亮区域。想一想：为什么酸碱中和实验常用锥形瓶而不是烧杯？",
+        "zones": [
+          "bench"
+        ],
+        "drop": [
+          {
+            "equip": "flask",
+            "zone": "bench",
+            "do": [
+              {
+                "do": "set",
+                "k": "flaskOn",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "flask"
+              },
+              {
+                "do": "tip",
+                "text": "锥形瓶已放好 ✓ 便于振荡、液体不易溅出"
+              },
+              {
+                "do": "goto",
+                "id": "pour",
+                "delay": 1000
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要放的是进行中和反应的容器。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pour",
+        "type": "stage",
+        "title": "加入氢氧化钠溶液",
+        "progress": 26,
+        "shelf": [
+          "naoh"
+        ],
+        "desc": "先量取一定体积的氢氧化钠稀溶液倒入锥形瓶。",
+        "help": "把氢氧化钠溶液拖到锥形瓶口。氢氧化钠溶液显碱性，是无色透明的，肉眼完全看不出来。",
+        "zones": [
+          "mouth"
+        ],
+        "drop": [
+          {
+            "equip": "naoh",
+            "zone": "mouth",
+            "do": [
+              {
+                "do": "set",
+                "k": "naohIn",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "pour"
+              },
+              {
+                "do": "tip",
+                "text": "氢氧化钠溶液已加入 ✓ 溶液无色，看不出酸碱性"
+              },
+              {
+                "do": "goto",
+                "id": "phenolStep",
+                "delay": 1300
+              }
+            ]
+          },
+          {
+            "equip": "water2",
+            "zone": "mouth",
+            "do": [
+              {
+                "do": "err",
+                "text": "本实验要研究的是碱与酸的反应，先加入的应该是氢氧化钠溶液。"
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要加入的是碱溶液。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "phenolStep",
+        "type": "stage",
+        "title": "滴入无色酚酞",
+        "progress": 34,
+        "shelf": [
+          "phenol"
+        ],
+        "desc": "无色酚酞遇碱变红，这是本实验的眼睛。",
+        "help": "把酚酞试液拖到锥形瓶口，只需 2~3 滴。酚酞本身无色，遇到碱性溶液才会变成红色。",
+        "zones": [
+          "mouth"
+        ],
+        "drop": [
+          {
+            "equip": "phenol",
+            "zone": "mouth",
+            "do": [
+              {
+                "do": "set",
+                "k": "red",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "phenol"
+              },
+              {
+                "do": "tip",
+                "text": "溶液变成红色 ✓ 说明此时溶液显碱性"
+              },
+              {
+                "do": "goto",
+                "id": "thermoStep",
+                "delay": 1300
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要加入的是能指示酸碱性的试液。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "thermoStep",
+        "type": "stage",
+        "title": "插入温度计",
+        "progress": 42,
+        "shelf": [
+          "thermo"
+        ],
+        "desc": "加酸之前先把温度计放好，这样才能看出反应前后温度是否有变化。",
+        "help": "把温度计拖到锥形瓶上方的位置，玻璃泡要完全浸没在溶液中，读数会更准确。",
+        "zones": [
+          "thzone"
+        ],
+        "drop": [
+          {
+            "equip": "thermo",
+            "zone": "thzone",
+            "do": [
+              {
+                "do": "set",
+                "k": "thermoIn",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "thermo"
+              },
+              {
+                "do": "tip",
+                "text": "温度计已放好，当前约 20 ℃ ✓"
+              },
+              {
+                "do": "goto",
+                "id": "howto",
+                "delay": 1200
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要放入温度计，记录反应前的初温。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "howto",
+        "type": "doc",
+        "title": "酸该怎么加？",
+        "progress": 50,
+        "cols": [
+          {
+            "title": "方案 A",
+            "lines": [
+              "用量筒量取一定量盐酸，一次性倒入锥形瓶，",
+              "看看能不能恰好把红色褪掉。"
+            ]
+          },
+          {
+            "title": "方案 B",
+            "lines": [
+              "用滴管逐滴滴加盐酸，每加一滴就振荡一下，",
+              "盯着颜色变化，直到红色刚好褪去。"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "用滴管逐滴加入并不断振荡",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "howto"
+              },
+              {
+                "do": "tip",
+                "text": "选得对！只有这样才能抓住恰好反应的那一刻 ✓"
+              },
+              {
+                "do": "goto",
+                "id": "drip",
+                "delay": 1500
+              }
+            ]
+          },
+          {
+            "t": "一次性把盐酸倒进去",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "倒多了就过量，倒少了又不够，而且一瞬间就过去了，根本抓不住「恰好反应」的那个点。"
+              },
+              {
+                "do": "goto",
+                "id": "drip",
+                "delay": 3600
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "drip",
+        "type": "stage",
+        "title": "逐滴滴加稀盐酸",
+        "progress": 62,
+        "shelf": [
+          "dropper",
+          "acid"
+        ],
+        "desc": "用滴管吸取稀盐酸，垂直悬空在瓶口上方逐滴加入，边加边振荡。",
+        "help": "先把胶头滴管拖到瓶口准备好，再把稀盐酸拖到瓶口开始滴加。眼睛要盯着溶液颜色的变化。",
+        "zones": [
+          "mouth"
+        ],
+        "drop": [
+          {
+            "equip": "dropper",
+            "zone": "mouth",
+            "do": [
+              {
+                "do": "set",
+                "k": "helperIn",
+                "v": true
+              },
+              {
+                "do": "tip",
+                "text": "滴管已悬在瓶口上方，注意滴管不能伸入瓶内 ✓"
+              }
+            ]
+          },
+          {
+            "equip": "acid",
+            "zone": "mouth",
+            "do": [
+              {
+                "do": "set",
+                "k": "dripping",
+                "v": true
+              },
+              {
+                "do": "set",
+                "k": "temp",
+                "v": 24,
+                "delay": 1000
+              },
+              {
+                "do": "set",
+                "k": "temp",
+                "v": 27,
+                "delay": 2000
+              },
+              {
+                "do": "set",
+                "k": "neutral",
+                "v": true,
+                "delay": 2600
+              },
+              {
+                "do": "score",
+                "key": "drip"
+              },
+              {
+                "do": "tip",
+                "text": "红色刚好褪去！此时溶液显中性，温度计示数还在上升"
+              },
+              {
+                "do": "goto",
+                "id": "judge",
+                "delay": 3600
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要加入的是酸溶液，而且是少量少量地加。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "judge",
+        "type": "doc",
+        "title": "红色褪去意味着什么？",
+        "progress": 74,
+        "cols": [
+          {
+            "title": "现象",
+            "lines": [
+              "红色刚好褪去，溶液变回无色",
+              "温度计示数从约 20 ℃ 升到 27 ℃ 以上",
+              "瓶壁摸上去微微发热"
+            ]
+          },
+          {
+            "title": "分析",
+            "lines": [
+              "酚酞在碱中显红色，在酸性和中性溶液中都是无色的。",
+              "所以「刚好无色」说明碱刚好被消耗完，",
+              "既没有多余的碱，也没有多余的酸。"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "酸碱恰好完全反应，溶液显中性",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "judge"
+              },
+              {
+                "do": "tip",
+                "text": "正确！此时溶质只有生成的氯化钠 ✓"
+              },
+              {
+                "do": "goto",
+                "id": "summary",
+                "delay": 1600
+              }
+            ]
+          },
+          {
+            "t": "盐酸加过量了",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "如果盐酸过量，溶液会显酸性。但酚酞在酸里也是无色的，所以靠酚酞分不出「中性」还是「酸性」——要抓住「刚好」那一滴。"
+              }
+            ]
+          },
+          {
+            "t": "酚酞失效了",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "酚酞没有失效。它被加进去就是为了指示溶液的酸碱性，颜色变化正是它在起作用。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "summary",
+        "type": "doc",
+        "title": "中和反应的本质",
+        "progress": 86,
+        "cols": [
+          {
+            "title": "化学方程式",
+            "lines": [
+              "NaOH + HCl = NaCl + H₂O",
+              "属于复分解反应，也是中和反应。",
+              "生成物：盐（NaCl）+ 水"
+            ]
+          },
+          {
+            "title": "微观实质",
+            "lines": [
+              "氢氧化钠在水中解离出 Na⁺ 和 OH⁻，",
+              "盐酸在水中解离出 H⁺ 和 Cl⁻，",
+              "真正发生变化的只有一步：H⁺ + OH⁻ = H₂O。",
+              "Na⁺ 和 Cl⁻ 自始至终没有参加反应。"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "H⁺ 与 OH⁻ 结合生成水分子",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "summary"
+              },
+              {
+                "do": "tip",
+                "text": "抓住了本质 ✓ 同时这也是中和反应放热的原因"
+              },
+              {
+                "do": "goto",
+                "id": "report",
+                "delay": 1600
+              }
+            ]
+          },
+          {
+            "t": "Na⁺ 与 Cl⁻ 结合生成氯化钠",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "Na⁺ 和 Cl⁻ 在反应前后都自由存在于溶液中，并没有结合。真正结合成难电离物质的是 H⁺ 和 OH⁻。"
+              }
+            ]
+          },
+          {
+            "t": "酸把碱腐蚀掉了",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "腐蚀是生活用语不是化学解释。要从离子角度看：是哪两种离子结合成了稳定的水分子？"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "report",
+        "type": "report",
+        "title": "实验报告",
+        "progress": 92,
+        "buttons": [
+          {
+            "t": "提交报告",
+            "c": "primary",
+            "do": [
+              {
+                "do": "finish"
+              },
+              {
+                "do": "goto",
+                "id": "score"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "score",
+        "type": "score",
+        "title": "实验评分",
+        "progress": 100,
+        "buttons": [
+          {
+            "t": "导出本次成绩",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "export"
+              }
+            ]
+          },
+          {
+            "t": "查看常见错误",
+            "c": "ghost",
+            "goto": "errtable"
+          },
+          {
+            "t": "重做实验",
+            "c": "primary",
+            "do": [
+              {
+                "do": "reset"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "errtable",
+        "type": "errors",
+        "title": "常见错误与后果",
+        "progress": 100,
+        "buttons": [
+          {
+            "t": "返回评分",
+            "c": "ghost",
+            "goto": "score"
+          },
+          {
+            "t": "重做实验",
+            "c": "primary",
+            "do": [
+              {
+                "do": "reset"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "exp_metalacid": {
+    "id": "metalacid",
+    "title": "金属与稀盐酸的反应",
+    "subtitle": "初中化学虚拟实验 · 金属活动性 + 氢气检验",
+    "badges": [
+      "Mg > Zn > Fe",
+      "Fe²⁺ 显浅绿色",
+      "满分 100 分"
+    ],
+    "viewBox": "0 0 600 360",
+    "equipments": [
+      {
+        "id": "tube",
+        "name": "试管（3支）",
+        "need": true
+      },
+      {
+        "id": "mag",
+        "name": "镁条",
+        "need": true
+      },
+      {
+        "id": "zinc",
+        "name": "锌粒",
+        "need": true
+      },
+      {
+        "id": "iron",
+        "name": "铁钉",
+        "need": true
+      },
+      {
+        "id": "acid",
+        "name": "稀盐酸",
+        "need": true
+      },
+      {
+        "id": "match",
+        "name": "燃着的木条",
+        "need": true
+      },
+      {
+        "id": "cu",
+        "name": "铜丝",
+        "need": false
+      },
+      {
+        "id": "water2",
+        "name": "蒸馏水",
+        "need": false
+      },
+      {
+        "id": "h2so4",
+        "name": "稀硫酸",
+        "need": false
+      }
+    ],
+    "dims": [
+      {
+        "key": "skill",
+        "name": "操作规范"
+      },
+      {
+        "key": "safety",
+        "name": "安全意识"
+      }
+    ],
+    "scoreItems": [
+      {
+        "key": "equip",
+        "name": "器材选择",
+        "max": 10,
+        "dim": "skill"
+      },
+      {
+        "key": "tubes",
+        "name": "排列三支试管",
+        "max": 8,
+        "dim": "skill"
+      },
+      {
+        "key": "metals",
+        "name": "分别放入三种金属",
+        "max": 14,
+        "dim": "skill"
+      },
+      {
+        "key": "acid",
+        "name": "同时加入等浓度盐酸",
+        "max": 12,
+        "dim": "skill"
+      },
+      {
+        "key": "observe",
+        "name": "比较反应速率快慢",
+        "max": 14,
+        "dim": "skill"
+      },
+      {
+        "key": "gas",
+        "name": "点燃检验氢气",
+        "max": 16,
+        "dim": "safety"
+      },
+      {
+        "key": "fe",
+        "name": "判断铁的生成物",
+        "max": 10,
+        "dim": "skill"
+      },
+      {
+        "key": "summary",
+        "name": "归纳活动性顺序",
+        "max": 16,
+        "dim": "skill"
+      }
+    ],
+    "initialStage": {
+      "tubesOn": false,
+      "mgIn": false,
+      "znIn": false,
+      "feIn": false,
+      "wrongMetal": false,
+      "acidIn": false,
+      "react": 0,
+      "feReact": false,
+      "fire": false,
+      "popTest": false
+    },
+    "dropZones": {
+      "bench": {
+        "x": 140,
+        "y": 204,
+        "w": 320,
+        "h": 118
+      },
+      "metalAll": {
+        "x": 128,
+        "y": 140,
+        "w": 344,
+        "h": 104
+      },
+      "allMouth": {
+        "x": 128,
+        "y": 116,
+        "w": 344,
+        "h": 128
+      },
+      "gasZone": {
+        "x": 150,
+        "y": 88,
+        "w": 92,
+        "h": 84
+      }
+    },
+    "scene": [
+      {
+        "tag": "rect",
+        "x": 30,
+        "y": 322,
+        "width": 540,
+        "height": 14,
+        "rx": 5,
+        "fill": "url(#gMetal)"
+      },
+      {
+        "tag": "rect",
+        "x": 30,
+        "y": 322,
+        "width": 540,
+        "height": 4,
+        "rx": 2,
+        "fill": "#e8eef2",
+        "opacity": 0.75
+      },
+      {
+        "tag": "g",
+        "when": "stage.tubesOn",
+        "children": [
+          {
+            "tag": "rect",
+            "x": 138,
+            "y": 296,
+            "width": 324,
+            "height": 12,
+            "rx": 4,
+            "fill": "url(#gMetal)"
+          },
+          {
+            "tag": "rect",
+            "x": 138,
+            "y": 296,
+            "width": 324,
+            "height": 3,
+            "rx": 2,
+            "fill": "#e8eef2",
+            "opacity": 0.8
+          },
+          {
+            "tag": "rect",
+            "x": 148,
+            "y": 300,
+            "width": 10,
+            "height": 22,
+            "fill": "url(#gMetalV)"
+          },
+          {
+            "tag": "rect",
+            "x": 442,
+            "y": 300,
+            "width": 10,
+            "height": 22,
+            "fill": "url(#gMetalV)"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.tubesOn",
+        "children": [
+          {
+            "tag": "path",
+            "d": "M167 152 L167 286 Q167 300 181 300 L205 300 Q219 300 219 286 L219 152 Z",
+            "fill": "url(#gGlass)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 2.2
+          },
+          {
+            "tag": "rect",
+            "x": 163,
+            "y": 144,
+            "width": 60,
+            "height": 10,
+            "rx": 4,
+            "fill": "url(#gGlassH)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 1.6
+          },
+          {
+            "tag": "path",
+            "d": "M174 168 L174 284",
+            "stroke": "#ffffff",
+            "stroke-width": 2,
+            "opacity": 0.8,
+            "fill": "none"
+          },
+          {
+            "tag": "rect",
+            "when": "stage.acidIn",
+            "x": 169,
+            "y": 216,
+            "width": 48,
+            "height": 80,
+            "rx": 4,
+            "fill": "url(#gAcid)",
+            "opacity": 0.85
+          },
+          {
+            "tag": "g",
+            "when": "stage.mgIn",
+            "children": [
+              {
+                "tag": "rect",
+                "x": 180,
+                "y": 236,
+                "width": 30,
+                "height": 7,
+                "rx": 2,
+                "fill": "#cfd8dc",
+                "stroke": "#78909c",
+                "stroke-width": 1.2
+              },
+              {
+                "tag": "rect",
+                "x": 180,
+                "y": 248,
+                "width": 30,
+                "height": 7,
+                "rx": 2,
+                "fill": "#e0e0e0",
+                "stroke": "#78909c",
+                "stroke-width": 1.2
+              },
+              {
+                "tag": "rect",
+                "x": 180,
+                "y": 260,
+                "width": 30,
+                "height": 7,
+                "rx": 2,
+                "fill": "#cfd8dc",
+                "stroke": "#78909c",
+                "stroke-width": 1.2
+              }
+            ]
+          },
+          {
+            "tag": "g",
+            "when": "stage.react>=1",
+            "children": [
+              {
+                "tag": "circle",
+                "class": "bub",
+                "cx": 180,
+                "cy": 262,
+                "r": 4.5,
+                "fill": "#ffffff",
+                "opacity": 0.9,
+                "style": "animation-delay:0s"
+              },
+              {
+                "tag": "circle",
+                "class": "bub",
+                "cx": 196,
+                "cy": 258,
+                "r": 5,
+                "fill": "#ffffff",
+                "opacity": 0.9,
+                "style": "animation-delay:.18s"
+              },
+              {
+                "tag": "circle",
+                "class": "bub",
+                "cx": 208,
+                "cy": 264,
+                "r": 4,
+                "fill": "#ffffff",
+                "opacity": 0.9,
+                "style": "animation-delay:.36s"
+              },
+              {
+                "tag": "circle",
+                "class": "bub",
+                "cx": 186,
+                "cy": 240,
+                "r": 3.2,
+                "fill": "#ffffff",
+                "opacity": 0.9,
+                "style": "animation-delay:.54s"
+              },
+              {
+                "tag": "text",
+                "x": 193,
+                "y": 202,
+                "font-size": 11,
+                "text-anchor": "middle",
+                "fill": "#b71c1c",
+                "font-weight": 700,
+                "text": "最剧烈"
+              }
+            ]
+          },
+          {
+            "tag": "text",
+            "x": 193,
+            "y": 330,
+            "font-size": 11.5,
+            "text-anchor": "middle",
+            "fill": "#455a64",
+            "font-weight": 700,
+            "text": "Mg + 稀盐酸"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.tubesOn",
+        "children": [
+          {
+            "tag": "path",
+            "d": "M277 152 L277 286 Q277 300 291 300 L315 300 Q329 300 329 286 L329 152 Z",
+            "fill": "url(#gGlass)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 2.2
+          },
+          {
+            "tag": "rect",
+            "x": 273,
+            "y": 144,
+            "width": 60,
+            "height": 10,
+            "rx": 4,
+            "fill": "url(#gGlassH)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 1.6
+          },
+          {
+            "tag": "path",
+            "d": "M284 168 L284 284",
+            "stroke": "#ffffff",
+            "stroke-width": 2,
+            "opacity": 0.8,
+            "fill": "none"
+          },
+          {
+            "tag": "rect",
+            "when": "stage.acidIn",
+            "x": 279,
+            "y": 216,
+            "width": 48,
+            "height": 80,
+            "rx": 4,
+            "fill": "url(#gAcid)",
+            "opacity": 0.85
+          },
+          {
+            "tag": "g",
+            "when": "stage.znIn",
+            "children": [
+              {
+                "tag": "circle",
+                "cx": 292,
+                "cy": 274,
+                "r": 9,
+                "fill": "#b0bec5",
+                "stroke": "#78909c",
+                "stroke-width": 1.2
+              },
+              {
+                "tag": "circle",
+                "cx": 310,
+                "cy": 278,
+                "r": 8,
+                "fill": "#cfd8dc",
+                "stroke": "#78909c",
+                "stroke-width": 1.2
+              },
+              {
+                "tag": "circle",
+                "cx": 300,
+                "cy": 262,
+                "r": 7,
+                "fill": "#90a4ae",
+                "stroke": "#546e7a",
+                "stroke-width": 1.2
+              }
+            ]
+          },
+          {
+            "tag": "g",
+            "when": "stage.react>=1",
+            "children": [
+              {
+                "tag": "circle",
+                "class": "bub",
+                "cx": 292,
+                "cy": 266,
+                "r": 4,
+                "fill": "#ffffff",
+                "opacity": 0.9,
+                "style": "animation-delay:.3s"
+              },
+              {
+                "tag": "circle",
+                "class": "bub",
+                "cx": 308,
+                "cy": 262,
+                "r": 4.5,
+                "fill": "#ffffff",
+                "opacity": 0.9,
+                "style": "animation-delay:.5s"
+              },
+              {
+                "tag": "circle",
+                "class": "bub",
+                "cx": 300,
+                "cy": 244,
+                "r": 3,
+                "fill": "#ffffff",
+                "opacity": 0.9,
+                "style": "animation-delay:.7s"
+              }
+            ]
+          },
+          {
+            "tag": "text",
+            "x": 303,
+            "y": 330,
+            "font-size": 11.5,
+            "text-anchor": "middle",
+            "fill": "#455a64",
+            "font-weight": 700,
+            "text": "Zn + 稀盐酸"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.tubesOn",
+        "children": [
+          {
+            "tag": "path",
+            "d": "M387 152 L387 286 Q387 300 401 300 L425 300 Q439 300 439 286 L439 152 Z",
+            "fill": "url(#gGlass)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 2.2
+          },
+          {
+            "tag": "rect",
+            "x": 383,
+            "y": 144,
+            "width": 60,
+            "height": 10,
+            "rx": 4,
+            "fill": "url(#gGlassH)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 1.6
+          },
+          {
+            "tag": "path",
+            "d": "M394 168 L394 284",
+            "stroke": "#ffffff",
+            "stroke-width": 2,
+            "opacity": 0.8,
+            "fill": "none"
+          },
+          {
+            "tag": "rect",
+            "when": "stage.acidIn",
+            "x": 389,
+            "y": 216,
+            "width": 48,
+            "height": 80,
+            "rx": 4,
+            "fill": "@ stage.feReact ? 'url(#gGreenP)' : 'url(#gAcid)'",
+            "opacity": "@ stage.feReact ? 0.92 : 0.85"
+          },
+          {
+            "tag": "g",
+            "when": "stage.feIn",
+            "children": [
+              {
+                "tag": "rect",
+                "x": 406,
+                "y": 236,
+                "width": 9,
+                "height": 58,
+                "rx": 1.5,
+                "fill": "#b0bec5",
+                "stroke": "#546e7a",
+                "stroke-width": 1.2
+              },
+              {
+                "tag": "path",
+                "d": "M408 246 L408 288",
+                "stroke": "#eceff1",
+                "stroke-width": 1.6,
+                "fill": "none"
+              }
+            ]
+          },
+          {
+            "tag": "g",
+            "when": "stage.react>=2",
+            "children": [
+              {
+                "tag": "circle",
+                "class": "bub",
+                "cx": 404,
+                "cy": 268,
+                "r": 3.4,
+                "fill": "#ffffff",
+                "opacity": 0.9,
+                "style": "animation-delay:.6s"
+              },
+              {
+                "tag": "circle",
+                "class": "bub",
+                "cx": 416,
+                "cy": 262,
+                "r": 3,
+                "fill": "#ffffff",
+                "opacity": 0.9,
+                "style": "animation-delay:1.1s"
+              },
+              {
+                "tag": "text",
+                "x": 413,
+                "y": 202,
+                "font-size": 11,
+                "text-anchor": "middle",
+                "fill": "#2e7d32",
+                "font-weight": 700,
+                "text": "较慢·变浅绿"
+              }
+            ]
+          },
+          {
+            "tag": "text",
+            "x": 413,
+            "y": 330,
+            "font-size": 11.5,
+            "text-anchor": "middle",
+            "fill": "#455a64",
+            "font-weight": 700,
+            "text": "Fe + 稀盐酸"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.wrongMetal",
+        "children": [
+          {
+            "tag": "text",
+            "x": 300,
+            "y": 116,
+            "font-size": 11.5,
+            "text-anchor": "middle",
+            "fill": "#dc2626",
+            "font-weight": 700,
+            "text": "铜排在氢之后，不与稀盐酸反应"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.fire",
+        "children": [
+          {
+            "tag": "ellipse",
+            "class": "flame",
+            "cx": 193,
+            "cy": 122,
+            "rx": 9,
+            "ry": 15,
+            "fill": "#7ec8ff",
+            "opacity": 0.95
+          },
+          {
+            "tag": "ellipse",
+            "class": "flame",
+            "cx": 193,
+            "cy": 126,
+            "rx": 4,
+            "ry": 7,
+            "fill": "#e3f6ff"
+          },
+          {
+            "tag": "text",
+            "when": "stage.popTest",
+            "x": 234,
+            "y": 106,
+            "font-size": 11.5,
+            "fill": "#0288d1",
+            "font-weight": 700,
+            "text": "淡蓝色火焰 / 爆鸣声 → H₂"
+          }
+        ]
+      }
+    ],
+    "report": [
+      {
+        "title": "实验记录",
+        "lines": [
+          "实验名称：金属与稀盐酸的反应",
+          "Mg + 2HCl = MgCl₂ + H₂↑  （最剧烈）",
+          "Zn + 2HCl = ZnCl₂ + H₂↑  （较快）",
+          "Fe + 2HCl = FeCl₂ + H₂↑  （较慢，溶液由无色变为浅绿色）",
+          "Cu + HCl → 不反应（铜排在氢之后）"
+        ]
+      },
+      {
+        "title": "现象记录",
+        "lines": [
+          "1. 镁条表面产生气泡最快、最剧烈，镁条迅速溶解",
+          "2. 锌粒表面产生大量气泡，锌粒逐渐变小",
+          "3. 铁钉表面有气泡产生，溶液由无色慢慢变成浅绿色",
+          "4. 点燃收集的气体，听到爆鸣声或看到淡蓝色火焰"
+        ]
+      },
+      {
+        "title": "实验结论",
+        "lines": [
+          "镁、锌、铁都能置换出盐酸中的氢，说明它们排在氢之前，且活动性依次减弱。",
+          "铁与盐酸反应生成的是亚铁化合物 FeCl₂（浅绿色），不是 FeCl₃。",
+          "产生的气体是氢气：点燃有爆鸣声，火焰呈淡蓝色。"
+        ]
+      }
+    ],
+    "errorTable": [
+      {
+        "op": "三种试管内的盐酸浓度不同",
+        "phen": "变量不唯一",
+        "result": "无法比较反应快慢",
+        "score": 12
+      },
+      {
+        "op": "把铜丝放进酸里等它反应",
+        "phen": "铜排在氢之后",
+        "result": "始终无现象",
+        "score": 14
+      },
+      {
+        "op": "直接凑近闻产生的气体",
+        "phen": "氢气无色无味",
+        "result": "闻不到，且做法不安全",
+        "score": 16
+      },
+      {
+        "op": "未验纯就点燃大量氢气",
+        "phen": "混有空气",
+        "result": "可能发生爆鸣甚至危险",
+        "score": 16
+      },
+      {
+        "op": "认为生成 FeCl₃",
+        "phen": "Fe³⁺ 溶液显黄色",
+        "result": "正确应生成浅绿色 FeCl₂",
+        "score": 10
+      },
+      {
+        "op": "用稀硫酸代替稀盐酸",
+        "phen": "同样会反应",
+        "result": "本实验指定用稀盐酸做对比",
+        "score": 10
+      }
+    ],
+    "steps": [
+      {
+        "id": "cover",
+        "type": "cover",
+        "title": "准备开始",
+        "progress": 0,
+        "headline": "金属与稀盐酸的反应",
+        "subtitle": "三支试管同时进行，谁的气泡最急？",
+        "buttons": [
+          {
+            "t": "开始实验",
+            "c": "primary",
+            "goto": "goal"
+          }
+        ]
+      },
+      {
+        "id": "goal",
+        "type": "doc",
+        "title": "实验目标",
+        "progress": 6,
+        "cols": [
+          {
+            "title": "实验目标",
+            "lines": [
+              "1. 通过对比实验比较 Mg、Zn、Fe 的活动性强弱",
+              "2. 知道排在氢前面的金属能置换出酸中的氢",
+              "3. 记住铁与酸反应生成浅绿色 Fe²⁺ 溶液",
+              "4. 学会点燃法检验氢气（爆鸣声 / 淡蓝色火焰）",
+              "5. 体会对比实验中控制变量的做法"
+            ]
+          },
+          {
+            "title": "操作方式",
+            "lines": [
+              "● 拖拽金属到试管的高亮区域",
+              "● 遇到思考题时点选项作答",
+              "● 右侧显示当前实验阶段",
+              "● 卡住时点右下角“？”获取提示"
+            ]
+          },
+          {
+            "title": "安全提示",
+            "lines": [
+              "⚠ 稀盐酸有腐蚀性，沾到皮肤立即用大量水冲洗",
+              "⚠ 镁与酸反应非常剧烈，不要一次加入过多镁条",
+              "⚠ 点燃氢气前必须先验纯，否则可能爆鸣",
+              "⚠ 三支试管要用同浓度、同体积的盐酸，才能比较"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "下一步",
+            "c": "primary",
+            "goto": "equip"
+          },
+          {
+            "t": "返回封面",
+            "c": "ghost",
+            "goto": "cover"
+          }
+        ]
+      },
+      {
+        "id": "equip",
+        "type": "equip",
+        "title": "选择实验器材",
+        "progress": 12,
+        "tip": "要同时对比三种金属，还要能检验生成的气体——想一想该选什么",
+        "buttons": [
+          {
+            "t": "确认器材",
+            "c": "primary",
+            "do": [
+              {
+                "do": "checkEquip",
+                "key": "equip",
+                "goto": "tubes"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "tubes",
+        "type": "stage",
+        "title": "排好三支试管",
+        "progress": 18,
+        "shelf": [
+          "tube"
+        ],
+        "desc": "把三支试管并排架好。要同时做三组，才能保证酸是同一种、同一刻加入的。",
+        "help": "把试管拖到桌面上的高亮区域。对比实验讲究同时、同条件，这样看到的气泡快慢差异才可信。",
+        "zones": [
+          "bench"
+        ],
+        "drop": [
+          {
+            "equip": "tube",
+            "zone": "bench",
+            "do": [
+              {
+                "do": "set",
+                "k": "tubesOn",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "tubes"
+              },
+              {
+                "do": "tip",
+                "text": "三支试管已并排架好 ✓ 从左到右依次放 Mg、Zn、Fe"
+              },
+              {
+                "do": "goto",
+                "id": "metals",
+                "delay": 1200
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要准备好盛放金属和酸的容器。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "metals",
+        "type": "stage",
+        "title": "分别放入三种金属",
+        "progress": 30,
+        "shelf": [
+          "mag",
+          "zinc",
+          "iron"
+        ],
+        "desc": "把镁条、锌粒、铁钉分别放入三支试管，金属的形状和大小要差不多。",
+        "help": "依次把三种金属拖到试管区域。金属的表面积会影响反应快慢，所以要取形状大小相近的样品才公平。",
+        "zones": [
+          "metalAll"
+        ],
+        "drop": [
+          {
+            "equip": "mag",
+            "zone": "metalAll",
+            "do": [
+              {
+                "do": "set",
+                "k": "mgIn",
+                "v": true
+              },
+              {
+                "do": "tip",
+                "text": "镁条已放入左边试管 ✓ 继续放入另外两种金属"
+              },
+              {
+                "do": "if",
+                "cond": "stage.mgIn && stage.znIn && stage.feIn",
+                "then": [
+                  {
+                    "do": "score",
+                    "key": "metals"
+                  },
+                  {
+                    "do": "goto",
+                    "id": "acidStep",
+                    "delay": 900
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "equip": "zinc",
+            "zone": "metalAll",
+            "do": [
+              {
+                "do": "set",
+                "k": "znIn",
+                "v": true
+              },
+              {
+                "do": "tip",
+                "text": "锌粒已放入 ✓"
+              },
+              {
+                "do": "if",
+                "cond": "stage.mgIn && stage.znIn && stage.feIn",
+                "then": [
+                  {
+                    "do": "score",
+                    "key": "metals"
+                  },
+                  {
+                    "do": "goto",
+                    "id": "acidStep",
+                    "delay": 900
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "equip": "iron",
+            "zone": "metalAll",
+            "do": [
+              {
+                "do": "set",
+                "k": "feIn",
+                "v": true
+              },
+              {
+                "do": "tip",
+                "text": "铁钉已放入 ✓"
+              },
+              {
+                "do": "if",
+                "cond": "stage.mgIn && stage.znIn && stage.feIn",
+                "then": [
+                  {
+                    "do": "score",
+                    "key": "metals"
+                  },
+                  {
+                    "do": "goto",
+                    "id": "acidStep",
+                    "delay": 900
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "equip": "cu",
+            "zone": "metalAll",
+            "do": [
+              {
+                "do": "set",
+                "k": "wrongMetal",
+                "v": true
+              },
+              {
+                "do": "err",
+                "text": "铜排在氢之后，不能置换出盐酸中的氢，放进去也不会有气泡。这一步请放镁、锌、铁。"
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要放的是能与酸反应的金属。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "acidStep",
+        "type": "stage",
+        "title": "同时加入稀盐酸",
+        "progress": 42,
+        "shelf": [
+          "acid"
+        ],
+        "desc": "向三支试管中加入同浓度、同体积的稀盐酸，然后比较哪个冒气泡最急。",
+        "help": "把稀盐酸拖到试管上方的高亮区域。三个试管加入的酸必须完全一样，否则就不是公平的比较了。",
+        "zones": [
+          "allMouth"
+        ],
+        "drop": [
+          {
+            "equip": "acid",
+            "zone": "allMouth",
+            "do": [
+              {
+                "do": "set",
+                "k": "acidIn",
+                "v": true
+              },
+              {
+                "do": "set",
+                "k": "react",
+                "v": 1,
+                "delay": 500
+              },
+              {
+                "do": "set",
+                "k": "react",
+                "v": 2,
+                "delay": 1400
+              },
+              {
+                "do": "set",
+                "k": "feReact",
+                "v": true,
+                "delay": 2200
+              },
+              {
+                "do": "score",
+                "key": "acid"
+              },
+              {
+                "do": "tip",
+                "text": "三支试管都冒出气泡了，仔细比较气泡的快慢 ✓"
+              },
+              {
+                "do": "goto",
+                "id": "observe",
+                "delay": 2800
+              }
+            ]
+          },
+          {
+            "equip": "water2",
+            "zone": "allMouth",
+            "do": [
+              {
+                "do": "err",
+                "text": "水不能与这几种金属反应，看不到任何现象。本实验要用稀盐酸。"
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要加入的是酸溶液。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "observe",
+        "type": "doc",
+        "title": "谁反应得最剧烈？",
+        "progress": 54,
+        "cols": [
+          {
+            "title": "观察到的现象",
+            "lines": [
+              "镁条：气泡极多极快，镁迅速溶解，试管发烫",
+              "锌粒：气泡较多较快，锌粒逐渐变小",
+              "铁钉：气泡较少较慢，溶液由无色慢慢变成浅绿色"
+            ]
+          },
+          {
+            "title": "提示",
+            "lines": [
+              "单位时间内产生的气泡越多，说明反应越快，",
+              "也就说明这种金属越活泼。",
+              "由快到慢排个序，就是它们的活动性顺序。"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "Mg > Zn > Fe",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "observe"
+              },
+              {
+                "do": "tip",
+                "text": "完全正确 ✓ 反应越剧烈，金属越活泼"
+              },
+              {
+                "do": "goto",
+                "id": "gas",
+                "delay": 1500
+              }
+            ]
+          },
+          {
+            "t": "Fe > Zn > Mg",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "顺序反了。铁钉那支试管气泡最少最慢，镁条那支几乎是在翻腾。"
+              }
+            ]
+          },
+          {
+            "t": "Zn > Mg > Fe",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "镁和锌的顺序颠倒了。看镁条那支，气泡密集得多，而且试管明显发烫。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gas",
+        "type": "stage",
+        "title": "检验产生的气体",
+        "progress": 68,
+        "shelf": [
+          "match"
+        ],
+        "desc": "把燃着的木条放在产生气体最急的那支试管口，看看会发生什么。",
+        "help": "把燃着的木条拖到最左边试管口上方。产生的气体应该先收集在小试管里验纯，再点燃，直接点燃大量气体有危险。",
+        "zones": [
+          "gasZone"
+        ],
+        "drop": [
+          {
+            "equip": "match",
+            "zone": "gasZone",
+            "do": [
+              {
+                "do": "set",
+                "k": "fire",
+                "v": true
+              },
+              {
+                "do": "set",
+                "k": "popTest",
+                "v": true,
+                "delay": 700
+              },
+              {
+                "do": "score",
+                "key": "gas"
+              },
+              {
+                "do": "tip",
+                "text": "气体被点燃：淡蓝色火焰并伴有轻微爆鸣声 → 是氢气 ✓"
+              },
+              {
+                "do": "goto",
+                "id": "feStep",
+                "delay": 2200
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要用燃着的木条靠近试管口。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feStep",
+        "type": "doc",
+        "title": "铁那支试管变成了浅绿色",
+        "progress": 78,
+        "cols": [
+          {
+            "title": "现象",
+            "lines": [
+              "铁钉表面有气泡慢慢放出",
+              "溶液原本是无色的稀盐酸",
+              "反应一段时间后，溶液变成了浅绿色"
+            ]
+          },
+          {
+            "title": "想一想",
+            "lines": [
+              "Fe²⁺ 在水溶液中显浅绿色，",
+              "Fe³⁺ 的水溶液显黄色。",
+              "现在看到的是浅绿色，说明生成的是哪种离子？"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "生成了 FeCl₂（含 Fe²⁺）",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "fe"
+              },
+              {
+                "do": "tip",
+                "text": "对！Fe + 2HCl = FeCl₂ + H₂↑，这是亚铁化合物 ✓"
+              },
+              {
+                "do": "goto",
+                "id": "summary",
+                "delay": 1600
+              }
+            ]
+          },
+          {
+            "t": "生成了 FeCl₃（含 Fe³⁺）",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "Fe³⁺ 溶液是黄色的。铁与盐酸这样的非氧化性酸反应只能生成亚铁盐。"
+              }
+            ]
+          },
+          {
+            "t": "生成了 Fe₂O₃",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "Fe₂O₃ 是红棕色的铁锈，不溶于水，不可能形成浅绿色溶液。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "summary",
+        "type": "doc",
+        "title": "金属活动性顺序",
+        "progress": 88,
+        "cols": [
+          {
+            "title": "实验得到的顺序",
+            "lines": [
+              "Mg  Zn  Fe  (H)  Cu",
+              "由左到右活动性逐渐减弱",
+              "排在氢前面的金属能置换出酸中的氢，",
+              "排在氢后面的（如铜、银）不能。"
+            ]
+          },
+          {
+            "title": "完整顺序（常考）",
+            "lines": [
+              "K  Ca  Na  Mg  Al  Zn  Fe  Sn  Pb  (H)  Cu  Hg  Ag  Pt  Au",
+              "钾钙钠镁铝 锌铁锡铅氢 铜汞银铂金",
+              "越靠前越活泼，越容易失去电子。"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "排在氢前的金属能置换出酸中的氢",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "summary"
+              },
+              {
+                "do": "tip",
+                "text": "总结到位 ✓ 这正是判断金属能否与酸反应的依据"
+              },
+              {
+                "do": "goto",
+                "id": "report",
+                "delay": 1600
+              }
+            ]
+          },
+          {
+            "t": "金属都能与酸反应产生氢气",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "铜、银等排在氢之后的金属就不行。刚才把铜丝放进盐酸，一点气泡都没有。"
+              }
+            ]
+          },
+          {
+            "t": "只有铁能产生氢气",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "三支试管都在冒气泡，只是快慢不同。区别是反应的剧烈程度，不是能不能反应。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "report",
+        "type": "report",
+        "title": "实验报告",
+        "progress": 94,
+        "buttons": [
+          {
+            "t": "提交报告",
+            "c": "primary",
+            "do": [
+              {
+                "do": "finish"
+              },
+              {
+                "do": "goto",
+                "id": "score"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "score",
+        "type": "score",
+        "title": "实验评分",
+        "progress": 100,
+        "buttons": [
+          {
+            "t": "导出本次成绩",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "export"
+              }
+            ]
+          },
+          {
+            "t": "查看常见错误",
+            "c": "ghost",
+            "goto": "errtable"
+          },
+          {
+            "t": "重做实验",
+            "c": "primary",
+            "do": [
+              {
+                "do": "reset"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "errtable",
+        "type": "errors",
+        "title": "常见错误与后果",
+        "progress": 100,
+        "buttons": [
+          {
+            "t": "返回评分",
+            "c": "ghost",
+            "goto": "score"
+          },
+          {
+            "t": "重做实验",
+            "c": "primary",
+            "do": [
+              {
+                "do": "reset"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "exp_fecuso4": {
+    "id": "fecuso4",
+    "title": "铁与硫酸铜溶液的反应",
+    "subtitle": "初中化学虚拟实验 · 置换反应与湿法炼铜",
+    "badges": [
+      "Fe + CuSO₄",
+      "溶液蓝→浅绿",
+      "满分 100 分"
+    ],
+    "viewBox": "0 0 600 360",
+    "equipments": [
+      {
+        "id": "tube",
+        "name": "试管",
+        "need": true
+      },
+      {
+        "id": "cuso4",
+        "name": "硫酸铜溶液",
+        "need": true
+      },
+      {
+        "id": "iron",
+        "name": "铁丝（钉）",
+        "need": true
+      },
+      {
+        "id": "tweezers",
+        "name": "镊子",
+        "need": true
+      },
+      {
+        "id": "cu",
+        "name": "铜丝",
+        "need": false
+      },
+      {
+        "id": "marble",
+        "name": "大理石",
+        "need": false
+      },
+      {
+        "id": "alcohol",
+        "name": "无水乙醇",
+        "need": false
+      }
+    ],
+    "dims": [
+      {
+        "key": "skill",
+        "name": "操作规范"
+      },
+      {
+        "key": "safety",
+        "name": "安全意识"
+      }
+    ],
+    "scoreItems": [
+      {
+        "key": "equip",
+        "name": "器材选择",
+        "max": 10,
+        "dim": "skill"
+      },
+      {
+        "key": "tube",
+        "name": "放置试管",
+        "max": 8,
+        "dim": "skill"
+      },
+      {
+        "key": "cuso4",
+        "name": "加入硫酸铜溶液",
+        "max": 12,
+        "dim": "skill"
+      },
+      {
+        "key": "iron",
+        "name": "放入铁丝",
+        "max": 14,
+        "dim": "skill"
+      },
+      {
+        "key": "observe",
+        "name": "描述实验现象",
+        "max": 14,
+        "dim": "skill"
+      },
+      {
+        "key": "judge",
+        "name": "判断红色物质与溶液",
+        "max": 16,
+        "dim": "skill"
+      },
+      {
+        "key": "mass",
+        "name": "质量变化判断",
+        "max": 10,
+        "dim": "skill"
+      },
+      {
+        "key": "summary",
+        "name": "归纳置换规律",
+        "max": 16,
+        "dim": "skill"
+      }
+    ],
+    "initialStage": {
+      "tubeOn": false,
+      "blueIn": false,
+      "ironIn": false,
+      "react": 0,
+      "dep": 0,
+      "wrongCu": false
+    },
+    "dropZones": {
+      "bench": {
+        "x": 210,
+        "y": 216,
+        "w": 190,
+        "h": 108
+      },
+      "tubeZone": {
+        "x": 256,
+        "y": 126,
+        "w": 90,
+        "h": 184
+      }
+    },
+    "scene": [
+      {
+        "tag": "rect",
+        "x": 30,
+        "y": 322,
+        "width": 540,
+        "height": 14,
+        "rx": 5,
+        "fill": "url(#gMetal)"
+      },
+      {
+        "tag": "rect",
+        "x": 30,
+        "y": 322,
+        "width": 540,
+        "height": 4,
+        "rx": 2,
+        "fill": "#e8eef2",
+        "opacity": 0.75
+      },
+      {
+        "tag": "g",
+        "when": "stage.tubeOn",
+        "children": [
+          {
+            "tag": "path",
+            "d": "M268 148 L268 284 Q268 300 284 300 L316 300 Q332 300 332 284 L332 148 Z",
+            "fill": "url(#gGlass)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 2.4
+          },
+          {
+            "tag": "rect",
+            "x": 262,
+            "y": 138,
+            "width": 76,
+            "height": 11,
+            "rx": 4,
+            "fill": "url(#gGlassH)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 1.6
+          },
+          {
+            "tag": "path",
+            "d": "M278 170 L278 282",
+            "stroke": "#ffffff",
+            "stroke-width": 2.2,
+            "opacity": 0.8,
+            "fill": "none"
+          },
+          {
+            "tag": "rect",
+            "when": "stage.blueIn",
+            "x": 272,
+            "y": 200,
+            "width": 56,
+            "height": 94,
+            "rx": 4,
+            "fill": "@ stage.react>=3 ? 'url(#gGreenP)' : (stage.react>=2 ? '#8db98a' : (stage.react>=1 ? '#5f9bd0' : 'url(#gBlue)'))",
+            "opacity": 0.9
+          },
+          {
+            "tag": "g",
+            "when": "stage.ironIn",
+            "children": [
+              {
+                "tag": "rect",
+                "x": 296,
+                "y": 168,
+                "width": 10,
+                "height": 126,
+                "rx": 2,
+                "fill": "#b0bec5",
+                "stroke": "#546e7a",
+                "stroke-width": 1.2
+              },
+              {
+                "tag": "rect",
+                "when": "stage.dep>0",
+                "x": 294,
+                "y": "@ 294 - 78*stage.dep/3",
+                "width": 14,
+                "height": "@ 78*stage.dep/3",
+                "rx": 2,
+                "fill": "#c1440e",
+                "opacity": 0.92
+              },
+              {
+                "tag": "circle",
+                "when": "stage.dep>=2",
+                "cx": 293,
+                "cy": 258,
+                "r": 3.2,
+                "fill": "#e65100"
+              },
+              {
+                "tag": "circle",
+                "when": "stage.dep>=2",
+                "cx": 310,
+                "cy": 272,
+                "r": 2.8,
+                "fill": "#bf360c"
+              },
+              {
+                "tag": "circle",
+                "when": "stage.dep>=3",
+                "cx": 309,
+                "cy": 240,
+                "r": 3,
+                "fill": "#d84315"
+              },
+              {
+                "tag": "text",
+                "when": "stage.dep>=2",
+                "x": 340,
+                "y": 254,
+                "font-size": 11.5,
+                "fill": "#bf360c",
+                "font-weight": 700,
+                "text": "表面覆盖红色物质 → Cu"
+              }
+            ]
+          },
+          {
+            "tag": "g",
+            "when": "stage.react>=1 && stage.react<3",
+            "children": [
+              {
+                "tag": "text",
+                "x": 244,
+                "y": 226,
+                "font-size": 11,
+                "text-anchor": "end",
+                "fill": "#0277bd",
+                "font-weight": 700,
+                "text": "颜色正在变化…"
+              }
+            ]
+          },
+          {
+            "tag": "text",
+            "when": "stage.blueIn && stage.react===0",
+            "x": 244,
+            "y": 226,
+            "font-size": 11,
+            "text-anchor": "end",
+            "fill": "#1565c0",
+            "font-weight": 700,
+            "text": "蓝色溶液"
+          },
+          {
+            "tag": "text",
+            "when": "stage.react>=3",
+            "x": 244,
+            "y": 226,
+            "font-size": 11,
+            "text-anchor": "end",
+            "fill": "#33691e",
+            "font-weight": 700,
+            "text": "已变浅绿色"
+          },
+          {
+            "tag": "text",
+            "x": 300,
+            "y": 344,
+            "font-size": 12,
+            "text-anchor": "middle",
+            "fill": "#455a64",
+            "font-weight": 700,
+            "text": "试管：Fe + CuSO₄ 溶液"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.wrongCu",
+        "children": [
+          {
+            "tag": "text",
+            "x": 430,
+            "y": 190,
+            "font-size": 11.5,
+            "fill": "#dc2626",
+            "font-weight": 700,
+            "text": "铜不能置换出自己："
+          },
+          {
+            "tag": "text",
+            "x": 430,
+            "y": 208,
+            "font-size": 11.5,
+            "fill": "#dc2626",
+            "font-weight": 700,
+            "text": "Cu 与 CuSO₄ 不反应"
+          }
+        ]
+      }
+    ],
+    "report": [
+      {
+        "title": "实验记录",
+        "lines": [
+          "实验名称：铁与硫酸铜溶液的反应",
+          "反应原理：Fe + CuSO₄ = FeSO₄ + Cu",
+          "操作：试管中加入硫酸铜溶液，用镊子夹取打磨过的铁丝浸入溶液中",
+          "注意：反应在常温下进行，不需要加热，也不需要催化剂"
+        ]
+      },
+      {
+        "title": "现象记录",
+        "lines": [
+          "1. 铁丝表面覆盖一层红色的物质（铜）",
+          "2. 溶液由蓝色逐渐变成浅绿色（生成 FeSO₄）",
+          "3. 铁丝逐渐变细，试管底部可以看到少量红色固体沉积",
+          "4. 若把铜丝放进硫酸铜溶液，则什么现象都没有"
+        ]
+      },
+      {
+        "title": "实验结论",
+        "lines": [
+          "铁的活动性比铜强，能把铜从它的盐溶液中置换出来。",
+          "这是置换反应，也是古代湿法炼铜的原理：Fe + CuSO₄ = FeSO₄ + Cu。",
+          "若反应在密闭容器中进行，反应前后物质的总质量保持不变（质量守恒）。"
+        ]
+      }
+    ],
+    "errorTable": [
+      {
+        "op": "用铜丝代替铁丝",
+        "phen": "铜不能置换出自己",
+        "result": "始终无现象，实验失败",
+        "score": 14
+      },
+      {
+        "op": "铁丝未打磨直接放入",
+        "phen": "表面有锈、油污",
+        "result": "反应慢、现象不明显",
+        "score": 14
+      },
+      {
+        "op": "误以为溶液变黄色",
+        "phen": "Fe³⁺ 才显黄色",
+        "result": "生成的是浅绿色 FeSO₄",
+        "score": 16
+      },
+      {
+        "op": "认为红色物质是铁锈",
+        "phen": "铁锈是红棕色且疏松",
+        "result": "那是有光泽的金属铜",
+        "score": 16
+      },
+      {
+        "op": "以为反应后总质量变大了",
+        "phen": "铜附着在铁丝上",
+        "result": "总质量不变（质量守恒）",
+        "score": 10
+      },
+      {
+        "op": "误加无水乙醇或大理石",
+        "phen": "与本反应无关",
+        "result": "药品选择错误",
+        "score": 12
+      }
+    ],
+    "steps": [
+      {
+        "id": "cover",
+        "type": "cover",
+        "title": "准备开始",
+        "progress": 0,
+        "headline": "铁与硫酸铜溶液的反应",
+        "subtitle": "一根铁丝泡进蓝水里，竟能捞出红色的铜",
+        "buttons": [
+          {
+            "t": "开始实验",
+            "c": "primary",
+            "goto": "goal"
+          }
+        ]
+      },
+      {
+        "id": "goal",
+        "type": "doc",
+        "title": "实验目标",
+        "progress": 6,
+        "cols": [
+          {
+            "title": "实验目标",
+            "lines": [
+              "1. 认识置换反应 Fe + CuSO₄ = FeSO₄ + Cu",
+              "2. 记住 Cu²⁺ 溶液蓝色、Fe²⁺ 溶液浅绿色",
+              "3. 理解「活动性强的金属置换弱的」",
+              "4. 知道这就是古代湿法炼铜的原理",
+              "5. 用质量守恒解释反应前后总质量的变化"
+            ]
+          },
+          {
+            "title": "操作方式",
+            "lines": [
+              "● 拖拽试剂到试管的高亮区域",
+              "● 遇到思考题时点选项作答",
+              "● 右侧显示当前实验阶段",
+              "● 卡住时点右下角“？”获取提示"
+            ]
+          },
+          {
+            "title": "安全提示",
+            "lines": [
+              "⚠ 硫酸铜溶液有毒，不能入口，避免接触伤口",
+              "⚠ 用镊子夹取铁丝，不要直接用手拿",
+              "⚠ 铁丝事先要用砂纸打磨，除去锈和油污",
+              "⚠ 取用过的铁丝不要放回原试剂瓶"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "下一步",
+            "c": "primary",
+            "goto": "equip"
+          },
+          {
+            "t": "返回封面",
+            "c": "ghost",
+            "goto": "cover"
+          }
+        ]
+      },
+      {
+        "id": "equip",
+        "type": "equip",
+        "title": "选择实验器材",
+        "progress": 12,
+        "tip": "这是一种盐溶液 + 一种金属，还要有夹持工具——想一想该准备什么",
+        "buttons": [
+          {
+            "t": "确认器材",
+            "c": "primary",
+            "do": [
+              {
+                "do": "checkEquip",
+                "key": "equip",
+                "goto": "tubeStep"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "tubeStep",
+        "type": "stage",
+        "title": "放置试管",
+        "progress": 18,
+        "shelf": [
+          "tube"
+        ],
+        "desc": "把试管放在桌面上，作为这次反应的容器。",
+        "help": "把试管拖到桌面中间的高亮区域。这个反应在常温下就能进行，不需要加热。",
+        "zones": [
+          "bench"
+        ],
+        "drop": [
+          {
+            "equip": "tube",
+            "zone": "bench",
+            "do": [
+              {
+                "do": "set",
+                "k": "tubeOn",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "tube"
+              },
+              {
+                "do": "tip",
+                "text": "试管已放好 ✓"
+              },
+              {
+                "do": "goto",
+                "id": "blue",
+                "delay": 1000
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要放的是反应容器。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "blue",
+        "type": "stage",
+        "title": "加入硫酸铜溶液",
+        "progress": 26,
+        "shelf": [
+          "cuso4"
+        ],
+        "desc": "向试管中倒入约 1/3 体积的硫酸铜溶液，记住它现在的颜色。",
+        "help": "把硫酸铜溶液拖到试管口。含 Cu²⁺ 的溶液显蓝色，先记住这个起点颜色，后面才好对比。",
+        "zones": [
+          "tubeZone"
+        ],
+        "drop": [
+          {
+            "equip": "cuso4",
+            "zone": "tubeZone",
+            "do": [
+              {
+                "do": "set",
+                "k": "blueIn",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "cuso4"
+              },
+              {
+                "do": "tip",
+                "text": "蓝色溶液已加入 ✓ 这是 Cu²⁺ 的颜色"
+              },
+              {
+                "do": "goto",
+                "id": "ironStep",
+                "delay": 1200
+              }
+            ]
+          },
+          {
+            "equip": "alcohol",
+            "zone": "tubeZone",
+            "do": [
+              {
+                "do": "err",
+                "text": "无水乙醇与本反应无关，这里要加的是含 Cu²⁺ 的蓝色溶液。"
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要加入的是含铜离子的蓝色溶液。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ironStep",
+        "type": "stage",
+        "title": "放入打磨过的铁丝",
+        "progress": 38,
+        "shelf": [
+          "iron",
+          "tweezers"
+        ],
+        "desc": "用镊子夹取打磨过的铁丝，浸入硫酸铜溶液中，静置观察。",
+        "help": "把铁丝拖到试管里。铁丝表面若有铁锈或油污，要先用砂纸打磨干净，否则会挡住反应、看不到明显现象。",
+        "zones": [
+          "tubeZone"
+        ],
+        "drop": [
+          {
+            "equip": "iron",
+            "zone": "tubeZone",
+            "do": [
+              {
+                "do": "set",
+                "k": "ironIn",
+                "v": true
+              },
+              {
+                "do": "set",
+                "k": "react",
+                "v": 1,
+                "delay": 900
+              },
+              {
+                "do": "set",
+                "k": "dep",
+                "v": 1,
+                "delay": 1400
+              },
+              {
+                "do": "set",
+                "k": "react",
+                "v": 2,
+                "delay": 1900
+              },
+              {
+                "do": "set",
+                "k": "dep",
+                "v": 2,
+                "delay": 2300
+              },
+              {
+                "do": "set",
+                "k": "react",
+                "v": 3,
+                "delay": 2900
+              },
+              {
+                "do": "set",
+                "k": "dep",
+                "v": 3,
+                "delay": 3300
+              },
+              {
+                "do": "score",
+                "key": "iron"
+              },
+              {
+                "do": "tip",
+                "text": "铁丝表面开始出现红色物质，蓝色溶液在慢慢变浅绿 ✓"
+              },
+              {
+                "do": "goto",
+                "id": "observe",
+                "delay": 3800
+              }
+            ]
+          },
+          {
+            "equip": "cu",
+            "zone": "tubeZone",
+            "do": [
+              {
+                "do": "set",
+                "k": "wrongCu",
+                "v": true
+              },
+              {
+                "do": "err",
+                "text": "铜不能置换出铜自己！铁的活动性比铜强，所以要用的是铁丝。"
+              }
+            ]
+          },
+          {
+            "equip": "tweezers",
+            "zone": "tubeZone",
+            "do": [
+              {
+                "do": "err",
+                "text": "镊子是用来夹取药品的工具，本身不放进试管。要放进去的是铁丝。"
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要放入的是一种比铜活泼的金属。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "observe",
+        "type": "doc",
+        "title": "你看到了什么？",
+        "progress": 52,
+        "cols": [
+          {
+            "title": "观察要点",
+            "lines": [
+              "铁丝表面发生了什么变化？",
+              "溶液颜色从什么色变成了什么色？",
+              "反应过程中有没有加热、有没有加催化剂？"
+            ]
+          },
+          {
+            "title": "提示",
+            "lines": [
+              "红色有光泽的物质 —— 金属铜",
+              "浅绿色的溶液 —— 生成的硫酸亚铁 FeSO₄",
+              "整个反应在常温下自己就发生了。"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "铁丝表面覆盖红色物质，溶液由蓝变浅绿",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "observe"
+              },
+              {
+                "do": "tip",
+                "text": "现象描述完整准确 ✓"
+              },
+              {
+                "do": "goto",
+                "id": "judge",
+                "delay": 1500
+              }
+            ]
+          },
+          {
+            "t": "铁丝表面变黑，溶液由蓝变黄",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "析出的铜是红色的，Fe²⁺ 溶液是浅绿色的（Fe³⁺ 才是黄色）。再看一遍。"
+              }
+            ]
+          },
+          {
+            "t": "铁丝溶解消失，溶液颜色不变",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "溶液颜色明显变了。而且铁丝只是变细，同时有红色物质在它表面长出来。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "judge",
+        "type": "doc",
+        "title": "红色物质和浅绿色溶液各是什么？",
+        "progress": 66,
+        "cols": [
+          {
+            "title": "分析",
+            "lines": [
+              "Fe + CuSO₄ = FeSO₄ + Cu",
+              "铁原子失去电子变成 Fe²⁺ 进入溶液",
+              "铜离子得到电子变成铜原子析出在铁丝表面"
+            ]
+          },
+          {
+            "title": "颜色口诀",
+            "lines": [
+              "Cu²⁺ 溶液：蓝色",
+              "Fe²⁺ 溶液：浅绿色",
+              "Fe³⁺ 溶液：黄色",
+              "单质铜：红色（紫红色）固体"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "红色物质是 Cu，浅绿色溶液是 FeSO₄",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "judge"
+              },
+              {
+                "do": "tip",
+                "text": "完全正确 ✓ 记住这几个颜色，中考常考"
+              },
+              {
+                "do": "goto",
+                "id": "mass",
+                "delay": 1500
+              }
+            ]
+          },
+          {
+            "t": "红色物质是铁锈，浅绿色溶液是 FeCl₂",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "铁锈是红棕色疏松的，而这里是有光泽的红色金属；溶液里也没有氯离子，不会是 FeCl₂。"
+              }
+            ]
+          },
+          {
+            "t": "红色物质是 Cu，浅绿色溶液是 Fe₂(SO₄)₃",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "Fe₂(SO₄)₃ 里是 Fe³⁺，溶液显黄色。铁与盐溶液发生置换时生成的是亚铁盐。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mass",
+        "type": "doc",
+        "title": "质量会变吗？",
+        "progress": 76,
+        "cols": [
+          {
+            "title": "情景",
+            "lines": [
+              "把整个试管连同里面的东西一起放在天平上，",
+              "反应前后称量（不打开塞子、不洒出一滴液体）。",
+              "铁丝变细了，铜析出了，物质在互相转化。"
+            ]
+          },
+          {
+            "title": "依据",
+            "lines": [
+              "质量守恒定律：参加化学反应的各物质质量总和，",
+              "等于反应后生成的各物质质量总和。"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "总质量不变",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "mass"
+              },
+              {
+                "do": "tip",
+                "text": "对！析出多少铜，就消耗多少铁并生成相应的 FeSO₄，总账是平的 ✓"
+              },
+              {
+                "do": "goto",
+                "id": "summary",
+                "delay": 1600
+              }
+            ]
+          },
+          {
+            "t": "总质量变大（析出了铜）",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "铜不是凭空来的，它来自溶液中减少的 Cu²⁺。有增必有减，总质量守恒。"
+              }
+            ]
+          },
+          {
+            "t": "总质量变小（铁被消耗）",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "铁减少的同时，溶液中多了 Fe²⁺。所有变化都要算进去。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "summary",
+        "type": "doc",
+        "title": "置换反应的规律",
+        "progress": 88,
+        "cols": [
+          {
+            "title": "规律",
+            "lines": [
+              "活动性强的金属，能把活动性弱的金属",
+              "从它的盐溶液中置换出来。",
+              "Fe 在 Cu 之前 → 铁能置换出铜",
+              "Cu 在 Ag 之前 → 铜能置换出银",
+              "反之则不发生反应。"
+            ]
+          },
+          {
+            "title": "应用",
+            "lines": [
+              "● 湿法炼铜：Fe + CuSO₄ = FeSO₄ + Cu",
+              "● 我国西汉时期就有「曾青得铁则化为铜」的记载",
+              "● 不能用铁桶盛放硫酸铜溶液（会被腐蚀）"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "强置换弱：Fe 比 Cu 活泼，所以能把铜置换出来",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "summary"
+              },
+              {
+                "do": "tip",
+                "text": "抓住了规律 ✓ 这正是金属活动性顺序的核心用途"
+              },
+              {
+                "do": "goto",
+                "id": "report",
+                "delay": 1600
+              }
+            ]
+          },
+          {
+            "t": "只要两种金属碰在一起就会置换",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "必须强置换弱。刚才把铜丝放进硫酸铜溶液，一点变化都没有。"
+              }
+            ]
+          },
+          {
+            "t": "与活动性无关，只看谁的量更多",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "量多量少只影响能反应多少，能不能反应由活动性顺序决定。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "report",
+        "type": "report",
+        "title": "实验报告",
+        "progress": 94,
+        "buttons": [
+          {
+            "t": "提交报告",
+            "c": "primary",
+            "do": [
+              {
+                "do": "finish"
+              },
+              {
+                "do": "goto",
+                "id": "score"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "score",
+        "type": "score",
+        "title": "实验评分",
+        "progress": 100,
+        "buttons": [
+          {
+            "t": "导出本次成绩",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "export"
+              }
+            ]
+          },
+          {
+            "t": "查看常见错误",
+            "c": "ghost",
+            "goto": "errtable"
+          },
+          {
+            "t": "重做实验",
+            "c": "primary",
+            "do": [
+              {
+                "do": "reset"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "errtable",
+        "type": "errors",
+        "title": "常见错误与后果",
+        "progress": 100,
+        "buttons": [
+          {
+            "t": "返回评分",
+            "c": "ghost",
+            "goto": "score"
+          },
+          {
+            "t": "重做实验",
+            "c": "primary",
+            "do": [
+              {
+                "do": "reset"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "exp_ions": {
+    "id": "ions",
+    "title": "硫酸根与氯离子的检验",
+    "subtitle": "初中化学虚拟实验 · 离子检验 + 排除干扰",
+    "badges": [
+      "BaSO₄ 不溶于酸",
+      "AgCl 不溶于酸",
+      "满分 100 分"
+    ],
+    "viewBox": "0 0 600 360",
+    "equipments": [
+      {
+        "id": "tube",
+        "name": "试管（2支）",
+        "need": true
+      },
+      {
+        "id": "na2so4",
+        "name": "硫酸钠溶液",
+        "need": true
+      },
+      {
+        "id": "nacl",
+        "name": "氯化钠溶液",
+        "need": true
+      },
+      {
+        "id": "bacl2",
+        "name": "氯化钡溶液",
+        "need": true
+      },
+      {
+        "id": "agno3",
+        "name": "硝酸银溶液",
+        "need": true
+      },
+      {
+        "id": "hno3",
+        "name": "稀硝酸",
+        "need": true
+      },
+      {
+        "id": "dropper",
+        "name": "胶头滴管",
+        "need": true
+      },
+      {
+        "id": "na2co3",
+        "name": "碳酸钠溶液",
+        "need": false
+      },
+      {
+        "id": "water2",
+        "name": "蒸馏水",
+        "need": false
+      }
+    ],
+    "dims": [
+      {
+        "key": "skill",
+        "name": "操作规范"
+      },
+      {
+        "key": "safety",
+        "name": "安全意识"
+      }
+    ],
+    "scoreItems": [
+      {
+        "key": "equip",
+        "name": "器材选择",
+        "max": 10,
+        "dim": "skill"
+      },
+      {
+        "key": "tubes",
+        "name": "准备两支试管",
+        "max": 8,
+        "dim": "skill"
+      },
+      {
+        "key": "samples",
+        "name": "分别取两种待测液",
+        "max": 12,
+        "dim": "skill"
+      },
+      {
+        "key": "dropA",
+        "name": "用BaCl₂检验硫酸根",
+        "max": 14,
+        "dim": "skill"
+      },
+      {
+        "key": "acidA",
+        "name": "加稀硝酸确认沉淀不溶",
+        "max": 10,
+        "dim": "skill"
+      },
+      {
+        "key": "dropB",
+        "name": "用AgNO₃检验氯离子",
+        "max": 12,
+        "dim": "skill"
+      },
+      {
+        "key": "acidB",
+        "name": "再次加稀硝酸排除干扰",
+        "max": 8,
+        "dim": "skill"
+      },
+      {
+        "key": "judge",
+        "name": "解释稀硝酸的作用",
+        "max": 16,
+        "dim": "skill"
+      },
+      {
+        "key": "summary",
+        "name": "归纳检验思路",
+        "max": 10,
+        "dim": "skill"
+      }
+    ],
+    "initialStage": {
+      "tubesOn": false,
+      "sampleA": false,
+      "sampleB": false,
+      "pptA": 0,
+      "pptB": 0,
+      "hno3A": false,
+      "hno3B": false,
+      "wrongOrder": false
+    },
+    "dropZones": {
+      "bench": {
+        "x": 130,
+        "y": 210,
+        "w": 340,
+        "h": 112
+      },
+      "zoneA": {
+        "x": 150,
+        "y": 128,
+        "w": 106,
+        "h": 186
+      },
+      "zoneB": {
+        "x": 346,
+        "y": 128,
+        "w": 106,
+        "h": 186
+      }
+    },
+    "scene": [
+      {
+        "tag": "rect",
+        "x": 30,
+        "y": 322,
+        "width": 540,
+        "height": 14,
+        "rx": 5,
+        "fill": "url(#gMetal)"
+      },
+      {
+        "tag": "rect",
+        "x": 30,
+        "y": 322,
+        "width": 540,
+        "height": 4,
+        "rx": 2,
+        "fill": "#e8eef2",
+        "opacity": 0.75
+      },
+      {
+        "tag": "g",
+        "when": "stage.tubesOn",
+        "children": [
+          {
+            "tag": "rect",
+            "x": 138,
+            "y": 292,
+            "width": 324,
+            "height": 12,
+            "rx": 4,
+            "fill": "url(#gMetal)"
+          },
+          {
+            "tag": "rect",
+            "x": 148,
+            "y": 296,
+            "width": 10,
+            "height": 22,
+            "fill": "url(#gMetalV)"
+          },
+          {
+            "tag": "rect",
+            "x": 442,
+            "y": 296,
+            "width": 10,
+            "height": 22,
+            "fill": "url(#gMetalV)"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.tubesOn",
+        "children": [
+          {
+            "tag": "path",
+            "d": "M172 152 L172 280 Q172 292 184 292 L216 292 Q228 292 228 280 L228 152 Z",
+            "fill": "url(#gGlass)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 2.2
+          },
+          {
+            "tag": "rect",
+            "x": 168,
+            "y": 144,
+            "width": 64,
+            "height": 10,
+            "rx": 4,
+            "fill": "url(#gGlassH)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 1.6
+          },
+          {
+            "tag": "rect",
+            "when": "stage.sampleA",
+            "x": 175,
+            "y": 206,
+            "width": 50,
+            "height": 82,
+            "rx": 4,
+            "fill": "@ stage.pptA>0 ? '#f2f4f7' : '#fafafa'",
+            "opacity": 0.92
+          },
+          {
+            "tag": "g",
+            "when": "stage.pptA>0",
+            "children": [
+              {
+                "tag": "path",
+                "d": "M175 268 Q186 258 200 266 Q214 256 225 268 L225 286 Q225 290 221 290 L179 290 Q175 290 175 286 Z",
+                "fill": "#ffffff",
+                "stroke": "#e0e0e0",
+                "stroke-width": 1.4
+              },
+              {
+                "tag": "rect",
+                "x": 175,
+                "y": "@ 268 - 16*stage.pptA/2",
+                "width": 50,
+                "height": "@ 16*stage.pptA/2",
+                "rx": 3,
+                "fill": "#ffffff",
+                "opacity": 0.95
+              },
+              {
+                "tag": "circle",
+                "cx": 186,
+                "cy": "@ 268 - 18*stage.pptA/2",
+                "r": 4,
+                "fill": "#ffffff",
+                "stroke": "#eceff1",
+                "stroke-width": 1
+              },
+              {
+                "tag": "circle",
+                "cx": 214,
+                "cy": "@ 270 - 18*stage.pptA/2",
+                "r": 3.4,
+                "fill": "#ffffff",
+                "stroke": "#eceff1",
+                "stroke-width": 1
+              }
+            ]
+          },
+          {
+            "tag": "text",
+            "when": "stage.pptA>0",
+            "x": 200,
+            "y": 246,
+            "font-size": 11,
+            "text-anchor": "middle",
+            "fill": "#37474f",
+            "font-weight": 700,
+            "text": "白色沉淀"
+          },
+          {
+            "tag": "text",
+            "when": "stage.hno3A",
+            "x": 200,
+            "y": 224,
+            "font-size": 10.5,
+            "text-anchor": "middle",
+            "fill": "#b71c1c",
+            "font-weight": 700,
+            "text": "加稀硝酸：不溶解"
+          },
+          {
+            "tag": "text",
+            "x": 200,
+            "y": 330,
+            "font-size": 11.5,
+            "text-anchor": "middle",
+            "fill": "#455a64",
+            "font-weight": 700,
+            "text": "Na₂SO₄ 溶液"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.tubesOn",
+        "children": [
+          {
+            "tag": "path",
+            "d": "M368 152 L368 280 Q368 292 380 292 L412 292 Q424 292 424 280 L424 152 Z",
+            "fill": "url(#gGlass)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 2.2
+          },
+          {
+            "tag": "rect",
+            "x": 364,
+            "y": 144,
+            "width": 64,
+            "height": 10,
+            "rx": 4,
+            "fill": "url(#gGlassH)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 1.6
+          },
+          {
+            "tag": "rect",
+            "when": "stage.sampleB",
+            "x": 371,
+            "y": 206,
+            "width": 50,
+            "height": 82,
+            "rx": 4,
+            "fill": "@ stage.pptB>0 ? '#f2f4f7' : '#fafafa'",
+            "opacity": 0.92
+          },
+          {
+            "tag": "g",
+            "when": "stage.pptB>0",
+            "children": [
+              {
+                "tag": "path",
+                "d": "M371 268 Q382 258 396 266 Q410 256 421 268 L421 286 Q421 290 417 290 L375 290 Q371 290 371 286 Z",
+                "fill": "#ffffff",
+                "stroke": "#e0e0e0",
+                "stroke-width": 1.4
+              },
+              {
+                "tag": "rect",
+                "x": 371,
+                "y": "@ 268 - 16*stage.pptB/2",
+                "width": 50,
+                "height": "@ 16*stage.pptB/2",
+                "rx": 3,
+                "fill": "#ffffff",
+                "opacity": 0.95
+              },
+              {
+                "tag": "circle",
+                "cx": 382,
+                "cy": "@ 268 - 18*stage.pptB/2",
+                "r": 4,
+                "fill": "#ffffff",
+                "stroke": "#eceff1",
+                "stroke-width": 1
+              },
+              {
+                "tag": "circle",
+                "cx": 410,
+                "cy": "@ 270 - 18*stage.pptB/2",
+                "r": 3.4,
+                "fill": "#ffffff",
+                "stroke": "#eceff1",
+                "stroke-width": 1
+              }
+            ]
+          },
+          {
+            "tag": "text",
+            "when": "stage.pptB>0",
+            "x": 396,
+            "y": 246,
+            "font-size": 11,
+            "text-anchor": "middle",
+            "fill": "#37474f",
+            "font-weight": 700,
+            "text": "白色沉淀"
+          },
+          {
+            "tag": "text",
+            "when": "stage.hno3B",
+            "x": 396,
+            "y": 224,
+            "font-size": 10.5,
+            "text-anchor": "middle",
+            "fill": "#b71c1c",
+            "font-weight": 700,
+            "text": "加稀硝酸：不溶解"
+          },
+          {
+            "tag": "text",
+            "x": 396,
+            "y": 330,
+            "font-size": 11.5,
+            "text-anchor": "middle",
+            "fill": "#455a64",
+            "font-weight": 700,
+            "text": "NaCl 溶液"
+          }
+        ]
+      },
+      {
+        "tag": "text",
+        "when": "stage.wrongOrder",
+        "x": 300,
+        "y": 116,
+        "font-size": 11.5,
+        "text-anchor": "middle",
+        "fill": "#dc2626",
+        "font-weight": 700,
+        "text": "试剂加错了试管：硫酸根用BaCl₂，氯离子用AgNO₃"
+      }
+    ],
+    "report": [
+      {
+        "title": "实验记录",
+        "lines": [
+          "实验名称：硫酸根离子与氯离子的检验",
+          "SO₄²⁻ 检验：Na₂SO₄ + BaCl₂ = BaSO₄↓ + 2NaCl，再加稀硝酸沉淀不溶解",
+          "Cl⁻ 检验：NaCl + AgNO₃ = AgCl↓ + NaNO₃，再加稀硝酸沉淀不溶解",
+          "操作：取少量待测液于试管中，滴加试剂，观察是否产生不溶于稀硝酸的白色沉淀"
+        ]
+      },
+      {
+        "title": "现象记录",
+        "lines": [
+          "1. 硫酸钠溶液中滴加氯化钡溶液，产生白色沉淀",
+          "2. 再滴加稀硝酸，白色沉淀不溶解 → 证明含 SO₄²⁻",
+          "3. 氯化钠溶液中滴加硝酸银溶液，产生白色沉淀",
+          "4. 再滴加稀硝酸，白色沉淀不溶解 → 证明含 Cl⁻"
+        ]
+      },
+      {
+        "title": "实验结论",
+        "lines": [
+          "BaSO₄ 和 AgCl 都是既不溶于水也不溶于稀硝酸的白色沉淀。",
+          "加稀硝酸的目的是排除 CO₃²⁻ 等离子的干扰：碳酸盐沉淀会溶于酸并放出气体。",
+          "检验离子的思路：选一种能与目标离子生成特征沉淀的试剂，再加酸验证沉淀是否特殊的稳定。"
+        ]
+      }
+    ],
+    "errorTable": [
+      {
+        "op": "只加BaCl₂不加稀硝酸",
+        "phen": "CO₃²⁻也能产生白色沉淀",
+        "result": "无法排除干扰，结论不可靠",
+        "score": 10
+      },
+      {
+        "op": "把AgNO₃加到硫酸钠里",
+        "phen": "硫酸银微溶，可能干扰",
+        "result": "检验对象选错试剂",
+        "score": 12
+      },
+      {
+        "op": "先加稀硝酸后加试剂",
+        "phen": "顺序颠倒",
+        "result": "失去排除干扰的意义",
+        "score": 16
+      },
+      {
+        "op": "用自来水配制溶液",
+        "phen": "自来水中含Cl⁻",
+        "result": "氯离子检验出现假阳性",
+        "score": 12
+      },
+      {
+        "op": "把BaCl₂和AgNO₃混在一支试管",
+        "phen": "多种沉淀同时生成",
+        "result": "无法判断是哪一种离子",
+        "score": 16
+      },
+      {
+        "op": "误用碳酸钠溶液",
+        "phen": "那是用来演示干扰的",
+        "result": "本实验的待测液不是它",
+        "score": 14
+      }
+    ],
+    "steps": [
+      {
+        "id": "cover",
+        "type": "cover",
+        "title": "准备开始",
+        "progress": 0,
+        "headline": "硫酸根与氯离子的检验",
+        "subtitle": "都是白色沉淀，怎么知道沉淀的是谁？",
+        "buttons": [
+          {
+            "t": "开始实验",
+            "c": "primary",
+            "goto": "goal"
+          }
+        ]
+      },
+      {
+        "id": "goal",
+        "type": "doc",
+        "title": "实验目标",
+        "progress": 6,
+        "cols": [
+          {
+            "title": "实验目标",
+            "lines": [
+              "1. 学会检验 SO₄²⁻：BaCl₂ 溶液 + 稀硝酸",
+              "2. 学会检验 Cl⁻：AgNO₃ 溶液 + 稀硝酸",
+              "3. 记住 BaSO₄、AgCl 都是不溶于稀硝酸的白色沉淀",
+              "4. 理解加稀硝酸是为了排除 CO₃²⁻ 的干扰",
+              "5. 养成取少量样品、分两支试管分别检验的习惯"
+            ]
+          },
+          {
+            "title": "操作方式",
+            "lines": [
+              "● 拖拽试剂到对应试管的高亮区域",
+              "● 遇到思考题时点选项作答",
+              "● 右侧显示当前实验阶段",
+              "● 卡住时点右下角“？”获取提示"
+            ]
+          },
+          {
+            "title": "安全提示",
+            "lines": [
+              "⚠ 硝酸银溶液见光易分解，要保存在棕色瓶中",
+              "⚠ 硝酸有腐蚀性，取用时不能滴到皮肤和衣物上",
+              "⚠ 实验后的废液要倒入指定容器，不能随手倒进水池",
+              "⚠ 每取一种试剂滴管要专用，防止交叉污染"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "下一步",
+            "c": "primary",
+            "goto": "equip"
+          },
+          {
+            "t": "返回封面",
+            "c": "ghost",
+            "goto": "cover"
+          }
+        ]
+      },
+      {
+        "id": "equip",
+        "type": "equip",
+        "title": "选择实验器材",
+        "progress": 12,
+        "tip": "两支试管分别装两种待测液，另需要两种沉淀试剂，以及用来排除干扰的酸",
+        "buttons": [
+          {
+            "t": "确认器材",
+            "c": "primary",
+            "do": [
+              {
+                "do": "checkEquip",
+                "key": "equip",
+                "goto": "tubes"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "tubes",
+        "type": "stage",
+        "title": "准备两支试管",
+        "progress": 18,
+        "shelf": [
+          "tube"
+        ],
+        "desc": "两种待测液要分开检验，绝不能倒在同一支试管里。",
+        "help": "把试管拖到桌面上的高亮区域。分开取样是最基本的操作习惯：一旦混在一起，就分不清沉淀来自哪种离子了。",
+        "zones": [
+          "bench"
+        ],
+        "drop": [
+          {
+            "equip": "tube",
+            "zone": "bench",
+            "do": [
+              {
+                "do": "set",
+                "k": "tubesOn",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "tubes"
+              },
+              {
+                "do": "tip",
+                "text": "两支试管已并排架好 ✓ 左边检验SO₄²⁻，右边检验Cl⁻"
+              },
+              {
+                "do": "goto",
+                "id": "samples",
+                "delay": 1200
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要准备好盛放待测液的试管。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "samples",
+        "type": "stage",
+        "title": "分别取两种待测液",
+        "progress": 28,
+        "shelf": [
+          "na2so4",
+          "nacl"
+        ],
+        "desc": "左试管取少量硫酸钠溶液，右试管取少量氯化钠溶液。",
+        "help": "把硫酸钠溶液拖到左边试管，把氯化钠溶液拖到右边试管。取量不必多，1~2 mL 就够观察了。",
+        "zones": [
+          "zoneA",
+          "zoneB"
+        ],
+        "drop": [
+          {
+            "equip": "na2so4",
+            "zone": "zoneA",
+            "do": [
+              {
+                "do": "set",
+                "k": "sampleA",
+                "v": true
+              },
+              {
+                "do": "tip",
+                "text": "已取硫酸钠溶液 ✓"
+              },
+              {
+                "do": "if",
+                "cond": "stage.sampleB",
+                "then": [
+                  {
+                    "do": "score",
+                    "key": "samples"
+                  },
+                  {
+                    "do": "goto",
+                    "id": "testA",
+                    "delay": 900
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "equip": "nacl",
+            "zone": "zoneB",
+            "do": [
+              {
+                "do": "set",
+                "k": "sampleB",
+                "v": true
+              },
+              {
+                "do": "tip",
+                "text": "已取氯化钠溶液 ✓"
+              },
+              {
+                "do": "if",
+                "cond": "stage.sampleA",
+                "then": [
+                  {
+                    "do": "score",
+                    "key": "samples"
+                  },
+                  {
+                    "do": "goto",
+                    "id": "testA",
+                    "delay": 900
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "equip": "nacl",
+            "zone": "zoneA",
+            "do": [
+              {
+                "do": "err",
+                "text": "左边这支要检验的是硫酸根离子，应该取硫酸钠溶液。"
+              }
+            ]
+          },
+          {
+            "equip": "na2so4",
+            "zone": "zoneB",
+            "do": [
+              {
+                "do": "err",
+                "text": "右边这支要检验的是氯离子，应该取氯化钠溶液。"
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要取的是待测的两种无色溶液。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "testA",
+        "type": "stage",
+        "title": "检验硫酸根离子",
+        "progress": 40,
+        "shelf": [
+          "bacl2"
+        ],
+        "desc": "向左边试管滴加氯化钡溶液，观察是否有白色沉淀生成。",
+        "help": "把氯化钡溶液拖到左边试管。Ba²⁺ 遇到 SO₄²⁻ 会生成既不溶于水也不溶于酸的白色硫酸钡沉淀。",
+        "zones": [
+          "zoneA"
+        ],
+        "drop": [
+          {
+            "equip": "bacl2",
+            "zone": "zoneA",
+            "do": [
+              {
+                "do": "set",
+                "k": "pptA",
+                "v": 1,
+                "delay": 600
+              },
+              {
+                "do": "set",
+                "k": "pptA",
+                "v": 2,
+                "delay": 1400
+              },
+              {
+                "do": "score",
+                "key": "dropA"
+              },
+              {
+                "do": "tip",
+                "text": "出现白色沉淀：Na₂SO₄ + BaCl₂ = BaSO₄↓ + 2NaCl ✓"
+              },
+              {
+                "do": "goto",
+                "id": "acidA",
+                "delay": 2200
+              }
+            ]
+          },
+          {
+            "equip": "agno3",
+            "zone": "zoneA",
+            "do": [
+              {
+                "do": "set",
+                "k": "wrongOrder",
+                "v": true
+              },
+              {
+                "do": "err",
+                "text": "硝酸银是用来检验氯离子的，硫酸根要用含 Ba²⁺ 的溶液。"
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要滴入能检验硫酸根的试剂。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "acidA",
+        "type": "stage",
+        "title": "加稀硝酸验证",
+        "progress": 50,
+        "shelf": [
+          "hno3"
+        ],
+        "desc": "向左边试管的白色沉淀中滴加稀硝酸，看沉淀是否溶解。",
+        "help": "把稀硝酸拖到左边试管。如果沉淀是碳酸钡之类的，会溶于酸并冒气泡；硫酸钡则纹丝不动。",
+        "zones": [
+          "zoneA"
+        ],
+        "drop": [
+          {
+            "equip": "hno3",
+            "zone": "zoneA",
+            "do": [
+              {
+                "do": "set",
+                "k": "hno3A",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "acidA"
+              },
+              {
+                "do": "tip",
+                "text": "沉淀不溶解，也不产生气泡 → 确实是 BaSO₄ ✓"
+              },
+              {
+                "do": "goto",
+                "id": "testB",
+                "delay": 1900
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要加入稀硝酸，验证沉淀是否溶于酸。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "testB",
+        "type": "stage",
+        "title": "检验氯离子",
+        "progress": 62,
+        "shelf": [
+          "agno3"
+        ],
+        "desc": "向右边试管滴加硝酸银溶液，观察是否有白色沉淀生成。",
+        "help": "把硝酸银溶液拖到右边试管。Ag⁺ 遇到 Cl⁻ 会生成既不溶于水也不溶于稀硝酸的白色氯化银沉淀。",
+        "zones": [
+          "zoneB"
+        ],
+        "drop": [
+          {
+            "equip": "agno3",
+            "zone": "zoneB",
+            "do": [
+              {
+                "do": "set",
+                "k": "pptB",
+                "v": 1,
+                "delay": 600
+              },
+              {
+                "do": "set",
+                "k": "pptB",
+                "v": 2,
+                "delay": 1400
+              },
+              {
+                "do": "score",
+                "key": "dropB"
+              },
+              {
+                "do": "tip",
+                "text": "出现白色沉淀：NaCl + AgNO₃ = AgCl↓ + NaNO₃ ✓"
+              },
+              {
+                "do": "goto",
+                "id": "acidB",
+                "delay": 2200
+              }
+            ]
+          },
+          {
+            "equip": "bacl2",
+            "zone": "zoneB",
+            "do": [
+              {
+                "do": "set",
+                "k": "wrongOrder",
+                "v": true
+              },
+              {
+                "do": "err",
+                "text": "氯化钡是用来检验硫酸根的，氯离子要用含 Ag⁺ 的溶液。"
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要滴入能检验氯离子的试剂。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "acidB",
+        "type": "stage",
+        "title": "再次加稀硝酸",
+        "progress": 72,
+        "shelf": [
+          "hno3"
+        ],
+        "desc": "同样地，向白色沉淀中滴加稀硝酸，确认它不溶于酸。",
+        "help": "把稀硝酸拖到右边试管。到这一步，你就能踏实地说：这支试管里确实含有氯离子 ✓",
+        "zones": [
+          "zoneB"
+        ],
+        "drop": [
+          {
+            "equip": "hno3",
+            "zone": "zoneB",
+            "do": [
+              {
+                "do": "set",
+                "k": "hno3B",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "acidB"
+              },
+              {
+                "do": "tip",
+                "text": "沉淀同样不溶解 → 确实是 AgCl ✓"
+              },
+              {
+                "do": "goto",
+                "id": "judge",
+                "delay": 1800
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步还是要加入稀硝酸。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "judge",
+        "type": "doc",
+        "title": "为什么要多此一举加酸？",
+        "progress": 82,
+        "cols": [
+          {
+            "title": "只用沉淀试剂不行吗",
+            "lines": [
+              "看到白色沉淀就下结论，其实很危险。",
+              "溶液里若含 CO₃²⁻，加 BaCl₂ 也会生成白色的碳酸钡沉淀；",
+              "加 AgNO₃ 也会生成白色的碳酸银沉淀。",
+              "光看白色沉淀，根本分不清是谁。"
+            ]
+          },
+          {
+            "title": "稀硝酸的作用",
+            "lines": [
+              "碳酸盐沉淀遇酸会溶解，还放出二氧化碳气泡；",
+              "而 BaSO₄ 和 AgCl 既不溶于水也不溶于酸。",
+              "加酸后沉淀还在 → 排除了碳酸根的干扰；",
+              "沉淀溶解 → 说明原来只是碳酸盐。"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "排除CO₃²⁻等离子的干扰，确认沉淀是BaSO₄/AgCl",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "judge"
+              },
+              {
+                "do": "tip",
+                "text": "这正是加稀硝酸的全部意义 ✓"
+              },
+              {
+                "do": "goto",
+                "id": "summary",
+                "delay": 1600
+              }
+            ]
+          },
+          {
+            "t": "让沉淀更白更明显",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "稀硝酸不会让沉淀更白。它是一道检验：能让杂质沉淀溶解掉，留下真正不溶于酸的那一个。"
+              }
+            ]
+          },
+          {
+            "t": "没有什么用，习惯而已",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步恰恰是结论可靠性的保证。少了它，碳酸盐就能冒充硫酸盐。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "summary",
+        "type": "doc",
+        "title": "离子检验的通用思路",
+        "progress": 90,
+        "cols": [
+          {
+            "title": "三步走",
+            "lines": [
+              "① 取样：取少量待测液于洁净试管中",
+              "② 加试剂：产生特征现象（沉淀/气体/颜色）",
+              "③ 加酸（或加另一种试剂）确认，排除干扰"
+            ]
+          },
+          {
+            "title": "常考的两对",
+            "lines": [
+              "SO₄²⁻：BaCl₂ 溶液 + 稀硝酸 → 不溶的白色沉淀",
+              "Cl⁻：AgNO₃ 溶液 + 稀硝酸 → 不溶的白色沉淀",
+              "CO₃²⁻：稀盐酸 + 澄清石灰水 → 气体使石灰水变浑浊"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "取样 → 加特征试剂 → 再加酸排除干扰",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "summary"
+              },
+              {
+                "do": "tip",
+                "text": "思路清晰 ✓ 这套流程适用于绝大多数离子检验题"
+              },
+              {
+                "do": "goto",
+                "id": "report",
+                "delay": 1500
+              }
+            ]
+          },
+          {
+            "t": "看到白色沉淀就可以直接下结论",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "白色沉淀太多见了。必须经过「加酸不溶」这一步验证，结论才站得住。"
+              }
+            ]
+          },
+          {
+            "t": "把所有试剂都倒进一支试管观察",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "多种沉淀混在一起就无法判断来源。检验必须分开取样、逐一验证。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "report",
+        "type": "report",
+        "title": "实验报告",
+        "progress": 95,
+        "buttons": [
+          {
+            "t": "提交报告",
+            "c": "primary",
+            "do": [
+              {
+                "do": "finish"
+              },
+              {
+                "do": "goto",
+                "id": "score"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "score",
+        "type": "score",
+        "title": "实验评分",
+        "progress": 100,
+        "buttons": [
+          {
+            "t": "导出本次成绩",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "export"
+              }
+            ]
+          },
+          {
+            "t": "查看常见错误",
+            "c": "ghost",
+            "goto": "errtable"
+          },
+          {
+            "t": "重做实验",
+            "c": "primary",
+            "do": [
+              {
+                "do": "reset"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "errtable",
+        "type": "errors",
+        "title": "常见错误与后果",
+        "progress": 100,
+        "buttons": [
+          {
+            "t": "返回评分",
+            "c": "ghost",
+            "goto": "score"
+          },
+          {
+            "t": "重做实验",
+            "c": "primary",
+            "do": [
+              {
+                "do": "reset"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "exp_precip": {
+    "id": "precip",
+    "title": "碱与盐的沉淀反应",
+    "subtitle": "初中化学虚拟实验 · 复分解反应 + 沉淀颜色",
+    "badges": [
+      "蓝色 / 红褐 / 白色",
+      "复分解发生条件",
+      "满分 100 分"
+    ],
+    "viewBox": "0 0 600 360",
+    "equipments": [
+      {
+        "id": "tube",
+        "name": "试管（3支）",
+        "need": true
+      },
+      {
+        "id": "cuso4",
+        "name": "硫酸铜溶液",
+        "need": true
+      },
+      {
+        "id": "fecl3",
+        "name": "氯化铁溶液",
+        "need": true
+      },
+      {
+        "id": "na2co3",
+        "name": "碳酸钠溶液",
+        "need": true
+      },
+      {
+        "id": "naoh",
+        "name": "氢氧化钠溶液",
+        "need": true
+      },
+      {
+        "id": "limewater",
+        "name": "澄清石灰水",
+        "need": true
+      },
+      {
+        "id": "dropper",
+        "name": "胶头滴管",
+        "need": true
+      },
+      {
+        "id": "acid",
+        "name": "稀盐酸",
+        "need": false
+      },
+      {
+        "id": "water2",
+        "name": "蒸馏水",
+        "need": false
+      }
+    ],
+    "dims": [
+      {
+        "key": "skill",
+        "name": "操作规范"
+      },
+      {
+        "key": "safety",
+        "name": "安全意识"
+      }
+    ],
+    "scoreItems": [
+      {
+        "key": "equip",
+        "name": "器材选择",
+        "max": 10,
+        "dim": "skill"
+      },
+      {
+        "key": "tubes",
+        "name": "排列三支试管",
+        "max": 8,
+        "dim": "skill"
+      },
+      {
+        "key": "salts",
+        "name": "分别加入三种盐溶液",
+        "max": 14,
+        "dim": "skill"
+      },
+      {
+        "key": "alkali",
+        "name": "分别加入对应的碱",
+        "max": 16,
+        "dim": "skill"
+      },
+      {
+        "key": "observe",
+        "name": "准确描述沉淀颜色",
+        "max": 14,
+        "dim": "skill"
+      },
+      {
+        "key": "judge",
+        "name": "判断生成的沉淀",
+        "max": 14,
+        "dim": "skill"
+      },
+      {
+        "key": "rule",
+        "name": "归纳复分解发生条件",
+        "max": 14,
+        "dim": "skill"
+      },
+      {
+        "key": "summary",
+        "name": "说出三个方程式",
+        "max": 10,
+        "dim": "skill"
+      }
+    ],
+    "initialStage": {
+      "tubesOn": false,
+      "saltA": false,
+      "saltB": false,
+      "saltC": false,
+      "naohIn": false,
+      "limeIn": false,
+      "react": 0,
+      "wrongAcid": false
+    },
+    "dropZones": {
+      "bench": {
+        "x": 110,
+        "y": 210,
+        "w": 380,
+        "h": 112
+      },
+      "zoneA": {
+        "x": 120,
+        "y": 126,
+        "w": 90,
+        "h": 190
+      },
+      "zoneB": {
+        "x": 232,
+        "y": 126,
+        "w": 90,
+        "h": 190
+      },
+      "zoneC": {
+        "x": 396,
+        "y": 126,
+        "w": 100,
+        "h": 190
+      },
+      "zoneAB": {
+        "x": 116,
+        "y": 110,
+        "w": 266,
+        "h": 202
+      }
+    },
+    "scene": [
+      {
+        "tag": "rect",
+        "x": 30,
+        "y": 322,
+        "width": 540,
+        "height": 14,
+        "rx": 5,
+        "fill": "url(#gMetal)"
+      },
+      {
+        "tag": "rect",
+        "x": 30,
+        "y": 322,
+        "width": 540,
+        "height": 4,
+        "rx": 2,
+        "fill": "#e8eef2",
+        "opacity": 0.75
+      },
+      {
+        "tag": "g",
+        "when": "stage.tubesOn",
+        "children": [
+          {
+            "tag": "rect",
+            "x": 108,
+            "y": 292,
+            "width": 388,
+            "height": 12,
+            "rx": 4,
+            "fill": "url(#gMetal)"
+          },
+          {
+            "tag": "rect",
+            "x": 118,
+            "y": 296,
+            "width": 10,
+            "height": 22,
+            "fill": "url(#gMetalV)"
+          },
+          {
+            "tag": "rect",
+            "x": 476,
+            "y": 296,
+            "width": 10,
+            "height": 22,
+            "fill": "url(#gMetalV)"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.tubesOn",
+        "children": [
+          {
+            "tag": "path",
+            "d": "M140 152 L140 276 Q140 292 156 292 L188 292 Q204 292 204 276 L204 152 Z",
+            "fill": "url(#gGlass)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 2.2
+          },
+          {
+            "tag": "rect",
+            "x": 136,
+            "y": 144,
+            "width": 72,
+            "height": 10,
+            "rx": 4,
+            "fill": "url(#gGlassH)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 1.6
+          },
+          {
+            "tag": "rect",
+            "when": "stage.saltA",
+            "x": 143,
+            "y": 206,
+            "width": 58,
+            "height": 84,
+            "rx": 4,
+            "fill": "@ stage.react>=2 ? '#f2f4f7' : 'url(#gBlue)'",
+            "opacity": 0.9
+          },
+          {
+            "tag": "g",
+            "when": "stage.react>0",
+            "children": [
+              {
+                "tag": "path",
+                "d": "M143 268 Q156 256 172 264 Q188 254 201 268 L201 286 Q201 290 197 290 L147 290 Q143 290 143 286 Z",
+                "fill": "#1976d2",
+                "opacity": 0.95
+              },
+              {
+                "tag": "rect",
+                "x": 143,
+                "y": "@ 268 - 30*stage.react/3",
+                "width": 58,
+                "height": "@ 30*stage.react/3",
+                "rx": 3,
+                "fill": "#1565c0",
+                "opacity": 0.95
+              },
+              {
+                "tag": "text",
+                "when": "stage.react>=2",
+                "x": 172,
+                "y": 236,
+                "font-size": 10.5,
+                "text-anchor": "middle",
+                "fill": "#0d47a1",
+                "font-weight": 700,
+                "text": "蓝色絮状"
+              }
+            ]
+          },
+          {
+            "tag": "text",
+            "x": 172,
+            "y": 330,
+            "font-size": 11,
+            "text-anchor": "middle",
+            "fill": "#455a64",
+            "font-weight": 700,
+            "text": "CuSO₄ + NaOH"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.tubesOn",
+        "children": [
+          {
+            "tag": "path",
+            "d": "M250 152 L250 276 Q250 292 266 292 L298 292 Q314 292 314 276 L314 152 Z",
+            "fill": "url(#gGlass)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 2.2
+          },
+          {
+            "tag": "rect",
+            "x": 246,
+            "y": 144,
+            "width": 72,
+            "height": 10,
+            "rx": 4,
+            "fill": "url(#gGlassH)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 1.6
+          },
+          {
+            "tag": "rect",
+            "when": "stage.saltB",
+            "x": 253,
+            "y": 206,
+            "width": 58,
+            "height": 84,
+            "rx": 4,
+            "fill": "@ stage.react>=2 ? '#f6f2ee' : 'url(#gBrown)'",
+            "opacity": 0.9
+          },
+          {
+            "tag": "g",
+            "when": "stage.react>0",
+            "children": [
+              {
+                "tag": "path",
+                "d": "M253 268 Q266 256 282 264 Q298 254 311 268 L311 286 Q311 290 307 290 L257 290 Q253 290 253 286 Z",
+                "fill": "#8d4e1e",
+                "opacity": 0.95
+              },
+              {
+                "tag": "rect",
+                "x": 253,
+                "y": "@ 268 - 30*stage.react/3",
+                "width": 58,
+                "height": "@ 30*stage.react/3",
+                "rx": 3,
+                "fill": "#7b3f13",
+                "opacity": 0.95
+              },
+              {
+                "tag": "text",
+                "when": "stage.react>=2",
+                "x": 282,
+                "y": 236,
+                "font-size": 10.5,
+                "text-anchor": "middle",
+                "fill": "#bf360c",
+                "font-weight": 700,
+                "text": "红褐色"
+              }
+            ]
+          },
+          {
+            "tag": "text",
+            "x": 282,
+            "y": 330,
+            "font-size": 11,
+            "text-anchor": "middle",
+            "fill": "#455a64",
+            "font-weight": 700,
+            "text": "FeCl₃ + NaOH"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.tubesOn",
+        "children": [
+          {
+            "tag": "path",
+            "d": "M408 152 L408 276 Q408 292 424 292 L456 292 Q472 292 472 276 L472 152 Z",
+            "fill": "url(#gGlass)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 2.2
+          },
+          {
+            "tag": "rect",
+            "x": 404,
+            "y": 144,
+            "width": 72,
+            "height": 10,
+            "rx": 4,
+            "fill": "url(#gGlassH)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 1.6
+          },
+          {
+            "tag": "rect",
+            "when": "stage.saltC",
+            "x": 411,
+            "y": 206,
+            "width": 58,
+            "height": 84,
+            "rx": 4,
+            "fill": "@ stage.react>=1 ? '#f0f2f4' : '#fafafa'",
+            "opacity": 0.92
+          },
+          {
+            "tag": "g",
+            "when": "stage.react>0",
+            "children": [
+              {
+                "tag": "path",
+                "d": "M411 268 Q424 256 440 264 Q456 254 469 268 L469 286 Q469 290 465 290 L415 290 Q411 290 411 286 Z",
+                "fill": "#ffffff",
+                "stroke": "#e0e0e0",
+                "stroke-width": 1.2,
+                "opacity": 0.98
+              },
+              {
+                "tag": "rect",
+                "x": 411,
+                "y": "@ 268 - 32*stage.react/3",
+                "width": 58,
+                "height": "@ 32*stage.react/3",
+                "rx": 3,
+                "fill": "#ffffff",
+                "opacity": 0.98
+              },
+              {
+                "tag": "text",
+                "when": "stage.react>=2",
+                "x": 440,
+                "y": 236,
+                "font-size": 10.5,
+                "text-anchor": "middle",
+                "fill": "#37474f",
+                "font-weight": 700,
+                "text": "白色沉淀"
+              }
+            ]
+          },
+          {
+            "tag": "text",
+            "x": 440,
+            "y": 330,
+            "font-size": 11,
+            "text-anchor": "middle",
+            "fill": "#455a64",
+            "font-weight": 700,
+            "text": "Na₂CO₃ + Ca(OH)₂"
+          }
+        ]
+      },
+      {
+        "tag": "text",
+        "when": "stage.wrongAcid",
+        "x": 300,
+        "y": 112,
+        "font-size": 11.5,
+        "text-anchor": "middle",
+        "fill": "#dc2626",
+        "font-weight": 700,
+        "text": "加酸会把已经生成的沉淀又溶解掉，这一步要加的是碱"
+      },
+      {
+        "tag": "text",
+        "when": "stage.naohIn && stage.limeIn && stage.react===0",
+        "x": 300,
+        "y": 112,
+        "font-size": 11.5,
+        "text-anchor": "middle",
+        "fill": "#0277bd",
+        "font-weight": 700,
+        "text": "静置一会儿，观察沉淀的生成"
+      }
+    ],
+    "report": [
+      {
+        "title": "实验记录",
+        "lines": [
+          "① CuSO₄ + 2NaOH = Cu(OH)₂↓ + Na₂SO₄   蓝色絮状沉淀",
+          "② FeCl₃ + 3NaOH = Fe(OH)₃↓ + 3NaCl    红褐色沉淀",
+          "③ Na₂CO₃ + Ca(OH)₂ = CaCO₃↓ + 2NaOH   白色沉淀",
+          "操作：分别取三种盐溶液于试管中，再滴加对应的碱溶液，静置观察"
+        ]
+      },
+      {
+        "title": "现象记录",
+        "lines": [
+          "1. 硫酸铜溶液中滴加氢氧化钠，产生蓝色絮状沉淀，上层溶液蓝色变浅",
+          "2. 氯化铁溶液中滴加氢氧化钠，产生红褐色沉淀，溶液棕黄色变浅",
+          "3. 碳酸钠溶液中滴加澄清石灰水，产生白色沉淀"
+        ]
+      },
+      {
+        "title": "实验结论",
+        "lines": [
+          "碱与盐反应生成新碱和新盐，属于复分解反应（双交换、价不变）。",
+          "复分解反应发生的条件是：生成物中有沉淀、气体或水（难电离物质）。",
+          "Cu(OH)₂ 蓝色、Fe(OH)₃ 红褐色、CaCO₃ 白色，是中考常考的特征沉淀颜色。"
+        ]
+      }
+    ],
+    "errorTable": [
+      {
+        "op": "把三种溶液倒在同一支试管里",
+        "phen": "沉淀混合",
+        "result": "无法分辨各自的沉淀颜色",
+        "score": 14
+      },
+      {
+        "op": "向第三支试管加NaOH而不是石灰水",
+        "phen": "Na₂CO₃与NaOH不反应",
+        "result": "看不到白色沉淀",
+        "score": 16
+      },
+      {
+        "op": "把红褐色沉淀误记为黑色",
+        "phen": "Fe(OH)₃是红褐色",
+        "result": "颜色错位，推断错误",
+        "score": 14
+      },
+      {
+        "op": "认为Cu(OH)₂是蓝色溶液",
+        "phen": "沉淀与溶液要分清",
+        "result": "应是蓝色絮状沉淀",
+        "score": 14
+      },
+      {
+        "op": "加稀盐酸代替碱溶液",
+        "phen": "酸会溶解沉淀",
+        "result": "沉淀不出现甚至被溶解",
+        "score": 16
+      },
+      {
+        "op": "以为所有反应都能发生",
+        "phen": "要满足生成沉淀/气体/水",
+        "result": "复分解不一定发生",
+        "score": 14
+      }
+    ],
+    "steps": [
+      {
+        "id": "cover",
+        "type": "cover",
+        "title": "准备开始",
+        "progress": 0,
+        "headline": "碱与盐的沉淀反应",
+        "subtitle": "蓝、红褐、白——三支试管三种颜色",
+        "buttons": [
+          {
+            "t": "开始实验",
+            "c": "primary",
+            "goto": "goal"
+          }
+        ]
+      },
+      {
+        "id": "goal",
+        "type": "doc",
+        "title": "实验目标",
+        "progress": 6,
+        "cols": [
+          {
+            "title": "实验目标",
+            "lines": [
+              "1. 记住三种特征沉淀：Cu(OH)₂ 蓝色、Fe(OH)₃ 红褐色、CaCO₃ 白色",
+              "2. 认识复分解反应：碱 + 盐 → 新碱 + 新盐",
+              "3. 归纳复分解反应发生的条件",
+              "4. 会写三个化学方程式（注意配平与沉淀符号）",
+              "5. 体会「双交换、价不变」的写法规律"
+            ]
+          },
+          {
+            "title": "操作方式",
+            "lines": [
+              "● 拖拽试剂到对应试管的高亮区域",
+              "● 遇到思考题时点选项作答",
+              "● 右侧显示当前实验阶段",
+              "● 卡住时点右下角“？”获取提示"
+            ]
+          },
+          {
+            "title": "安全提示",
+            "lines": [
+              "⚠ 氢氧化钠、氢氧化钙溶液都有腐蚀性",
+              "⚠ 氯化铁溶液有腐蚀性且会染色，注意别滴到衣物上",
+              "⚠ 滴管要专管专用，避免试剂交叉污染",
+              "⚠ 废液倒入指定容器，不要直接倒进水池"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "下一步",
+            "c": "primary",
+            "goto": "equip"
+          },
+          {
+            "t": "返回封面",
+            "c": "ghost",
+            "goto": "cover"
+          }
+        ]
+      },
+      {
+        "id": "equip",
+        "type": "equip",
+        "title": "选择实验器材",
+        "progress": 12,
+        "tip": "三种盐溶液 + 两种碱溶液（注意第三支要用含钙离子的碱），还要能一滴一滴加",
+        "buttons": [
+          {
+            "t": "确认器材",
+            "c": "primary",
+            "do": [
+              {
+                "do": "checkEquip",
+                "key": "equip",
+                "goto": "tubes"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "tubes",
+        "type": "stage",
+        "title": "排好三支试管",
+        "progress": 18,
+        "shelf": [
+          "tube"
+        ],
+        "desc": "三种盐溶液要分开放，三个试管互不干扰。",
+        "help": "把试管拖到桌面上的高亮区域。三支试管各自独立完成一个反应，这样沉淀颜色才看得清楚。",
+        "zones": [
+          "bench"
+        ],
+        "drop": [
+          {
+            "equip": "tube",
+            "zone": "bench",
+            "do": [
+              {
+                "do": "set",
+                "k": "tubesOn",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "tubes"
+              },
+              {
+                "do": "tip",
+                "text": "三支试管已排好 ✓"
+              },
+              {
+                "do": "goto",
+                "id": "salts",
+                "delay": 1100
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要准备好三支试管。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "salts",
+        "type": "stage",
+        "title": "分别加入三种盐溶液",
+        "progress": 28,
+        "shelf": [
+          "cuso4",
+          "fecl3",
+          "na2co3"
+        ],
+        "desc": "从左到右依次是硫酸铜（蓝）、氯化铁（棕黄）、碳酸钠（无色）。",
+        "help": "把三种溶液分别拖到三支试管里。先记住它们各自的颜色：蓝色来自 Cu²⁺，棕黄色来自 Fe³⁺，碳酸钠溶液是无色的。",
+        "zones": [
+          "zoneA",
+          "zoneB",
+          "zoneC"
+        ],
+        "drop": [
+          {
+            "equip": "cuso4",
+            "zone": "zoneA",
+            "do": [
+              {
+                "do": "set",
+                "k": "saltA",
+                "v": true
+              },
+              {
+                "do": "tip",
+                "text": "蓝色硫酸铜溶液已加入 ✓"
+              },
+              {
+                "do": "if",
+                "cond": "stage.saltA && stage.saltB && stage.saltC",
+                "then": [
+                  {
+                    "do": "score",
+                    "key": "salts"
+                  },
+                  {
+                    "do": "goto",
+                    "id": "alkali",
+                    "delay": 900
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "equip": "fecl3",
+            "zone": "zoneB",
+            "do": [
+              {
+                "do": "set",
+                "k": "saltB",
+                "v": true
+              },
+              {
+                "do": "tip",
+                "text": "棕黄色氯化铁溶液已加入 ✓"
+              },
+              {
+                "do": "if",
+                "cond": "stage.saltA && stage.saltB && stage.saltC",
+                "then": [
+                  {
+                    "do": "score",
+                    "key": "salts"
+                  },
+                  {
+                    "do": "goto",
+                    "id": "alkali",
+                    "delay": 900
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "equip": "na2co3",
+            "zone": "zoneC",
+            "do": [
+              {
+                "do": "set",
+                "k": "saltC",
+                "v": true
+              },
+              {
+                "do": "tip",
+                "text": "碳酸钠溶液已加入 ✓"
+              },
+              {
+                "do": "if",
+                "cond": "stage.saltA && stage.saltB && stage.saltC",
+                "then": [
+                  {
+                    "do": "score",
+                    "key": "salts"
+                  },
+                  {
+                    "do": "goto",
+                    "id": "alkali",
+                    "delay": 900
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要加入的是三种盐溶液，注意各自对应的试管。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "alkali",
+        "type": "stage",
+        "title": "分别加入对应的碱",
+        "progress": 42,
+        "shelf": [
+          "naoh",
+          "limewater"
+        ],
+        "desc": "前两支试管加氢氧化钠溶液，第三支要加澄清石灰水（提供钙离子）。",
+        "help": "把氢氧化钠溶液拖到左边两支试管区域，把澄清石灰水拖到最右边那支。第三支要生成碳酸钙，必须提供 Ca²⁺。",
+        "zones": [
+          "zoneAB",
+          "zoneC"
+        ],
+        "drop": [
+          {
+            "equip": "naoh",
+            "zone": "zoneAB",
+            "do": [
+              {
+                "do": "set",
+                "k": "naohIn",
+                "v": true
+              },
+              {
+                "do": "tip",
+                "text": "已向左两支试管加入 NaOH 溶液 ✓"
+              },
+              {
+                "do": "if",
+                "cond": "stage.limeIn",
+                "then": [
+                  {
+                    "do": "score",
+                    "key": "alkali"
+                  },
+                  {
+                    "do": "set",
+                    "k": "react",
+                    "v": 1,
+                    "delay": 700
+                  },
+                  {
+                    "do": "set",
+                    "k": "react",
+                    "v": 2,
+                    "delay": 1500
+                  },
+                  {
+                    "do": "set",
+                    "k": "react",
+                    "v": 3,
+                    "delay": 2400
+                  },
+                  {
+                    "do": "goto",
+                    "id": "observe",
+                    "delay": 3000
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "equip": "limewater",
+            "zone": "zoneC",
+            "do": [
+              {
+                "do": "set",
+                "k": "limeIn",
+                "v": true
+              },
+              {
+                "do": "tip",
+                "text": "已向第三支试管加入澄清石灰水 ✓"
+              },
+              {
+                "do": "if",
+                "cond": "stage.naohIn",
+                "then": [
+                  {
+                    "do": "score",
+                    "key": "alkali"
+                  },
+                  {
+                    "do": "set",
+                    "k": "react",
+                    "v": 1,
+                    "delay": 700
+                  },
+                  {
+                    "do": "set",
+                    "k": "react",
+                    "v": 2,
+                    "delay": 1500
+                  },
+                  {
+                    "do": "set",
+                    "k": "react",
+                    "v": 3,
+                    "delay": 2400
+                  },
+                  {
+                    "do": "goto",
+                    "id": "observe",
+                    "delay": 3000
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "equip": "limewater",
+            "zone": "zoneAB",
+            "do": [
+              {
+                "do": "err",
+                "text": "石灰水是用来提供 Ca²⁺ 的，请加到最右边那支装有碳酸钠的试管里。"
+              }
+            ]
+          },
+          {
+            "equip": "acid",
+            "zone": "zoneAB",
+            "do": [
+              {
+                "do": "set",
+                "k": "wrongAcid",
+                "v": true
+              },
+              {
+                "do": "err",
+                "text": "酸会把已经生成的氢氧化物沉淀溶解掉。这一步要加的是碱溶液。"
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要加入的是碱溶液。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "observe",
+        "type": "doc",
+        "title": "三支试管各是什么颜色？",
+        "progress": 56,
+        "cols": [
+          {
+            "title": "观察结果",
+            "lines": [
+              "第一支：产生蓝色絮状沉淀",
+              "第二支：产生红褐色沉淀",
+              "第三支：产生白色沉淀",
+              "上层溶液的颜色都比原来变浅了"
+            ]
+          },
+          {
+            "title": "想一想",
+            "lines": [
+              "为什么上层溶液会变浅？",
+              "因为 Cu²⁺、Fe³⁺ 等离子进入沉淀被「带走」了，",
+              "留在溶液里的已经不是原来的那种离子。"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "蓝色絮状 / 红褐色 / 白色",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "observe"
+              },
+              {
+                "do": "tip",
+                "text": "颜色全部对上了 ✓ 这是最常考的一组沉淀颜色"
+              },
+              {
+                "do": "goto",
+                "id": "judge",
+                "delay": 1500
+              }
+            ]
+          },
+          {
+            "t": "蓝色 / 黑色 / 白色",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "第二支是红褐色不是黑色。Fe(OH)₃ 是红褐色，Fe₃O₄ 和铁粉才是黑色。"
+              }
+            ]
+          },
+          {
+            "t": "浅绿色 / 红褐色 / 无色透明",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "第一支沉淀是蓝色的（注意完全沉淀后上层液体也会变浅）；第三支明显有白色沉淀。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "judge",
+        "type": "doc",
+        "title": "沉淀各是什么物质？",
+        "progress": 68,
+        "cols": [
+          {
+            "title": "反应①",
+            "lines": [
+              "CuSO₄ + 2NaOH = Cu(OH)₂↓ + Na₂SO₄",
+              "交换离子：Cu²⁺ 与 OH⁻ 结合成沉淀"
+            ]
+          },
+          {
+            "title": "反应②③",
+            "lines": [
+              "FeCl₃ + 3NaOH = Fe(OH)₃↓ + 3NaCl",
+              "Na₂CO₃ + Ca(OH)₂ = CaCO₃↓ + 2NaOH",
+              "规律：互相交换成分，化合价不变"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "Cu(OH)₂ / Fe(OH)₃ / CaCO₃",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "judge"
+              },
+              {
+                "do": "tip",
+                "text": "正确 ✓ 三个沉淀对应的正是这三种难溶物"
+              },
+              {
+                "do": "goto",
+                "id": "rule",
+                "delay": 1500
+              }
+            ]
+          },
+          {
+            "t": "CuO / Fe₂O₃ / CaO",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "这三个是氧化物，不是氢氧化物沉淀。复分解反应中元素化合价不变，生成的是碱或盐。"
+              }
+            ]
+          },
+          {
+            "t": "CuCO₃ / FeCO₃ / Ca(OH)₂",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "前两支加的是 NaOH，带来的是 OH⁻；第三支生成的沉淀才是含碳酸根的。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rule",
+        "type": "doc",
+        "title": "复分解反应什么时候能发生？",
+        "progress": 80,
+        "cols": [
+          {
+            "title": "发生条件",
+            "lines": [
+              "两种化合物互相交换成分，",
+              "生成物中至少有一样满足：",
+              "① 有沉淀生成",
+              "② 有气体放出",
+              "③ 有水（难电离物质）生成"
+            ]
+          },
+          {
+            "title": "举例对比",
+            "lines": [
+              "能发生：Na₂CO₃ + Ca(OH)₂ → CaCO₃↓",
+              "能发生：NaOH + HCl → H₂O",
+              "能发生：Na₂CO₃ + 2HCl → CO₂↑",
+              "不能发生：NaOH + KCl → 什么都没有"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "生成物要有沉淀、气体或水",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "rule"
+              },
+              {
+                "do": "tip",
+                "text": "这是判断复分解能否发生的核心依据 ✓"
+              },
+              {
+                "do": "goto",
+                "id": "summary",
+                "delay": 1500
+              }
+            ]
+          },
+          {
+            "t": "只要两种化合物混合就行",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "如果混合后还是那些离子自由移动，等于什么都没发生。必须有沉淀、气体或水生成才算。"
+              }
+            ]
+          },
+          {
+            "t": "只要生成物里有盐就行",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "NaOH + KCl 交换后同样得到盐，但它在水中完全电离、全都溶着，反应并不会发生。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "summary",
+        "type": "doc",
+        "title": "把方程式写全",
+        "progress": 90,
+        "cols": [
+          {
+            "title": "第一支",
+            "lines": [
+              "CuSO₄ + 2NaOH = Na₂SO₄ + Cu(OH)₂↓",
+              "注意配平：Cu²⁺ 需要 2 个 OH⁻",
+              "沉淀符号不能漏"
+            ]
+          },
+          {
+            "title": "第二、三支",
+            "lines": [
+              "FeCl₃ + 3NaOH = 3NaCl + Fe(OH)₃↓",
+              "Na₂CO₃ + Ca(OH)₂ = 2NaOH + CaCO₃↓",
+              "口诀：双交换，价不变"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "CuSO₄+2NaOH=Na₂SO₄+Cu(OH)₂↓",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "summary"
+              },
+              {
+                "do": "tip",
+                "text": "写对了 ✓ 其余两个同理：FeCl₃+3NaOH、Na₂CO₃+Ca(OH)₂"
+              },
+              {
+                "do": "goto",
+                "id": "report",
+                "delay": 1600
+              }
+            ]
+          },
+          {
+            "t": "CuSO₄+NaOH=Na₂SO₄+CuOH↓",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "化学式 CuOH 不对，铜是 +2 价，需要 2 个 OH⁻，所以要写成 Cu(OH)₂ 且 NaOH 前配 2。"
+              }
+            ]
+          },
+          {
+            "t": "CuSO₄+2NaOH=Cu(OH)₂↓+Na₂SO₄↑",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "↑ 标错了对象：气体符号给 CO₂，沉淀符号给 Cu(OH)₂，硫酸钠是溶解的盐，什么符号都不加。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "report",
+        "type": "report",
+        "title": "实验报告",
+        "progress": 95,
+        "buttons": [
+          {
+            "t": "提交报告",
+            "c": "primary",
+            "do": [
+              {
+                "do": "finish"
+              },
+              {
+                "do": "goto",
+                "id": "score"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "score",
+        "type": "score",
+        "title": "实验评分",
+        "progress": 100,
+        "buttons": [
+          {
+            "t": "导出本次成绩",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "export"
+              }
+            ]
+          },
+          {
+            "t": "查看常见错误",
+            "c": "ghost",
+            "goto": "errtable"
+          },
+          {
+            "t": "重做实验",
+            "c": "primary",
+            "do": [
+              {
+                "do": "reset"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "errtable",
+        "type": "errors",
+        "title": "常见错误与后果",
+        "progress": 100,
+        "buttons": [
+          {
+            "t": "返回评分",
+            "c": "ghost",
+            "goto": "score"
+          },
+          {
+            "t": "重做实验",
+            "c": "primary",
+            "do": [
+              {
+                "do": "reset"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "exp_cuso4water": {
+    "id": "cuso4water",
+    "title": "无水硫酸铜检验水",
+    "subtitle": "初中化学虚拟实验 · 白色粉末遇水变蓝",
+    "badges": [
+      "白色 → 蓝色",
+      "对照实验",
+      "满分 100 分"
+    ],
+    "viewBox": "0 0 600 360",
+    "equipments": [
+      {
+        "id": "tube",
+        "name": "试管（2支）",
+        "need": true
+      },
+      {
+        "id": "cuso4a",
+        "name": "无水硫酸铜粉末",
+        "need": true
+      },
+      {
+        "id": "water2",
+        "name": "蒸馏水",
+        "need": true
+      },
+      {
+        "id": "alcohol",
+        "name": "无水乙醇",
+        "need": true
+      },
+      {
+        "id": "spoon",
+        "name": "药匙",
+        "need": true
+      },
+      {
+        "id": "dropper",
+        "name": "胶头滴管",
+        "need": true
+      },
+      {
+        "id": "cuso4",
+        "name": "硫酸铜溶液",
+        "need": false
+      },
+      {
+        "id": "acid",
+        "name": "稀盐酸",
+        "need": false
+      }
+    ],
+    "dims": [
+      {
+        "key": "skill",
+        "name": "操作规范"
+      },
+      {
+        "key": "safety",
+        "name": "安全意识"
+      }
+    ],
+    "scoreItems": [
+      {
+        "key": "equip",
+        "name": "器材选择",
+        "max": 10,
+        "dim": "skill"
+      },
+      {
+        "key": "tube",
+        "name": "准备两支试管",
+        "max": 8,
+        "dim": "skill"
+      },
+      {
+        "key": "powder",
+        "name": "各取白色粉末",
+        "max": 12,
+        "dim": "skill"
+      },
+      {
+        "key": "water",
+        "name": "向第一支加水",
+        "max": 14,
+        "dim": "skill"
+      },
+      {
+        "key": "alcohol",
+        "name": "向第二支加无水乙醇",
+        "max": 12,
+        "dim": "skill"
+      },
+      {
+        "key": "observe",
+        "name": "描述并解释现象",
+        "max": 14,
+        "dim": "skill"
+      },
+      {
+        "key": "judge",
+        "name": "判断产物与用途",
+        "max": 16,
+        "dim": "skill"
+      },
+      {
+        "key": "summary",
+        "name": "归纳检验水的思路",
+        "max": 14,
+        "dim": "skill"
+      }
+    ],
+    "initialStage": {
+      "tubeOn": false,
+      "powderIn": false,
+      "waterIn": false,
+      "blue": 0,
+      "alcoholIn": false,
+      "stillWhite": false,
+      "wrongSoln": false
+    },
+    "dropZones": {
+      "bench": {
+        "x": 130,
+        "y": 210,
+        "w": 340,
+        "h": 112
+      },
+      "powderZn": {
+        "x": 138,
+        "y": 196,
+        "w": 324,
+        "h": 116
+      },
+      "zoneA": {
+        "x": 150,
+        "y": 126,
+        "w": 106,
+        "h": 192
+      },
+      "zoneB": {
+        "x": 346,
+        "y": 126,
+        "w": 106,
+        "h": 192
+      }
+    },
+    "scene": [
+      {
+        "tag": "rect",
+        "x": 30,
+        "y": 322,
+        "width": 540,
+        "height": 14,
+        "rx": 5,
+        "fill": "url(#gMetal)"
+      },
+      {
+        "tag": "rect",
+        "x": 30,
+        "y": 322,
+        "width": 540,
+        "height": 4,
+        "rx": 2,
+        "fill": "#e8eef2",
+        "opacity": 0.75
+      },
+      {
+        "tag": "g",
+        "when": "stage.tubeOn",
+        "children": [
+          {
+            "tag": "rect",
+            "x": 138,
+            "y": 292,
+            "width": 324,
+            "height": 12,
+            "rx": 4,
+            "fill": "url(#gMetal)"
+          },
+          {
+            "tag": "rect",
+            "x": 148,
+            "y": 296,
+            "width": 10,
+            "height": 22,
+            "fill": "url(#gMetalV)"
+          },
+          {
+            "tag": "rect",
+            "x": 442,
+            "y": 296,
+            "width": 10,
+            "height": 22,
+            "fill": "url(#gMetalV)"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.tubeOn",
+        "children": [
+          {
+            "tag": "path",
+            "d": "M172 152 L172 278 Q172 292 186 292 L218 292 Q232 292 232 278 L232 152 Z",
+            "fill": "url(#gGlass)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 2.2
+          },
+          {
+            "tag": "rect",
+            "x": 168,
+            "y": 144,
+            "width": 68,
+            "height": 10,
+            "rx": 4,
+            "fill": "url(#gGlassH)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 1.6
+          },
+          {
+            "tag": "path",
+            "d": "M182 168 L182 280",
+            "stroke": "#ffffff",
+            "stroke-width": 2.2,
+            "opacity": 0.8,
+            "fill": "none"
+          },
+          {
+            "tag": "g",
+            "when": "stage.powderIn",
+            "children": [
+              {
+                "tag": "path",
+                "d": "M175 272 Q190 258 202 268 Q216 256 229 272 L229 284 Q229 290 223 290 L181 290 Q175 290 175 284 Z",
+                "fill": "@ stage.blue>=3 ? '#1565c0' : (stage.blue>=2 ? '#5b9bd5' : (stage.blue>=1 ? '#a8cdf0' : '#ffffff'))"
+              },
+              {
+                "tag": "circle",
+                "cx": 188,
+                "cy": 262,
+                "r": 4.5,
+                "fill": "@ stage.blue>=2 ? '#1976d2' : '#fafafa'",
+                "stroke": "#e0e0e0",
+                "stroke-width": 1
+              },
+              {
+                "tag": "circle",
+                "cx": 214,
+                "cy": 265,
+                "r": 4,
+                "fill": "@ stage.blue>=2 ? '#1976d2' : '#fafafa'",
+                "stroke": "#e0e0e0",
+                "stroke-width": 1
+              }
+            ]
+          },
+          {
+            "tag": "rect",
+            "when": "stage.waterIn",
+            "x": 175,
+            "y": "@ 262 - 36*stage.blue/3",
+            "width": 58,
+            "height": "@ 36*stage.blue/3",
+            "rx": 3,
+            "fill": "@ stage.blue>=3 ? '#1565c0' : (stage.blue>=2 ? '#5b9bd5' : '#a8cdf0')",
+            "opacity": 0.6
+          },
+          {
+            "tag": "text",
+            "when": "stage.powderIn && stage.blue===0",
+            "x": 202,
+            "y": 246,
+            "font-size": 10.5,
+            "text-anchor": "middle",
+            "fill": "#455a64",
+            "text": "白色粉末"
+          },
+          {
+            "tag": "text",
+            "when": "stage.blue>=3",
+            "x": 202,
+            "y": 232,
+            "font-size": 10.5,
+            "text-anchor": "middle",
+            "fill": "#0d47a1",
+            "font-weight": 700,
+            "text": "变成蓝色！"
+          },
+          {
+            "tag": "text",
+            "x": 202,
+            "y": 330,
+            "font-size": 11.5,
+            "text-anchor": "middle",
+            "fill": "#455a64",
+            "font-weight": 700,
+            "text": "实验组：加水"
+          }
+        ]
+      },
+      {
+        "tag": "g",
+        "when": "stage.tubeOn",
+        "children": [
+          {
+            "tag": "path",
+            "d": "M368 152 L368 278 Q368 292 382 292 L414 292 Q428 292 428 278 L428 152 Z",
+            "fill": "url(#gGlass)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 2.2
+          },
+          {
+            "tag": "rect",
+            "x": 364,
+            "y": 144,
+            "width": 68,
+            "height": 10,
+            "rx": 4,
+            "fill": "url(#gGlassH)",
+            "stroke": "#7ba7c7",
+            "stroke-width": 1.6
+          },
+          {
+            "tag": "path",
+            "d": "M378 168 L378 280",
+            "stroke": "#ffffff",
+            "stroke-width": 2.2,
+            "opacity": 0.8,
+            "fill": "none"
+          },
+          {
+            "tag": "g",
+            "when": "stage.powderIn",
+            "children": [
+              {
+                "tag": "path",
+                "d": "M371 272 Q386 258 398 268 Q412 256 425 272 L425 284 Q425 290 419 290 L377 290 Q371 290 371 284 Z",
+                "fill": "#ffffff"
+              },
+              {
+                "tag": "circle",
+                "cx": 384,
+                "cy": 262,
+                "r": 4.5,
+                "fill": "#fafafa",
+                "stroke": "#e0e0e0",
+                "stroke-width": 1
+              },
+              {
+                "tag": "circle",
+                "cx": 410,
+                "cy": 265,
+                "r": 4,
+                "fill": "#fafafa",
+                "stroke": "#e0e0e0",
+                "stroke-width": 1
+              }
+            ]
+          },
+          {
+            "tag": "rect",
+            "when": "stage.alcoholIn",
+            "x": 371,
+            "y": 240,
+            "width": 58,
+            "height": 48,
+            "rx": 3,
+            "fill": "#f1ecf9",
+            "opacity": 0.8
+          },
+          {
+            "tag": "text",
+            "when": "stage.stillWhite",
+            "x": 398,
+            "y": 246,
+            "font-size": 10.5,
+            "text-anchor": "middle",
+            "fill": "#6a1b9a",
+            "font-weight": 700,
+            "text": "仍然白色"
+          },
+          {
+            "tag": "text",
+            "x": 398,
+            "y": 330,
+            "font-size": 11.5,
+            "text-anchor": "middle",
+            "fill": "#455a64",
+            "font-weight": 700,
+            "text": "对照组：加无水乙醇"
+          }
+        ]
+      },
+      {
+        "tag": "text",
+        "when": "stage.wrongSoln",
+        "x": 300,
+        "y": 116,
+        "font-size": 11.5,
+        "text-anchor": "middle",
+        "fill": "#dc2626",
+        "font-weight": 700,
+        "text": "硫酸铜溶液本身就是蓝色的，看不出变化，无法作检验用"
+      },
+      {
+        "tag": "text",
+        "when": "stage.waterIn && stage.alcoholIn",
+        "x": 300,
+        "y": 116,
+        "font-size": 11.5,
+        "text-anchor": "middle",
+        "fill": "#0277bd",
+        "font-weight": 700,
+        "text": "对比：只有含水的那一支变蓝"
+      }
+    ],
+    "report": [
+      {
+        "title": "实验记录",
+        "lines": [
+          "实验名称：无水硫酸铜检验水的存在",
+          "反应原理：CuSO₄（白） + 5H₂O = CuSO₄·5H₂O（蓝）",
+          "操作：两支试管各取少量无水硫酸铜白色粉末，一支加水，另一支加无水乙醇作对照",
+          "用途：检验某液体中是否含有水；也可放在干燥器中指示是否受潮"
+        ]
+      },
+      {
+        "title": "现象记录",
+        "lines": [
+          "1. 无水硫酸铜是白色粉末",
+          "2. 加水后白色粉末迅速变成蓝色，溶液也呈蓝色",
+          "3. 加无水乙醇的那一支始终保持白色，没有变化"
+        ]
+      },
+      {
+        "title": "实验结论",
+        "lines": [
+          "无水硫酸铜能与水结合生成蓝色的五水合硫酸铜，颜色变化非常明显。",
+          "这个变化是水特有的，乙醇等不含水的液体不能使其变蓝。",
+          "因此无水硫酸铜常用于检验水的存在，也可判断干燥剂是否失效。"
+        ]
+      }
+    ],
+    "errorTable": [
+      {
+        "op": "用硫酸铜溶液代替无水硫酸铜",
+        "phen": "本身就是蓝色",
+        "result": "没有颜色变化，无法检验",
+        "score": 14
+      },
+      {
+        "op": "只做加水不做对照组",
+        "phen": "缺少对比",
+        "result": "不能说明变化是水引起的",
+        "score": 12
+      },
+      {
+        "op": "取太多白色粉末",
+        "phen": "药品浪费",
+        "result": "现象反而不容易看清",
+        "score": 12
+      },
+      {
+        "op": "把变蓝说成潮解或变质",
+        "phen": "概念混淆",
+        "result": "应表述为与水结合生成结晶水合物",
+        "score": 16
+      },
+      {
+        "op": "误加稀盐酸",
+        "phen": "酸中含大量水",
+        "result": "同样变蓝，失去对照意义",
+        "score": 14
+      },
+      {
+        "op": "直接用手抓粉末",
+        "phen": "药品受污染且伤皮肤",
+        "result": "要用洁净药匙取用",
+        "score": 12
+      }
+    ],
+    "steps": [
+      {
+        "id": "cover",
+        "type": "cover",
+        "title": "准备开始",
+        "progress": 0,
+        "headline": "无水硫酸铜检验水",
+        "subtitle": "一撮白粉，滴上一滴水就变蓝 —— 这是水的专属信号",
+        "buttons": [
+          {
+            "t": "开始实验",
+            "c": "primary",
+            "goto": "goal"
+          }
+        ]
+      },
+      {
+        "id": "goal",
+        "type": "doc",
+        "title": "实验目标",
+        "progress": 6,
+        "cols": [
+          {
+            "title": "实验目标",
+            "lines": [
+              "1. 知道无水硫酸铜是白色粉末，遇水变蓝",
+              "2. 掌握用它检验某物质中是否含水的方法",
+              "3. 通过设置对照组排除「液体本身导致变蓝」",
+              "4. 认识结晶水合物 CuSO₄·5H₂O（胆矾）",
+              "5. 记住CuSO₄+5H₂O=CuSO₄·5H₂O 属于化合反应"
+            ]
+          },
+          {
+            "title": "操作方式",
+            "lines": [
+              "● 拖拽药品到试管的高亮区域",
+              "● 遇到思考题时点选项作答",
+              "● 右侧显示当前实验阶段",
+              "● 卡住时点右下角“？”获取提示"
+            ]
+          },
+          {
+            "title": "安全提示",
+            "lines": [
+              "⚠ 硫酸铜有毒，绝对不能入口",
+              "⚠ 取用粉末要用洁净药匙，不要用手直接接触",
+              "⚠ 无水乙醇易燃，使用时远离明火",
+              "⚠ 药品取用量要少，铺满试管底部一小层即可"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "下一步",
+            "c": "primary",
+            "goto": "equip"
+          },
+          {
+            "t": "返回封面",
+            "c": "ghost",
+            "goto": "cover"
+          }
+        ]
+      },
+      {
+        "id": "equip",
+        "type": "equip",
+        "title": "选择实验器材",
+        "progress": 12,
+        "tip": "要用的是白色粉末而不是蓝色溶液，还得有一种「看起来像水但不是水」的液体来做对照",
+        "buttons": [
+          {
+            "t": "确认器材",
+            "c": "primary",
+            "do": [
+              {
+                "do": "checkEquip",
+                "key": "equip",
+                "goto": "tubeStep"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "tubeStep",
+        "type": "stage",
+        "title": "准备两支试管",
+        "progress": 18,
+        "shelf": [
+          "tube"
+        ],
+        "desc": "一支做实验组，另一支做对照组。只有两相对照，才能说明是水在起作用。",
+        "help": "把试管拖到桌面上的高亮区域。左边加水做实验组，右边加无水乙醇做对照组。",
+        "zones": [
+          "bench"
+        ],
+        "drop": [
+          {
+            "equip": "tube",
+            "zone": "bench",
+            "do": [
+              {
+                "do": "set",
+                "k": "tubeOn",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "tube"
+              },
+              {
+                "do": "tip",
+                "text": "两支试管已放好 ✓"
+              },
+              {
+                "do": "goto",
+                "id": "powder",
+                "delay": 1100
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要准备好两支试管。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "powder",
+        "type": "stage",
+        "title": "各取少量白色粉末",
+        "progress": 26,
+        "shelf": [
+          "cuso4a",
+          "spoon"
+        ],
+        "desc": "用药匙取少量无水硫酸铜，分别放入两支试管，铺满底部薄薄一层即可。",
+        "help": "把无水硫酸铜拖到试管区域。注意要取白色粉末状的无水硫酸铜，不是蓝色的硫酸铜溶液或晶体。",
+        "zones": [
+          "powderZn"
+        ],
+        "drop": [
+          {
+            "equip": "cuso4a",
+            "zone": "powderZn",
+            "do": [
+              {
+                "do": "set",
+                "k": "powderIn",
+                "v": true
+              },
+              {
+                "do": "score",
+                "key": "powder"
+              },
+              {
+                "do": "tip",
+                "text": "两支试管都放入了白色粉末 ✓ 记住它现在的颜色"
+              },
+              {
+                "do": "goto",
+                "id": "water",
+                "delay": 1200
+              }
+            ]
+          },
+          {
+            "equip": "cuso4",
+            "zone": "powderZn",
+            "do": [
+              {
+                "do": "set",
+                "k": "wrongSoln",
+                "v": true
+              },
+              {
+                "do": "err",
+                "text": "硫酸铜溶液本来就是蓝色的，加再多也看不出变化。要取的是白色粉末。"
+              }
+            ]
+          },
+          {
+            "equip": "spoon",
+            "zone": "powderZn",
+            "do": [
+              {
+                "do": "err",
+                "text": "药匙是用来取药品的工具，本身不是药品。"
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要取的是白色粉末状固体。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "water",
+        "type": "stage",
+        "title": "向第一支加水",
+        "progress": 38,
+        "shelf": [
+          "water2"
+        ],
+        "desc": "用滴管向左边试管滴加几滴水，观察白色粉末的变化。",
+        "help": "把蒸馏水拖到左边试管。滴的时候不要加太多，几滴就足够让白色粉末显现变化。",
+        "zones": [
+          "zoneA"
+        ],
+        "drop": [
+          {
+            "equip": "water2",
+            "zone": "zoneA",
+            "do": [
+              {
+                "do": "set",
+                "k": "waterIn",
+                "v": true
+              },
+              {
+                "do": "set",
+                "k": "blue",
+                "v": 1,
+                "delay": 500
+              },
+              {
+                "do": "set",
+                "k": "blue",
+                "v": 2,
+                "delay": 1200
+              },
+              {
+                "do": "set",
+                "k": "blue",
+                "v": 3,
+                "delay": 1900
+              },
+              {
+                "do": "score",
+                "key": "water"
+              },
+              {
+                "do": "tip",
+                "text": "白色粉末变成蓝色了！CuSO₄ + 5H₂O = CuSO₄·5H₂O ✓"
+              },
+              {
+                "do": "goto",
+                "id": "alcohol",
+                "delay": 2600
+              }
+            ]
+          },
+          {
+            "equip": "acid",
+            "zone": "zoneA",
+            "do": [
+              {
+                "do": "err",
+                "text": "稀盐酸里含有大量水，会让它变蓝，但这样就分不清到底是酸还是水的作用了。这一步要用蒸馏水。"
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要加入的是水。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "alcohol",
+        "type": "stage",
+        "title": "向第二支加无水乙醇",
+        "progress": 50,
+        "shelf": [
+          "alcohol"
+        ],
+        "desc": "给右边试管加入同样几滴无水乙醇，作为对照。",
+        "help": "把无水乙醇拖到右边试管。它也是一种无色液体，如果白粉不变蓝，就说明变蓝是水特有的现象。",
+        "zones": [
+          "zoneB"
+        ],
+        "drop": [
+          {
+            "equip": "alcohol",
+            "zone": "zoneB",
+            "do": [
+              {
+                "do": "set",
+                "k": "alcoholIn",
+                "v": true
+              },
+              {
+                "do": "set",
+                "k": "stillWhite",
+                "v": true,
+                "delay": 900
+              },
+              {
+                "do": "score",
+                "key": "alcohol"
+              },
+              {
+                "do": "tip",
+                "text": "对照组的白色粉末没有任何变化 ✓"
+              },
+              {
+                "do": "goto",
+                "id": "observe",
+                "delay": 1600
+              }
+            ]
+          },
+          {
+            "equip": "water2",
+            "zone": "zoneB",
+            "do": [
+              {
+                "do": "err",
+                "text": "第二支要加无水乙醇做对照，加水就失去对照意义了。"
+              }
+            ]
+          },
+          {
+            "do": [
+              {
+                "do": "err",
+                "text": "这一步要加入不含水的无色液体作对照。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "observe",
+        "type": "doc",
+        "title": "现象说明了什么？",
+        "progress": 62,
+        "cols": [
+          {
+            "title": "现象对比",
+            "lines": [
+              "加水的一支：白色粉末迅速变成蓝色",
+              "加无水乙醇的一支：始终保持白色",
+              "两者唯一的区别就是有没有水"
+            ]
+          },
+          {
+            "title": "结论",
+            "lines": [
+              "白色变蓝色，是水分子与硫酸铜结合的结果：",
+              "CuSO₄ + 5H₂O = CuSO₄·5H₂O",
+              "生成物叫五水合硫酸铜，俗称胆矾或蓝矾。"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "只有水才能使它变蓝，可用来检验水",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "observe"
+              },
+              {
+                "do": "tip",
+                "text": "正是这样 ✓ 对照组让这个结论变得可靠"
+              },
+              {
+                "do": "goto",
+                "id": "judge",
+                "delay": 1500
+              }
+            ]
+          },
+          {
+            "t": "任何无色液体都能使它变蓝",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "右边那支加了无水乙醇，完全没变色。所以变蓝是水独有的作用。"
+              }
+            ]
+          },
+          {
+            "t": "白色粉末吸水潮解了",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "潮解是固体吸水后表面溶解形成溶液的现象。这里发生的是化学变化，生成了新的物质——蓝色的结晶水合物。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "judge",
+        "type": "doc",
+        "title": "变蓝后的物质是什么？",
+        "progress": 74,
+        "cols": [
+          {
+            "title": "新物质",
+            "lines": [
+              "CuSO₄·5H₂O 五水合硫酸铜",
+              "含有定量结合的结晶水，属于纯净物",
+              "俗称胆矾、蓝矾，是蓝色晶体"
+            ]
+          },
+          {
+            "title": "反应类型",
+            "lines": [
+              "CuSO₄ + 5H₂O = CuSO₄·5H₂O",
+              "多种物质生成一种物质 —— 化合反应",
+              "结晶水合物中的水是结合进去的，不是简单混在一起"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "CuSO₄·5H₂O，属于化合反应生成的新物质",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "judge"
+              },
+              {
+                "do": "tip",
+                "text": "完全正确 ✓ 它和原来的白色粉末是两种不同的物质"
+              },
+              {
+                "do": "goto",
+                "id": "summary",
+                "delay": 1500
+              }
+            ]
+          },
+          {
+            "t": "只是硫酸铜被水溶解了",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "溶解得到的仍是 CuSO₄ 溶液；而这里水按 1:5 的比例结合进了晶体里，组成改变了，是化学变化。"
+              }
+            ]
+          },
+          {
+            "t": "CuSO₄·H₂O",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "结晶水的数目是 5 而不是 1。胆矾的化学式要写成 CuSO₄·5H₂O。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "summary",
+        "type": "doc",
+        "title": "检验水的通用思路",
+        "progress": 86,
+        "cols": [
+          {
+            "title": "检验方法",
+            "lines": [
+              "取少量待测液体（或气体）与白色无水硫酸铜接触，",
+              "白色变蓝 → 其中含有水；",
+              "始终保持白色 → 不含水。",
+              "现象明显、操作简单，是初中最常用的检验方法之一。"
+            ]
+          },
+          {
+            "title": "常见用途",
+            "lines": [
+              "● 检验酒精中是否混有水",
+              "● 判断干燥剂是否失效（放在干燥器里观察颜色）",
+              "● 检验某反应是否有水生成（配合干燥装置）"
+            ]
+          }
+        ],
+        "buttons": [
+          {
+            "t": "取样 → 加无水CuSO₄ → 变蓝即含水",
+            "c": "primary",
+            "do": [
+              {
+                "do": "score",
+                "key": "summary"
+              },
+              {
+                "do": "tip",
+                "text": "归纳得很清楚 ✓ 与之对应，检验水生成也可用白色的无水硫酸铜"
+              },
+              {
+                "do": "goto",
+                "id": "report",
+                "delay": 1500
+              }
+            ]
+          },
+          {
+            "t": "尝一下有没有味道就能判断",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "实验室的任何药品都严禁品尝，而且硫酸铜有毒。必须靠现象来判断。"
+              }
+            ]
+          },
+          {
+            "t": "用天平称一下有没有增重",
+            "c": "ghost",
+            "do": [
+              {
+                "do": "err",
+                "text": "增重确实说明吸收了东西，但分不清吸的是水还是别的。颜色变化才是又直观又专属的证据。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "report",
+        "type": "report",
+        "title": "实验报告",
+        "progress": 95,
         "buttons": [
           {
             "t": "提交报告",

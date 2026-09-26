@@ -33,15 +33,26 @@ js/scene.js           数据驱动 SVG 场景渲染器
 js/engine.js          实验引擎：步骤 / 拖拽 / 手势 / 评分 / 动作
 js/home.js  js/app.js  js/teacher.js
 data/experiments.json 实验清单（加实验先在这里登记）
+── 气体制取与检验 ──
 data/kmno4.json       高锰酸钾制取氧气（固体加热型 · 排水法）
 data/h2o2.json        过氧化氢制取氧气（固液常温 · MnO₂ 催化 · 排水法）
 data/co2.json         实验室制取二氧化碳（固液常温 · 向上排空气法）
 data/h2.json          实验室制取氢气（锌+稀硫酸 · 验纯 · 点燃 · 烧杯验水）
 data/o2air.json       测定空气里氧气含量（红磷燃烧 · 水倒吸约 1/5）
 data/water.json       电解水（正氧负氢 · 体积比 1:2 · 水的组成）
+── 性质探究 ──
+data/co2naoh.json     二氧化碳与氢氧化钠反应（无明显现象 · 塑料瓶变瘪 · 对照实验）
+data/cao.json         生石灰与水反应放热（温度计读数上升 · 干燥剂原理）
+data/neutral.json     酸和碱的中和反应（酚酞显色 · 逐滴加酸 · H⁺+OH⁻=H₂O）
+data/metalacid.json   金属与稀盐酸反应（三试管对比 Mg>Zn>Fe · 点燃验氢）
+data/fecuso4.json     铁与硫酸铜反应（湿法炼铜 · 蓝变浅绿 · 红色析出）
+data/ions.json        硫酸根与氯离子检验（BaSO₄/AgCl 不溶于稀硝酸 · 排除干扰）
+data/precip.json      碱与盐的沉淀反应（蓝/红褐/白三种沉淀 · 复分解条件）
+data/cuso4water.json  无水硫酸铜检验水（白色变蓝 · 无水乙醇对照）
 data/bundle.js        自动生成的离线数据包（勿手改）
 tools/check.js        数据自检：node tools/check.js
 tools/smoke.js        冒烟测试：node tools/smoke.js
+tools/stage-sweep.js  状态扫描测试：node tools/stage-sweep.js
 tools/build-bundle.js 打包离线数据：node tools/build-bundle.js
 ```
 

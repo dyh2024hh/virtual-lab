@@ -36,18 +36,36 @@ var Home = (function () {
     var box = document.getElementById('expGrid');
     if (!list.length) { box.innerHTML = '<div class="empty">暂无实验</div>'; return; }
     document.getElementById('expCount').textContent = '共 ' + list.length + ' 个';
-    box.innerHTML = list.map(function (e) {
-      var best = bestOf(e.id);
-      return '<div class="exp-card" onclick="location.href=\'experiment.html?id=' + encodeURIComponent(e.id) + '\'">'
-        + '<div class="ic">' + (e.iconEmoji || '🧪') + '</div>'
-        + '<h3>' + LabCore.esc(e.name) + '</h3>'
-        + '<p>' + LabCore.esc(e.desc || '') + '</p>'
-        + '<div class="meta">'
-        +   '<span>满分 ' + (e.max || 100) + ' 分</span>'
-        +   '<span>' + LabCore.esc(e.method || '') + '</span>'
-        +   (best ? '<span style="background:#dcfce7;color:#15803d">最好成绩 ' + best.score + '</span>' : '<span>未练习</span>')
-        + '</div></div>';
-    }).join('');
+
+    /* 清单里带 group 字段时按分组显示：气体制取一组、性质探究一组…… */
+    if (list.some(function (e) { return e.group; })) {
+      var order = [], map = {};
+      list.forEach(function (e) {
+        var g = e.group || '其他实验';
+        if (!map[g]) { map[g] = []; order.push(g); }
+        map[g].push(e);
+      });
+      box.innerHTML = order.map(function (g) {
+        return '<div class="grp-hd"><span>' + LabCore.esc(g) + '</span>'
+          + '<em>' + map[g].length + ' 个</em><i></i></div>'
+          + map[g].map(card).join('');
+      }).join('');
+      return;
+    }
+    box.innerHTML = list.map(card).join('');
+  }
+
+  function card(e) {
+    var best = bestOf(e.id);
+    return '<div class="exp-card" onclick="location.href=\'experiment.html?id=' + encodeURIComponent(e.id) + '\'">'
+      + '<div class="ic">' + (e.iconEmoji || '🧪') + '</div>'
+      + '<h3>' + LabCore.esc(e.name) + '</h3>'
+      + '<p>' + LabCore.esc(e.desc || '') + '</p>'
+      + '<div class="meta">'
+      +   '<span>满分 ' + (e.max || 100) + ' 分</span>'
+      +   '<span>' + LabCore.esc(e.method || '') + '</span>'
+      +   (best ? '<span style="background:#dcfce7;color:#15803d">最好成绩 ' + best.score + '</span>' : '<span>未练习</span>')
+      + '</div></div>';
   }
 
   function bestOf(id) {

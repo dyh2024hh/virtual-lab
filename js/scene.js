@@ -68,7 +68,10 @@ window.LabScene = (function () {
     var head = '<' + tag + (a ? ' ' + a : '') + extra;
 
     if (tag === 'text') {
-      return head + '>' + (p.text || '') + '</text>';
+      var t = p.text || '';
+      /* text 内容同样支持 @ 表达式，比如动态显示温度读数 */
+      if (typeof t === 'string' && t.charAt(0) === '@') t = String(val(t, ctx));
+      return head + '>' + t + '</text>';
     }
     if (p.children && p.children.length) {
       var inner = '';

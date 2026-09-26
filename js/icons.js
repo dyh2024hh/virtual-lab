@@ -70,7 +70,38 @@ window.LabIcons = (function () {
     +     '<stop offset="0%" stop-color="#a1763e"/><stop offset="50%" stop-color="#d4a869"/>'
     +     '<stop offset="100%" stop-color="#8b6330"/>'
     +   '</linearGradient>'
+    /* 下面几个供「性质探究」类实验画溶液颜色用 */
+    +   '<linearGradient id="gPink" x1="0" y1="0" x2="0" y2="1">'
+    +     '<stop offset="0%" stop-color="#f8bbd0"/><stop offset="100%" stop-color="#ec407a"/>'
+    +   '</linearGradient>'
+    +   '<linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1">'
+    +     '<stop offset="0%" stop-color="#90caf9"/><stop offset="100%" stop-color="#1565c0"/>'
+    +   '</linearGradient>'
+    +   '<linearGradient id="gBrown" x1="0" y1="0" x2="0" y2="1">'
+    +     '<stop offset="0%" stop-color="#ffe0b2"/><stop offset="100%" stop-color="#d84315"/>'
+    +   '</linearGradient>'
+    +   '<linearGradient id="gGreenP" x1="0" y1="0" x2="0" y2="1">'
+    +     '<stop offset="0%" stop-color="#dcedc8"/><stop offset="100%" stop-color="#7cb342"/>'
+    +   '</linearGradient>'
     + '</defs>';
+
+  /* 试剂瓶通用画法：同一套玻璃瓶，换个盖子颜色、液体颜色和标签就是另一种试剂 */
+  function reagent(capFill, liquidFill, label, labelColor, strokeColor) {
+    var fs2 = label.length > 5 ? 5.6 : (label.length > 3 ? 6.4 : 7.6);
+    return '<rect x="20" y="14" width="22" height="38" rx="4" fill="url(#gGlass)" stroke="' + strokeColor + '" stroke-width="2"/>'
+      + '<rect x="23" y="10" width="16" height="6" rx="2" fill="' + capFill + '" stroke="' + strokeColor + '" stroke-width="1.4"/>'
+      + '<rect x="23" y="28" width="16" height="21" rx="2" fill="' + liquidFill + '"/>'
+      + '<text x="31" y="25" font-size="' + fs2 + '" text-anchor="middle" fill="' + labelColor + '" font-weight="700">' + label + '</text>';
+  }
+
+  /* 广口瓶（装固体药品）通用画法 */
+  function jar(capFill, fill, label, labelColor, strokeColor) {
+    var fs2 = label.length > 5 ? 5.6 : (label.length > 3 ? 6.4 : 7.6);
+    return '<rect x="17" y="16" width="26" height="36" rx="4" fill="url(#gGlass)" stroke="' + strokeColor + '" stroke-width="2"/>'
+      + '<rect x="20" y="11" width="20" height="7" rx="2" fill="' + capFill + '" stroke="' + strokeColor + '" stroke-width="1.4"/>'
+      + '<rect x="20" y="33" width="20" height="16" rx="2" fill="' + fill + '"/>'
+      + '<text x="30" y="29" font-size="' + fs2 + '" text-anchor="middle" fill="' + labelColor + '" font-weight="700">' + label + '</text>';
+  }
 
   /* ---------- 器材图标（60x60 viewBox） ---------- */
   var ICONS = {
@@ -169,7 +200,52 @@ window.LabIcons = (function () {
       + '<text x="18" y="34" font-size="8" text-anchor="middle" fill="#1565c0" font-weight="700">DC</text>'
       + '<circle cx="40" cy="27" r="3.6" fill="#c62828"/><circle cx="40" cy="38" r="3.6" fill="#1565c0"/>'
       + '<text x="52" y="31" font-size="11" fill="#c62828" font-weight="700">+</text>'
-      + '<text x="53" y="43" font-size="13" fill="#1565c0" font-weight="700">-</text>'
+      + '<text x="53" y="43" font-size="13" fill="#1565c0" font-weight="700">-</text>',
+
+    /* ===== 以下为「性质探究」类实验新增器材 ===== */
+
+    pbottle: '<path d="M24 8 L36 8 L36 14 L45 20 Q47 25 47 31 L47 50 Q47 54 43 54 L17 54 Q13 54 13 50 L13 31 Q13 25 15 20 L24 14 Z" fill="url(#gGlass)" stroke="#7ba7c7" stroke-width="1.8"/>'
+      + '<rect x="24" y="6" width="12" height="6" rx="2" fill="#90caf9" stroke="#42a5f5" stroke-width="1.4"/>'
+      + '<rect x="20" y="31" width="20" height="21" rx="2" fill="url(#gWater)" opacity="0.55"/>'
+      + '<text x="30" y="47" font-size="7" text-anchor="middle" fill="#0277bd">塑料瓶</text>',
+    cogas: '<path d="M24 8 L36 8 L36 14 L45 20 Q47 25 47 31 L47 50 Q47 54 43 54 L17 54 Q13 54 13 50 L13 31 Q13 25 15 20 L24 14 Z" fill="#e0f7fa" stroke="#26a69a" stroke-width="1.8"/>'
+      + '<rect x="24" y="6" width="12" height="6" rx="2" fill="#80cbc4" stroke="#00897b" stroke-width="1.4"/>'
+      + '<text x="30" y="42" font-size="9" text-anchor="middle" fill="#00695c" font-weight="700">CO2</text>',
+    naoh: reagent('#ef9a9a', '#ffffff', 'NaOH', '#c62828', '#e57373'),
+    water2: reagent('#90caf9', 'url(#gWater)', 'H2O', '#0277bd', '#4fa3d1'),
+    phenol: reagent('#f48fb1', '#f8bbd0', '酚酞', '#ad1457', '#ec407a'),
+    alcohol: reagent('#ce93d8', '#f3e5f5', '乙醇', '#6a1b9a', '#ab47bc'),
+    cuso4: reagent('#64b5f6', 'url(#gBlue)', 'CuSO4', '#0d47a1', '#1565c0'),
+    cuso4a: jar('#b3bdbf', '#ffffff', '无水CuSO4', '#455a64', '#78909c'),
+    fecl3: reagent('#ffcc80', 'url(#gBrown)', 'FeCl3', '#bf360c', '#e65100'),
+    na2co3: reagent('#e0e0e0', '#f5f5f5', 'Na2CO3', '#37474f', '#90a4ae'),
+    na2so4: reagent('#b0bec5', '#fafafa', 'Na2SO4', '#37474f', '#78909c'),
+    nacl: reagent('#cfd8dc', '#fafafa', 'NaCl', '#37474f', '#90a4ae'),
+    bacl2: reagent('#fff59d', '#fffde7', 'BaCl2', '#f9a825', '#fbc02d'),
+    hno3: reagent('#ffab91', '#ffccbc', 'HNO3', '#bf360c', '#ff7043'),
+    agno3: reagent('#c5cae9', '#e8eaf6', 'AgNO3', '#283593', '#5c6bc0'),
+    quicklime: '<circle cx="22" cy="36" r="11" fill="#fafafa" stroke="#cfd8dc" stroke-width="1.2"/>'
+      + '<circle cx="38" cy="32" r="10" fill="#f5f5f5" stroke="#cfd8dc" stroke-width="1.2"/>'
+      + '<circle cx="30" cy="21" r="7.5" fill="#ffffff" stroke="#e0e0e0" stroke-width="1.2"/>'
+      + '<path d="M18 34 L26 39 M36 30 L42 34" stroke="#e0e0e0" stroke-width="1"/>',
+    dropper: '<path d="M27 6 L33 6 L33 16 L27 16 Z" fill="#8d6e63"/>'
+      + '<rect x="28" y="16" width="4" height="26" rx="1.5" fill="url(#gGlass)" stroke="#7ba7c7" stroke-width="1.2"/>'
+      + '<path d="M28 40 L32 40 L31 52 L29 52 Z" fill="url(#gGlass)" stroke="#7ba7c7" stroke-width="1.2"/>'
+      + '<circle cx="30" cy="56" r="2" fill="#42a5f5" opacity="0.8"/>',
+    thermo: '<rect x="27" y="6" width="8" height="44" rx="4" fill="url(#gGlass)" stroke="#90a4ae" stroke-width="1.4"/>'
+      + '<circle cx="31" cy="48" r="8" fill="#ef5350" stroke="#c62828" stroke-width="1.2"/>'
+      + '<rect x="29" y="20" width="4" height="30" rx="2" fill="#ef5350"/>'
+      + '<path d="M35 12 L35 44 M35 16 L39 16 M35 22 L39 22 M35 28 L39 28" stroke="#607d8b" stroke-width="1"/>',
+    rod: '<rect x="27" y="4" width="7" height="52" rx="3.5" fill="url(#gGlass)" stroke="#7ba7c7" stroke-width="1.4"/>'
+      + '<rect x="28" y="8" width="2" height="44" rx="1" fill="#ffffff" opacity="0.8"/>',
+    iron: '<rect x="26" y="10" width="9" height="42" rx="1.5" fill="#b0bec5" stroke="#546e7a" stroke-width="1.2"/>'
+      + '<rect x="24" y="6" width="13" height="6" rx="2" fill="#90a4ae" stroke="#546e7a" stroke-width="1.2"/>'
+      + '<path d="M30 20 L30 48" stroke="#eceff1" stroke-width="1.6"/>',
+    mag: '<rect x="19" y="12" width="24" height="6" rx="2" fill="#cfd8dc" stroke="#78909c" stroke-width="1.2"/>'
+      + '<rect x="19" y="24" width="24" height="6" rx="2" fill="#e0e0e0" stroke="#78909c" stroke-width="1.2"/>'
+      + '<rect x="19" y="36" width="24" height="6" rx="2" fill="#cfd8dc" stroke="#78909c" stroke-width="1.2"/>',
+    cu: '<path d="M18 40 Q24 16 30 30 Q36 44 42 24" stroke="#d84315" stroke-width="6" fill="none" stroke-linecap="round"/>'
+      + '<path d="M18 40 Q24 16 30 30 Q36 44 42 24" stroke="#ff8a65" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7"/>'
   };
 
   /* 返回一个完整的 60x60 小图标 SVG 字符串 */

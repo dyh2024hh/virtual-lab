@@ -1,0 +1,370 @@
+{
+  "id": "neutral",
+  "title": "酸和碱的中和反应",
+  "subtitle": "初中化学虚拟实验 · 酚酞显色 + 逐滴滴定",
+  "badges": ["NaOH + HCl", "酚酞作指示剂", "满分 100 分"],
+  "viewBox": "0 0 600 360",
+
+  "equipments": [
+    { "id": "flask",   "name": "锥形瓶",         "need": true },
+    { "id": "naoh",    "name": "氢氧化钠溶液",   "need": true },
+    { "id": "phenol",  "name": "酚酞试液",       "need": true },
+    { "id": "dropper", "name": "胶头滴管",       "need": true },
+    { "id": "acid",    "name": "稀盐酸",         "need": true },
+    { "id": "rod",     "name": "玻璃棒",         "need": true },
+    { "id": "thermo",  "name": "温度计",         "need": true },
+    { "id": "limewater", "name": "澄清石灰水",   "need": false },
+    { "id": "marble",  "name": "大理石",         "need": false },
+    { "id": "water2",  "name": "蒸馏水",         "need": false }
+  ],
+
+  "dims": [
+    { "key": "skill",  "name": "操作规范" },
+    { "key": "safety", "name": "安全意识" }
+  ],
+
+  "scoreItems": [
+    { "key": "equip",   "name": "器材选择",           "max": 10, "dim": "skill" },
+    { "key": "flask",   "name": "放置锥形瓶",         "max": 6,  "dim": "skill" },
+    { "key": "pour",    "name": "加入氢氧化钠溶液",   "max": 14, "dim": "skill" },
+    { "key": "phenol",  "name": "滴加酚酞显红色",     "max": 8,  "dim": "skill" },
+    { "key": "thermo",  "name": "插入温度计",         "max": 8,  "dim": "skill" },
+    { "key": "howto",   "name": "选对滴加方式",       "max": 12, "dim": "safety" },
+    { "key": "drip",    "name": "滴加至红色恰好褪去", "max": 12, "dim": "skill" },
+    { "key": "judge",   "name": "解释褪色的含义",     "max": 14, "dim": "skill" },
+    { "key": "summary", "name": "说出中和反应实质",   "max": 16, "dim": "skill" }
+  ],
+
+  "initialStage": {
+    "flaskOn": false, "naohIn": false, "red": false,
+    "thermoIn": false, "temp": 20,
+    "helperIn": false, "dripping": false,
+    "neutral": false, "over": false
+  },
+
+  "dropZones": {
+    "bench":  { "x": 180, "y": 200, "w": 240, "h": 120 },
+    "mouth":  { "x": 236, "y": 142, "w": 128, "h": 96 },
+    "thzone": { "x": 254, "y": 102, "w": 60,  "h": 210 }
+  },
+
+  "scene": [
+    { "tag": "rect", "x": 30, "y": 322, "width": 540, "height": 14, "rx": 5, "fill": "url(#gMetal)" },
+    { "tag": "rect", "x": 30, "y": 322, "width": 540, "height": 4, "rx": 2, "fill": "#e8eef2", "opacity": 0.75 },
+
+    { "tag": "g", "when": "stage.flaskOn", "children": [
+      { "tag": "path", "d": "M288 164 L312 164 L312 206 L360 300 Q364 310 354 310 L246 310 Q236 310 240 300 L288 206 Z", "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.4 },
+      { "tag": "rect", "x": 284, "y": 156, "width": 32, "height": 10, "rx": 4, "fill": "url(#gGlassH)", "stroke": "#7ba7c7", "stroke-width": 1.6 },
+      { "tag": "path", "d": "M294 220 L294 290", "stroke": "#ffffff", "stroke-width": 2.4, "opacity": 0.8, "fill": "none" },
+      { "tag": "path", "when": "stage.naohIn", "d": "M262 258 L338 258 L354 298 Q358 308 348 308 L252 308 Q242 308 246 298 Z", "fill": "@ stage.neutral ? '#f1f3f5' : (stage.red ? 'url(#gPink)' : '#fafafa')", "opacity": "@ stage.red ? 0.92 : 0.6" },
+      { "tag": "text", "when": "stage.red && !stage.neutral", "x": 300, "y": 290, "font-size": 13, "text-anchor": "middle", "fill": "#880e4f", "font-weight": 700, "text": "红色（碱性）" },
+      { "tag": "text", "when": "stage.neutral", "x": 300, "y": 290, "font-size": 13, "text-anchor": "middle", "fill": "#455a64", "font-weight": 700, "text": "无色（恰好反应）" },
+      { "tag": "text", "x": 300, "y": 344, "font-size": 12, "text-anchor": "middle", "fill": "#455a64", "font-weight": 700, "text": "锥形瓶：中和反应" }
+    ]},
+
+    { "tag": "g", "when": "stage.helperIn", "children": [
+      { "tag": "rect", "x": 294, "y": 54, "width": 14, "height": 20, "rx": 6, "fill": "#8d6e63" },
+      { "tag": "rect", "x": 297, "y": 72, "width": 8, "height": 52, "rx": 3, "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 1.4 },
+      { "tag": "path", "d": "M297 122 L305 122 L303 146 L299 146 Z", "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 1.4 },
+      { "tag": "rect", "x": 298, "y": 92, "width": 6, "height": 30, "fill": "url(#gAcid)", "opacity": 0.9 }
+    ]},
+
+    { "tag": "g", "when": "stage.dripping", "children": [
+      { "tag": "circle", "cx": 301, "cy": 156, "r": 3.4, "fill": "#a5d6a7", "opacity": 0.95 },
+      { "tag": "circle", "cx": 301, "cy": 178, "r": 2.6, "fill": "#a5d6a7", "opacity": 0.9 },
+      { "tag": "text", "x": 436, "y": 188, "font-size": 11, "fill": "#33691e", "font-weight": 700, "text": "逐滴加入并振荡" }
+    ]},
+
+    { "tag": "g", "when": "stage.thermoIn", "children": [
+      { "tag": "rect", "x": 268, "y": 100, "width": 8, "height": 176, "rx": 4, "fill": "url(#gGlass)", "stroke": "#90a4ae", "stroke-width": 1.4 },
+      { "tag": "rect", "x": 270, "y": "@ 268 - 1.24*stage.temp", "width": 4, "height": "@ 12 + 1.24*stage.temp", "fill": "#ef5350" },
+      { "tag": "circle", "cx": 272, "cy": 272, "r": 8, "fill": "#ef5350", "stroke": "#c62828", "stroke-width": 1.2 },
+      { "tag": "text", "x": 240, "y": "@ 272 - 1.24*stage.temp", "font-size": 12, "text-anchor": "end", "fill": "@ stage.temp>25 ? '#b71c1c' : '#0277bd'", "font-weight": 700, "text": "@ Math.round(stage.temp) + ' ℃'" }
+    ]},
+
+    { "tag": "g", "when": "stage.over", "children": [
+      { "tag": "text", "x": 470, "y": 220, "font-size": 11.5, "fill": "#dc2626", "font-weight": 700, "text": "酸已过量" }
+    ]},
+
+    { "tag": "text", "when": "stage.naohIn && !stage.red", "x": 470, "y": 200, "font-size": 11.5, "fill": "#475569", "text": "无色溶液（看不出酸碱性）" }
+  ],
+
+  "report": [
+    { "title": "实验记录", "lines": [
+      "实验名称：酸和碱的中和反应",
+      "反应原理：NaOH + HCl = NaCl + H₂O",
+      "指示剂：无色酚酞（遇碱变红，遇酸和中性均不变色）",
+      "终点判断：溶液恰好由红色变为无色",
+      "温度计示数上升，说明中和反应放热"
+    ]},
+    { "title": "现象记录", "lines": [
+      "1. 向 NaOH 溶液中滴入无色酚酞，溶液变成红色",
+      "2. 用滴管逐滴加入稀盐酸并不断振荡，红色逐渐变浅",
+      "3. 当最后一滴使红色刚好褪去时，反应恰好完全",
+      "4. 温度计示数上升，试管（烧瓶）外壁微微发热"
+    ]},
+    { "title": "实验结论", "lines": [
+      "酸与碱作用生成盐和水的反应叫做中和反应，它放出热量。",
+      "中和反应的微观实质：酸中的 H⁺ 与碱中的 OH⁻ 结合生成 H₂O。",
+      "酚酞的作用是借助颜色变化判断肉眼看不见的反应是否恰好完全。"
+    ]}
+  ],
+
+  "errorTable": [
+    { "op": "把盐酸一次性倒入",       "phen": "局部过量，红色突变",   "result": "错过恰好反应的时刻",       "score": 12 },
+    { "op": "滴加时不振荡",           "phen": "酸在局部聚集",         "result": "褪色过早或不均匀，终点不准", "score": 12 },
+    { "op": "忘记加酚酞",             "phen": "反应本身无颜色变化",   "result": "完全无法判断何时恰好反应",   "score": 8 },
+    { "op": "红色褪去后继续大量加酸", "phen": "酸过量",               "result": "溶质不再是纯净的 NaCl",      "score": 14 },
+    { "op": "用石蕊试液代替酚酞",     "phen": "紫色到红色变化不明显", "result": "终点难以判断",               "score": 8 },
+    { "op": "误用大理石、石灰水",     "phen": "那是制取CO₂的药品",    "result": "本实验研究的是酸碱中和",     "score": 10 }
+  ],
+
+  "steps": [
+    {
+      "id": "cover", "type": "cover", "title": "准备开始", "progress": 0,
+      "headline": "酸和碱的中和反应",
+      "subtitle": "两种无色液体混在一起，什么也看不出来 —— 酚酞来帮忙",
+      "buttons": [{ "t": "开始实验", "c": "primary", "goto": "goal" }]
+    },
+
+    {
+      "id": "goal", "type": "doc", "title": "实验目标", "progress": 6,
+      "cols": [
+        { "title": "实验目标", "lines": [
+          "1. 认识中和反应：酸 + 碱 → 盐 + 水",
+          "2. 学会用酚酞判断反应是否恰好完全",
+          "3. 掌握逐滴滴加并不断振荡的操作",
+          "4. 知道中和反应放热",
+          "5. 理解实质：H⁺ + OH⁻ = H₂O"
+        ]},
+        { "title": "操作方式", "lines": [
+          "● 拖拽试剂到锥形瓶口的高亮区域",
+          "● 遇到思考题时点选项作答",
+          "● 右侧显示当前实验阶段",
+          "● 卡住时点右下角“？”获取提示"
+        ]},
+        { "title": "安全提示", "lines": [
+          "⚠ 氢氧化钠和盐酸都有腐蚀性，不能接触皮肤和衣物",
+          "⚠ 沾到皮肤立即用大量水冲洗",
+          "⚠ 滴管要垂直悬空在瓶口上方，不能伸进瓶内",
+          "⚠ 滴加过程中要不断振荡，使反应充分"
+        ]}
+      ],
+      "buttons": [
+        { "t": "下一步", "c": "primary", "goto": "equip" },
+        { "t": "返回封面", "c": "ghost", "goto": "cover" }
+      ]
+    },
+
+    {
+      "id": "equip", "type": "equip", "title": "选择实验器材", "progress": 12,
+      "tip": "既然反应本身没有颜色变化，就要靠指示剂；还要一滴一滴加进去才抓得住终点",
+      "buttons": [
+        { "t": "确认器材", "c": "primary", "do": [{ "do": "checkEquip", "key": "equip", "goto": "flask" }] }
+      ]
+    },
+
+    {
+      "id": "flask", "type": "stage", "title": "放置锥形瓶", "progress": 18,
+      "shelf": ["flask"],
+      "desc": "锥形瓶口小底大，振荡时液体不容易溅出，很适合做滴定类实验。",
+      "help": "把锥形瓶拖到桌面中间的高亮区域。想一想：为什么酸碱中和实验常用锥形瓶而不是烧杯？",
+      "zones": ["bench"],
+      "drop": [
+        { "equip": "flask", "zone": "bench", "do": [
+          { "do": "set", "k": "flaskOn", "v": true },
+          { "do": "score", "key": "flask" },
+          { "do": "tip", "text": "锥形瓶已放好 ✓ 便于振荡、液体不易溅出" },
+          { "do": "goto", "id": "pour", "delay": 1000 }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要放的是进行中和反应的容器。" }] }
+      ]
+    },
+
+    {
+      "id": "pour", "type": "stage", "title": "加入氢氧化钠溶液", "progress": 26,
+      "shelf": ["naoh"],
+      "desc": "先量取一定体积的氢氧化钠稀溶液倒入锥形瓶。",
+      "help": "把氢氧化钠溶液拖到锥形瓶口。氢氧化钠溶液显碱性，是无色透明的，肉眼完全看不出来。",
+      "zones": ["mouth"],
+      "drop": [
+        { "equip": "naoh", "zone": "mouth", "do": [
+          { "do": "set", "k": "naohIn", "v": true },
+          { "do": "score", "key": "pour" },
+          { "do": "tip", "text": "氢氧化钠溶液已加入 ✓ 溶液无色，看不出酸碱性" },
+          { "do": "goto", "id": "phenolStep", "delay": 1300 }
+        ]},
+        { "equip": "water2", "zone": "mouth", "do": [
+          { "do": "err", "text": "本实验要研究的是碱与酸的反应，先加入的应该是氢氧化钠溶液。" }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要加入的是碱溶液。" }] }
+      ]
+    },
+
+    {
+      "id": "phenolStep", "type": "stage", "title": "滴入无色酚酞", "progress": 34,
+      "shelf": ["phenol"],
+      "desc": "无色酚酞遇碱变红，这是本实验的眼睛。",
+      "help": "把酚酞试液拖到锥形瓶口，只需 2~3 滴。酚酞本身无色，遇到碱性溶液才会变成红色。",
+      "zones": ["mouth"],
+      "drop": [
+        { "equip": "phenol", "zone": "mouth", "do": [
+          { "do": "set", "k": "red", "v": true },
+          { "do": "score", "key": "phenol" },
+          { "do": "tip", "text": "溶液变成红色 ✓ 说明此时溶液显碱性" },
+          { "do": "goto", "id": "thermoStep", "delay": 1300 }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要加入的是能指示酸碱性的试液。" }] }
+      ]
+    },
+
+    {
+      "id": "thermoStep", "type": "stage", "title": "插入温度计", "progress": 42,
+      "shelf": ["thermo"],
+      "desc": "加酸之前先把温度计放好，这样才能看出反应前后温度是否有变化。",
+      "help": "把温度计拖到锥形瓶上方的位置，玻璃泡要完全浸没在溶液中，读数会更准确。",
+      "zones": ["thzone"],
+      "drop": [
+        { "equip": "thermo", "zone": "thzone", "do": [
+          { "do": "set", "k": "thermoIn", "v": true },
+          { "do": "score", "key": "thermo" },
+          { "do": "tip", "text": "温度计已放好，当前约 20 ℃ ✓" },
+          { "do": "goto", "id": "howto", "delay": 1200 }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要放入温度计，记录反应前的初温。" }] }
+      ]
+    },
+
+    {
+      "id": "howto", "type": "doc", "title": "酸该怎么加？", "progress": 50,
+      "cols": [
+        { "title": "方案 A", "lines": [
+          "用量筒量取一定量盐酸，一次性倒入锥形瓶，",
+          "看看能不能恰好把红色褪掉。"
+        ]},
+        { "title": "方案 B", "lines": [
+          "用滴管逐滴滴加盐酸，每加一滴就振荡一下，",
+          "盯着颜色变化，直到红色刚好褪去。"
+        ]}
+      ],
+      "buttons": [
+        { "t": "用滴管逐滴加入并不断振荡", "c": "primary", "do": [
+          { "do": "score", "key": "howto" },
+          { "do": "tip", "text": "选得对！只有这样才能抓住恰好反应的那一刻 ✓" },
+          { "do": "goto", "id": "drip", "delay": 1500 }
+        ]},
+        { "t": "一次性把盐酸倒进去", "c": "ghost", "do": [
+          { "do": "err", "text": "倒多了就过量，倒少了又不够，而且一瞬间就过去了，根本抓不住「恰好反应」的那个点。" },
+          { "do": "goto", "id": "drip", "delay": 3600 }
+        ]}
+      ]
+    },
+
+    {
+      "id": "drip", "type": "stage", "title": "逐滴滴加稀盐酸", "progress": 62,
+      "shelf": ["dropper", "acid"],
+      "desc": "用滴管吸取稀盐酸，垂直悬空在瓶口上方逐滴加入，边加边振荡。",
+      "help": "先把胶头滴管拖到瓶口准备好，再把稀盐酸拖到瓶口开始滴加。眼睛要盯着溶液颜色的变化。",
+      "zones": ["mouth"],
+      "drop": [
+        { "equip": "dropper", "zone": "mouth", "do": [
+          { "do": "set", "k": "helperIn", "v": true },
+          { "do": "tip", "text": "滴管已悬在瓶口上方，注意滴管不能伸入瓶内 ✓" }
+        ]},
+        { "equip": "acid", "zone": "mouth", "do": [
+          { "do": "set", "k": "dripping", "v": true },
+          { "do": "set", "k": "temp", "v": 24, "delay": 1000 },
+          { "do": "set", "k": "temp", "v": 27, "delay": 2000 },
+          { "do": "set", "k": "neutral", "v": true, "delay": 2600 },
+          { "do": "score", "key": "drip" },
+          { "do": "tip", "text": "红色刚好褪去！此时溶液显中性，温度计示数还在上升" },
+          { "do": "goto", "id": "judge", "delay": 3600 }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要加入的是酸溶液，而且是少量少量地加。" }] }
+      ]
+    },
+
+    {
+      "id": "judge", "type": "doc", "title": "红色褪去意味着什么？", "progress": 74,
+      "cols": [
+        { "title": "现象", "lines": [
+          "红色刚好褪去，溶液变回无色",
+          "温度计示数从约 20 ℃ 升到 27 ℃ 以上",
+          "瓶壁摸上去微微发热"
+        ]},
+        { "title": "分析", "lines": [
+          "酚酞在碱中显红色，在酸性和中性溶液中都是无色的。",
+          "所以「刚好无色」说明碱刚好被消耗完，",
+          "既没有多余的碱，也没有多余的酸。"
+        ]}
+      ],
+      "buttons": [
+        { "t": "酸碱恰好完全反应，溶液显中性", "c": "primary", "do": [
+          { "do": "score", "key": "judge" },
+          { "do": "tip", "text": "正确！此时溶质只有生成的氯化钠 ✓" },
+          { "do": "goto", "id": "summary", "delay": 1600 }
+        ]},
+        { "t": "盐酸加过量了", "c": "ghost", "do": [
+          { "do": "err", "text": "如果盐酸过量，溶液会显酸性。但酚酞在酸里也是无色的，所以靠酚酞分不出「中性」还是「酸性」——要抓住「刚好」那一滴。" }
+        ]},
+        { "t": "酚酞失效了", "c": "ghost", "do": [
+          { "do": "err", "text": "酚酞没有失效。它被加进去就是为了指示溶液的酸碱性，颜色变化正是它在起作用。" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "summary", "type": "doc", "title": "中和反应的本质", "progress": 86,
+      "cols": [
+        { "title": "化学方程式", "lines": [
+          "NaOH + HCl = NaCl + H₂O",
+          "属于复分解反应，也是中和反应。",
+          "生成物：盐（NaCl）+ 水"
+        ]},
+        { "title": "微观实质", "lines": [
+          "氢氧化钠在水中解离出 Na⁺ 和 OH⁻，",
+          "盐酸在水中解离出 H⁺ 和 Cl⁻，",
+          "真正发生变化的只有一步：H⁺ + OH⁻ = H₂O。",
+          "Na⁺ 和 Cl⁻ 自始至终没有参加反应。"
+        ]}
+      ],
+      "buttons": [
+        { "t": "H⁺ 与 OH⁻ 结合生成水分子", "c": "primary", "do": [
+          { "do": "score", "key": "summary" },
+          { "do": "tip", "text": "抓住了本质 ✓ 同时这也是中和反应放热的原因" },
+          { "do": "goto", "id": "report", "delay": 1600 }
+        ]},
+        { "t": "Na⁺ 与 Cl⁻ 结合生成氯化钠", "c": "ghost", "do": [
+          { "do": "err", "text": "Na⁺ 和 Cl⁻ 在反应前后都自由存在于溶液中，并没有结合。真正结合成难电离物质的是 H⁺ 和 OH⁻。" }
+        ]},
+        { "t": "酸把碱腐蚀掉了", "c": "ghost", "do": [
+          { "do": "err", "text": "腐蚀是生活用语不是化学解释。要从离子角度看：是哪两种离子结合成了稳定的水分子？" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "report", "type": "report", "title": "实验报告", "progress": 92,
+      "buttons": [
+        { "t": "提交报告", "c": "primary", "do": [{ "do": "finish" }, { "do": "goto", "id": "score" }] }
+      ]
+    },
+
+    {
+      "id": "score", "type": "score", "title": "实验评分", "progress": 100,
+      "buttons": [
+        { "t": "导出本次成绩", "c": "ghost", "do": [{ "do": "export" }] },
+        { "t": "查看常见错误", "c": "ghost", "goto": "errtable" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    },
+
+    {
+      "id": "errtable", "type": "errors", "title": "常见错误与后果", "progress": 100,
+      "buttons": [
+        { "t": "返回评分", "c": "ghost", "goto": "score" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    }
+  ]
+}

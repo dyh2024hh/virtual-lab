@@ -77,6 +77,9 @@ window.LabEngine = (function () {
     app.lastError = '';
     if (st.type === 'score') saveOnce();
     render();
+    /* 进入该步骤时自动播放的动作序列（JSON 里用 "enter":[...] 声明），
+     * 用来做「观察类」步骤的过程动画：颜色慢慢变、沉淀慢慢堆积、液面慢慢上升。 */
+    if (st.enter && st.enter.length) runActions(st.enter);
   }
 
   /* ================= 动作执行器 ================= */

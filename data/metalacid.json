@@ -1,0 +1,410 @@
+{
+  "id": "metalacid",
+  "title": "金属与稀盐酸的反应",
+  "subtitle": "初中化学虚拟实验 · 金属活动性 + 氢气检验",
+  "badges": ["Mg > Zn > Fe", "Fe²⁺ 显浅绿色", "满分 100 分"],
+  "viewBox": "0 0 600 360",
+
+  "equipments": [
+    { "id": "tube",   "name": "试管（3支）",   "need": true },
+    { "id": "mag",    "name": "镁条",          "need": true },
+    { "id": "zinc",   "name": "锌粒",          "need": true },
+    { "id": "iron",   "name": "铁钉",          "need": true },
+    { "id": "acid",   "name": "稀盐酸",        "need": true },
+    { "id": "match",  "name": "燃着的木条",    "need": true },
+    { "id": "cu",     "name": "铜丝",          "need": false },
+    { "id": "water2", "name": "蒸馏水",        "need": false },
+    { "id": "h2so4",  "name": "稀硫酸",        "need": false }
+  ],
+
+  "dims": [
+    { "key": "skill",  "name": "操作规范" },
+    { "key": "safety", "name": "安全意识" }
+  ],
+
+  "scoreItems": [
+    { "key": "equip",   "name": "器材选择",           "max": 10, "dim": "skill" },
+    { "key": "tubes",   "name": "排列三支试管",       "max": 8,  "dim": "skill" },
+    { "key": "metals",  "name": "分别放入三种金属",   "max": 14, "dim": "skill" },
+    { "key": "acid",    "name": "同时加入等浓度盐酸", "max": 12, "dim": "skill" },
+    { "key": "observe", "name": "比较反应速率快慢",   "max": 14, "dim": "skill" },
+    { "key": "gas",     "name": "点燃检验氢气",       "max": 16, "dim": "safety" },
+    { "key": "fe",      "name": "判断铁的生成物",     "max": 10, "dim": "skill" },
+    { "key": "summary", "name": "归纳活动性顺序",     "max": 16, "dim": "skill" }
+  ],
+
+  "initialStage": {
+    "tubesOn": false, "mgIn": false, "znIn": false, "feIn": false,
+    "wrongMetal": false, "acidIn": false, "react": 0,
+    "feReact": false, "fire": false, "popTest": false
+  },
+
+  "dropZones": {
+    "bench":    { "x": 140, "y": 204, "w": 320, "h": 118 },
+    "metalAll": { "x": 128, "y": 140, "w": 344, "h": 104 },
+    "allMouth": { "x": 128, "y": 116, "w": 344, "h": 128 },
+    "gasZone":  { "x": 150, "y": 88,  "w": 92,  "h": 84 }
+  },
+
+  "scene": [
+    { "tag": "rect", "x": 30, "y": 322, "width": 540, "height": 14, "rx": 5, "fill": "url(#gMetal)" },
+    { "tag": "rect", "x": 30, "y": 322, "width": 540, "height": 4, "rx": 2, "fill": "#e8eef2", "opacity": 0.75 },
+
+    { "tag": "g", "when": "stage.tubesOn", "children": [
+      { "tag": "rect", "x": 138, "y": 296, "width": 324, "height": 12, "rx": 4, "fill": "url(#gMetal)" },
+      { "tag": "rect", "x": 138, "y": 296, "width": 324, "height": 3, "rx": 2, "fill": "#e8eef2", "opacity": 0.8 },
+      { "tag": "rect", "x": 148, "y": 300, "width": 10, "height": 22, "fill": "url(#gMetalV)" },
+      { "tag": "rect", "x": 442, "y": 300, "width": 10, "height": 22, "fill": "url(#gMetalV)" }
+    ]},
+
+    { "tag": "g", "when": "stage.tubesOn", "children": [
+      { "tag": "path", "d": "M167 152 L167 286 Q167 300 181 300 L205 300 Q219 300 219 286 L219 152 Z", "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.2 },
+      { "tag": "rect", "x": 163, "y": 144, "width": 60, "height": 10, "rx": 4, "fill": "url(#gGlassH)", "stroke": "#7ba7c7", "stroke-width": 1.6 },
+      { "tag": "path", "d": "M174 168 L174 284", "stroke": "#ffffff", "stroke-width": 2, "opacity": 0.8, "fill": "none" },
+      { "tag": "rect", "when": "stage.acidIn", "x": 169, "y": 216, "width": 48, "height": 80, "rx": 4, "fill": "url(#gAcid)", "opacity": 0.85 },
+      { "tag": "g", "when": "stage.mgIn", "children": [
+        { "tag": "rect", "x": 180, "y": 236, "width": 30, "height": 7, "rx": 2, "fill": "#cfd8dc", "stroke": "#78909c", "stroke-width": 1.2 },
+        { "tag": "rect", "x": 180, "y": 248, "width": 30, "height": 7, "rx": 2, "fill": "#e0e0e0", "stroke": "#78909c", "stroke-width": 1.2 },
+        { "tag": "rect", "x": 180, "y": 260, "width": 30, "height": 7, "rx": 2, "fill": "#cfd8dc", "stroke": "#78909c", "stroke-width": 1.2 }
+      ]},
+      { "tag": "g", "when": "stage.react>=1", "children": [
+        { "tag": "circle", "class": "bub", "cx": 180, "cy": 262, "r": 4.5, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:0s" },
+        { "tag": "circle", "class": "bub", "cx": 196, "cy": 258, "r": 5, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:.18s" },
+        { "tag": "circle", "class": "bub", "cx": 208, "cy": 264, "r": 4, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:.36s" },
+        { "tag": "circle", "class": "bub", "cx": 186, "cy": 240, "r": 3.2, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:.54s" },
+        { "tag": "text", "x": 193, "y": 202, "font-size": 11, "text-anchor": "middle", "fill": "#b71c1c", "font-weight": 700, "text": "最剧烈" }
+      ]},
+      { "tag": "text", "x": 193, "y": 330, "font-size": 11.5, "text-anchor": "middle", "fill": "#455a64", "font-weight": 700, "text": "Mg + 稀盐酸" }
+    ]},
+
+    { "tag": "g", "when": "stage.tubesOn", "children": [
+      { "tag": "path", "d": "M277 152 L277 286 Q277 300 291 300 L315 300 Q329 300 329 286 L329 152 Z", "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.2 },
+      { "tag": "rect", "x": 273, "y": 144, "width": 60, "height": 10, "rx": 4, "fill": "url(#gGlassH)", "stroke": "#7ba7c7", "stroke-width": 1.6 },
+      { "tag": "path", "d": "M284 168 L284 284", "stroke": "#ffffff", "stroke-width": 2, "opacity": 0.8, "fill": "none" },
+      { "tag": "rect", "when": "stage.acidIn", "x": 279, "y": 216, "width": 48, "height": 80, "rx": 4, "fill": "url(#gAcid)", "opacity": 0.85 },
+      { "tag": "g", "when": "stage.znIn", "children": [
+        { "tag": "circle", "cx": 292, "cy": 274, "r": 9, "fill": "#b0bec5", "stroke": "#78909c", "stroke-width": 1.2 },
+        { "tag": "circle", "cx": 310, "cy": 278, "r": 8, "fill": "#cfd8dc", "stroke": "#78909c", "stroke-width": 1.2 },
+        { "tag": "circle", "cx": 300, "cy": 262, "r": 7, "fill": "#90a4ae", "stroke": "#546e7a", "stroke-width": 1.2 }
+      ]},
+      { "tag": "g", "when": "stage.react>=1", "children": [
+        { "tag": "circle", "class": "bub", "cx": 292, "cy": 266, "r": 4, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:.3s" },
+        { "tag": "circle", "class": "bub", "cx": 308, "cy": 262, "r": 4.5, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:.5s" },
+        { "tag": "circle", "class": "bub", "cx": 300, "cy": 244, "r": 3, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:.7s" }
+      ]},
+      { "tag": "text", "x": 303, "y": 330, "font-size": 11.5, "text-anchor": "middle", "fill": "#455a64", "font-weight": 700, "text": "Zn + 稀盐酸" }
+    ]},
+
+    { "tag": "g", "when": "stage.tubesOn", "children": [
+      { "tag": "path", "d": "M387 152 L387 286 Q387 300 401 300 L425 300 Q439 300 439 286 L439 152 Z", "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.2 },
+      { "tag": "rect", "x": 383, "y": 144, "width": 60, "height": 10, "rx": 4, "fill": "url(#gGlassH)", "stroke": "#7ba7c7", "stroke-width": 1.6 },
+      { "tag": "path", "d": "M394 168 L394 284", "stroke": "#ffffff", "stroke-width": 2, "opacity": 0.8, "fill": "none" },
+      { "tag": "rect", "when": "stage.acidIn", "x": 389, "y": 216, "width": 48, "height": 80, "rx": 4, "fill": "@ stage.feReact ? 'url(#gGreenP)' : 'url(#gAcid)'", "opacity": "@ stage.feReact ? 0.92 : 0.85" },
+      { "tag": "g", "when": "stage.feIn", "children": [
+        { "tag": "rect", "x": 406, "y": 236, "width": 9, "height": 58, "rx": 1.5, "fill": "#b0bec5", "stroke": "#546e7a", "stroke-width": 1.2 },
+        { "tag": "path", "d": "M408 246 L408 288", "stroke": "#eceff1", "stroke-width": 1.6, "fill": "none" }
+      ]},
+      { "tag": "g", "when": "stage.react>=2", "children": [
+        { "tag": "circle", "class": "bub", "cx": 404, "cy": 268, "r": 3.4, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:.6s" },
+        { "tag": "circle", "class": "bub", "cx": 416, "cy": 262, "r": 3, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:1.1s" },
+        { "tag": "text", "x": 413, "y": 202, "font-size": 11, "text-anchor": "middle", "fill": "#2e7d32", "font-weight": 700, "text": "较慢·变浅绿" }
+      ]},
+      { "tag": "text", "x": 413, "y": 330, "font-size": 11.5, "text-anchor": "middle", "fill": "#455a64", "font-weight": 700, "text": "Fe + 稀盐酸" }
+    ]},
+
+    { "tag": "g", "when": "stage.wrongMetal", "children": [
+      { "tag": "text", "x": 300, "y": 116, "font-size": 11.5, "text-anchor": "middle", "fill": "#dc2626", "font-weight": 700, "text": "铜排在氢之后，不与稀盐酸反应" }
+    ]},
+
+    { "tag": "g", "when": "stage.fire", "children": [
+      { "tag": "ellipse", "class": "flame", "cx": 193, "cy": 122, "rx": 9, "ry": 15, "fill": "#7ec8ff", "opacity": 0.95 },
+      { "tag": "ellipse", "class": "flame", "cx": 193, "cy": 126, "rx": 4, "ry": 7, "fill": "#e3f6ff" },
+      { "tag": "text", "when": "stage.popTest", "x": 234, "y": 106, "font-size": 11.5, "fill": "#0288d1", "font-weight": 700, "text": "淡蓝色火焰 / 爆鸣声 → H₂" }
+    ]}
+  ],
+
+  "report": [
+    { "title": "实验记录", "lines": [
+      "实验名称：金属与稀盐酸的反应",
+      "Mg + 2HCl = MgCl₂ + H₂↑  （最剧烈）",
+      "Zn + 2HCl = ZnCl₂ + H₂↑  （较快）",
+      "Fe + 2HCl = FeCl₂ + H₂↑  （较慢，溶液由无色变为浅绿色）",
+      "Cu + HCl → 不反应（铜排在氢之后）"
+    ]},
+    { "title": "现象记录", "lines": [
+      "1. 镁条表面产生气泡最快、最剧烈，镁条迅速溶解",
+      "2. 锌粒表面产生大量气泡，锌粒逐渐变小",
+      "3. 铁钉表面有气泡产生，溶液由无色慢慢变成浅绿色",
+      "4. 点燃收集的气体，听到爆鸣声或看到淡蓝色火焰"
+    ]},
+    { "title": "实验结论", "lines": [
+      "镁、锌、铁都能置换出盐酸中的氢，说明它们排在氢之前，且活动性依次减弱。",
+      "铁与盐酸反应生成的是亚铁化合物 FeCl₂（浅绿色），不是 FeCl₃。",
+      "产生的气体是氢气：点燃有爆鸣声，火焰呈淡蓝色。"
+    ]}
+  ],
+
+  "errorTable": [
+    { "op": "三种试管内的盐酸浓度不同", "phen": "变量不唯一",       "result": "无法比较反应快慢",         "score": 12 },
+    { "op": "把铜丝放进酸里等它反应",   "phen": "铜排在氢之后",     "result": "始终无现象",               "score": 14 },
+    { "op": "直接凑近闻产生的气体",     "phen": "氢气无色无味",     "result": "闻不到，且做法不安全",     "score": 16 },
+    { "op": "未验纯就点燃大量氢气",     "phen": "混有空气",         "result": "可能发生爆鸣甚至危险",     "score": 16 },
+    { "op": "认为生成 FeCl₃",           "phen": "Fe³⁺ 溶液显黄色",  "result": "正确应生成浅绿色 FeCl₂",   "score": 10 },
+    { "op": "用稀硫酸代替稀盐酸",       "phen": "同样会反应",       "result": "本实验指定用稀盐酸做对比", "score": 10 }
+  ],
+
+  "steps": [
+    {
+      "id": "cover", "type": "cover", "title": "准备开始", "progress": 0,
+      "headline": "金属与稀盐酸的反应",
+      "subtitle": "三支试管同时进行，谁的气泡最急？",
+      "buttons": [{ "t": "开始实验", "c": "primary", "goto": "goal" }]
+    },
+
+    {
+      "id": "goal", "type": "doc", "title": "实验目标", "progress": 6,
+      "cols": [
+        { "title": "实验目标", "lines": [
+          "1. 通过对比实验比较 Mg、Zn、Fe 的活动性强弱",
+          "2. 知道排在氢前面的金属能置换出酸中的氢",
+          "3. 记住铁与酸反应生成浅绿色 Fe²⁺ 溶液",
+          "4. 学会点燃法检验氢气（爆鸣声 / 淡蓝色火焰）",
+          "5. 体会对比实验中控制变量的做法"
+        ]},
+        { "title": "操作方式", "lines": [
+          "● 拖拽金属到试管的高亮区域",
+          "● 遇到思考题时点选项作答",
+          "● 右侧显示当前实验阶段",
+          "● 卡住时点右下角“？”获取提示"
+        ]},
+        { "title": "安全提示", "lines": [
+          "⚠ 稀盐酸有腐蚀性，沾到皮肤立即用大量水冲洗",
+          "⚠ 镁与酸反应非常剧烈，不要一次加入过多镁条",
+          "⚠ 点燃氢气前必须先验纯，否则可能爆鸣",
+          "⚠ 三支试管要用同浓度、同体积的盐酸，才能比较"
+        ]}
+      ],
+      "buttons": [
+        { "t": "下一步", "c": "primary", "goto": "equip" },
+        { "t": "返回封面", "c": "ghost", "goto": "cover" }
+      ]
+    },
+
+    {
+      "id": "equip", "type": "equip", "title": "选择实验器材", "progress": 12,
+      "tip": "要同时对比三种金属，还要能检验生成的气体——想一想该选什么",
+      "buttons": [
+        { "t": "确认器材", "c": "primary", "do": [{ "do": "checkEquip", "key": "equip", "goto": "tubes" }] }
+      ]
+    },
+
+    {
+      "id": "tubes", "type": "stage", "title": "排好三支试管", "progress": 18,
+      "shelf": ["tube"],
+      "desc": "把三支试管并排架好。要同时做三组，才能保证酸是同一种、同一刻加入的。",
+      "help": "把试管拖到桌面上的高亮区域。对比实验讲究同时、同条件，这样看到的气泡快慢差异才可信。",
+      "zones": ["bench"],
+      "drop": [
+        { "equip": "tube", "zone": "bench", "do": [
+          { "do": "set", "k": "tubesOn", "v": true },
+          { "do": "score", "key": "tubes" },
+          { "do": "tip", "text": "三支试管已并排架好 ✓ 从左到右依次放 Mg、Zn、Fe" },
+          { "do": "goto", "id": "metals", "delay": 1200 }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要准备好盛放金属和酸的容器。" }] }
+      ]
+    },
+
+    {
+      "id": "metals", "type": "stage", "title": "分别放入三种金属", "progress": 30,
+      "shelf": ["mag", "zinc", "iron"],
+      "desc": "把镁条、锌粒、铁钉分别放入三支试管，金属的形状和大小要差不多。",
+      "help": "依次把三种金属拖到试管区域。金属的表面积会影响反应快慢，所以要取形状大小相近的样品才公平。",
+      "zones": ["metalAll"],
+      "drop": [
+        { "equip": "mag", "zone": "metalAll", "do": [
+          { "do": "set", "k": "mgIn", "v": true },
+          { "do": "tip", "text": "镁条已放入左边试管 ✓ 继续放入另外两种金属" },
+          { "do": "if", "cond": "stage.mgIn && stage.znIn && stage.feIn", "then": [
+            { "do": "score", "key": "metals" },
+            { "do": "goto", "id": "acidStep", "delay": 900 }
+          ]}
+        ]},
+        { "equip": "zinc", "zone": "metalAll", "do": [
+          { "do": "set", "k": "znIn", "v": true },
+          { "do": "tip", "text": "锌粒已放入 ✓" },
+          { "do": "if", "cond": "stage.mgIn && stage.znIn && stage.feIn", "then": [
+            { "do": "score", "key": "metals" },
+            { "do": "goto", "id": "acidStep", "delay": 900 }
+          ]}
+        ]},
+        { "equip": "iron", "zone": "metalAll", "do": [
+          { "do": "set", "k": "feIn", "v": true },
+          { "do": "tip", "text": "铁钉已放入 ✓" },
+          { "do": "if", "cond": "stage.mgIn && stage.znIn && stage.feIn", "then": [
+            { "do": "score", "key": "metals" },
+            { "do": "goto", "id": "acidStep", "delay": 900 }
+          ]}
+        ]},
+        { "equip": "cu", "zone": "metalAll", "do": [
+          { "do": "set", "k": "wrongMetal", "v": true },
+          { "do": "err", "text": "铜排在氢之后，不能置换出盐酸中的氢，放进去也不会有气泡。这一步请放镁、锌、铁。" }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要放的是能与酸反应的金属。" }] }
+      ]
+    },
+
+    {
+      "id": "acidStep", "type": "stage", "title": "同时加入稀盐酸", "progress": 42,
+      "shelf": ["acid"],
+      "desc": "向三支试管中加入同浓度、同体积的稀盐酸，然后比较哪个冒气泡最急。",
+      "help": "把稀盐酸拖到试管上方的高亮区域。三个试管加入的酸必须完全一样，否则就不是公平的比较了。",
+      "zones": ["allMouth"],
+      "drop": [
+        { "equip": "acid", "zone": "allMouth", "do": [
+          { "do": "set", "k": "acidIn", "v": true },
+          { "do": "set", "k": "react", "v": 1, "delay": 500 },
+          { "do": "set", "k": "react", "v": 2, "delay": 1400 },
+          { "do": "set", "k": "feReact", "v": true, "delay": 2200 },
+          { "do": "score", "key": "acid" },
+          { "do": "tip", "text": "三支试管都冒出气泡了，仔细比较气泡的快慢 ✓" },
+          { "do": "goto", "id": "observe", "delay": 2800 }
+        ]},
+        { "equip": "water2", "zone": "allMouth", "do": [
+          { "do": "err", "text": "水不能与这几种金属反应，看不到任何现象。本实验要用稀盐酸。" }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要加入的是酸溶液。" }] }
+      ]
+    },
+
+    {
+      "id": "observe", "type": "doc", "title": "谁反应得最剧烈？", "progress": 54,
+      "cols": [
+        { "title": "观察到的现象", "lines": [
+          "镁条：气泡极多极快，镁迅速溶解，试管发烫",
+          "锌粒：气泡较多较快，锌粒逐渐变小",
+          "铁钉：气泡较少较慢，溶液由无色慢慢变成浅绿色"
+        ]},
+        { "title": "提示", "lines": [
+          "单位时间内产生的气泡越多，说明反应越快，",
+          "也就说明这种金属越活泼。",
+          "由快到慢排个序，就是它们的活动性顺序。"
+        ]}
+      ],
+      "buttons": [
+        { "t": "Mg > Zn > Fe", "c": "primary", "do": [
+          { "do": "score", "key": "observe" },
+          { "do": "tip", "text": "完全正确 ✓ 反应越剧烈，金属越活泼" },
+          { "do": "goto", "id": "gas", "delay": 1500 }
+        ]},
+        { "t": "Fe > Zn > Mg", "c": "ghost", "do": [
+          { "do": "err", "text": "顺序反了。铁钉那支试管气泡最少最慢，镁条那支几乎是在翻腾。" }
+        ]},
+        { "t": "Zn > Mg > Fe", "c": "ghost", "do": [
+          { "do": "err", "text": "镁和锌的顺序颠倒了。看镁条那支，气泡密集得多，而且试管明显发烫。" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "gas", "type": "stage", "title": "检验产生的气体", "progress": 68,
+      "shelf": ["match"],
+      "desc": "把燃着的木条放在产生气体最急的那支试管口，看看会发生什么。",
+      "help": "把燃着的木条拖到最左边试管口上方。产生的气体应该先收集在小试管里验纯，再点燃，直接点燃大量气体有危险。",
+      "zones": ["gasZone"],
+      "drop": [
+        { "equip": "match", "zone": "gasZone", "do": [
+          { "do": "set", "k": "fire", "v": true },
+          { "do": "set", "k": "popTest", "v": true, "delay": 700 },
+          { "do": "score", "key": "gas" },
+          { "do": "tip", "text": "气体被点燃：淡蓝色火焰并伴有轻微爆鸣声 → 是氢气 ✓" },
+          { "do": "goto", "id": "feStep", "delay": 2200 }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要用燃着的木条靠近试管口。" }] }
+      ]
+    },
+
+    {
+      "id": "feStep", "type": "doc", "title": "铁那支试管变成了浅绿色", "progress": 78,
+      "cols": [
+        { "title": "现象", "lines": [
+          "铁钉表面有气泡慢慢放出",
+          "溶液原本是无色的稀盐酸",
+          "反应一段时间后，溶液变成了浅绿色"
+        ]},
+        { "title": "想一想", "lines": [
+          "Fe²⁺ 在水溶液中显浅绿色，",
+          "Fe³⁺ 的水溶液显黄色。",
+          "现在看到的是浅绿色，说明生成的是哪种离子？"
+        ]}
+      ],
+      "buttons": [
+        { "t": "生成了 FeCl₂（含 Fe²⁺）", "c": "primary", "do": [
+          { "do": "score", "key": "fe" },
+          { "do": "tip", "text": "对！Fe + 2HCl = FeCl₂ + H₂↑，这是亚铁化合物 ✓" },
+          { "do": "goto", "id": "summary", "delay": 1600 }
+        ]},
+        { "t": "生成了 FeCl₃（含 Fe³⁺）", "c": "ghost", "do": [
+          { "do": "err", "text": "Fe³⁺ 溶液是黄色的。铁与盐酸这样的非氧化性酸反应只能生成亚铁盐。" }
+        ]},
+        { "t": "生成了 Fe₂O₃", "c": "ghost", "do": [
+          { "do": "err", "text": "Fe₂O₃ 是红棕色的铁锈，不溶于水，不可能形成浅绿色溶液。" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "summary", "type": "doc", "title": "金属活动性顺序", "progress": 88,
+      "cols": [
+        { "title": "实验得到的顺序", "lines": [
+          "Mg  Zn  Fe  (H)  Cu",
+          "由左到右活动性逐渐减弱",
+          "排在氢前面的金属能置换出酸中的氢，",
+          "排在氢后面的（如铜、银）不能。"
+        ]},
+        { "title": "完整顺序（常考）", "lines": [
+          "K  Ca  Na  Mg  Al  Zn  Fe  Sn  Pb  (H)  Cu  Hg  Ag  Pt  Au",
+          "钾钙钠镁铝 锌铁锡铅氢 铜汞银铂金",
+          "越靠前越活泼，越容易失去电子。"
+        ]}
+      ],
+      "buttons": [
+        { "t": "排在氢前的金属能置换出酸中的氢", "c": "primary", "do": [
+          { "do": "score", "key": "summary" },
+          { "do": "tip", "text": "总结到位 ✓ 这正是判断金属能否与酸反应的依据" },
+          { "do": "goto", "id": "report", "delay": 1600 }
+        ]},
+        { "t": "金属都能与酸反应产生氢气", "c": "ghost", "do": [
+          { "do": "err", "text": "铜、银等排在氢之后的金属就不行。刚才把铜丝放进盐酸，一点气泡都没有。" }
+        ]},
+        { "t": "只有铁能产生氢气", "c": "ghost", "do": [
+          { "do": "err", "text": "三支试管都在冒气泡，只是快慢不同。区别是反应的剧烈程度，不是能不能反应。" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "report", "type": "report", "title": "实验报告", "progress": 94,
+      "buttons": [
+        { "t": "提交报告", "c": "primary", "do": [{ "do": "finish" }, { "do": "goto", "id": "score" }] }
+      ]
+    },
+
+    {
+      "id": "score", "type": "score", "title": "实验评分", "progress": 100,
+      "buttons": [
+        { "t": "导出本次成绩", "c": "ghost", "do": [{ "do": "export" }] },
+        { "t": "查看常见错误", "c": "ghost", "goto": "errtable" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    },
+
+    {
+      "id": "errtable", "type": "errors", "title": "常见错误与后果", "progress": 100,
+      "buttons": [
+        { "t": "返回评分", "c": "ghost", "goto": "score" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    }
+  ]
+}

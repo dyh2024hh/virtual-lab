@@ -1,0 +1,361 @@
+{
+  "id": "cuso4water",
+  "title": "无水硫酸铜检验水",
+  "subtitle": "初中化学虚拟实验 · 白色粉末遇水变蓝",
+  "badges": ["白色 → 蓝色", "对照实验", "满分 100 分"],
+  "viewBox": "0 0 600 360",
+
+  "equipments": [
+    { "id": "tube",    "name": "试管（2支）",     "need": true },
+    { "id": "cuso4a",  "name": "无水硫酸铜粉末", "need": true },
+    { "id": "water2",  "name": "蒸馏水",          "need": true },
+    { "id": "alcohol", "name": "无水乙醇",        "need": true },
+    { "id": "spoon",   "name": "药匙",            "need": true },
+    { "id": "dropper", "name": "胶头滴管",        "need": true },
+    { "id": "cuso4",   "name": "硫酸铜溶液",      "need": false },
+    { "id": "acid",    "name": "稀盐酸",          "need": false }
+  ],
+
+  "dims": [
+    { "key": "skill",  "name": "操作规范" },
+    { "key": "safety", "name": "安全意识" }
+  ],
+
+  "scoreItems": [
+    { "key": "equip",   "name": "器材选择",           "max": 10, "dim": "skill" },
+    { "key": "tube",    "name": "准备两支试管",       "max": 8,  "dim": "skill" },
+    { "key": "powder",  "name": "各取白色粉末",       "max": 12, "dim": "skill" },
+    { "key": "water",   "name": "向第一支加水",       "max": 14, "dim": "skill" },
+    { "key": "alcohol", "name": "向第二支加无水乙醇", "max": 12, "dim": "skill" },
+    { "key": "observe", "name": "描述并解释现象",     "max": 14, "dim": "skill" },
+    { "key": "judge",   "name": "判断产物与用途",     "max": 16, "dim": "skill" },
+    { "key": "summary", "name": "归纳检验水的思路",   "max": 14, "dim": "skill" }
+  ],
+
+  "initialStage": {
+    "tubeOn": false, "powderIn": false,
+    "waterIn": false, "blue": 0,
+    "alcoholIn": false, "stillWhite": false, "wrongSoln": false
+  },
+
+  "dropZones": {
+    "bench":    { "x": 130, "y": 210, "w": 340, "h": 112 },
+    "powderZn": { "x": 138, "y": 196, "w": 324, "h": 116 },
+    "zoneA":    { "x": 150, "y": 126, "w": 106, "h": 192 },
+    "zoneB":    { "x": 346, "y": 126, "w": 106, "h": 192 }
+  },
+
+  "scene": [
+    { "tag": "rect", "x": 30, "y": 322, "width": 540, "height": 14, "rx": 5, "fill": "url(#gMetal)" },
+    { "tag": "rect", "x": 30, "y": 322, "width": 540, "height": 4, "rx": 2, "fill": "#e8eef2", "opacity": 0.75 },
+
+    { "tag": "g", "when": "stage.tubeOn", "children": [
+      { "tag": "rect", "x": 138, "y": 292, "width": 324, "height": 12, "rx": 4, "fill": "url(#gMetal)" },
+      { "tag": "rect", "x": 148, "y": 296, "width": 10, "height": 22, "fill": "url(#gMetalV)" },
+      { "tag": "rect", "x": 442, "y": 296, "width": 10, "height": 22, "fill": "url(#gMetalV)" }
+    ]},
+
+    { "tag": "g", "when": "stage.tubeOn", "children": [
+      { "tag": "path", "d": "M172 152 L172 278 Q172 292 186 292 L218 292 Q232 292 232 278 L232 152 Z", "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.2 },
+      { "tag": "rect", "x": 168, "y": 144, "width": 68, "height": 10, "rx": 4, "fill": "url(#gGlassH)", "stroke": "#7ba7c7", "stroke-width": 1.6 },
+      { "tag": "path", "d": "M182 168 L182 280", "stroke": "#ffffff", "stroke-width": 2.2, "opacity": 0.8, "fill": "none" },
+      { "tag": "g", "when": "stage.powderIn", "children": [
+        { "tag": "path", "d": "M175 272 Q190 258 202 268 Q216 256 229 272 L229 284 Q229 290 223 290 L181 290 Q175 290 175 284 Z", "fill": "@ stage.blue>=3 ? '#1565c0' : (stage.blue>=2 ? '#5b9bd5' : (stage.blue>=1 ? '#a8cdf0' : '#ffffff'))" },
+        { "tag": "circle", "cx": 188, "cy": 262, "r": 4.5, "fill": "@ stage.blue>=2 ? '#1976d2' : '#fafafa'", "stroke": "#e0e0e0", "stroke-width": 1 },
+        { "tag": "circle", "cx": 214, "cy": 265, "r": 4, "fill": "@ stage.blue>=2 ? '#1976d2' : '#fafafa'", "stroke": "#e0e0e0", "stroke-width": 1 }
+      ]},
+      { "tag": "rect", "when": "stage.waterIn", "x": 175, "y": "@ 262 - 36*stage.blue/3", "width": 58, "height": "@ 36*stage.blue/3", "rx": 3, "fill": "@ stage.blue>=3 ? '#1565c0' : (stage.blue>=2 ? '#5b9bd5' : '#a8cdf0')", "opacity": 0.6 },
+      { "tag": "text", "when": "stage.powderIn && stage.blue===0", "x": 202, "y": 246, "font-size": 10.5, "text-anchor": "middle", "fill": "#455a64", "text": "白色粉末" },
+      { "tag": "text", "when": "stage.blue>=3", "x": 202, "y": 232, "font-size": 10.5, "text-anchor": "middle", "fill": "#0d47a1", "font-weight": 700, "text": "变成蓝色！" },
+      { "tag": "text", "x": 202, "y": 330, "font-size": 11.5, "text-anchor": "middle", "fill": "#455a64", "font-weight": 700, "text": "实验组：加水" }
+    ]},
+
+    { "tag": "g", "when": "stage.tubeOn", "children": [
+      { "tag": "path", "d": "M368 152 L368 278 Q368 292 382 292 L414 292 Q428 292 428 278 L428 152 Z", "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.2 },
+      { "tag": "rect", "x": 364, "y": 144, "width": 68, "height": 10, "rx": 4, "fill": "url(#gGlassH)", "stroke": "#7ba7c7", "stroke-width": 1.6 },
+      { "tag": "path", "d": "M378 168 L378 280", "stroke": "#ffffff", "stroke-width": 2.2, "opacity": 0.8, "fill": "none" },
+      { "tag": "g", "when": "stage.powderIn", "children": [
+        { "tag": "path", "d": "M371 272 Q386 258 398 268 Q412 256 425 272 L425 284 Q425 290 419 290 L377 290 Q371 290 371 284 Z", "fill": "#ffffff" },
+        { "tag": "circle", "cx": 384, "cy": 262, "r": 4.5, "fill": "#fafafa", "stroke": "#e0e0e0", "stroke-width": 1 },
+        { "tag": "circle", "cx": 410, "cy": 265, "r": 4, "fill": "#fafafa", "stroke": "#e0e0e0", "stroke-width": 1 }
+      ]},
+      { "tag": "rect", "when": "stage.alcoholIn", "x": 371, "y": 240, "width": 58, "height": 48, "rx": 3, "fill": "#f1ecf9", "opacity": 0.8 },
+      { "tag": "text", "when": "stage.stillWhite", "x": 398, "y": 246, "font-size": 10.5, "text-anchor": "middle", "fill": "#6a1b9a", "font-weight": 700, "text": "仍然白色" },
+      { "tag": "text", "x": 398, "y": 330, "font-size": 11.5, "text-anchor": "middle", "fill": "#455a64", "font-weight": 700, "text": "对照组：加无水乙醇" }
+    ]},
+
+    { "tag": "text", "when": "stage.wrongSoln", "x": 300, "y": 116, "font-size": 11.5, "text-anchor": "middle", "fill": "#dc2626", "font-weight": 700, "text": "硫酸铜溶液本身就是蓝色的，看不出变化，无法作检验用" },
+    { "tag": "text", "when": "stage.waterIn && stage.alcoholIn", "x": 300, "y": 116, "font-size": 11.5, "text-anchor": "middle", "fill": "#0277bd", "font-weight": 700, "text": "对比：只有含水的那一支变蓝" }
+  ],
+
+  "report": [
+    { "title": "实验记录", "lines": [
+      "实验名称：无水硫酸铜检验水的存在",
+      "反应原理：CuSO₄（白） + 5H₂O = CuSO₄·5H₂O（蓝）",
+      "操作：两支试管各取少量无水硫酸铜白色粉末，一支加水，另一支加无水乙醇作对照",
+      "用途：检验某液体中是否含有水；也可放在干燥器中指示是否受潮"
+    ]},
+    { "title": "现象记录", "lines": [
+      "1. 无水硫酸铜是白色粉末",
+      "2. 加水后白色粉末迅速变成蓝色，溶液也呈蓝色",
+      "3. 加无水乙醇的那一支始终保持白色，没有变化"
+    ]},
+    { "title": "实验结论", "lines": [
+      "无水硫酸铜能与水结合生成蓝色的五水合硫酸铜，颜色变化非常明显。",
+      "这个变化是水特有的，乙醇等不含水的液体不能使其变蓝。",
+      "因此无水硫酸铜常用于检验水的存在，也可判断干燥剂是否失效。"
+    ]}
+  ],
+
+  "errorTable": [
+    { "op": "用硫酸铜溶液代替无水硫酸铜", "phen": "本身就是蓝色",       "result": "没有颜色变化，无法检验",   "score": 14 },
+    { "op": "只做加水不做对照组",         "phen": "缺少对比",           "result": "不能说明变化是水引起的",   "score": 12 },
+    { "op": "取太多白色粉末",             "phen": "药品浪费",           "result": "现象反而不容易看清",       "score": 12 },
+    { "op": "把变蓝说成潮解或变质",       "phen": "概念混淆",           "result": "应表述为与水结合生成结晶水合物", "score": 16 },
+    { "op": "误加稀盐酸",                 "phen": "酸中含大量水",       "result": "同样变蓝，失去对照意义",   "score": 14 },
+    { "op": "直接用手抓粉末",             "phen": "药品受污染且伤皮肤", "result": "要用洁净药匙取用",         "score": 12 }
+  ],
+
+  "steps": [
+    {
+      "id": "cover", "type": "cover", "title": "准备开始", "progress": 0,
+      "headline": "无水硫酸铜检验水",
+      "subtitle": "一撮白粉，滴上一滴水就变蓝 —— 这是水的专属信号",
+      "buttons": [{ "t": "开始实验", "c": "primary", "goto": "goal" }]
+    },
+
+    {
+      "id": "goal", "type": "doc", "title": "实验目标", "progress": 6,
+      "cols": [
+        { "title": "实验目标", "lines": [
+          "1. 知道无水硫酸铜是白色粉末，遇水变蓝",
+          "2. 掌握用它检验某物质中是否含水的方法",
+          "3. 通过设置对照组排除「液体本身导致变蓝」",
+          "4. 认识结晶水合物 CuSO₄·5H₂O（胆矾）",
+          "5. 记住CuSO₄+5H₂O=CuSO₄·5H₂O 属于化合反应"
+        ]},
+        { "title": "操作方式", "lines": [
+          "● 拖拽药品到试管的高亮区域",
+          "● 遇到思考题时点选项作答",
+          "● 右侧显示当前实验阶段",
+          "● 卡住时点右下角“？”获取提示"
+        ]},
+        { "title": "安全提示", "lines": [
+          "⚠ 硫酸铜有毒，绝对不能入口",
+          "⚠ 取用粉末要用洁净药匙，不要用手直接接触",
+          "⚠ 无水乙醇易燃，使用时远离明火",
+          "⚠ 药品取用量要少，铺满试管底部一小层即可"
+        ]}
+      ],
+      "buttons": [
+        { "t": "下一步", "c": "primary", "goto": "equip" },
+        { "t": "返回封面", "c": "ghost", "goto": "cover" }
+      ]
+    },
+
+    {
+      "id": "equip", "type": "equip", "title": "选择实验器材", "progress": 12,
+      "tip": "要用的是白色粉末而不是蓝色溶液，还得有一种「看起来像水但不是水」的液体来做对照",
+      "buttons": [
+        { "t": "确认器材", "c": "primary", "do": [{ "do": "checkEquip", "key": "equip", "goto": "tubeStep" }] }
+      ]
+    },
+
+    {
+      "id": "tubeStep", "type": "stage", "title": "准备两支试管", "progress": 18,
+      "shelf": ["tube"],
+      "desc": "一支做实验组，另一支做对照组。只有两相对照，才能说明是水在起作用。",
+      "help": "把试管拖到桌面上的高亮区域。左边加水做实验组，右边加无水乙醇做对照组。",
+      "zones": ["bench"],
+      "drop": [
+        { "equip": "tube", "zone": "bench", "do": [
+          { "do": "set", "k": "tubeOn", "v": true },
+          { "do": "score", "key": "tube" },
+          { "do": "tip", "text": "两支试管已放好 ✓" },
+          { "do": "goto", "id": "powder", "delay": 1100 }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要准备好两支试管。" }] }
+      ]
+    },
+
+    {
+      "id": "powder", "type": "stage", "title": "各取少量白色粉末", "progress": 26,
+      "shelf": ["cuso4a", "spoon"],
+      "desc": "用药匙取少量无水硫酸铜，分别放入两支试管，铺满底部薄薄一层即可。",
+      "help": "把无水硫酸铜拖到试管区域。注意要取白色粉末状的无水硫酸铜，不是蓝色的硫酸铜溶液或晶体。",
+      "zones": ["powderZn"],
+      "drop": [
+        { "equip": "cuso4a", "zone": "powderZn", "do": [
+          { "do": "set", "k": "powderIn", "v": true },
+          { "do": "score", "key": "powder" },
+          { "do": "tip", "text": "两支试管都放入了白色粉末 ✓ 记住它现在的颜色" },
+          { "do": "goto", "id": "water", "delay": 1200 }
+        ]},
+        { "equip": "cuso4", "zone": "powderZn", "do": [
+          { "do": "set", "k": "wrongSoln", "v": true },
+          { "do": "err", "text": "硫酸铜溶液本来就是蓝色的，加再多也看不出变化。要取的是白色粉末。" }
+        ]},
+        { "equip": "spoon", "zone": "powderZn", "do": [
+          { "do": "err", "text": "药匙是用来取药品的工具，本身不是药品。" }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要取的是白色粉末状固体。" }] }
+      ]
+    },
+
+    {
+      "id": "water", "type": "stage", "title": "向第一支加水", "progress": 38,
+      "shelf": ["water2"],
+      "desc": "用滴管向左边试管滴加几滴水，观察白色粉末的变化。",
+      "help": "把蒸馏水拖到左边试管。滴的时候不要加太多，几滴就足够让白色粉末显现变化。",
+      "zones": ["zoneA"],
+      "drop": [
+        { "equip": "water2", "zone": "zoneA", "do": [
+          { "do": "set", "k": "waterIn", "v": true },
+          { "do": "set", "k": "blue", "v": 1, "delay": 500 },
+          { "do": "set", "k": "blue", "v": 2, "delay": 1200 },
+          { "do": "set", "k": "blue", "v": 3, "delay": 1900 },
+          { "do": "score", "key": "water" },
+          { "do": "tip", "text": "白色粉末变成蓝色了！CuSO₄ + 5H₂O = CuSO₄·5H₂O ✓" },
+          { "do": "goto", "id": "alcohol", "delay": 2600 }
+        ]},
+        { "equip": "acid", "zone": "zoneA", "do": [
+          { "do": "err", "text": "稀盐酸里含有大量水，会让它变蓝，但这样就分不清到底是酸还是水的作用了。这一步要用蒸馏水。" }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要加入的是水。" }] }
+      ]
+    },
+
+    {
+      "id": "alcohol", "type": "stage", "title": "向第二支加无水乙醇", "progress": 50,
+      "shelf": ["alcohol"],
+      "desc": "给右边试管加入同样几滴无水乙醇，作为对照。",
+      "help": "把无水乙醇拖到右边试管。它也是一种无色液体，如果白粉不变蓝，就说明变蓝是水特有的现象。",
+      "zones": ["zoneB"],
+      "drop": [
+        { "equip": "alcohol", "zone": "zoneB", "do": [
+          { "do": "set", "k": "alcoholIn", "v": true },
+          { "do": "set", "k": "stillWhite", "v": true, "delay": 900 },
+          { "do": "score", "key": "alcohol" },
+          { "do": "tip", "text": "对照组的白色粉末没有任何变化 ✓" },
+          { "do": "goto", "id": "observe", "delay": 1600 }
+        ]},
+        { "equip": "water2", "zone": "zoneB", "do": [
+          { "do": "err", "text": "第二支要加无水乙醇做对照，加水就失去对照意义了。" }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要加入不含水的无色液体作对照。" }] }
+      ]
+    },
+
+    {
+      "id": "observe", "type": "doc", "title": "现象说明了什么？", "progress": 62,
+      "cols": [
+        { "title": "现象对比", "lines": [
+          "加水的一支：白色粉末迅速变成蓝色",
+          "加无水乙醇的一支：始终保持白色",
+          "两者唯一的区别就是有没有水"
+        ]},
+        { "title": "结论", "lines": [
+          "白色变蓝色，是水分子与硫酸铜结合的结果：",
+          "CuSO₄ + 5H₂O = CuSO₄·5H₂O",
+          "生成物叫五水合硫酸铜，俗称胆矾或蓝矾。"
+        ]}
+      ],
+      "buttons": [
+        { "t": "只有水才能使它变蓝，可用来检验水", "c": "primary", "do": [
+          { "do": "score", "key": "observe" },
+          { "do": "tip", "text": "正是这样 ✓ 对照组让这个结论变得可靠" },
+          { "do": "goto", "id": "judge", "delay": 1500 }
+        ]},
+        { "t": "任何无色液体都能使它变蓝", "c": "ghost", "do": [
+          { "do": "err", "text": "右边那支加了无水乙醇，完全没变色。所以变蓝是水独有的作用。" }
+        ]},
+        { "t": "白色粉末吸水潮解了", "c": "ghost", "do": [
+          { "do": "err", "text": "潮解是固体吸水后表面溶解形成溶液的现象。这里发生的是化学变化，生成了新的物质——蓝色的结晶水合物。" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "judge", "type": "doc", "title": "变蓝后的物质是什么？", "progress": 74,
+      "cols": [
+        { "title": "新物质", "lines": [
+          "CuSO₄·5H₂O 五水合硫酸铜",
+          "含有定量结合的结晶水，属于纯净物",
+          "俗称胆矾、蓝矾，是蓝色晶体"
+        ]},
+        { "title": "反应类型", "lines": [
+          "CuSO₄ + 5H₂O = CuSO₄·5H₂O",
+          "多种物质生成一种物质 —— 化合反应",
+          "结晶水合物中的水是结合进去的，不是简单混在一起"
+        ]}
+      ],
+      "buttons": [
+        { "t": "CuSO₄·5H₂O，属于化合反应生成的新物质", "c": "primary", "do": [
+          { "do": "score", "key": "judge" },
+          { "do": "tip", "text": "完全正确 ✓ 它和原来的白色粉末是两种不同的物质" },
+          { "do": "goto", "id": "summary", "delay": 1500 }
+        ]},
+        { "t": "只是硫酸铜被水溶解了", "c": "ghost", "do": [
+          { "do": "err", "text": "溶解得到的仍是 CuSO₄ 溶液；而这里水按 1:5 的比例结合进了晶体里，组成改变了，是化学变化。" }
+        ]},
+        { "t": "CuSO₄·H₂O", "c": "ghost", "do": [
+          { "do": "err", "text": "结晶水的数目是 5 而不是 1。胆矾的化学式要写成 CuSO₄·5H₂O。" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "summary", "type": "doc", "title": "检验水的通用思路", "progress": 86,
+      "cols": [
+        { "title": "检验方法", "lines": [
+          "取少量待测液体（或气体）与白色无水硫酸铜接触，",
+          "白色变蓝 → 其中含有水；",
+          "始终保持白色 → 不含水。",
+          "现象明显、操作简单，是初中最常用的检验方法之一。"
+        ]},
+        { "title": "常见用途", "lines": [
+          "● 检验酒精中是否混有水",
+          "● 判断干燥剂是否失效（放在干燥器里观察颜色）",
+          "● 检验某反应是否有水生成（配合干燥装置）"
+        ]}
+      ],
+      "buttons": [
+        { "t": "取样 → 加无水CuSO₄ → 变蓝即含水", "c": "primary", "do": [
+          { "do": "score", "key": "summary" },
+          { "do": "tip", "text": "归纳得很清楚 ✓ 与之对应，检验水生成也可用白色的无水硫酸铜" },
+          { "do": "goto", "id": "report", "delay": 1500 }
+        ]},
+        { "t": "尝一下有没有味道就能判断", "c": "ghost", "do": [
+          { "do": "err", "text": "实验室的任何药品都严禁品尝，而且硫酸铜有毒。必须靠现象来判断。" }
+        ]},
+        { "t": "用天平称一下有没有增重", "c": "ghost", "do": [
+          { "do": "err", "text": "增重确实说明吸收了东西，但分不清吸的是水还是别的。颜色变化才是又直观又专属的证据。" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "report", "type": "report", "title": "实验报告", "progress": 95,
+      "buttons": [
+        { "t": "提交报告", "c": "primary", "do": [{ "do": "finish" }, { "do": "goto", "id": "score" }] }
+      ]
+    },
+
+    {
+      "id": "score", "type": "score", "title": "实验评分", "progress": 100,
+      "buttons": [
+        { "t": "导出本次成绩", "c": "ghost", "do": [{ "do": "export" }] },
+        { "t": "查看常见错误", "c": "ghost", "goto": "errtable" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    },
+
+    {
+      "id": "errtable", "type": "errors", "title": "常见错误与后果", "progress": 100,
+      "buttons": [
+        { "t": "返回评分", "c": "ghost", "goto": "score" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    }
+  ]
+}
