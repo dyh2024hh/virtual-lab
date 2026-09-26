@@ -1,0 +1,475 @@
+{
+  "id": "water",
+  "title": "水的组成 —— 电解水实验",
+  "subtitle": "初中化学虚拟实验 · 通直流电分解水",
+  "badges": ["正氧负氢", "体积比 1:2", "满分 100 分"],
+  "viewBox": "0 0 600 360",
+
+  "equipments": [
+    { "id": "power",   "name": "直流电源",       "need": true },
+    { "id": "beaker",  "name": "盛水烧杯",       "need": true },
+    { "id": "h2so4",   "name": "稀硫酸",         "need": true },
+    { "id": "wood",    "name": "带火星的木条",   "need": true },
+    { "id": "match",   "name": "火柴",           "need": true },
+    { "id": "lamp",    "name": "酒精灯",         "need": false },
+    { "id": "kmno4",   "name": "高锰酸钾",       "need": false },
+    { "id": "basin",   "name": "水槽",           "need": false },
+    { "id": "glass",   "name": "玻璃片",         "need": false },
+    { "id": "redP",    "name": "红磷",           "need": false }
+  ],
+
+  "dims": [
+    { "key": "skill",  "name": "操作规范" },
+    { "key": "safety", "name": "安全意识" }
+  ],
+
+  "scoreItems": [
+    { "key": "equip",     "name": "器材选择",                 "max": 10, "dim": "skill" },
+    { "key": "fill",      "name": "电解器中加满水",           "max": 8,  "dim": "skill" },
+    { "key": "enhance",   "name": "加稀硫酸增强导电性",       "max": 10, "dim": "skill" },
+    { "key": "connect",   "name": "正确接通直流电源",         "max": 14, "dim": "safety" },
+    { "key": "observe",   "name": "观察两极气泡",             "max": 12, "dim": "skill" },
+    { "key": "ratio",     "name": "判断两管气体体积比",       "max": 12, "dim": "skill" },
+    { "key": "verifyO",   "name": "正极气体使木条复燃",       "max": 12, "dim": "skill" },
+    { "key": "verifyH",   "name": "负极气体能燃烧",           "max": 12, "dim": "safety" },
+    { "key": "conclude",  "name": "得出水由氢氧元素组成",     "max": 10, "dim": "skill" }
+  ],
+
+  "initialStage": {
+    "filled": false, "enhanced": false, "powered": false, "reversed": false,
+    "gasL": 0, "gasR": 0,
+    "woodO": false, "relit": false, "fireH": false, "nofire": false
+  },
+
+  "dropZones": {
+    "tank":   { "x": 198, "y": 226, "w": 204, "h": 96 },
+    "power":  { "x": 76,  "y": 168, "w": 108, "h": 92 },
+    "woodO":  { "x": 228, "y": 74,  "w": 76,  "h": 72 },
+    "fireH":  { "x": 296, "y": 74,  "w": 76,  "h": 72 }
+  },
+
+  "scene": [
+    { "tag": "rect", "x": 40, "y": 322, "width": 520, "height": 15, "rx": 5, "fill": "url(#gMetal)" },
+    { "tag": "rect", "x": 40, "y": 322, "width": 520, "height": 4, "rx": 2, "fill": "#e8eef2", "opacity": 0.75 },
+
+    {
+      "tag": "g", "children": [
+        { "tag": "path", "d": "M212 250 L212 306 Q212 318 224 318 L376 318 Q388 318 388 306 L388 250 Z", "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.2 },
+        { "tag": "rect", "when": "stage.filled", "x": 216, "y": 262, "width": 168, "height": 52, "fill": "url(#gWater)", "opacity": 0.85 },
+        { "tag": "rect", "x": 208, "y": 244, "width": 184, "height": 10, "rx": 4, "fill": "url(#gGlassH)", "stroke": "#7ba7c7", "stroke-width": 1.5 },
+        { "tag": "text", "x": 300, "y": 352, "font-size": 11, "text-anchor": "middle", "fill": "#475569", "text": "水电解器（霍夫曼电解器）" }
+      ]
+    },
+
+    {
+      "tag": "g", "children": [
+        { "tag": "rect", "x": 250, "y": 104, "width": 44, "height": 160, "rx": 20, "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.2 },
+        { "tag": "rect", "when": "stage.filled", "x": 252, "y": 106, "width": 40, "height": "@ 156*stage.gasL/100", "fill": "#bbdefb", "opacity": 0.5 },
+        { "tag": "rect", "when": "stage.filled", "x": 252, "y": "@ 106 + 156*stage.gasL/100", "width": 40, "height": "@ 156 - 156*stage.gasL/100", "fill": "url(#gWater)", "opacity": 0.85 },
+        { "tag": "text", "when": "stage.gasL>=45 && stage.gasL<=stage.gasR", "x": 272, "y": 176, "font-size": 12, "text-anchor": "middle", "fill": "#1565c0", "font-weight": 700, "text": "O₂" },
+        { "tag": "text", "when": "stage.gasL>stage.gasR", "x": 272, "y": 176, "font-size": 12, "text-anchor": "middle", "fill": "#3949ab", "font-weight": 700, "text": "H₂" }
+      ]
+    },
+
+    {
+      "tag": "g", "children": [
+        { "tag": "rect", "x": 306, "y": 104, "width": 44, "height": 160, "rx": 20, "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.2 },
+        { "tag": "rect", "when": "stage.filled", "x": 308, "y": 106, "width": 40, "height": "@ 156*stage.gasR/100", "fill": "#dfe3ee", "opacity": 0.6 },
+        { "tag": "rect", "when": "stage.filled", "x": 308, "y": "@ 106 + 156*stage.gasR/100", "width": 40, "height": "@ 156 - 156*stage.gasR/100", "fill": "url(#gWater)", "opacity": 0.85 },
+        { "tag": "text", "when": "stage.gasR>stage.gasL", "x": 328, "y": 176, "font-size": 12, "text-anchor": "middle", "fill": "#3949ab", "font-weight": 700, "text": "H₂" },
+        { "tag": "text", "when": "stage.gasR>=45 && stage.gasR<=stage.gasL", "x": 328, "y": 176, "font-size": 12, "text-anchor": "middle", "fill": "#1565c0", "font-weight": 700, "text": "O₂" }
+      ]
+    },
+
+    {
+      "tag": "g", "children": [
+        { "tag": "rect", "x": 268, "y": 196, "width": 6, "height": 68, "fill": "url(#gMetalV)" },
+        { "tag": "rect", "x": 324, "y": 196, "width": 6, "height": 68, "fill": "url(#gMetalV)" },
+        { "tag": "circle", "cx": 271, "cy": 200, "r": 4, "fill": "#90a4ae" },
+        { "tag": "circle", "cx": 327, "cy": 200, "r": 4, "fill": "#90a4ae" }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.powered && stage.gasR<100", "children": [
+        { "tag": "circle", "class": "bub", "cx": 265, "cy": 236, "r": 3.5, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:0s" },
+        { "tag": "circle", "class": "bub", "cx": 278, "cy": 240, "r": 3, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:.45s" },
+        { "tag": "circle", "class": "bub", "cx": 320, "cy": 234, "r": 4, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:.2s" },
+        { "tag": "circle", "class": "bub", "cx": 334, "cy": 240, "r": 3.4, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:.65s" },
+        { "tag": "circle", "class": "bub", "cx": 327, "cy": 228, "r": 3, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:1s" },
+        { "tag": "text", "x": 402, "y": 214, "font-size": 11.5, "fill": "#0277bd", "font-weight": 700, "text": "两极都产生气泡" }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.gasR>=100", "children": [
+        { "tag": "text", "x": 402, "y": 150, "font-size": 11.5, "fill": "#1565c0", "font-weight": 700, "text": "负极 : 正极气体体积 ≈ 2 : 1" }
+      ]
+    },
+
+    {
+      "tag": "g", "children": [
+        { "tag": "text", "x": 272, "y": 96, "font-size": 11.5, "text-anchor": "middle", "fill": "#c62828", "font-weight": 700, "text": "正极（+）" },
+        { "tag": "text", "x": 328, "y": 96, "font-size": 11.5, "text-anchor": "middle", "fill": "#1565c0", "font-weight": 700, "text": "负极（−）" }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.powered", "children": [
+        { "tag": "path", "d": "M156 198 Q200 168 244 196 L268 216", "stroke": "#c62828", "stroke-width": 3.5, "fill": "none", "stroke-linecap": "round" },
+        { "tag": "path", "d": "M156 226 Q210 262 300 264 L326 240", "stroke": "#1565c0", "stroke-width": 3.5, "fill": "none", "stroke-linecap": "round" }
+      ]
+    },
+
+    {
+      "tag": "g", "children": [
+        { "tag": "rect", "x": 86, "y": 180, "width": 80, "height": 64, "rx": 6, "fill": "#eceff1", "stroke": "#546e7a", "stroke-width": 2 },
+        { "tag": "rect", "x": 94, "y": 188, "width": 36, "height": 24, "rx": 3, "fill": "#bbdefb", "stroke": "#1565c0", "stroke-width": 1.2 },
+        { "tag": "text", "x": 112, "y": 205, "font-size": 11, "text-anchor": "middle", "fill": "#1565c0", "font-weight": 700, "text": "DC" },
+        { "tag": "circle", "cx": 150, "cy": 198, "r": 6, "fill": "#c62828" },
+        { "tag": "circle", "cx": 150, "cy": 226, "r": 6, "fill": "#1565c0" },
+        { "tag": "text", "x": 164, "y": 202, "font-size": 13, "fill": "#c62828", "font-weight": 700, "text": "+" },
+        { "tag": "text", "x": 164, "y": 232, "font-size": 15, "fill": "#1565c0", "font-weight": 700, "text": "-" },
+        { "tag": "text", "x": 126, "y": 172, "font-size": 11, "text-anchor": "middle", "fill": "#475569", "text": "直流电源" }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.woodO", "children": [
+        { "tag": "rect", "x": 268, "y": 42, "width": 9, "height": 56, "rx": 3, "fill": "url(#gWood)" },
+        { "tag": "circle", "cx": 272, "cy": 44, "r": 5.5, "fill": "#8d6e63" },
+        { "tag": "circle", "cx": 272, "cy": 44, "r": 2.6, "fill": "#ff8a65" }
+      ]
+    },
+    {
+      "tag": "g", "when": "stage.relit", "class": "flame", "children": [
+        { "tag": "ellipse", "cx": 272, "cy": 36, "rx": 9, "ry": 14, "fill": "url(#gFlameOut)" },
+        { "tag": "ellipse", "cx": 272, "cy": 40, "rx": 4, "ry": 7, "fill": "#fff59d" },
+        { "tag": "text", "x": 60, "y": 52, "font-size": 12, "fill": "#dc2626", "font-weight": 700, "text": "木条复燃 → 正极气体是氧气" }
+      ]
+    },
+    {
+      "tag": "g", "when": "stage.nofire", "class": "shake", "children": [
+        { "tag": "text", "x": 60, "y": 52, "font-size": 12, "fill": "#dc2626", "font-weight": 700, "text": "没有复燃 → 这一极气体不是氧气" }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.fireH", "class": "flame", "children": [
+        { "tag": "ellipse", "cx": 328, "cy": 40, "rx": 9, "ry": 15, "fill": "#7ec8ff", "opacity": 0.9 },
+        { "tag": "ellipse", "cx": 328, "cy": 44, "rx": 4, "ry": 7, "fill": "#e3f6ff" },
+        { "tag": "text", "x": 400, "y": 56, "font-size": 12, "fill": "#0288d1", "font-weight": 700, "text": "淡蓝色火焰 → 负极气体是氢气" }
+      ]
+    },
+
+    { "tag": "text", "when": "stage.enhanced", "x": 402, "y": 266, "font-size": 11, "fill": "#33691e", "text": "加稀硫酸 → 增强导电性" }
+  ],
+
+  "report": [
+    { "title": "实验记录", "lines": [
+      "实验名称：电解水测定水的组成",
+      "反应原理：2H₂O --通电--> 2H₂↑ + O₂↑（分解反应）",
+      "通电方式：必须用直流电",
+      "正极气体：氧气（体积小，使带火星木条复燃）",
+      "负极气体：氢气（体积大，能被点燃）"
+    ]},
+    { "title": "现象记录", "lines": [
+      "1. 通电后两个电极上都产生气泡",
+      "2. 一段时间后两个玻璃管中都有气体聚集，水面下降",
+      "3. 正极与负极气体的体积比约为 1 : 2",
+      "4. 带火星木条伸入正极气体复燃；点燃负极气体发出淡蓝色火焰"
+    ]},
+    { "title": "实验结论", "lines": [
+      "水通电生成氢气和氧气，属于分解反应。",
+      "正极产生氧气、负极产生氢气，体积比约为 1 : 2（口诀：正氧负氢、氢二氧一）。",
+      "根据化学反应前后元素种类不变，可推知：水由氢元素和氧元素组成。"
+    ]}
+  ],
+
+  "errorTable": [
+    { "op": "直接用纯水，未加稀硫酸",   "phen": "纯水几乎不导电",       "result": "几乎看不到气泡",           "score": 10 },
+    { "op": "正负极接反",               "phen": "两管气体体积颠倒",     "result": "结论完全错误",             "score": 14 },
+    { "op": "用交流电",                 "phen": "电极产物不稳定",       "result": "无法分出氢气氧气",         "score": 10 },
+    { "op": "气体体积比判断为 1:1",     "phen": "读数错误",             "result": "无法得出水的组成",         "score": 12 },
+    { "op": "读数时未看液面凹处",       "phen": "读数习惯错误",         "result": "体积比不准",               "score": 8 },
+    { "op": "未检验就下结论",           "phen": "缺少证据支撑",         "result": "不知道哪管是什么气体",     "score": 12 }
+  ],
+
+  "steps": [
+    {
+      "id": "cover", "type": "cover", "title": "准备开始", "progress": 0,
+      "headline": "水的组成 —— 电解水实验",
+      "subtitle": "初中化学虚拟实验 · 通直流电分解水",
+      "buttons": [{ "t": "开始实验", "c": "primary", "goto": "goal" }]
+    },
+
+    {
+      "id": "goal", "type": "doc", "title": "实验目标", "progress": 5,
+      "cols": [
+        { "title": "实验原理", "lines": [
+          "水通电分解成氢气和氧气，属于分解反应。",
+          "与电源正极相连的电极产生氧气，",
+          "与负极相连的电极产生氢气，",
+          "两者的体积比约为 1 : 2。"
+        ]},
+        { "title": "实验目标", "lines": [
+          "1. 记住口诀：正氧负氢、氢二氧一",
+          "2. 知道实验用的是直流电、要加稀硫酸增强导电性",
+          "3. 学会用带火星木条检验氧气、点燃法检验氢气",
+          "4. 理解「化学反应前后元素种类不变」的推理"
+        ]},
+        { "title": "安全与提示", "lines": [
+          "⚠ 必须用直流电源，交流电不能得到稳定产物",
+          "⚠ 纯水几乎不导电，要加少量稀硫酸或氢氧化钠",
+          "⚠ 氢气要点燃检验时，注意气体体积足够、远离面部",
+          "⚠ 读数时视线要与液面最低处相平"
+        ]}
+      ],
+      "buttons": [
+        { "t": "下一步", "c": "primary", "goto": "equip" },
+        { "t": "返回封面", "c": "ghost", "goto": "cover" }
+      ]
+    },
+
+    {
+      "id": "equip", "type": "equip", "title": "选择实验器材", "progress": 10,
+      "tip": "想一想：这一步要通电，用什么电源？要检验两种气体，各需要什么？",
+      "buttons": [
+        { "t": "确认器材", "c": "primary", "do": [{ "do": "checkEquip", "key": "equip", "goto": "fill" }] }
+      ]
+    },
+
+    {
+      "id": "fill", "type": "stage", "title": "向电解器中加满水", "progress": 18,
+      "shelf": ["beaker"],
+      "desc": "先把水电解器的两个玻璃管和底座都装满水，管中不能留有气泡。",
+      "help": "把盛水烧杯拖到电解器上加水。注意要加到两个玻璃管中都装满为止。",
+      "zones": ["tank"],
+      "drop": [
+        { "equip": "beaker", "zone": "tank", "do": [
+          { "do": "set", "k": "filled", "v": true },
+          { "do": "score", "key": "fill" },
+          { "do": "tip", "text": "电解器已装满水 ✓" },
+          { "do": "goto", "id": "enhance", "delay": 1200 }
+        ]},
+        { "equip": "beaker", "do": [{ "do": "err", "text": "水要倒进电解器里。" }] },
+        { "do": [{ "do": "err", "text": "这一步要用水把电解器装满。" }] }
+      ]
+    },
+
+    {
+      "id": "enhance", "type": "stage", "title": "增强水的导电性", "progress": 26,
+      "shelf": ["h2so4"],
+      "desc": "纯水几乎不导电，要加入少量稀硫酸（或氢氧化钠）增强导电性。",
+      "help": "把稀硫酸拖到电解器里。不加的话反应会非常缓慢，几乎看不到气泡。",
+      "zones": ["tank"],
+      "drop": [
+        { "equip": "h2so4", "zone": "tank", "do": [
+          { "do": "set", "k": "enhanced", "v": true },
+          { "do": "score", "key": "enhance" },
+          { "do": "tip", "text": "已加入少量稀硫酸，导电性增强 ✓" },
+          { "do": "goto", "id": "connect", "delay": 1400 }
+        ]},
+        { "equip": "h2so4", "do": [{ "do": "err", "text": "稀硫酸要从上方加入电解器。" }] },
+        { "do": [{ "do": "err", "text": "这一步要加入能增强导电性的药品。" }] }
+      ]
+    },
+
+    {
+      "id": "connect", "type": "stage", "title": "接通直流电源", "progress": 36,
+      "shelf": ["power"],
+      "desc": "把两电极分别接到直流电源的正负极上，接通后观察两管中的气泡。",
+      "help": "把直流电源拖到左侧的高亮区域接通。千万要分清正负极：接反了气体的量会完全颠倒。",
+      "zones": ["power"],
+      "drop": [
+        { "equip": "power", "zone": "power", "do": [
+          { "do": "tip", "text": "电源已接好，请选择接线方式" }
+        ]},
+        { "equip": "power", "do": [{ "do": "err", "text": "电源要接到电极上，拖到左侧高亮区域。" }] },
+        { "do": [{ "do": "err", "text": "这一步要接上直流电源。" }] }
+      ],
+      "buttons": [
+        { "t": "分清正负极后接通", "c": "primary", "when": "true", "do": [
+          { "do": "set", "k": "powered", "v": true },
+          { "do": "score", "key": "connect" },
+          { "do": "tip", "text": "接通直流电 ✓ 观察两管中的气泡" },
+          { "do": "set", "k": "gasL", "v": 12, "delay": 900 },
+          { "do": "set", "k": "gasR", "v": 24, "delay": 900 },
+          { "do": "set", "k": "gasL", "v": 28, "delay": 1800 },
+          { "do": "set", "k": "gasR", "v": 56, "delay": 1800 },
+          { "do": "set", "k": "gasL", "v": 50, "delay": 2800 },
+          { "do": "set", "k": "gasR", "v": 100, "delay": 2800 },
+          { "do": "goto", "id": "observe", "delay": 3700 }
+        ]},
+        { "t": "随便把两根线接上通电", "c": "ghost", "do": [
+          { "do": "set", "k": "powered", "v": true },
+          { "do": "set", "k": "reversed", "v": true },
+          { "do": "err", "text": "没有分清正负极就通电，两管气体的量会完全颠倒，结论也会跟着错！" },
+          { "do": "set", "k": "gasL", "v": 24, "delay": 900 },
+          { "do": "set", "k": "gasR", "v": 12, "delay": 900 },
+          { "do": "set", "k": "gasL", "v": 56, "delay": 1800 },
+          { "do": "set", "k": "gasR", "v": 28, "delay": 1800 },
+          { "do": "set", "k": "gasL", "v": 100, "delay": 2800 },
+          { "do": "set", "k": "gasR", "v": 50, "delay": 2800 },
+          { "do": "goto", "id": "observe", "delay": 4200 }
+        ]}
+      ]
+    },
+
+    {
+      "id": "observe", "type": "doc", "title": "观察两极的气泡", "progress": 48,
+      "cols": [
+        { "title": "看到的现象", "lines": [
+          "两个电极上都有气泡产生，",
+          "气泡上升聚集在玻璃管顶部，把水往下压，",
+          "管中水面逐渐下降。",
+          "气泡快的一极产生的气体更多。"
+        ]},
+        { "title": "为什么", "lines": [
+          "水分子在通电条件下分解成氢、氧两种元素，",
+          "氢原子在负极聚集成氢气，氧原子在正极聚集成氧气。",
+          "一个水分子里氢氧原子个数比是 2:1，",
+          "所以生成的气体体积比约为 2:1。"
+        ]}
+      ],
+      "buttons": [
+        { "t": "继续观察两者体积差别", "c": "primary", "do": [
+          { "do": "score", "key": "observe" },
+          { "do": "tip", "text": "看到气泡快的一极气体明显更多 ✓" },
+          { "do": "goto", "id": "ratio", "delay": 1600 }
+        ]}
+      ]
+    },
+
+    {
+      "id": "ratio", "type": "doc", "title": "两管气体的体积比", "progress": 58,
+      "cols": [
+        { "title": "读数注意", "lines": [
+          "视线要与液面（凹液面最低处）相平，",
+          "等一段时间气体不再增加后再读，",
+          "读数时不要取出电源。"
+        ]},
+        { "title": "口诀", "lines": [
+          "「正氧负氢，氢二氧一」",
+          "正极气体少：氧气",
+          "负极气体多：氢气"
+        ]}
+      ],
+      "buttons": [
+        { "t": "正极 : 负极 ≈ 1 : 2", "c": "primary", "do": [
+          { "do": "score", "key": "ratio" },
+          { "do": "tip", "text": "正确！这就是「氢二氧一」✓" },
+          { "do": "goto", "id": "verifyO", "delay": 1600 }
+        ]},
+        { "t": "正极 : 负极 ≈ 2 : 1", "c": "ghost", "do": [
+          { "do": "err", "text": "记反了。口诀是「正氧负氢，氢二氧一」：负极的氢气是正极氧气的 2 倍。" },
+          { "do": "goto", "id": "verifyO", "delay": 3600 }
+        ]},
+        { "t": "两者差不多 1 : 1", "c": "ghost", "do": [
+          { "do": "err", "text": "仔细看两管水面下降的高度，它们的差别很大。" },
+          { "do": "goto", "id": "verifyO", "delay": 3600 }
+        ]}
+      ]
+    },
+
+    {
+      "id": "verifyO", "type": "stage", "title": "检验正极气体", "progress": 70,
+      "shelf": ["wood"],
+      "desc": "把带火星的木条伸入气体较少的一根玻璃管（与正极相连），看是否复燃。",
+      "help": "把带火星的木条拖到气体较少的那根管口。如果接对了极性，这管气体应该能让木条复燃。",
+      "zones": ["woodO"],
+      "drop": [
+        { "equip": "wood", "zone": "woodO", "do": [
+          { "do": "set", "k": "woodO", "v": true },
+          { "do": "if", "cond": "stage.gasL < stage.gasR", "then": [
+            { "do": "set", "k": "relit", "v": true, "delay": 700 },
+            { "do": "score", "key": "verifyO" },
+            { "do": "tip", "text": "木条复燃 → 正极产生的的确是氧气 ✓" },
+            { "do": "goto", "id": "verifyH", "delay": 2200 }
+          ], "else": [
+            { "do": "set", "k": "nofire", "v": true, "delay": 700 },
+            { "do": "err", "text": "这管气体多、却不能支持燃烧：极性接反了，这管其实是氢气。" },
+            { "do": "goto", "id": "verifyH", "delay": 4200 }
+          ]}
+        ]},
+        { "equip": "wood", "do": [{ "do": "err", "text": "带火星的木条要伸进左边那根管（正极）管口。" }] },
+        { "do": [{ "do": "err", "text": "这一步用带火星的木条检验气体。" }] }
+      ]
+    },
+
+    {
+      "id": "verifyH", "type": "stage", "title": "检验负极气体", "progress": 80,
+      "shelf": ["match"],
+      "desc": "用火柴点燃气体较多的一根玻璃管中的气体，观察火焰颜色。",
+      "help": "把火柴拖到右边那根管（负极）的管口点燃。氢气燃烧是淡蓝色火焰。",
+      "zones": ["fireH"],
+      "drop": [
+        { "equip": "match", "zone": "fireH", "do": [
+          { "do": "if", "cond": "stage.gasR > stage.gasL", "then": [
+            { "do": "set", "k": "fireH", "v": true },
+            { "do": "score", "key": "verifyH" },
+            { "do": "tip", "text": "淡蓝色火焰 → 负极产生的确实是氢气 ✓" },
+            { "do": "goto", "id": "conclude", "delay": 2000 }
+          ], "else": [
+            { "do": "err", "text": "这管气体少、燃不起来：极性接反了，它其实是氧气。" },
+            { "do": "goto", "id": "conclude", "delay": 3400 }
+          ]}
+        ]},
+        { "equip": "match", "do": [{ "do": "err", "text": "火柴要靠近右边那根管（负极）的管口。" }] },
+        { "do": [{ "do": "err", "text": "这一步要点燃负极气体并观察火焰。" }] }
+      ]
+    },
+
+    {
+      "id": "conclude", "type": "doc", "title": "实验结论", "progress": 88,
+      "cols": [
+        { "title": "推理过程", "lines": [
+          "水通电 → 氢气 + 氧气",
+          "氢气由氢元素组成，氧气由氧元素组成。",
+          "化学反应前后元素种类不变，",
+          "所以水中一定含有氢、氧两种元素。"
+        ]},
+        { "title": "还会想到的", "lines": [
+          "正极：氧气（体积小，支持燃烧）",
+          "负极：氢气（体积大，能燃烧）",
+          "体积比 1 : 2"
+        ]}
+      ],
+      "buttons": [
+        { "t": "水由氢元素和氧元素组成", "c": "primary", "do": [
+          { "do": "score", "key": "conclude" },
+          { "do": "tip", "text": "正确！这是初中最重要的一条推理结论 ✓" },
+          { "do": "goto", "id": "report", "delay": 1800 }
+        ]},
+        { "t": "水由氢气和氧气组成", "c": "ghost", "do": [
+          { "do": "err", "text": "水是纯净物，里面只有水分子，不能说它「含有氢气和氧气」，应当说由氢、氧两种元素组成。" },
+          { "do": "goto", "id": "report", "delay": 4200 }
+        ]}
+      ]
+    },
+
+    {
+      "id": "report", "type": "report", "title": "实验报告", "progress": 96,
+      "buttons": [
+        { "t": "提交报告", "c": "primary", "do": [{ "do": "finish" }, { "do": "goto", "id": "score" }] }
+      ]
+    },
+
+    {
+      "id": "score", "type": "score", "title": "实验评分", "progress": 100,
+      "buttons": [
+        { "t": "导出本次成绩", "c": "ghost", "do": [{ "do": "export" }] },
+        { "t": "查看常见错误", "c": "ghost", "goto": "errtable" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    },
+
+    {
+      "id": "errtable", "type": "errors", "title": "常见错误与后果", "progress": 100,
+      "buttons": [
+        { "t": "返回评分", "c": "ghost", "goto": "score" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    }
+  ]
+}

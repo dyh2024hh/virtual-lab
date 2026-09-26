@@ -1,0 +1,430 @@
+{
+  "id": "co2",
+  "title": "实验室制取二氧化碳",
+  "subtitle": "初中化学虚拟实验 · 固液常温型装置",
+  "badges": ["向上排空气法收集", "满分 100 分"],
+  "viewBox": "0 0 600 360",
+
+  "equipments": [
+    { "id": "flask",     "name": "锥形瓶",     "need": true },
+    { "id": "marble",    "name": "大理石",     "need": true },
+    { "id": "acid",      "name": "稀盐酸",     "need": true },
+    { "id": "stopper2",  "name": "双孔橡皮塞", "need": true },
+    { "id": "funnel2",   "name": "长颈漏斗",   "need": true },
+    { "id": "pipe",      "name": "导管",       "need": true },
+    { "id": "bottle",    "name": "集气瓶",     "need": true },
+    { "id": "glass",     "name": "玻璃片",     "need": true },
+    { "id": "match",     "name": "火柴",       "need": true },
+    { "id": "limewater", "name": "澄清石灰水", "need": true },
+    { "id": "lamp",      "name": "酒精灯",     "need": false },
+    { "id": "tube",      "name": "试管",       "need": false },
+    { "id": "basin",     "name": "水槽",       "need": false },
+    { "id": "stand",     "name": "铁架台",     "need": false }
+  ],
+
+  "dims": [
+    { "key": "skill",  "name": "操作规范" },
+    { "key": "safety", "name": "安全意识" }
+  ],
+
+  "scoreItems": [
+    { "key": "equip",     "name": "器材选择",         "max": 10, "dim": "skill" },
+    { "key": "assemble",  "name": "放置发生装置",     "max": 10, "dim": "skill" },
+    { "key": "load",      "name": "装入大理石",       "max": 8,  "dim": "skill" },
+    { "key": "install",   "name": "安装双孔塞与漏斗", "max": 12, "dim": "skill" },
+    { "key": "acid",      "name": "加入稀盐酸",       "max": 8,  "dim": "skill" },
+    { "key": "seal",      "name": "长颈漏斗液封",     "max": 12, "dim": "safety" },
+    { "key": "collect",   "name": "向上排空气法收集", "max": 12, "dim": "skill" },
+    { "key": "fullcheck", "name": "验满操作",         "max": 10, "dim": "safety" },
+    { "key": "takeout",   "name": "盖片正放保存",     "max": 8,  "dim": "safety" },
+    { "key": "lime",      "name": "石灰水检验",       "max": 10, "dim": "skill" }
+  ],
+
+  "initialStage": {
+    "flaskPlaced": false, "marble": false, "stopperOn": false, "funnelOn": false,
+    "pipeOn": false, "pipeOut": false, "acid": false, "wrongPour": false,
+    "gasEscape": false, "reacting": false, "gas": 0,
+    "bottlePlaced": false, "glassOn": false,
+    "wood": false, "woodFire": true, "woodOut": false, "lime": false
+  },
+
+  "dropZones": {
+    "flask":      { "x": 84,  "y": 226, "w": 180, "h": 116 },
+    "marble":     { "x": 110, "y": 196, "w": 100, "h": 118 },
+    "stopper":    { "x": 116, "y": 150, "w": 84,  "h": 62 },
+    "acidFunnel": { "x": 96,  "y": 92,  "w": 122, "h": 74 },
+    "acidMouth":  { "x": 118, "y": 186, "w": 80,  "h": 54 },
+    "bottle":     { "x": 350, "y": 128, "w": 140, "h": 186 },
+    "wood":       { "x": 378, "y": 58,  "w": 104, "h": 112 },
+    "glass":      { "x": 358, "y": 108, "w": 112, "h": 42 },
+    "lime":       { "x": 356, "y": 130, "w": 132, "h": 172 }
+  },
+
+  "scene": [
+    { "tag": "rect", "x": 40, "y": 322, "width": 520, "height": 15, "rx": 5, "fill": "url(#gMetal)" },
+    { "tag": "rect", "x": 40, "y": 322, "width": 520, "height": 4, "rx": 2, "fill": "#e8eef2", "opacity": 0.75 },
+
+    {
+      "tag": "g", "when": "stage.flaskPlaced", "children": [
+        { "tag": "path", "d": "M140 175 L172 175 L172 216 L206 298 Q209 308 198 308 L114 308 Q103 308 106 298 L140 216 Z", "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.2 },
+        { "tag": "circle", "when": "stage.marble", "cx": 132, "cy": 292, "r": 9, "fill": "url(#pMarble)", "stroke": "#90a4ae", "stroke-width": 1 },
+        { "tag": "circle", "when": "stage.marble", "cx": 154, "cy": 296, "r": 10, "fill": "url(#pMarble)", "stroke": "#90a4ae", "stroke-width": 1 },
+        { "tag": "circle", "when": "stage.marble", "cx": 177, "cy": 291, "r": 8.5, "fill": "url(#pMarble)", "stroke": "#90a4ae", "stroke-width": 1 },
+        { "tag": "circle", "when": "stage.marble", "cx": 143, "cy": 277, "r": 7, "fill": "url(#pMarble)", "stroke": "#90a4ae", "stroke-width": 1 },
+        { "tag": "circle", "when": "stage.marble", "cx": 170, "cy": 276, "r": 6.5, "fill": "url(#pMarble)", "stroke": "#90a4ae", "stroke-width": 1 },
+        { "tag": "path", "when": "stage.acid", "d": "M126 254 L186 254 L206 296 Q209 306 198 306 L114 306 Q103 306 106 296 Z", "fill": "url(#gAcid)", "opacity": 0.75 },
+        { "tag": "g", "when": "stage.reacting", "children": [
+          { "tag": "circle", "class": "bub", "cx": 136, "cy": 288, "r": 4, "fill": "#b2dfdb", "opacity": 0.9, "style": "animation-delay:0s" },
+          { "tag": "circle", "class": "bub", "cx": 156, "cy": 286, "r": 5, "fill": "#b2dfdb", "opacity": 0.9, "style": "animation-delay:.35s" },
+          { "tag": "circle", "class": "bub", "cx": 176, "cy": 289, "r": 3.5, "fill": "#b2dfdb", "opacity": 0.9, "style": "animation-delay:.7s" },
+          { "tag": "circle", "class": "bub", "cx": 146, "cy": 280, "r": 3.5, "fill": "#b2dfdb", "opacity": 0.9, "style": "animation-delay:1.05s" }
+        ]},
+        { "tag": "path", "d": "M146 180 L146 214 L118 292", "stroke": "#ffffff", "stroke-width": 2.2, "fill": "none", "opacity": 0.75 }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.funnelOn", "children": [
+        { "tag": "path", "d": "M108 116 L204 116 L168 150 L144 150 Z", "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2 },
+        { "tag": "rect", "x": 149, "y": 148, "width": 14, "height": 114, "rx": 2, "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2 },
+        { "tag": "path", "when": "stage.acid && !stage.wrongPour", "d": "M112 120 L200 120 L172 146 L140 146 Z", "fill": "url(#gAcid)", "opacity": 0.7 },
+        { "tag": "rect", "when": "stage.acid && !stage.wrongPour", "x": 151, "y": 150, "width": 10, "height": 112, "fill": "url(#gAcid)", "opacity": 0.8 },
+        { "tag": "text", "when": "stage.acid && !stage.wrongPour", "x": 222, "y": 268, "font-size": 10.5, "fill": "#00695c", "font-weight": 700, "text": "液封 ✓" }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.gasEscape", "children": [
+        { "tag": "circle", "class": "bub", "cx": 148, "cy": 108, "r": 5, "fill": "#b2dfdb", "opacity": 0.9, "style": "animation-delay:0s" },
+        { "tag": "circle", "class": "bub", "cx": 170, "cy": 104, "r": 4, "fill": "#b2dfdb", "opacity": 0.9, "style": "animation-delay:.4s" },
+        { "tag": "circle", "class": "bub", "cx": 192, "cy": 107, "r": 4.5, "fill": "#b2dfdb", "opacity": 0.9, "style": "animation-delay:.8s" },
+        { "tag": "text", "x": 170, "y": 88, "font-size": 12, "text-anchor": "middle", "fill": "#dc2626", "font-weight": 700, "text": "气体从漏斗逸出！" }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.stopperOn", "children": [
+        { "tag": "ellipse", "cx": 156, "cy": 168, "rx": 22, "ry": 3.5, "fill": "#8d6e63" },
+        { "tag": "path", "d": "M134 168 L178 168 L173 193 L139 193 Z", "fill": "url(#gRubber)" },
+        { "tag": "circle", "cx": 148, "cy": 181, "r": 3, "fill": "#3e2723" },
+        { "tag": "circle", "cx": 168, "cy": 181, "r": 3, "fill": "#3e2723" }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.pipeOn && !stage.pipeOut", "children": [
+        { "tag": "path", "d": "M170 180 Q260 168 330 122 L410 122 L410 288", "stroke": "#90a4ae", "stroke-width": 7, "fill": "none", "stroke-linecap": "round" },
+        { "tag": "path", "d": "M170 180 Q260 168 330 122 L410 122 L410 288", "stroke": "#e0e8ec", "stroke-width": 2, "fill": "none", "stroke-linecap": "round", "opacity": 0.7 }
+      ]
+    },
+    {
+      "tag": "g", "when": "stage.pipeOn && stage.pipeOut", "children": [
+        { "tag": "path", "d": "M170 180 Q260 168 330 122 L410 122 L410 158", "stroke": "#90a4ae", "stroke-width": 7, "fill": "none", "stroke-linecap": "round" },
+        { "tag": "path", "d": "M170 180 Q260 168 330 122 L410 122 L410 158", "stroke": "#e0e8ec", "stroke-width": 2, "fill": "none", "stroke-linecap": "round", "opacity": 0.7 }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.bottlePlaced", "children": [
+        { "tag": "rect", "x": 370, "y": 150, "width": 80, "height": 150, "rx": 5, "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.5 },
+        { "tag": "rect", "x": 386, "y": 136, "width": 48, "height": 16, "rx": 3, "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.5 },
+        { "tag": "rect", "x": 380, "y": 129, "width": 60, "height": 8, "rx": 3, "fill": "url(#gGlassH)", "stroke": "#7ba7c7", "stroke-width": 1.5 },
+        { "tag": "rect", "when": "stage.gas>0", "class": "cloudy", "x": 373, "y": "@ 298 - 138*stage.gas/100", "width": 74, "height": "@ 138*stage.gas/100", "fill": "#e0f7fa", "opacity": 0.6 },
+        { "tag": "text", "when": "stage.gas>=100", "x": 410, "y": 246, "font-size": 12, "text-anchor": "middle", "fill": "#00838f", "font-weight": 700, "text": "CO₂" },
+        { "tag": "rect", "when": "stage.lime", "class": "cloudy", "x": 373, "y": 226, "width": 74, "height": 72, "fill": "#fafafa", "opacity": 0.8 },
+        { "tag": "text", "when": "stage.lime", "x": 410, "y": 266, "font-size": 11.5, "text-anchor": "middle", "fill": "#616161", "font-weight": 700, "text": "变浑浊" }
+      ]
+    },
+
+    { "tag": "rect", "when": "stage.glassOn", "x": 376, "y": 120, "width": 68, "height": 10, "rx": 3, "fill": "url(#gGlassH)", "stroke": "#4fc3f7", "stroke-width": 1.5 },
+
+    {
+      "tag": "g", "when": "stage.wood", "children": [
+        { "tag": "rect", "x": 404, "y": 70, "width": 9, "height": 62, "rx": 3, "fill": "url(#gWood)" },
+        { "tag": "g", "when": "stage.woodFire", "class": "flame", "children": [
+          { "tag": "ellipse", "cx": 408, "cy": 62, "rx": 7, "ry": 11, "fill": "url(#gFlameOut)" },
+          { "tag": "ellipse", "cx": 408, "cy": 66, "rx": 3.5, "ry": 6, "fill": "#fff59d" }
+        ]},
+        { "tag": "text", "when": "stage.woodOut", "x": 452, "y": 96, "font-size": 12, "text-anchor": "middle", "fill": "#dc2626", "font-weight": 700, "text": "木条熄灭 → 已满" }
+      ]
+    }
+  ],
+
+  "report": [
+    { "title": "实验记录", "lines": [
+      "实验名称：实验室制取二氧化碳",
+      "实验原理：CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂↑",
+      "发生装置：固液常温型（锥形瓶 + 长颈漏斗）",
+      "收集方法：向上排空气法",
+      "检验方法：通入澄清石灰水，变浑浊"
+    ]},
+    { "title": "现象记录", "lines": [
+      "1. 大理石表面产生大量气泡",
+      "2. 大理石逐渐溶解变小",
+      "3. 集气瓶中气体使燃着木条熄灭",
+      "4. 加入澄清石灰水振荡后变浑浊"
+    ]},
+    { "title": "实验结论", "lines": [
+      "碳酸盐与稀盐酸反应生成二氧化碳。",
+      "二氧化碳密度比空气大、不支持燃烧，能使澄清石灰水变浑浊。"
+    ]}
+  ],
+
+  "errorTable": [
+    { "op": "用排水法收集",               "phen": "CO₂ 能溶于水",   "result": "收集不到气体",       "score": 12 },
+    { "op": "长颈漏斗下端未伸入液面下",   "phen": "未形成液封",     "result": "气体从漏斗逸出",     "score": 12 },
+    { "op": "燃着木条伸入瓶内验满",       "phen": "判断不准",       "result": "无法确认是否集满",   "score": 10 },
+    { "op": "集气瓶倒放保存",             "phen": "气体下沉逸出",   "result": "收集到的气体跑掉",   "score": 8 },
+    { "op": "用燃着木条代替石灰水检验",   "phen": "氮气也能灭火",   "result": "结论不可靠",         "score": 10 },
+    { "op": "误用酒精灯加热",             "phen": "装置不匹配",     "result": "器材选择错误",       "score": 10 }
+  ],
+
+  "steps": [
+    {
+      "id": "cover", "type": "cover", "title": "准备开始", "progress": 0,
+      "headline": "实验室制取二氧化碳",
+      "subtitle": "初中化学虚拟实验 · 固液常温型装置",
+      "buttons": [{ "t": "开始实验", "c": "primary", "goto": "goal" }]
+    },
+
+    {
+      "id": "goal", "type": "doc", "title": "实验目标", "progress": 5,
+      "cols": [
+        { "title": "实验目标", "lines": [
+          "1. 掌握固液常温型发生装置的组装",
+          "2. 理解长颈漏斗为什么要液封",
+          "3. 学会向上排空气法收集气体",
+          "4. 学会验满与澄清石灰水检验",
+          "5. 对比排水法与排空气法的适用条件"
+        ]},
+        { "title": "操作方式", "lines": [
+          "● 拖拽器材：从左侧器材架拖到实验台",
+          "● 高亮区域就是本步该放的位置",
+          "● 右侧显示当前实验阶段",
+          "● 遇到困难点击右下角“？”获取提示"
+        ]},
+        { "title": "安全提示", "lines": [
+          "⚠ 本实验不需要加热（对比制氧气）",
+          "⚠ 长颈漏斗下端必须伸入液面以下",
+          "⚠ 二氧化碳密度比空气大，集气瓶要正放",
+          "⚠ 验满时木条放在瓶口，不要伸入瓶内"
+        ]}
+      ],
+      "buttons": [
+        { "t": "下一步", "c": "primary", "goto": "equip" },
+        { "t": "返回封面", "c": "ghost", "goto": "cover" }
+      ]
+    },
+
+    {
+      "id": "equip", "type": "equip", "title": "选择实验器材", "progress": 10,
+      "tip": "这是固液常温型反应，不需要加热；CO₂ 能溶于水，想一想该用什么方法收集",
+      "buttons": [
+        { "t": "确认器材", "c": "primary", "do": [{ "do": "checkEquip", "key": "equip", "goto": "assemble" }] }
+      ]
+    },
+
+    {
+      "id": "assemble", "type": "stage", "title": "放置发生装置", "progress": 18,
+      "shelf": ["flask"],
+      "desc": "先把反应容器放到桌面上，作为整套装置的主体。",
+      "help": "把锥形瓶拖到桌面左侧的高亮区域。想一想：锥形瓶比试管的优势是什么？",
+      "zones": ["flask"],
+      "drop": [
+        { "equip": "flask", "zone": "flask", "do": [
+          { "do": "set", "k": "flaskPlaced", "v": true },
+          { "do": "score", "key": "assemble" },
+          { "do": "tip", "text": "锥形瓶已放好 ✓" },
+          { "do": "goto", "id": "load", "delay": 800 }
+        ]},
+        { "equip": "flask", "do": [{ "do": "err", "text": "锥形瓶要放在平整的桌面上，拖到高亮区域。" }] },
+        { "do": [{ "do": "err", "text": "这一步先放反应容器。想一想：固体和液体在哪里反应？" }] }
+      ]
+    },
+
+    {
+      "id": "load", "type": "stage", "title": "装入大理石", "progress": 26,
+      "shelf": ["marble"],
+      "desc": "先把固体药品加入锥形瓶，再加液体。",
+      "help": "把大理石拖到锥形瓶口。加固体时要把容器横放、用镊子夹住慢慢滑到瓶底。",
+      "zones": ["marble"],
+      "drop": [
+        { "equip": "marble", "zone": "marble", "do": [
+          { "do": "set", "k": "marble", "v": true },
+          { "do": "score", "key": "load" },
+          { "do": "tip", "text": "大理石已加入锥形瓶 ✓" },
+          { "do": "goto", "id": "install", "delay": 900 }
+        ]},
+        { "equip": "marble", "do": [{ "do": "err", "text": "大理石要从锥形瓶口加入，注意不要砸破瓶底。" }] },
+        { "do": [{ "do": "err", "text": "这一步需要加的是固体药品。" }] }
+      ]
+    },
+
+    {
+      "id": "install", "type": "stage", "title": "组装双孔塞、漏斗与导管", "progress": 36,
+      "shelf": ["stopper2", "funnel2", "pipe"],
+      "desc": "三件都要装好：双孔塞、长颈漏斗、导气管。漏斗下端要伸到液面以下。",
+      "help": "依次把双孔橡皮塞、长颈漏斗、导气管拖到锥形瓶口。长颈漏斗下端必须伸入液面以下，才能形成液封。",
+      "zones": ["stopper"],
+      "drop": [
+        { "equip": "stopper2", "zone": "stopper", "do": [
+          { "do": "set", "k": "stopperOn", "v": true },
+          { "do": "tip", "text": "双孔橡皮塞已塞紧 ✓" },
+          { "do": "if", "cond": "stage.stopperOn && stage.funnelOn && stage.pipeOn", "then": [
+            { "do": "score", "key": "install" },
+            { "do": "goto", "id": "acid", "delay": 1000 }
+          ]}
+        ]},
+        { "equip": "funnel2", "zone": "stopper", "do": [
+          { "do": "set", "k": "funnelOn", "v": true },
+          { "do": "tip", "text": "长颈漏斗已插入，下端伸到液面以下 ✓" },
+          { "do": "if", "cond": "stage.stopperOn && stage.funnelOn && stage.pipeOn", "then": [
+            { "do": "score", "key": "install" },
+            { "do": "goto", "id": "acid", "delay": 1000 }
+          ]}
+        ]},
+        { "equip": "pipe", "zone": "stopper", "do": [
+          { "do": "set", "k": "pipeOn", "v": true },
+          { "do": "tip", "text": "导气管已接在另一个孔上 ✓" },
+          { "do": "if", "cond": "stage.stopperOn && stage.funnelOn && stage.pipeOn", "then": [
+            { "do": "score", "key": "install" },
+            { "do": "goto", "id": "acid", "delay": 1000 }
+          ]}
+        ]},
+        { "do": [{ "do": "err", "text": "要往瓶口上方的高亮区域放。塞子、长颈漏斗、导气管三件都要装好。" }] }
+      ]
+    },
+
+    {
+      "id": "acid", "type": "stage", "title": "加入稀盐酸", "progress": 48,
+      "shelf": ["acid"],
+      "desc": "稀盐酸要从长颈漏斗加入，让漏斗下端被液体封住。",
+      "help": "把稀盐酸拖到长颈漏斗口上。想一想：如果直接从瓶口倒进去，漏斗下端没被液体封住会怎么样？",
+      "zones": ["acidFunnel", "acidMouth"],
+      "drop": [
+        { "equip": "acid", "zone": "acidFunnel", "do": [
+          { "do": "set", "k": "acid", "v": true },
+          { "do": "set", "k": "reacting", "v": true },
+          { "do": "score", "key": "acid" },
+          { "do": "score", "key": "seal" },
+          { "do": "tip", "text": "稀盐酸已加入，漏斗下端形成液封，气体只能从导管走 ✓" },
+          { "do": "goto", "id": "collect", "delay": 1400 }
+        ]},
+        { "equip": "acid", "zone": "acidMouth", "do": [
+          { "do": "set", "k": "acid", "v": true },
+          { "do": "set", "k": "wrongPour", "v": true },
+          { "do": "set", "k": "gasEscape", "v": true },
+          { "do": "set", "k": "reacting", "v": true },
+          { "do": "score", "key": "acid" },
+          { "do": "err", "text": "直接从瓶口倒入，长颈漏斗下端没有形成液封，生成的二氧化碳会从漏斗口跑掉！" },
+          { "do": "goto", "id": "collect", "delay": 3800 }
+        ]},
+        { "equip": "acid", "do": [{ "do": "err", "text": "稀盐酸要从长颈漏斗加入，或者直接从瓶口加入（想一想哪种才对）。" }] },
+        { "do": [{ "do": "err", "text": "这一步需要加入的是液体药品。" }] }
+      ]
+    },
+
+    {
+      "id": "collect", "type": "stage", "title": "向上排空气法收集", "progress": 60,
+      "shelf": ["bottle"],
+      "desc": "把集气瓶正放在导管下方，导管要伸到瓶底，才能把空气排干净。",
+      "help": "把集气瓶拖到右侧高亮区域，正放在桌面上，让导管伸到瓶底。想一想：为什么二氧化碳用向上排空气法？",
+      "zones": ["bottle"],
+      "drop": [
+        { "equip": "bottle", "zone": "bottle", "do": [
+          { "do": "set", "k": "bottlePlaced", "v": true },
+          { "do": "tip", "text": "开始收集，二氧化碳沉在瓶底，空气被向上排出" },
+          { "do": "set", "k": "gas", "v": 35, "delay": 700 },
+          { "do": "set", "k": "gas", "v": 70, "delay": 1500 },
+          { "do": "set", "k": "gas", "v": 100, "delay": 2300 },
+          { "do": "score", "key": "collect", "delay": 2400 },
+          { "do": "tip", "text": "集气瓶已基本收集满，可以验满了", "delay": 2500 },
+          { "do": "goto", "id": "fullcheck", "delay": 3400 }
+        ]},
+        { "equip": "bottle", "do": [{ "do": "err", "text": "集气瓶要正放在导管正下方。想一想：二氧化碳密度比空气大，瓶口应该朝上还是朝下？" }] },
+        { "do": [{ "do": "err", "text": "这一步需要用集气瓶收集气体。" }] }
+      ]
+    },
+
+    {
+      "id": "fullcheck", "type": "stage", "title": "检验是否集满", "progress": 70,
+      "shelf": ["match"],
+      "desc": "把燃着的木条放在集气瓶口（不要伸进去），看它是否熄灭。",
+      "help": "把燃着的木条放到集气瓶口正上方。注意：验满是放在瓶口，不是伸进瓶里。",
+      "zones": ["wood"],
+      "drop": [
+        { "equip": "match", "zone": "wood", "do": [
+          { "do": "set", "k": "wood", "v": true },
+          { "do": "set", "k": "woodFire", "v": false, "delay": 900 },
+          { "do": "set", "k": "woodOut", "v": true, "delay": 900 },
+          { "do": "score", "key": "fullcheck" },
+          { "do": "tip", "text": "木条熄灭，说明二氧化碳已收集满 ✓" },
+          { "do": "goto", "id": "takeout", "delay": 2100 }
+        ]},
+        { "equip": "match", "do": [{ "do": "err", "text": "木条要放在集气瓶口的位置，不能伸进瓶内。" }] },
+        { "do": [{ "do": "err", "text": "这一步用燃着的木条验满。" }] }
+      ]
+    },
+
+    {
+      "id": "takeout", "type": "stage", "title": "取出并保存集气瓶", "progress": 80,
+      "shelf": ["glass"],
+      "desc": "先把导管移出，再用玻璃片盖住瓶口，正放在桌面上。",
+      "help": "把玻璃片拖到集气瓶口。想一想：二氧化碳密度比空气大，盖好后应该正放还是倒放？",
+      "zones": ["glass"],
+      "drop": [
+        { "equip": "glass", "zone": "glass", "do": [
+          { "do": "set", "k": "pipeOut", "v": true },
+          { "do": "set", "k": "glassOn", "v": true },
+          { "do": "score", "key": "takeout" },
+          { "do": "tip", "text": "导管已取出、玻璃片盖好，集气瓶正放保存 ✓" },
+          { "do": "goto", "id": "lime", "delay": 1200 }
+        ]},
+        { "equip": "glass", "do": [{ "do": "err", "text": "玻璃片要盖在集气瓶口上。" }] },
+        { "do": [{ "do": "err", "text": "这一步需要用玻璃片盖住集气瓶。" }] }
+      ]
+    },
+
+    {
+      "id": "lime", "type": "stage", "title": "检验二氧化碳", "progress": 90,
+      "shelf": ["limewater"],
+      "desc": "向集气瓶中倒入少量澄清石灰水，振荡后观察是否变浑浊。",
+      "help": "把澄清石灰水拖到集气瓶上，振荡。想一想：为什么不能用燃着的木条来“检验”二氧化碳？",
+      "zones": ["lime"],
+      "drop": [
+        { "equip": "limewater", "zone": "lime", "do": [
+          { "do": "set", "k": "lime", "v": true },
+          { "do": "score", "key": "lime" },
+          { "do": "tip", "text": "澄清石灰水变浑浊，证明是二氧化碳 ✓" },
+          { "do": "goto", "id": "report", "delay": 1400 }
+        ]},
+        { "equip": "limewater", "do": [{ "do": "err", "text": "石灰水要倒进集气瓶里。" }] },
+        { "do": [{ "do": "err", "text": "这一步用澄清石灰水检验气体。" }] }
+      ]
+    },
+
+    {
+      "id": "report", "type": "report", "title": "实验报告", "progress": 96,
+      "buttons": [
+        { "t": "提交报告", "c": "primary", "do": [{ "do": "finish" }, { "do": "goto", "id": "score" }] }
+      ]
+    },
+
+    {
+      "id": "score", "type": "score", "title": "实验评分", "progress": 100,
+      "buttons": [
+        { "t": "导出本次成绩", "c": "ghost", "do": [{ "do": "export" }] },
+        { "t": "查看常见错误", "c": "ghost", "goto": "errtable" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    },
+
+    {
+      "id": "errtable", "type": "errors", "title": "常见错误与后果", "progress": 100,
+      "buttons": [
+        { "t": "返回评分", "c": "ghost", "goto": "score" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    }
+  ]
+}

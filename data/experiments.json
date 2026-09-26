@@ -1,0 +1,62 @@
+[
+  {
+    "id": "kmno4",
+    "name": "高锰酸钾制取氧气",
+    "file": "data/kmno4.json",
+    "iconEmoji": "🔥",
+    "desc": "固体加热型发生装置，排水法收集，带火星木条检验。",
+    "method": "排水法",
+    "group": "氧气制取",
+    "max": 100
+  },
+  {
+    "id": "h2o2",
+    "name": "过氧化氢制取氧气",
+    "file": "data/h2o2.json",
+    "iconEmoji": "💧",
+    "desc": "固液常温型发生装置，MnO₂ 催化，排水法收集。",
+    "method": "排水法",
+    "group": "氧气制取",
+    "max": 100
+  },
+  {
+    "id": "co2",
+    "name": "实验室制取二氧化碳",
+    "file": "data/co2.json",
+    "iconEmoji": "🫧",
+    "desc": "固液常温型发生装置，向上排空气法收集，澄清石灰水检验。",
+    "method": "向上排空气法",
+    "group": "二氧化碳制取",
+    "max": 100
+  },
+  {
+    "id": "h2",
+    "name": "实验室制取氢气",
+    "file": "data/h2.json",
+    "iconEmoji": "🎈",
+    "desc": "锌粒与稀硫酸，向下排空气法收集，点燃前必须验纯。",
+    "method": "向下排空气法",
+    "group": "氢气制取",
+    "max": 100
+  },
+  {
+    "id": "o2air",
+    "name": "测定空气里氧气的含量",
+    "file": "data/o2air.json",
+    "iconEmoji": "📏",
+    "desc": "红磷燃烧消耗氧气，水倒吸入集气瓶，测得氧气约占 1/5。",
+    "method": "压强法",
+    "group": "空气中氧气含量",
+    "max": 100
+  },
+  {
+    "id": "water",
+    "name": "水的组成 —— 电解水",
+    "file": "data/water.json",
+    "iconEmoji": "⚡",
+    "desc": "通直流电分解水，正氧负氢、体积比 1:2，推出水的元素组成。",
+    "method": "电解法",
+    "group": "水的组成",
+    "max": 100
+  }
+]

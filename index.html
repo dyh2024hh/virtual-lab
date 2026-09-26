@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>初中化学虚拟实验训练平台</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="home-wrap">
+  <div class="home-top">
+    <div>
+      <h1>🧪 初中化学虚拟实验训练平台</h1>
+      <div class="sub">拖拽操作 · 手势模拟 · 自动评分 · 成绩可导出</div>
+    </div>
+    <div class="home-tools">
+      <input id="stuName" class="name-input" placeholder="输入你的姓名" maxlength="20">
+      <button class="ghost" onclick="Home.exportAll()">导出全部成绩</button>
+      <button class="ghost" onclick="location.href='teacher.html'">教师端</button>
+    </div>
+  </div>
+
+  <div class="sec-title">选择实验 <small id="expCount"></small></div>
+  <div id="expGrid" class="exp-grid">
+    <div class="empty">正在加载实验…</div>
+  </div>
+
+  <div class="sec-title">我的记录 <small>本浏览器的练习历史</small></div>
+  <div id="recBox">
+    <div class="empty">还没有练习记录，做完一次实验后会自动出现在这里。</div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="js/core.js"></script>
+<script src="data/bundle.js" onerror="window.__noBundle=true"></script>
+<script src="js/home.js"></script>
+
+<script>
+/* ------------------------------------------------------------------
+ * 兜底实验清单
+ * 作用：当 data/bundle.js 或 data/experiments.json 还没同步到最新版时，
+ *       首页依然能显示全部实验卡片，不会出现"只剩两个实验"的情况。
+ * 注意：以后新增实验，把新实验的一行加到下面的数组里即可（同时也要加到
+ *       data/experiments.json，两边保持一致）。
+ * ------------------------------------------------------------------ */
+window.LAB_LIST_FALLBACK = [
+  { "id": "kmno4", "name": "高锰酸钾制取氧气", "iconEmoji": "🔥", "desc": "固体加热型发生装置，排水法收集，带火星木条检验。", "method": "排水法", "max": 100 },
+  { "id": "h2o2",  "name": "过氧化氢制取氧气", "iconEmoji": "💧", "desc": "固液常温型发生装置，MnO₂ 催化，排水法收集。", "method": "排水法", "max": 100 },
+  { "id": "co2",   "name": "实验室制取二氧化碳", "iconEmoji": "🫧", "desc": "固液常温型发生装置，向上排空气法收集，澄清石灰水检验。", "method": "向上排空气法", "max": 100 },
+  { "id": "h2",    "name": "实验室制取氢气", "iconEmoji": "🎈", "desc": "锌粒与稀硫酸，向下排空气法收集，点燃前必须验纯。", "method": "向下排空气法", "max": 100 },
+  { "id": "o2air", "name": "测定空气里氧气的含量", "iconEmoji": "📏", "desc": "红磷燃烧消耗氧气，水倒吸入集气瓶，测得氧气约占 1/5。", "method": "压强法", "max": 100 },
+  { "id": "water", "name": "水的组成 —— 电解水", "iconEmoji": "⚡", "desc": "通直流电分解水，正氧负氢、体积比 1:2，推出水的元素组成。", "method": "电解法", "max": 100 }
+];
+
+(function () {
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+  function bestOf(id) {
+    var rs = [];
+    try { rs = JSON.parse(localStorage.getItem('lab_records') || '[]'); } catch (e) { }
+    var best = null;
+    rs.forEach(function (r) { if (r.experiment === id && (!best || r.score > best.score)) best = r; });
+    return best;
+  }
+  function paint() {
+    var box = document.getElementById('expGrid');
+    var want = window.LAB_LIST_FALLBACK;
+    if (!box || !want.length) return;
+    /* 已经渲染出足够多的卡片（说明清单文件是最新的），就不干预 */
+    if (box.querySelectorAll('.exp-card').length >= want.length) return;
+    var cnt = document.getElementById('expCount');
+    if (cnt) cnt.textContent = '共 ' + want.length + ' 个';
+    box.innerHTML = want.map(function (e) {
+      var best = bestOf(e.id);
+      return '<div class="exp-card" onclick="location.href=\'experiment.html?id=' + encodeURIComponent(e.id) + '\'">'
+        + '<div class="ic">' + (e.iconEmoji || '🧪') + '</div>'
+        + '<h3>' + esc(e.name) + '</h3>'
+        + '<p>' + esc(e.desc || '') + '</p>'
+        + '<div class="meta">'
+        +   '<span>满分 ' + (e.max || 100) + ' 分</span>'
+        +   '<span>' + esc(e.method || '') + '</span>'
+        +   (best ? '<span style="background:#dcfce7;color:#15803d">最好成绩 ' + best.score + '</span>' : '<span>未练习</span>')
+        + '</div></div>';
+    }).join('');
+  }
+  /* home.js 的数据加载是异步的，多刷几次确保覆盖掉旧清单的渲染结果 */
+  [0, 200, 700, 1500, 3000].forEach(function (t) { setTimeout(paint, t); });
+})();
+</script>
+</body>
+</html>

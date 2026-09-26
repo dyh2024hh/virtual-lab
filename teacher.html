@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>教师查看端 · 虚拟实验成绩</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="t-wrap">
+  <div class="home-top">
+    <div>
+      <h1>📊 班级成绩查看端</h1>
+      <div class="sub">学生导出的 CSV 拖进来即可汇总 · 纯前端，不需要服务器</div>
+    </div>
+    <div class="home-tools">
+      <button class="ghost" onclick="location.href='index.html'">← 返回首页</button>
+      <button class="ghost" onclick="window.print()">打印存档</button>
+    </div>
+  </div>
+
+  <div class="warn-banner">
+    使用方式：学生在各自设备上做完实验后，点「导出本次成绩」得到一个 CSV 文件；把文件收齐后拖到下面的框里即可汇总。<br>
+    如果是在本机练习的记录，也可以直接点「读取本机记录」。
+  </div>
+
+  <div class="t-card">
+    <h4>① 导入成绩</h4>
+    <input id="csvFile" class="file-in" type="file" accept=".csv,text/csv" multiple>
+    <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+      <button class="primary" onclick="Teacher.readLocal()">读取本机记录</button>
+      <button class="danger" onclick="Teacher.clearBoard()">清空看板</button>
+    </div>
+  </div>
+
+  <div id="board"></div>
+</div>
+
+<div id="toast"></div>
+
+<script src="js/core.js"></script>
+<script src="js/teacher.js"></script>
+</body>
+</html>
