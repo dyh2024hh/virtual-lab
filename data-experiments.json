@@ -1,0 +1,142 @@
+[
+  {
+    "id": "kmno4",
+    "name": "高锰酸钾制取氧气",
+    "file": "data-kmno4.json",
+    "iconEmoji": "🔥",
+    "desc": "固体加热型发生装置，排水法收集，带火星木条检验。",
+    "method": "排水法",
+    "group": "气体制取与检验",
+    "max": 100
+  },
+  {
+    "id": "h2o2",
+    "name": "过氧化氢制取氧气",
+    "file": "data-h2o2.json",
+    "iconEmoji": "💧",
+    "desc": "固液常温型发生装置，MnO₂ 催化，排水法收集。",
+    "method": "排水法",
+    "group": "气体制取与检验",
+    "max": 100
+  },
+  {
+    "id": "co2",
+    "name": "实验室制取二氧化碳",
+    "file": "data-co2.json",
+    "iconEmoji": "🫧",
+    "desc": "固液常温型发生装置，向上排空气法收集，澄清石灰水检验。",
+    "method": "向上排空气法",
+    "group": "气体制取与检验",
+    "max": 100
+  },
+  {
+    "id": "h2",
+    "name": "实验室制取氢气",
+    "file": "data-h2.json",
+    "iconEmoji": "🎈",
+    "desc": "锌粒与稀硫酸，向下排空气法收集，点燃前必须验纯。",
+    "method": "向下排空气法",
+    "group": "气体制取与检验",
+    "max": 100
+  },
+  {
+    "id": "o2air",
+    "name": "测定空气里氧气的含量",
+    "file": "data-o2air.json",
+    "iconEmoji": "📏",
+    "desc": "红磷燃烧消耗氧气，水倒吸入集气瓶，测得氧气约占 1/5。",
+    "method": "压强法",
+    "group": "气体制取与检验",
+    "max": 100
+  },
+  {
+    "id": "water",
+    "name": "水的组成 —— 电解水",
+    "file": "data-water.json",
+    "iconEmoji": "⚡",
+    "desc": "通直流电分解水，正氧负氢、体积比 1:2，推出水的元素组成。",
+    "method": "电解法",
+    "group": "气体制取与检验",
+    "max": 100
+  },
+  {
+    "id": "co2naoh",
+    "name": "二氧化碳与氢氧化钠反应",
+    "file": "data-co2naoh.json",
+    "iconEmoji": "🥤",
+    "desc": "没有明显现象的反应：用塑料瓶变瘪和对照实验把它显示出来。",
+    "method": "压强法 + 对照",
+    "group": "性质探究",
+    "max": 100
+  },
+  {
+    "id": "cao",
+    "name": "生石灰与水反应放热",
+    "file": "data-cao.json",
+    "iconEmoji": "🌡️",
+    "desc": "CaO + H₂O = Ca(OH)₂，温度计飙升的背后是干燥剂的原理。",
+    "method": "温度变化法",
+    "group": "性质探究",
+    "max": 100
+  },
+  {
+    "id": "neutral",
+    "name": "酸和碱的中和反应",
+    "file": "data-neutral.json",
+    "iconEmoji": "🧪",
+    "desc": "酚酞变红后逐滴加酸至恰好褪色，看懂 H⁺ + OH⁻ = H₂O。",
+    "method": "指示剂法",
+    "group": "性质探究",
+    "max": 100
+  },
+  {
+    "id": "metalacid",
+    "name": "金属与稀盐酸的反应",
+    "file": "data-metalacid.json",
+    "iconEmoji": "⚙️",
+    "desc": "三支试管同时比气泡：Mg > Zn > Fe，顺便点燃检验氢气。",
+    "method": "对比实验法",
+    "group": "性质探究",
+    "max": 100
+  },
+  {
+    "id": "fecuso4",
+    "name": "铁与硫酸铜溶液的反应",
+    "file": "data-fecuso4.json",
+    "iconEmoji": "🪙",
+    "desc": "铁丝表面长出红色的铜，蓝溶液变浅绿：这就是湿法炼铜。",
+    "method": "置换法",
+    "group": "性质探究",
+    "max": 100
+  },
+  {
+    "id": "ions",
+    "name": "硫酸根与氯离子的检验",
+    "file": "data-ions.json",
+    "iconEmoji": "🔎",
+    "desc": "BaCl₂ 和 AgNO₃ 各显本领，稀硝酸负责排除碳酸根的干扰。",
+    "method": "沉淀加酸法",
+    "group": "性质探究",
+    "max": 100
+  },
+  {
+    "id": "precip",
+    "name": "碱与盐的沉淀反应",
+    "file": "data-precip.json",
+    "iconEmoji": "🎨",
+    "desc": "蓝色、红褐色、白色三种沉淀，一次记牢复分解的发生条件。",
+    "method": "沉淀法",
+    "group": "性质探究",
+    "max": 100
+  },
+  {
+    "id": "cuso4water",
+    "name": "无水硫酸铜检验水",
+    "file": "data-cuso4water.json",
+    "iconEmoji": "💠",
+    "desc": "白色粉末遇水变蓝，对照无水乙醇，学会检验水的存在。",
+    "method": "显色法",
+    "group": "性质探究",
+    "max": 100
+  }
+]

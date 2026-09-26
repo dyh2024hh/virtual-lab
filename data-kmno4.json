@@ -1,0 +1,523 @@
+{
+  "id": "kmno4",
+  "title": "高锰酸钾制取氧气",
+  "subtitle": "初中化学虚拟实验 · 完整操作流程训练",
+  "badges": ["拖拽 + 手势操作", "满分 100 分"],
+  "viewBox": "0 0 600 360",
+
+  "equipments": [
+    { "id": "stand",   "name": "铁架台",   "need": true },
+    { "id": "lamp",    "name": "酒精灯",   "need": true },
+    { "id": "tube",    "name": "试管",     "need": true },
+    { "id": "stopper", "name": "橡皮塞",   "need": true },
+    { "id": "pipe",    "name": "导管",     "need": true },
+    { "id": "basin",   "name": "水槽",     "need": true },
+    { "id": "bottle",  "name": "集气瓶",   "need": true },
+    { "id": "glass",   "name": "玻璃片",   "need": true },
+    { "id": "cotton",  "name": "棉花",     "need": true },
+    { "id": "spoon",   "name": "药匙",     "need": true },
+    { "id": "kmno4",   "name": "高锰酸钾", "need": true },
+    { "id": "wood",    "name": "木条",     "need": true },
+    { "id": "funnel",  "name": "漏斗",     "need": false },
+    { "id": "beaker",  "name": "烧杯",     "need": false }
+  ],
+
+  "dims": [
+    { "key": "skill",  "name": "操作规范" },
+    { "key": "safety", "name": "安全意识" }
+  ],
+
+  "scoreItems": [
+    { "key": "equip",    "name": "器材选择",       "max": 10, "dim": "skill" },
+    { "key": "assemble", "name": "组装装置",       "max": 10, "dim": "skill" },
+    { "key": "airtight", "name": "检查气密性",     "max": 12, "dim": "safety" },
+    { "key": "load",     "name": "装药品与塞棉花", "max": 10, "dim": "skill" },
+    { "key": "fix",      "name": "调整试管倾角",   "max": 14, "dim": "safety" },
+    { "key": "heat",     "name": "预热与加热",     "max": 14, "dim": "safety" },
+    { "key": "collect",  "name": "排水法收集",     "max": 10, "dim": "skill" },
+    { "key": "takeout",  "name": "取出集气瓶",     "max": 5,  "dim": "skill" },
+    { "key": "finish",   "name": "结束操作顺序",   "max": 12, "dim": "safety" },
+    { "key": "test",     "name": "检验氧气",       "max": 3,  "dim": "skill" }
+  ],
+
+  "initialStage": {
+    "stand": true, "tube": false, "tubeTilt": 0,
+    "stopper": false, "pipe": false, "pipeOut": false,
+    "kmno4": false, "cotton": false,
+    "lamp": false, "flame": false, "preheat": 0, "heating": false,
+    "basin": false, "bottlePos": "shelf", "bottleGas": false,
+    "glass": false, "wood": false, "woodFire": false,
+    "bubbles": false, "suckStage": 0, "crackStage": 0
+  },
+
+  "dropZones": {
+    "tube":   { "x": 180, "y": 122, "w": 180, "h": 60 },
+    "kmno4":  { "x": 180, "y": 128, "w": 110, "h": 50 },
+    "cotton": { "x": 296, "y": 126, "w": 56,  "h": 54 },
+    "lamp":   { "x": 196, "y": 246, "w": 88,  "h": 70 },
+    "basin":  { "x": 384, "y": 244, "w": 200, "h": 104 },
+    "bottle": { "x": 448, "y": 188, "w": 88,  "h": 120 },
+    "glass":  { "x": 440, "y": 176, "w": 100, "h": 36 },
+    "wood":   { "x": 412, "y": 140, "w": 80,  "h": 96 }
+  },
+
+  "scene": [
+    { "tag": "rect", "x": 52, "y": 322, "width": 200, "height": 15, "rx": 5, "fill": "url(#gMetal)" },
+    { "tag": "rect", "x": 52, "y": 322, "width": 200, "height": 4, "rx": 2, "fill": "#e8eef2", "opacity": 0.75 },
+    { "tag": "rect", "x": 146, "y": 70, "width": 13, "height": 252, "fill": "url(#gMetalV)" },
+    { "tag": "rect", "x": 149, "y": 70, "width": 3, "height": 252, "fill": "#e8eef2", "opacity": 0.6 },
+    { "tag": "rect", "x": 146, "y": 128, "width": 112, "height": 11, "rx": 4, "fill": "url(#gMetalV)" },
+    { "tag": "path", "d": "M258 130 L282 130 L282 142 L258 142 Z", "fill": "url(#gMetal)" },
+    { "tag": "path", "d": "M282 133 L292 136 L292 150 L282 152 Z", "fill": "#8896a0" },
+
+    {
+      "tag": "g", "when": "stage.basin", "children": [
+        { "tag": "rect", "x": 386, "y": 248, "width": 196, "height": 96, "rx": 11, "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.5 },
+        { "tag": "rect", "x": 392, "y": "@ stage.suckStage>=2 ? 296 : 272", "width": 184, "height": "@ stage.suckStage>=2 ? 42 : 66", "rx": 6, "fill": "url(#gWater)" },
+        { "tag": "rect", "x": 392, "y": 250, "width": 184, "height": 4, "rx": 2, "fill": "#ffffff", "opacity": 0.65 },
+        { "tag": "path", "when": "stage.suckStage<2", "d": "M396 274 Q420 271 444 274 T492 274 T540 274 T576 274", "stroke": "#ffffff", "stroke-width": 1.2, "fill": "none", "opacity": 0.5 },
+        { "tag": "path", "when": "stage.suckStage>=2", "d": "M396 298 Q420 295 444 298 T492 298 T540 298 T576 298", "stroke": "#ffffff", "stroke-width": 1.2, "fill": "none", "opacity": 0.5 }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.pipe && !stage.pipeOut", "children": [
+        { "tag": "path", "d": "M356 150 Q420 150 428 200 L428 300 Q428 310 452 310", "stroke": "#90a4ae", "stroke-width": 7, "fill": "none", "stroke-linecap": "round" },
+        { "tag": "path", "d": "M356 150 Q420 150 428 200 L428 300 Q428 310 452 310", "stroke": "#e0e8ec", "stroke-width": 2, "fill": "none", "stroke-linecap": "round", "opacity": 0.7 }
+      ]
+    },
+    {
+      "tag": "g", "when": "stage.pipe && stage.pipeOut", "children": [
+        { "tag": "path", "d": "M356 150 Q420 150 428 200 L428 240 Q428 250 452 250", "stroke": "#90a4ae", "stroke-width": 7, "fill": "none", "stroke-linecap": "round" },
+        { "tag": "path", "d": "M356 150 Q420 150 428 200 L428 240 Q428 250 452 250", "stroke": "#e0e8ec", "stroke-width": 2, "fill": "none", "stroke-linecap": "round", "opacity": 0.7 }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.bubbles", "children": [
+        { "tag": "circle", "class": "bub", "cx": 450, "cy": 292, "r": 3.5, "fill": "#90caf9", "opacity": 0.9, "style": "animation-delay:0s" },
+        { "tag": "circle", "class": "bub", "cx": 462, "cy": 288, "r": 4.5, "fill": "#90caf9", "opacity": 0.9, "style": "animation-delay:0.32s" },
+        { "tag": "circle", "class": "bub", "cx": 472, "cy": 294, "r": 5.5, "fill": "#90caf9", "opacity": 0.9, "style": "animation-delay:0.64s" },
+        { "tag": "circle", "class": "bub", "cx": 456, "cy": 282, "r": 3.5, "fill": "#90caf9", "opacity": 0.9, "style": "animation-delay:0.96s" },
+        { "tag": "circle", "class": "bub", "cx": 466, "cy": 278, "r": 4.5, "fill": "#90caf9", "opacity": 0.9, "style": "animation-delay:1.28s" }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.tube", "rotate": { "deg": "stage.tubeTilt", "cx": 255, "cy": 150 },
+      "opacity": "@ stage.crackStage>=3 ? 0.28 : 1",
+      "children": [
+        { "tag": "rect", "x": 168, "y": 130, "width": 174, "height": 40, "rx": 20, "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2 },
+        { "tag": "rect", "x": 176, "y": 134, "width": 156, "height": 4, "rx": 2, "fill": "#ffffff", "opacity": 0.9 },
+        { "tag": "rect", "x": 176, "y": 162, "width": 156, "height": 3, "rx": 1.5, "fill": "#ffffff", "opacity": 0.45 },
+        { "tag": "ellipse", "cx": 342, "cy": 150, "rx": 4, "ry": 19, "fill": "none", "stroke": "#7ba7c7", "stroke-width": 2.5 },
+        { "tag": "rect", "when": "stage.kmno4", "x": 176, "y": 142, "width": 52, "height": 20, "rx": 9, "fill": "url(#pKMnO4)" },
+        { "tag": "rect", "when": "stage.kmno4 && stage.heating", "x": 176, "y": 142, "width": 52, "height": 20, "rx": 9, "fill": "#2a0a3a", "opacity": 0.55 },
+        { "tag": "rect", "when": "stage.suckStage>=3", "x": 180, "y": 150, "width": 66, "height": 18, "rx": 9, "fill": "#64b5f6", "opacity": 0.75 },
+        { "tag": "circle", "when": "stage.cotton", "cx": 306, "cy": 150, "r": 13, "fill": "url(#pCotton)", "stroke": "#e0e0e0" },
+        { "tag": "circle", "when": "stage.cotton", "cx": 316, "cy": 145, "r": 8, "fill": "url(#pCotton)", "stroke": "#e0e0e0" },
+        { "tag": "circle", "when": "stage.cotton", "cx": 314, "cy": 156, "r": 8, "fill": "url(#pCotton)", "stroke": "#e0e0e0" },
+        { "tag": "path", "when": "stage.stopper", "d": "M334 137 L358 141 L358 159 L334 163 Z", "fill": "url(#gRubber)" },
+        { "tag": "ellipse", "when": "stage.stopper", "cx": 358, "cy": 150, "rx": 3, "ry": 10, "fill": "#5d4037" },
+        { "tag": "path", "when": "stage.crackStage>=1", "class": "crack", "d": "M200 132 L214 150 L202 170", "stroke": "#c62828", "stroke-width": 2.2, "fill": "none" },
+        { "tag": "path", "when": "stage.crackStage>=2", "class": "crack2", "d": "M244 132 L256 156 L240 170", "stroke": "#c62828", "stroke-width": 2.2, "fill": "none" },
+        { "tag": "path", "when": "stage.crackStage>=2", "class": "crack2", "d": "M280 132 L272 152 L286 170", "stroke": "#c62828", "stroke-width": 2, "fill": "none" }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.crackStage>=3", "children": [
+        { "tag": "path", "class": "shatter", "d": "M178 130 L212 130 L202 152 L184 150 Z", "fill": "#dbe9f4", "stroke": "#7ba7c7", "stroke-width": 1.4, "style": "--dx:-18px;--dy:34px;--rot:-55deg" },
+        { "tag": "path", "class": "shatter", "d": "M214 130 L248 130 L252 152 L220 156 Z", "fill": "#e6f2fa", "stroke": "#7ba7c7", "stroke-width": 1.4, "style": "--dx:6px;--dy:40px;--rot:35deg" },
+        { "tag": "path", "class": "shatter", "d": "M250 130 L286 130 L290 150 L258 154 Z", "fill": "#dbe9f4", "stroke": "#7ba7c7", "stroke-width": 1.4, "style": "--dx:22px;--dy:36px;--rot:60deg" },
+        { "tag": "path", "class": "shatter", "d": "M290 132 L332 138 L330 162 L296 160 Z", "fill": "#e6f2fa", "stroke": "#7ba7c7", "stroke-width": 1.4, "style": "--dx:30px;--dy:44px;--rot:75deg" },
+        { "tag": "text", "x": 255, "y": 118, "font-size": 15, "text-anchor": "middle", "fill": "#dc2626", "font-weight": 700, "text": "试管炸裂！" }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.lamp", "children": [
+        { "tag": "rect", "x": 208, "y": 282, "width": 60, "height": 28, "rx": 7, "fill": "url(#gLamp)", "stroke": "#5f7180", "stroke-width": 1 },
+        { "tag": "rect", "x": 212, "y": 285, "width": 52, "height": 4, "rx": 2, "fill": "#e8eef2", "opacity": 0.75 },
+        { "tag": "path", "d": "M218 282 L258 282 L252 254 L224 254 Z", "fill": "#b0bec5", "stroke": "#8494a0", "stroke-width": 1 },
+        { "tag": "rect", "x": 234, "y": 240, "width": 8, "height": 16, "rx": 2, "fill": "#cfd8dc" },
+        { "tag": "g", "when": "stage.flame", "class": "flame", "children": [
+          { "tag": "path", "d": "M238 206 C252 226 254 244 238 250 C222 244 224 226 238 206 Z", "fill": "url(#gFlameOut)" },
+          { "tag": "path", "d": "M238 218 C246 230 246 240 238 244 C230 240 230 230 238 218 Z", "fill": "url(#gFlameCore)" }
+        ]}
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.bottlePos==='basin'", "children": [
+        { "tag": "rect", "x": 462, "y": 196, "width": 56, "height": 102, "rx": 4, "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.5 },
+        { "tag": "rect", "when": "!stage.bottleGas", "x": 465, "y": 232, "width": 50, "height": 63, "fill": "url(#gWater)" },
+        { "tag": "rect", "when": "stage.bottleGas", "x": 465, "y": 262, "width": 50, "height": 33, "fill": "url(#gWater)" },
+        { "tag": "rect", "when": "stage.bottleGas", "x": 465, "y": 199, "width": 50, "height": 96, "fill": "#f0f8ff", "opacity": 0.35 },
+        { "tag": "rect", "x": 465, "y": 198, "width": 4, "height": 96, "rx": 2, "fill": "#ffffff", "opacity": 0.7 }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.bottlePos==='out'", "children": [
+        { "tag": "rect", "x": 462, "y": 190, "width": 56, "height": 102, "rx": 4, "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.5 },
+        { "tag": "rect", "x": 465, "y": 193, "width": 50, "height": 96, "fill": "#f0f8ff", "opacity": 0.45 },
+        { "tag": "rect", "x": 465, "y": 193, "width": 4, "height": 96, "rx": 2, "fill": "#ffffff", "opacity": 0.7 }
+      ]
+    },
+
+    { "tag": "rect", "when": "stage.glass", "x": 456, "y": 184, "width": 70, "height": 10, "rx": 3, "fill": "url(#gGlassH)", "stroke": "#4fc3f7", "stroke-width": 1.5 },
+
+    {
+      "tag": "g", "when": "stage.wood", "children": [
+        { "tag": "rect", "x": 424, "y": 150, "width": 9, "height": 96, "rx": 3, "fill": "url(#gWood)", "transform": "rotate(18 428 198)" },
+        { "tag": "g", "when": "stage.woodFire", "class": "flame", "children": [
+          { "tag": "ellipse", "cx": 452, "cy": 148, "rx": 8, "ry": 13, "fill": "url(#gFlameOut)" },
+          { "tag": "ellipse", "cx": 452, "cy": 152, "rx": 4, "ry": 7, "fill": "#fff59d" }
+        ]},
+        { "tag": "circle", "when": "!stage.woodFire", "cx": 452, "cy": 150, "r": 4.5, "fill": "#ff8a65" },
+        { "tag": "circle", "when": "!stage.woodFire", "cx": 452, "cy": 150, "r": 2, "fill": "#ffcc80" }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.suckStage>=1", "children": [
+        { "tag": "path", "class": "suck", "d": "M452 310 Q428 310 428 250 L428 200 Q420 170 380 158", "stroke": "#64b5f6", "stroke-width": 7, "fill": "none", "stroke-linecap": "round", "opacity": 0.85 },
+        { "tag": "text", "when": "stage.suckStage>=1", "x": 430, "y": 336, "font-size": 13, "text-anchor": "middle", "fill": "#dc2626", "font-weight": 700, "text": "① 水沿导管倒流 →" },
+        { "tag": "text", "when": "stage.suckStage>=2", "x": 250, "y": 300, "font-size": 12, "text-anchor": "middle", "fill": "#dc2626", "font-weight": 700, "text": "② 槽内水面下降" },
+        { "tag": "text", "when": "stage.suckStage>=3", "x": 255, "y": 205, "font-size": 12, "text-anchor": "middle", "fill": "#dc2626", "font-weight": 700, "text": "③ 冷水进入试管" }
+      ]
+    }
+  ],
+
+  "report": [
+    { "title": "实验记录", "lines": [
+      "实验名称：高锰酸钾制取氧气",
+      "实验原理：2KMnO₄ —Δ→ K₂MnO₄ + MnO₂ + O₂↑",
+      "收集方法：排水法",
+      "检验方法：带火星木条复燃"
+    ]},
+    { "title": "现象记录", "lines": [
+      "1. 加热后试管内产生气体",
+      "2. 导管口有气泡冒出",
+      "3. 集气瓶内水位下降",
+      "4. 带火星木条复燃"
+    ]},
+    { "title": "实验结论", "lines": [
+      "高锰酸钾受热分解生成氧气，氧气能支持燃烧。"
+    ]}
+  ],
+
+  "errorTable": [
+    { "op": "未检查气密性",         "phen": "装置漏气",     "result": "收集不到气体", "score": 12 },
+    { "op": "未塞棉花",             "phen": "粉末进入导管", "result": "气体不纯",     "score": 10 },
+    { "op": "试管口向上倾斜",       "phen": "冷凝水倒流",   "result": "试管炸裂",     "score": 14 },
+    { "op": "未预热直接集中加热",   "phen": "受热不均",     "result": "试管炸裂",     "score": 14 },
+    { "op": "先熄灯后移导管",       "phen": "水倒吸",       "result": "试管炸裂",     "score": 12 },
+    { "op": "用普通木条检验",       "phen": "木条不燃",     "result": "检验失败",     "score": 3 }
+  ],
+
+  "steps": [
+    {
+      "id": "cover", "type": "cover", "title": "准备开始", "progress": 0,
+      "headline": "高锰酸钾制取氧气",
+      "subtitle": "初中化学虚拟实验 · 完整操作流程训练",
+      "buttons": [{ "t": "开始实验", "c": "primary", "goto": "goal" }]
+    },
+
+    {
+      "id": "goal", "type": "doc", "title": "实验目标", "progress": 5,
+      "cols": [
+        { "title": "实验目标", "lines": [
+          "1. 掌握高锰酸钾制取氧气的装置与操作顺序",
+          "2. 学会检查装置气密性",
+          "3. 学会排水法收集气体",
+          "4. 能正确检验氧气",
+          "5. 能识别常见错误操作及其后果"
+        ]},
+        { "title": "操作方式", "lines": [
+          "● 拖拽器材：从左侧器材架拖到实验台",
+          "● 手势操作：按住滑动、拖动旋转",
+          "● 右侧显示当前实验阶段",
+          "● 遇到困难点击右下角“？”获取提示",
+          "● 部分步骤支持语音指令（🎤 按钮）"
+        ]},
+        { "title": "安全提示", "lines": [
+          "⚠ 试管口略向下倾斜，防止冷凝水倒流",
+          "⚠ 试管口塞棉花，防止粉末进入导管",
+          "⚠ 先移导管再熄灯，防止水倒吸",
+          "⚠ 加热前先预热，防止试管炸裂"
+        ]}
+      ],
+      "buttons": [
+        { "t": "下一步", "c": "primary", "goto": "equip" },
+        { "t": "返回封面", "c": "ghost", "goto": "cover" }
+      ]
+    },
+
+    {
+      "id": "equip", "type": "equip", "title": "选择实验器材", "progress": 10,
+      "tip": "选出本实验需要的全部器材和药品",
+      "buttons": [
+        { "t": "确认器材", "c": "primary", "do": [{ "do": "checkEquip", "key": "equip", "goto": "assemble" }] }
+      ]
+    },
+
+    {
+      "id": "assemble", "type": "stage", "title": "组装实验装置", "progress": 18,
+      "shelf": ["tube", "stopper", "pipe", "basin"],
+      "desc": "把需要的器材从左侧拖到实验台，组成完整的实验装置。",
+      "help": "把左侧器材架上的器材拖到实验台中间。想一想：这个实验需要哪些器材？它们怎么连接？",
+      "zones": ["tube"],
+      "drop": [
+        { "equip": "tube", "zone": "tube", "do": [
+          { "do": "set", "k": "tube", "v": true },
+          { "do": "set", "k": "stopper", "v": true },
+          { "do": "set", "k": "pipe", "v": true },
+          { "do": "set", "k": "basin", "v": true },
+          { "do": "score", "key": "assemble" },
+          { "do": "tip", "text": "装置组装完成 ✓" },
+          { "do": "goto", "id": "airtight", "delay": 800 }
+        ]},
+        { "equip": "tube", "do": [{ "do": "err", "text": "试管的位置不对。想一想：试管应该固定在什么装置上才能稳定加热？" }] },
+        { "do": [{ "do": "err", "text": "这一步先把试管固定好。想一想：试管应该固定在哪里才能稳定加热？" }] }
+      ]
+    },
+
+    {
+      "id": "airtight", "type": "stage", "title": "检查装置气密性", "progress": 28,
+      "shelf": [],
+      "desc": "判断装置是否漏气。如果漏气，后面就收集不到气体。",
+      "help": "想一想：怎样判断一个装置是否漏气？双手握住试管外壁，让里面的气体受热膨胀，再看导管口。按住试管外壁滑动试试。",
+      "zones": [],
+      "gesture": {
+        "kind": "swipe", "metric": "displacement", "threshold": 40,
+        "zone": { "x": 200, "y": 128, "w": 140, "h": 46, "rx": 20 },
+        "label": "按住试管外壁滑动",
+        "visibleWhen": "stage.tube && stage.stopper && stage.pipe && stage.basin",
+        "onReach": [
+          { "do": "set", "k": "bubbles", "v": true },
+          { "do": "score", "key": "airtight" },
+          { "do": "tip", "text": "导管口有气泡冒出，装置气密性良好 ✓" },
+          { "do": "set", "k": "bubbles", "v": false, "delay": 1200 },
+          { "do": "goto", "id": "load", "delay": 1400 }
+        ],
+        "onFail": [{ "do": "err", "text": "动作不到位。想一想：检查气密性时，要让试管内的气体受热膨胀，应该怎么做？" }]
+      }
+    },
+
+    {
+      "id": "load", "type": "stage", "title": "装入药品", "progress": 38,
+      "shelf": ["kmno4", "cotton"],
+      "desc": "把药品装入试管，并处理试管口。顺序无所谓，两样都要做到位。",
+      "help": "高锰酸钾装在试管底部，棉花塞在试管口附近。把对应器材拖到试管上高亮的位置。",
+      "zones": ["kmno4", "cotton"],
+      "drop": [
+        { "equip": "kmno4", "zone": "kmno4", "do": [
+          { "do": "set", "k": "kmno4", "v": true },
+          { "do": "tip", "text": "高锰酸钾已装入试管底部 ✓" },
+          { "do": "if", "cond": "stage.kmno4 && stage.cotton", "then": [
+            { "do": "score", "key": "load" },
+            { "do": "goto", "id": "tilt", "delay": 900 }
+          ]}
+        ]},
+        { "equip": "cotton", "zone": "cotton", "do": [
+          { "do": "set", "k": "cotton", "v": true },
+          { "do": "tip", "text": "棉花已塞到试管口 ✓" },
+          { "do": "if", "cond": "stage.kmno4 && stage.cotton", "then": [
+            { "do": "score", "key": "load" },
+            { "do": "goto", "id": "tilt", "delay": 900 }
+          ]}
+        ]},
+        { "do": [{ "do": "err", "text": "放错位置了。高锰酸钾放在试管底部，棉花塞在试管口附近。" }] }
+      ]
+    },
+
+    {
+      "id": "tilt", "type": "stage", "title": "调整试管倾角", "progress": 48,
+      "shelf": [],
+      "desc": "拖动试管尾部的蓝色圆柄，把试管调到合适的角度（10°~20°）。",
+      "help": "拖动试管尾部的蓝色圆柄旋转试管。想一想：加热固体时，试管口为什么要略向下倾斜？",
+      "zones": [],
+      "gesture": {
+        "kind": "rotate", "field": "tubeTilt", "pivot": [255, 150], "radius": 172, "range": [-40, 40],
+        "visibleWhen": "stage.tube",
+        "correct": [10, 20],
+        "onCorrect": [
+          { "do": "score", "key": "fix" },
+          { "do": "tip", "text": "试管口略向下倾斜，角度正确 ✓" },
+          { "do": "goto", "id": "heat", "delay": 900 }
+        ],
+        "onWrong": [
+          { "when": "v>20", "do": [{ "do": "err", "text": "倾角过大，管口太朝下。冷凝水虽然不会倒流，但药品容易滑出。请调整到 10°~20°。" }] },
+          { "when": "v>=0", "do": [{ "do": "err", "text": "试管几乎水平。想一想：加热高锰酸钾时会产生水蒸气，冷凝水会流到哪里？" }] },
+          { "do": [
+            { "do": "err", "text": "管口朝上了！冷凝水会倒流回试管底部，试管受热不均…" },
+            { "do": "set", "k": "crackStage", "v": 1, "delay": 600 },
+            { "do": "set", "k": "crackStage", "v": 2, "delay": 1200 },
+            { "do": "set", "k": "crackStage", "v": 3, "delay": 1800 },
+            { "do": "tip", "text": "试管炸裂！正确做法：试管口略向下倾斜", "kind": "err", "delay": 2500 },
+            { "do": "goto", "id": "report", "delay": 4400 }
+          ]}
+        ]
+      }
+    },
+
+    {
+      "id": "heat", "type": "stage", "title": "加热试管", "progress": 58,
+      "shelf": ["lamp"],
+      "desc": "先放好酒精灯并点燃，再用外焰来回预热，最后集中在药品部位加热。",
+      "help": "先把酒精灯拖到试管下方，然后在虚线区左右来回滑动预热，进度到 100% 再集中加热。",
+      "zones": ["lamp"],
+      "drop": [
+        { "equip": "lamp", "zone": "lamp", "do": [
+          { "do": "set", "k": "lamp", "v": true },
+          { "do": "set", "k": "flame", "v": true },
+          { "do": "tip", "text": "酒精灯已就位并点燃 ✓" }
+        ]},
+        { "equip": "lamp", "do": [{ "do": "err", "text": "酒精灯的位置不对。想一想：加热试管时，酒精灯应该放在试管的什么位置？" }] },
+        { "do": [{ "do": "err", "text": "这一步需要放置的是加热工具。" }] }
+      ],
+      "gesture": {
+        "kind": "swipe", "metric": "accumulate", "field": "preheat", "max": 100, "rate": 0.35, "threshold": 90,
+        "zone": { "x": 190, "y": 240, "w": 100, "h": 70, "rx": 12 },
+        "bar": { "x": 180, "y": 316, "w": 120, "h": 7 },
+        "label": "左右滑动预热",
+        "visibleWhen": "stage.lamp && stage.flame",
+        "onReach": [
+          { "do": "set", "k": "heating", "v": true },
+          { "do": "score", "key": "heat" },
+          { "do": "tip", "text": "预热完成，试管内产生气体 ✓" },
+          { "do": "goto", "id": "collect", "delay": 1200 }
+        ],
+        "onFail": [{ "do": "err", "text": "预热不够。想一想：如果直接集中加热，试管受热不均会发生什么？" }]
+      }
+    },
+
+    {
+      "id": "collect", "type": "stage", "title": "收集氧气", "progress": 68,
+      "shelf": ["bottle"],
+      "desc": "用排水法收集。想一想：刚开始冒的气泡能不能收集？",
+      "help": "排水法收集气体：集气瓶装满水倒扣在水槽中，气泡连续均匀冒出后再把导管伸入瓶口。把集气瓶拖到水槽里。",
+      "zones": ["bottle"],
+      "drop": [
+        { "equip": "bottle", "zone": "bottle", "do": [
+          { "do": "set", "k": "bottlePos", "v": "basin" },
+          { "do": "set", "k": "bubbles", "v": true },
+          { "do": "tip", "text": "集气瓶已倒扣在水中，开始收集气体" },
+          { "do": "set", "k": "bottleGas", "v": true, "delay": 2200 },
+          { "do": "set", "k": "bubbles", "v": false, "delay": 2200 },
+          { "do": "score", "key": "collect", "delay": 2200 },
+          { "do": "tip", "text": "集气瓶口有大气泡冒出，已收集满 ✓", "delay": 2300 },
+          { "do": "goto", "id": "takeout", "delay": 3200 }
+        ]},
+        { "equip": "bottle", "do": [{ "do": "err", "text": "集气瓶的位置不对。想一想：排水法收集气体时，集气瓶应该放在哪里？" }] },
+        { "do": [{ "do": "err", "text": "这一步需要用集气瓶收集气体。" }] }
+      ]
+    },
+
+    {
+      "id": "takeout", "type": "stage", "title": "取出集气瓶", "progress": 78,
+      "shelf": ["glass"],
+      "desc": "用玻璃片盖住瓶口，从水中取出后正放在桌面上。",
+      "help": "用玻璃片盖住集气瓶口再从水中取出。想一想：氧气密度比空气大还是小？集气瓶该正放还是倒放？",
+      "zones": ["glass"],
+      "drop": [
+        { "equip": "glass", "zone": "glass", "do": [
+          { "do": "set", "k": "glass", "v": true },
+          { "do": "set", "k": "bottlePos", "v": "out" },
+          { "do": "score", "key": "takeout" },
+          { "do": "tip", "text": "玻璃片盖好，集气瓶正放 ✓" },
+          { "do": "goto", "id": "finish", "delay": 900 }
+        ]},
+        { "equip": "glass", "do": [{ "do": "err", "text": "玻璃片的位置不对。想一想：集气瓶应该怎样从水槽中取出，需要什么遮盖？" }] },
+        { "do": [{ "do": "err", "text": "这一步需要用玻璃片遮盖集气瓶。" }] }
+      ]
+    },
+
+    {
+      "id": "finish", "type": "stage", "title": "结束实验操作", "progress": 86,
+      "shelf": [],
+      "desc": "实验结束时的操作顺序很关键，选错了会发生危险。",
+      "help": "实验结束时的操作顺序很关键。想一想：如果先熄灭酒精灯，试管内气压会怎样变化？水会往哪里流？",
+      "zones": [],
+      "buttons": [
+        { "t": "移出导管", "c": "primary", "when": "!stage.pipeOut && stage.flame",
+          "voice": ["移出导管", "移导管", "拔导管", "取出导管"],
+          "do": [
+            { "do": "set", "k": "pipeOut", "v": true },
+            { "do": "set", "k": "bubbles", "v": false },
+            { "do": "tip", "text": "导管已移出水面" }
+          ]},
+        { "t": "熄灭酒精灯", "c": "primary", "when": "stage.flame",
+          "voice": ["熄灭", "熄灯", "灭灯", "吹灭"],
+          "do": [
+            { "do": "if", "cond": "stage.pipeOut",
+              "then": [
+                { "do": "set", "k": "flame", "v": false },
+                { "do": "score", "key": "finish" },
+                { "do": "tip", "text": "操作顺序正确，实验安全结束 ✓" },
+                { "do": "goto", "id": "test", "delay": 900 }
+              ],
+              "else": [
+                { "do": "set", "k": "flame", "v": false },
+                { "do": "err", "text": "先熄灭酒精灯，试管内气压降低，水槽中的水被倒吸回试管！" },
+                { "do": "set", "k": "suckStage", "v": 1, "delay": 700 },
+                { "do": "set", "k": "suckStage", "v": 2, "delay": 1400 },
+                { "do": "set", "k": "suckStage", "v": 3, "delay": 2100 },
+                { "do": "set", "k": "suckStage", "v": 4, "delay": 2900 },
+                { "do": "set", "k": "crackStage", "v": 1, "delay": 2900 },
+                { "do": "set", "k": "crackStage", "v": 2, "delay": 3400 },
+                { "do": "set", "k": "crackStage", "v": 3, "delay": 3900 },
+                { "do": "tip", "text": "试管炸裂！正确顺序：先把导管移出水面，再熄灭酒精灯", "kind": "err", "delay": 4400 },
+                { "do": "goto", "id": "report", "delay": 6200 }
+              ]
+            }
+          ]}
+      ]
+    },
+
+    {
+      "id": "test", "type": "stage", "title": "检验气体", "progress": 92,
+      "shelf": ["wood"],
+      "desc": "用带火星的木条检验收集到的气体是不是氧气。",
+      "help": "检验氧气：用带火星的木条伸入集气瓶，观察是否复燃。把木条拖到集气瓶口。",
+      "zones": ["wood"],
+      "drop": [
+        { "equip": "wood", "zone": "wood", "do": [
+          { "do": "set", "k": "wood", "v": true },
+          { "do": "set", "k": "woodFire", "v": true },
+          { "do": "score", "key": "test" },
+          { "do": "tip", "text": "带火星木条复燃，证明是氧气 ✓" },
+          { "do": "goto", "id": "report", "delay": 1000 }
+        ]},
+        { "equip": "wood", "do": [{ "do": "err", "text": "木条的位置不对。想一想：检验氧气应该把木条放在集气瓶的什么位置？" }] },
+        { "do": [{ "do": "err", "text": "这一步需要用木条检验气体。" }] }
+      ]
+    },
+
+    {
+      "id": "report", "type": "report", "title": "实验报告", "progress": 96,
+      "buttons": [
+        { "t": "提交报告", "c": "primary", "do": [{ "do": "finish" }, { "do": "goto", "id": "score" }] }
+      ]
+    },
+
+    {
+      "id": "score", "type": "score", "title": "实验评分", "progress": 100,
+      "buttons": [
+        { "t": "导出本次成绩", "c": "ghost", "do": [{ "do": "export" }] },
+        { "t": "查看常见错误", "c": "ghost", "goto": "errtable" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    },
+
+    {
+      "id": "errtable", "type": "errors", "title": "常见错误与后果", "progress": 100,
+      "buttons": [
+        { "t": "返回评分", "c": "ghost", "goto": "score" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    }
+  ]
+}

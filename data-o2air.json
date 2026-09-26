@@ -1,0 +1,493 @@
+{
+  "id": "o2air",
+  "title": "测定空气里氧气的含量",
+  "subtitle": "初中化学虚拟实验 · 红磷燃烧法",
+  "badges": ["红磷燃烧", "水面上升约 1/5", "满分 100 分"],
+  "viewBox": "0 0 600 360",
+
+  "equipments": [
+    { "id": "bottle",     "name": "集气瓶",       "need": true },
+    { "id": "stopper2",   "name": "双孔橡皮塞",   "need": true },
+    { "id": "spoon",      "name": "燃烧匙",       "need": true },
+    { "id": "redP",       "name": "红磷",         "need": true },
+    { "id": "pipe",       "name": "导管",         "need": true },
+    { "id": "clamp",      "name": "止水夹",       "need": true },
+    { "id": "beaker",     "name": "盛水烧杯",     "need": true },
+    { "id": "match",      "name": "火柴",         "need": true },
+    { "id": "sulfur",     "name": "硫粉",         "need": false },
+    { "id": "kmno4",      "name": "高锰酸钾",     "need": false },
+    { "id": "lamp",       "name": "酒精灯",       "need": false },
+    { "id": "glass",      "name": "玻璃片",       "need": false },
+    { "id": "basin",      "name": "水槽",         "need": false }
+  ],
+
+  "dims": [
+    { "key": "skill",  "name": "操作规范" },
+    { "key": "safety", "name": "安全意识" }
+  ],
+
+  "scoreItems": [
+    { "key": "equip",     "name": "器材选择",             "max": 10, "dim": "skill" },
+    { "key": "prepare",   "name": "准备集气瓶与少量水",   "max": 8,  "dim": "skill" },
+    { "key": "seal",      "name": "检查装置气密性",       "max": 8,  "dim": "safety" },
+    { "key": "load",      "name": "燃烧匙盛红磷",         "max": 12, "dim": "skill" },
+    { "key": "ignite",    "name": "点燃红磷",             "max": 8,  "dim": "safety" },
+    { "key": "insert",    "name": "迅速伸入并塞紧",       "max": 14, "dim": "skill" },
+    { "key": "wait",      "name": "冷却至室温再打开",     "max": 12, "dim": "skill" },
+    { "key": "open",      "name": "打开止水夹",           "max": 10, "dim": "skill" },
+    { "key": "read",      "name": "读数并得出结论",       "max": 18, "dim": "skill" }
+  ],
+
+  "initialStage": {
+    "bottlePlaced": false, "stopperReady": false, "spoonReady": false,
+    "redPOn": false, "sulfurOn": false, "burning": false, "inserted": false,
+    "slowIn": false, "clampOn": false, "clampOpen": false, "hot": false,
+    "rise": 0, "suck": 0, "pipeOn": false
+  },
+
+  "dropZones": {
+    "bottle":  { "x": 138, "y": 118, "w": 124, "h": 200 },
+    "assemb":  { "x": 150, "y": 88,  "w": 116, "h": 96 },
+    "spoon":   { "x": 176, "y": 40,  "w": 62,  "h": 118 },
+    "clamp":   { "x": 262, "y": 168, "w": 76,  "h": 120 },
+    "readzone":{ "x": 150, "y": 150, "w": 100, "h": 140 }
+  },
+
+  "scene": [
+    { "tag": "rect", "x": 40, "y": 322, "width": 520, "height": 15, "rx": 5, "fill": "url(#gMetal)" },
+    { "tag": "rect", "x": 40, "y": 322, "width": 520, "height": 4, "rx": 2, "fill": "#e8eef2", "opacity": 0.75 },
+
+    {
+      "tag": "g", "when": "stage.bottlePlaced", "children": [
+        { "tag": "rect", "x": 160, "y": 140, "width": 84, "height": 170, "rx": 5, "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.5 },
+        { "tag": "rect", "x": 178, "y": 126, "width": 48, "height": 16, "rx": 3, "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.5 },
+        { "tag": "rect", "x": 182, "y": 120, "width": 40, "height": 8, "rx": 3, "fill": "url(#gGlassH)", "stroke": "#7ba7c7", "stroke-width": 1.5 },
+        { "tag": "line", "x1": 163, "y1": 232, "x2": 245, "y2": 232, "stroke": "#ef5350", "stroke-width": 1.4, "stroke-dasharray": "6 4", "opacity": 0.9 },
+        { "tag": "text", "x": 250, "y": 236, "font-size": 10.5, "fill": "#c62828", "text": "原空气柱 1/5" },
+        { "tag": "rect", "x": 163, "y": 278, "width": 78, "height": 30, "fill": "url(#gWater)", "opacity": 0.85 },
+        { "tag": "rect", "when": "stage.rise>0", "x": 163, "y": "@ 278 - 46*stage.rise/100", "width": 78, "height": "@ 46*stage.rise/100", "fill": "url(#gWater)", "opacity": 0.85 },
+        { "tag": "text", "x": 252, "y": 300, "font-size": 11, "fill": "#0277bd", "text": "少量水（吸收白烟）" },
+        { "tag": "text", "when": "stage.burning && stage.inserted", "x": 152, "y": 214, "font-size": 11, "text-anchor": "end", "fill": "#616161", "font-weight": 700, "text": "产生大量白烟" }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.stopperReady || stage.spoonReady || stage.redPOn || stage.sulfurOn", "translate": ["@ 0", "@ stage.inserted ? 0 : -76"],
+      "children": [
+        { "tag": "ellipse", "cx": 202, "cy": 124, "rx": 28, "ry": 4.5, "fill": "#8d6e63" },
+        { "tag": "path", "d": "M174 124 L230 124 L226 148 L178 148 Z", "fill": "url(#gRubber)" },
+        { "tag": "circle", "cx": 188, "cy": 136, "r": 3, "fill": "#3e2723" },
+        { "tag": "circle", "cx": 216, "cy": 136, "r": 3, "fill": "#3e2723" },
+        { "tag": "rect", "x": 199, "y": 58, "width": 5, "height": 126, "fill": "url(#gMetalV)" },
+        { "tag": "ellipse", "cx": 202, "cy": 190, "rx": 13, "ry": 7, "fill": "#cfd8dc", "stroke": "#90a4ae", "stroke-width": 1.4 },
+        { "tag": "ellipse", "when": "stage.redPOn", "cx": 202, "cy": 187, "rx": 9.5, "ry": 4.8, "fill": "#8d2f22" },
+        { "tag": "ellipse", "when": "stage.sulfurOn", "cx": 202, "cy": 187, "rx": 9.5, "ry": 4.8, "fill": "#fdd835" },
+        { "tag": "text", "when": "stage.redPOn", "x": 252, "y": 190, "font-size": 10.5, "fill": "#b71c1c", "text": "红磷" },
+        { "tag": "text", "when": "stage.sulfurOn", "x": 252, "y": 190, "font-size": 10.5, "fill": "#ef6c00", "text": "硫粉" },
+        { "tag": "g", "when": "stage.burning", "class": "flame", "children": [
+          { "tag": "ellipse", "cx": 202, "cy": 176, "rx": 8, "ry": 12, "fill": "url(#gFlameOut)" },
+          { "tag": "ellipse", "cx": 202, "cy": 180, "rx": 3.5, "ry": 6, "fill": "#fff59d" }
+        ]}
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.burning && stage.inserted && !stage.sulfurOn", "children": [
+        { "tag": "circle", "class": "bub", "cx": 186, "cy": 208, "r": 5, "fill": "#f5f5f5", "opacity": 0.9, "style": "animation-delay:0s" },
+        { "tag": "circle", "class": "bub", "cx": 210, "cy": 212, "r": 4, "fill": "#fafafa", "opacity": 0.9, "style": "animation-delay:.4s" },
+        { "tag": "circle", "class": "bub", "cx": 224, "cy": 206, "r": 3.4, "fill": "#eeeeee", "opacity": 0.9, "style": "animation-delay:.8s" }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.pipeOn && stage.inserted", "children": [
+        { "tag": "path", "d": "M222 132 Q268 130 296 156 L296 244 Q296 262 314 262 L466 262 L466 282", "stroke": "#90a4ae", "stroke-width": 7, "fill": "none", "stroke-linecap": "round" },
+        { "tag": "path", "d": "M222 132 Q268 130 296 156 L296 244 Q296 262 314 262 L466 262 L466 282", "stroke": "#e0e8ec", "stroke-width": 2, "fill": "none", "stroke-linecap": "round", "opacity": 0.7 }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.clampOn", "children": [
+        { "tag": "rect", "x": 280, "y": 196, "width": 32, "height": 10, "rx": 2, "fill": "#cfd8dc", "stroke": "#78909c", "stroke-width": 1.4 },
+        { "tag": "path", "when": "!stage.clampOpen", "d": "M280 201 Q296 222 312 201", "stroke": "#90a4ae", "stroke-width": 3.5, "fill": "none", "stroke-linecap": "round" },
+        { "tag": "text", "when": "!stage.clampOpen", "x": 396, "y": 180, "font-size": 10.5, "text-anchor": "end", "fill": "#546e7a", "text": "止水夹：关闭" },
+        { "tag": "text", "when": "stage.clampOpen", "x": 396, "y": 180, "font-size": 10.5, "text-anchor": "end", "fill": "#0277bd", "font-weight": 700, "text": "止水夹：打开 → 水倒流" }
+      ]
+    },
+    {
+      "tag": "g", "when": "stage.clampOn && stage.clampOpen", "children": [
+        { "tag": "rect", "x": 280, "y": 196, "width": 12, "height": 10, "rx": 2, "fill": "#cfd8dc", "stroke": "#78909c", "stroke-width": 1.4 },
+        { "tag": "rect", "x": 302, "y": 196, "width": 12, "height": 10, "rx": 2, "fill": "#cfd8dc", "stroke": "#78909c", "stroke-width": 1.4 }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.bottlePlaced", "children": [
+        { "tag": "path", "d": "M430 208 L430 300 Q430 314 444 314 L496 314 Q510 314 510 300 L510 208 Z", "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.2 },
+        { "tag": "rect", "x": 434, "y": "@ 244 + 26*stage.suck/100", "width": 72, "height": "@ 68 - 26*stage.suck/100", "fill": "url(#gWater)", "opacity": 0.85 },
+        { "tag": "rect", "x": 426, "y": 202, "width": 88, "height": 9, "rx": 3, "fill": "url(#gGlassH)", "stroke": "#7ba7c7", "stroke-width": 1.5 },
+        { "tag": "text", "x": 470, "y": 352, "font-size": 11, "text-anchor": "middle", "fill": "#0277bd", "text": "烧杯中的水" },
+        { "tag": "g", "when": "stage.clampOpen", "children": [
+          { "tag": "circle", "class": "bub", "cx": 466, "cy": 286, "r": 4, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:0s" },
+          { "tag": "circle", "class": "bub", "cx": 458, "cy": 290, "r": 3, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:.5s" }
+        ]}
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.rise>=100", "children": [
+        { "tag": "text", "x": 202, "y": 116, "font-size": 12, "text-anchor": "middle", "fill": "#0277bd", "font-weight": 700, "text": "水面上升约原空气柱的 1/5" }
+      ]
+    },
+    {
+      "tag": "g", "when": "stage.clampOpen && stage.rise>0 && stage.rise<100", "children": [
+        { "tag": "text", "x": 202, "y": 116, "font-size": 12, "text-anchor": "middle", "fill": "#dc2626", "font-weight": 700, "text": "上升不到 1/5 → 测定结果偏小" }
+      ]
+    },
+    {
+      "tag": "g", "when": "stage.clampOpen && stage.sulfurOn", "children": [
+        { "tag": "text", "x": 202, "y": 116, "font-size": 12, "text-anchor": "middle", "fill": "#dc2626", "font-weight": 700, "text": "水面几乎不上升 → 硫燃烧生成气体，测不出氧气含量" }
+      ]
+    }
+  ],
+
+  "report": [
+    { "title": "实验记录", "lines": [
+      "实验名称：用红磷燃烧测定空气里氧气的含量",
+      "反应原理：4P + 5O₂ --点燃--> 2P₂O₅（产生大量白烟）",
+      "实验装置：集气瓶 + 燃烧匙 + 导管（带止水夹）+ 烧杯",
+      "关键现象：冷却后打开止水夹，水倒流入集气瓶",
+      "测得的体积：约占原空气柱体积的 1/5"
+    ]},
+    { "title": "现象记录", "lines": [
+      "1. 红磷燃烧，发出白光，产生大量白烟，放出热量",
+      "2. 冷却至室温后打开止水夹，烧杯中的水倒流入集气瓶",
+      "3. 进入的水约占瓶中原空气柱体积的 1/5",
+      "4. 燃烧停止后白烟逐渐消失（P₂O₅ 被水吸收）"
+    ]},
+    { "title": "实验结论", "lines": [
+      "氧气约占空气总体积的 1/5。",
+      "红磷燃烧消耗氧气，瓶内压强减小，水被压入瓶中补足减小的体积。",
+      "剩余气体主要是氮气，它不支持红磷燃烧、也不溶于水。"
+    ]}
+  ],
+
+  "errorTable": [
+    { "op": "用硫或木炭代替红磷",       "phen": "生成的是气体",       "result": "压强几乎不变，测不出结果",   "score": 12 },
+    { "op": "红磷不足量",               "phen": "氧气没有被耗尽",     "result": "结果偏小",                   "score": 12 },
+    { "op": "伸入速度太慢才塞紧瓶塞",   "phen": "瓶内空气受热逸出",   "result": "结果偏大",                   "score": 14 },
+    { "op": "未冷却就打开止水夹",       "phen": "气体温度高、压强大", "result": "进入的水偏少，结果偏小",     "score": 12 },
+    { "op": "装置漏气（未检查气密性）", "phen": "外界空气被吸入",     "result": "进入的水偏少，结果偏小",     "score": 8 },
+    { "op": "导管未预先夹上止水夹",     "phen": "燃烧时气体逸出",     "result": "结果偏大",                   "score": 8 }
+  ],
+
+  "steps": [
+    {
+      "id": "cover", "type": "cover", "title": "准备开始", "progress": 0,
+      "headline": "测定空气里氧气的含量",
+      "subtitle": "初中化学虚拟实验 · 红磷燃烧法",
+      "buttons": [{ "t": "开始实验", "c": "primary", "goto": "goal" }]
+    },
+
+    {
+      "id": "goal", "type": "doc", "title": "实验目标", "progress": 5,
+      "cols": [
+        { "title": "实验原理", "lines": [
+          "红磷燃烧只消耗氧气，生成的是固体 P₂O₅（白烟）。",
+          "氧气被耗尽后，瓶内压强减小，",
+          "打开止水夹后，烧杯里的水被压入集气瓶。",
+          "进入的水的体积 ≈ 被消耗的氧气的体积。"
+        ]},
+        { "title": "实验目标", "lines": [
+          "1. 知道氧气约占空气总体积的 1/5",
+          "2. 理解「消耗气体 → 压强减小 → 水倒吸」的逻辑",
+          "3. 明白为什么只能用生成固体的可燃物",
+          "4. 学会分析误差偏大、偏小的原因"
+        ]},
+        { "title": "安全提示", "lines": [
+          "⚠ 点燃红磷后要迅速伸入集气瓶并塞紧瓶塞",
+          "⚠ 必须冷却到室温才能打开止水夹",
+          "⚠ 燃烧时止水夹要夹紧，防止气体逸出",
+          "⚠ 不能用硫、木炭代替红磷"
+        ]}
+      ],
+      "buttons": [
+        { "t": "下一步", "c": "primary", "goto": "equip" },
+        { "t": "返回封面", "c": "ghost", "goto": "cover" }
+      ]
+    },
+
+    {
+      "id": "equip", "type": "equip", "title": "选择实验器材", "progress": 10,
+      "tip": "想一想：为什么要用红磷而不是硫？导管上为什么要带止水夹？",
+      "buttons": [
+        { "t": "确认器材", "c": "primary", "do": [{ "do": "checkEquip", "key": "equip", "goto": "prepare" }] }
+      ]
+    },
+
+    {
+      "id": "prepare", "type": "stage", "title": "准备集气瓶", "progress": 18,
+      "shelf": ["bottle", "pipe", "clamp", "beaker"],
+      "desc": "把集气瓶放到桌面上（瓶内预先加了少量水，用来吸收白烟），并把带止水夹的导管、盛水烧杯装好。",
+      "help": "依次把集气瓶、导管、止水夹、盛水烧杯拖到高亮区域。导管要先夹上止水夹，燃烧时保持关闭。",
+      "zones": ["bottle", "clamp", "readzone"],
+      "drop": [
+        { "equip": "bottle", "zone": "bottle", "do": [
+          { "do": "set", "k": "bottlePlaced", "v": true },
+          { "do": "tip", "text": "集气瓶已放好，瓶内有少量水，可吸收生成的白烟 ✓" }
+        ]},
+        { "equip": "pipe", "zone": "bottle", "do": [
+          { "do": "set", "k": "pipeOn", "v": true },
+          { "do": "tip", "text": "导管已连好，一端通到烧杯的水面以下 ✓" }
+        ]},
+        { "equip": "pipe", "zone": "readzone", "do": [
+          { "do": "set", "k": "pipeOn", "v": true },
+          { "do": "tip", "text": "导管已连好 ✓" }
+        ]},
+        { "equip": "clamp", "zone": "clamp", "do": [
+          { "do": "set", "k": "clampOn", "v": true },
+          { "do": "tip", "text": "止水夹已夹紧导管 ✓ 燃烧时保持关闭" }
+        ]},
+        { "equip": "beaker", "zone": "clamp", "do": [
+          { "do": "tip", "text": "盛水烧杯已放到右侧 ✓" }
+        ]},
+        { "equip": "beaker", "zone": "bottle", "do": [
+          { "do": "err", "text": "盛水烧杯要放在导管另一端那侧的桌面上。" }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要把收集装置（集气瓶、导管、止水夹、盛水烧杯）准备好。" }] }
+      ],
+      "buttons": [
+        { "t": "装好了，下一步", "c": "primary", "when": "stage.bottlePlaced && stage.pipeOn && stage.clampOn", "do": [
+          { "do": "score", "key": "prepare" },
+          { "do": "tip", "text": "装置组装完成 ✓" },
+          { "do": "goto", "id": "seal", "delay": 900 }
+        ]}
+      ]
+    },
+
+    {
+      "id": "seal", "type": "doc", "title": "检查装置气密性", "progress": 24,
+      "cols": [
+        { "title": "为什么要做", "lines": [
+          "装置如果漏气，燃烧后外界空气会被吸进瓶内，",
+          "进入的水就会偏少，测定结果偏小。",
+          "所以这一步不能省。"
+        ]},
+        { "title": "怎么做", "lines": [
+          "夹紧止水夹，把导管一端放入水中，",
+          "用手掌紧握集气瓶外壁，若导管口有气泡冒出，",
+          "松手后导管内形成一段水柱，说明气密性良好。"
+        ]}
+      ],
+      "buttons": [
+        { "t": "先检查气密性", "c": "primary", "do": [
+          { "do": "score", "key": "seal" },
+          { "do": "tip", "text": "导管内形成一段水柱 → 气密性良好 ✓" },
+          { "do": "goto", "id": "load", "delay": 2200 }
+        ]},
+        { "t": "不用查，直接开始", "c": "ghost", "do": [
+          { "do": "err", "text": "气密性不好会让外界空气进入，最终测得的结果会偏小。" },
+          { "do": "goto", "id": "load", "delay": 3600 }
+        ]}
+      ]
+    },
+
+    {
+      "id": "load", "type": "stage", "title": "燃烧匙盛红磷", "progress": 32,
+      "shelf": ["redP", "sulfur"],
+      "desc": "在燃烧匙里放足量红磷。想一想：能不能用硫粉代替？",
+      "help": "把红磷拖到燃烧匙上。红磷燃烧生成的是固体五氧化二磷（白烟），瓶内气体减少，水才会进来。",
+      "zones": ["spoon"],
+      "drop": [
+        { "equip": "redP", "zone": "spoon", "do": [
+          { "do": "set", "k": "spoonReady", "v": true },
+          { "do": "set", "k": "redPOn", "v": true },
+          { "do": "score", "key": "load" },
+          { "do": "tip", "text": "红磷已盛好 ✓ 生成固体 → 瓶内压强才会减小" },
+          { "do": "goto", "id": "ignite", "delay": 1300 }
+        ]},
+        { "equip": "sulfur", "zone": "spoon", "do": [
+          { "do": "set", "k": "spoonReady", "v": true },
+          { "do": "set", "k": "sulfurOn", "v": true },
+          { "do": "err", "text": "硫燃烧生成的是二氧化硫气体，气体体积几乎不变，水进不来，根本测不出氧气含量！" },
+          { "do": "goto", "id": "ignite", "delay": 4200 }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要把药品盛到燃烧匙上。" }] }
+      ]
+    },
+
+    {
+      "id": "ignite", "type": "stage", "title": "点燃红磷", "progress": 40,
+      "shelf": ["match"],
+      "desc": "先用火柴点燃燃烧匙中的红磷，再迅速伸入集气瓶。",
+      "help": "把火柴拖到燃烧匙上点燃红磷。点燃后要立刻伸入集气瓶并塞紧瓶塞。",
+      "zones": ["spoon"],
+      "drop": [
+        { "equip": "match", "zone": "spoon", "do": [
+          { "do": "set", "k": "burning", "v": true },
+          { "do": "score", "key": "ignite" },
+          { "do": "tip", "text": "红磷已点燃 ✓ 发出白光，产生大量白烟" },
+          { "do": "goto", "id": "insert", "delay": 1800 }
+        ]},
+        { "equip": "match", "do": [{ "do": "err", "text": "火柴要靠近燃烧匙里的红磷。" }] },
+        { "do": [{ "do": "err", "text": "这一步要点燃燃烧匙中的药品。" }] }
+      ]
+    },
+
+    {
+      "id": "insert", "type": "doc", "title": "伸入集气瓶并塞紧", "progress": 48,
+      "cols": [
+        { "title": "关键操作", "lines": [
+          "红磷点燃后要马上伸入集气瓶，立即塞紧瓶塞。",
+          "慢了的话，瓶内空气受热膨胀会从瓶口逸出，",
+          "跑出去的这部分空气会被算成「被消耗掉的氧气」，",
+          "最后进入的水偏多，测定结果偏大。"
+        ]},
+        { "title": "此时应该做什么", "lines": [
+          "保持止水夹关闭，",
+          "让红磷在瓶内继续燃烧到火焰熄灭，",
+          "观察白烟，等待冷却。"
+        ]}
+      ],
+      "buttons": [
+        { "t": "迅速伸入并塞紧瓶塞", "c": "primary", "do": [
+          { "do": "set", "k": "inserted", "v": true },
+          { "do": "set", "k": "stopperReady", "v": true },
+          { "do": "score", "key": "insert" },
+          { "do": "tip", "text": "塞紧了 ✓ 红磷在瓶内继续燃烧" },
+          { "do": "set", "k": "burning", "v": false, "delay": 3000 },
+          { "do": "goto", "id": "wait", "delay": 3600 }
+        ]},
+        { "t": "举着燃烧一会儿再塞进去", "c": "ghost", "do": [
+          { "do": "set", "k": "inserted", "v": true },
+          { "do": "set", "k": "stopperReady", "v": true },
+          { "do": "set", "k": "slowIn", "v": true },
+          { "do": "set", "k": "hot", "v": true },
+          { "do": "err", "text": "动作太慢，瓶内空气受热逸出，最后进入的水会偏多，测定结果偏大！" },
+          { "do": "set", "k": "burning", "v": false, "delay": 3000 },
+          { "do": "goto", "id": "wait", "delay": 4600 }
+        ]}
+      ]
+    },
+
+    {
+      "id": "wait", "type": "doc", "title": "等待冷却到室温", "progress": 58,
+      "cols": [
+        { "title": "为什么要等", "lines": [
+          "燃烧放热使瓶内气体温度升高，",
+          "温度高、压强大，水就进不去多少。",
+          "必须冷却到室温再打开止水夹。"
+        ]},
+        { "title": "如果不等会怎样", "lines": [
+          "过早打开：进入的水偏少 → 结果偏小。",
+          "所以要等白烟完全消失、瓶子摸上去不烫了。"
+        ]}
+      ],
+      "buttons": [
+        { "t": "等冷却到室温再打开", "c": "primary", "do": [
+          { "do": "set", "k": "hot", "v": false },
+          { "do": "score", "key": "wait" },
+          { "do": "tip", "text": "耐心等待 ✓ 这一步最容易被忽略" },
+          { "do": "goto", "id": "open", "delay": 1800 }
+        ]},
+        { "t": "现在就打开止水夹", "c": "ghost", "do": [
+          { "do": "set", "k": "hot", "v": true },
+          { "do": "err", "text": "瓶内气体还是热的，压强偏大，水进得少，测定结果会偏小。" },
+          { "do": "goto", "id": "open", "delay": 4000 }
+        ]}
+      ]
+    },
+
+    {
+      "id": "open", "type": "stage", "title": "打开止水夹观察倒吸", "progress": 68,
+      "shelf": ["clamp"],
+      "desc": "打开止水夹，烧杯中的水会沿导管倒流入集气瓶。",
+      "help": "把止水夹拖到导管上松开。观察水柱慢慢上升，最后停在哪里。",
+      "zones": ["clamp"],
+      "drop": [
+        { "equip": "clamp", "zone": "clamp", "do": [
+          { "do": "set", "k": "clampOpen", "v": true },
+          { "do": "score", "key": "open" },
+          { "do": "if", "cond": "stage.sulfurOn", "then": [
+            { "do": "tip", "text": "几乎没有水进入：换成红磷才能完成这个实验" },
+            { "do": "goto", "id": "read", "delay": 2600 }
+          ], "else": [
+            { "do": "if", "cond": "stage.hot || stage.slowIn", "then": [
+              { "do": "set", "k": "suck", "v": 30, "delay": 600 },
+              { "do": "set", "k": "rise", "v": 45, "delay": 800 },
+              { "do": "set", "k": "suck", "v": 55, "delay": 1600 },
+              { "do": "set", "k": "rise", "v": 72, "delay": 1800 },
+              { "do": "goto", "id": "read", "delay": 3000 }
+            ], "else": [
+              { "do": "set", "k": "suck", "v": 40, "delay": 600 },
+              { "do": "set", "k": "rise", "v": 55, "delay": 800 },
+              { "do": "set", "k": "suck", "v": 85, "delay": 1600 },
+              { "do": "set", "k": "rise", "v": 92, "delay": 1800 },
+              { "do": "set", "k": "suck", "v": 100, "delay": 2500 },
+              { "do": "set", "k": "rise", "v": 100, "delay": 2600 },
+              { "do": "tip", "text": "水面停在原空气柱的 1/5 处 ✓", "delay": 2900 },
+              { "do": "goto", "id": "read", "delay": 4400 }
+            ]}
+          ]}
+        ]},
+        { "equip": "clamp", "do": [{ "do": "err", "text": "止水夹要松开在导管上。" }] },
+        { "do": [{ "do": "err", "text": "这一步要打开止水夹。" }] }
+      ]
+    },
+
+    {
+      "id": "read", "type": "doc", "title": "读数与结论", "progress": 84,
+      "cols": [
+        { "title": "观察到的现象", "lines": [
+          "水沿着导管倒流入集气瓶，",
+          "进入的水约占瓶中原空气柱体积的 1/5，",
+          "剩余气体主要是氮气。"
+        ]},
+        { "title": "这个值说明什么", "lines": [
+          "氧气约占空气总体积的 1/5（约为 21%）。",
+          "结论：空气不是单一物质，",
+          "其中支持红磷燃烧的氧气约占五分之一。"
+        ]}
+      ],
+      "buttons": [
+        { "t": "约占空气总体积的 1/5", "c": "primary", "do": [
+          { "do": "score", "key": "read" },
+          { "do": "tip", "text": "正确！这就是「氧气约占空气体积 1/5」的经典结论 ✓" },
+          { "do": "goto", "id": "report", "delay": 2200 }
+        ]},
+        { "t": "约占空气总体积的 4/5", "c": "ghost", "do": [
+          { "do": "err", "text": "4/5 是剩下的氮气等的体积；被消耗掉、被水补上的才是氧气。" },
+          { "do": "goto", "id": "report", "delay": 3600 }
+        ]},
+        { "t": "约占空气总体积的 1/2", "c": "ghost", "do": [
+          { "do": "err", "text": "差太多了，再看一下瓶内水面停在哪条刻度线。" },
+          { "do": "goto", "id": "report", "delay": 3600 }
+        ]}
+      ]
+    },
+
+    {
+      "id": "report", "type": "report", "title": "实验报告", "progress": 96,
+      "buttons": [
+        { "t": "提交报告", "c": "primary", "do": [{ "do": "finish" }, { "do": "goto", "id": "score" }] }
+      ]
+    },
+
+    {
+      "id": "score", "type": "score", "title": "实验评分", "progress": 100,
+      "buttons": [
+        { "t": "导出本次成绩", "c": "ghost", "do": [{ "do": "export" }] },
+        { "t": "查看常见错误", "c": "ghost", "goto": "errtable" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    },
+
+    {
+      "id": "errtable", "type": "errors", "title": "常见错误与后果", "progress": 100,
+      "buttons": [
+        { "t": "返回评分", "c": "ghost", "goto": "score" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,409 @@
+{
+  "id": "precip",
+  "title": "碱与盐的沉淀反应",
+  "subtitle": "初中化学虚拟实验 · 复分解反应 + 沉淀颜色",
+  "badges": ["蓝色 / 红褐 / 白色", "复分解发生条件", "满分 100 分"],
+  "viewBox": "0 0 600 360",
+
+  "equipments": [
+    { "id": "tube",      "name": "试管（3支）",   "need": true },
+    { "id": "cuso4",     "name": "硫酸铜溶液",    "need": true },
+    { "id": "fecl3",     "name": "氯化铁溶液",    "need": true },
+    { "id": "na2co3",    "name": "碳酸钠溶液",    "need": true },
+    { "id": "naoh",      "name": "氢氧化钠溶液",  "need": true },
+    { "id": "limewater", "name": "澄清石灰水",    "need": true },
+    { "id": "dropper",   "name": "胶头滴管",      "need": true },
+    { "id": "acid",      "name": "稀盐酸",        "need": false },
+    { "id": "water2",    "name": "蒸馏水",        "need": false }
+  ],
+
+  "dims": [
+    { "key": "skill",  "name": "操作规范" },
+    { "key": "safety", "name": "安全意识" }
+  ],
+
+  "scoreItems": [
+    { "key": "equip",   "name": "器材选择",           "max": 10, "dim": "skill" },
+    { "key": "tubes",   "name": "排列三支试管",       "max": 8,  "dim": "skill" },
+    { "key": "salts",   "name": "分别加入三种盐溶液", "max": 14, "dim": "skill" },
+    { "key": "alkali",  "name": "分别加入对应的碱",   "max": 16, "dim": "skill" },
+    { "key": "observe", "name": "准确描述沉淀颜色",   "max": 14, "dim": "skill" },
+    { "key": "judge",   "name": "判断生成的沉淀",     "max": 14, "dim": "skill" },
+    { "key": "rule",    "name": "归纳复分解发生条件", "max": 14, "dim": "skill" },
+    { "key": "summary", "name": "说出三个方程式",     "max": 10, "dim": "skill" }
+  ],
+
+  "initialStage": {
+    "tubesOn": false,
+    "saltA": false, "saltB": false, "saltC": false,
+    "naohIn": false, "limeIn": false,
+    "react": 0, "wrongAcid": false
+  },
+
+  "dropZones": {
+    "bench": { "x": 110, "y": 210, "w": 380, "h": 112 },
+    "zoneA": { "x": 120, "y": 126, "w": 90,  "h": 190 },
+    "zoneB": { "x": 232, "y": 126, "w": 90,  "h": 190 },
+    "zoneC": { "x": 396, "y": 126, "w": 100, "h": 190 },
+    "zoneAB":{ "x": 116, "y": 110, "w": 266, "h": 202 }
+  },
+
+  "scene": [
+    { "tag": "rect", "x": 30, "y": 322, "width": 540, "height": 14, "rx": 5, "fill": "url(#gMetal)" },
+    { "tag": "rect", "x": 30, "y": 322, "width": 540, "height": 4, "rx": 2, "fill": "#e8eef2", "opacity": 0.75 },
+
+    { "tag": "g", "when": "stage.tubesOn", "children": [
+      { "tag": "rect", "x": 108, "y": 292, "width": 388, "height": 12, "rx": 4, "fill": "url(#gMetal)" },
+      { "tag": "rect", "x": 118, "y": 296, "width": 10, "height": 22, "fill": "url(#gMetalV)" },
+      { "tag": "rect", "x": 476, "y": 296, "width": 10, "height": 22, "fill": "url(#gMetalV)" }
+    ]},
+
+    { "tag": "g", "when": "stage.tubesOn", "children": [
+      { "tag": "path", "d": "M140 152 L140 276 Q140 292 156 292 L188 292 Q204 292 204 276 L204 152 Z", "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.2 },
+      { "tag": "rect", "x": 136, "y": 144, "width": 72, "height": 10, "rx": 4, "fill": "url(#gGlassH)", "stroke": "#7ba7c7", "stroke-width": 1.6 },
+      { "tag": "rect", "when": "stage.saltA", "x": 143, "y": 206, "width": 58, "height": 84, "rx": 4, "fill": "@ stage.react>=2 ? '#f2f4f7' : 'url(#gBlue)'", "opacity": 0.9 },
+      { "tag": "g", "when": "stage.react>0", "children": [
+        { "tag": "path", "d": "M143 268 Q156 256 172 264 Q188 254 201 268 L201 286 Q201 290 197 290 L147 290 Q143 290 143 286 Z", "fill": "#1976d2", "opacity": 0.95 },
+        { "tag": "rect", "x": 143, "y": "@ 268 - 30*stage.react/3", "width": 58, "height": "@ 30*stage.react/3", "rx": 3, "fill": "#1565c0", "opacity": 0.95 },
+        { "tag": "text", "when": "stage.react>=2", "x": 172, "y": 236, "font-size": 10.5, "text-anchor": "middle", "fill": "#0d47a1", "font-weight": 700, "text": "蓝色絮状" }
+      ]},
+      { "tag": "text", "x": 172, "y": 330, "font-size": 11, "text-anchor": "middle", "fill": "#455a64", "font-weight": 700, "text": "CuSO₄ + NaOH" }
+    ]},
+
+    { "tag": "g", "when": "stage.tubesOn", "children": [
+      { "tag": "path", "d": "M250 152 L250 276 Q250 292 266 292 L298 292 Q314 292 314 276 L314 152 Z", "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.2 },
+      { "tag": "rect", "x": 246, "y": 144, "width": 72, "height": 10, "rx": 4, "fill": "url(#gGlassH)", "stroke": "#7ba7c7", "stroke-width": 1.6 },
+      { "tag": "rect", "when": "stage.saltB", "x": 253, "y": 206, "width": 58, "height": 84, "rx": 4, "fill": "@ stage.react>=2 ? '#f6f2ee' : 'url(#gBrown)'", "opacity": 0.9 },
+      { "tag": "g", "when": "stage.react>0", "children": [
+        { "tag": "path", "d": "M253 268 Q266 256 282 264 Q298 254 311 268 L311 286 Q311 290 307 290 L257 290 Q253 290 253 286 Z", "fill": "#8d4e1e", "opacity": 0.95 },
+        { "tag": "rect", "x": 253, "y": "@ 268 - 30*stage.react/3", "width": 58, "height": "@ 30*stage.react/3", "rx": 3, "fill": "#7b3f13", "opacity": 0.95 },
+        { "tag": "text", "when": "stage.react>=2", "x": 282, "y": 236, "font-size": 10.5, "text-anchor": "middle", "fill": "#bf360c", "font-weight": 700, "text": "红褐色" }
+      ]},
+      { "tag": "text", "x": 282, "y": 330, "font-size": 11, "text-anchor": "middle", "fill": "#455a64", "font-weight": 700, "text": "FeCl₃ + NaOH" }
+    ]},
+
+    { "tag": "g", "when": "stage.tubesOn", "children": [
+      { "tag": "path", "d": "M408 152 L408 276 Q408 292 424 292 L456 292 Q472 292 472 276 L472 152 Z", "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.2 },
+      { "tag": "rect", "x": 404, "y": 144, "width": 72, "height": 10, "rx": 4, "fill": "url(#gGlassH)", "stroke": "#7ba7c7", "stroke-width": 1.6 },
+      { "tag": "rect", "when": "stage.saltC", "x": 411, "y": 206, "width": 58, "height": 84, "rx": 4, "fill": "@ stage.react>=1 ? '#f0f2f4' : '#fafafa'", "opacity": 0.92 },
+      { "tag": "g", "when": "stage.react>0", "children": [
+        { "tag": "path", "d": "M411 268 Q424 256 440 264 Q456 254 469 268 L469 286 Q469 290 465 290 L415 290 Q411 290 411 286 Z", "fill": "#ffffff", "stroke": "#e0e0e0", "stroke-width": 1.2, "opacity": 0.98 },
+        { "tag": "rect", "x": 411, "y": "@ 268 - 32*stage.react/3", "width": 58, "height": "@ 32*stage.react/3", "rx": 3, "fill": "#ffffff", "opacity": 0.98 },
+        { "tag": "text", "when": "stage.react>=2", "x": 440, "y": 236, "font-size": 10.5, "text-anchor": "middle", "fill": "#37474f", "font-weight": 700, "text": "白色沉淀" }
+      ]},
+      { "tag": "text", "x": 440, "y": 330, "font-size": 11, "text-anchor": "middle", "fill": "#455a64", "font-weight": 700, "text": "Na₂CO₃ + Ca(OH)₂" }
+    ]},
+
+    { "tag": "text", "when": "stage.wrongAcid", "x": 300, "y": 112, "font-size": 11.5, "text-anchor": "middle", "fill": "#dc2626", "font-weight": 700, "text": "加酸会把已经生成的沉淀又溶解掉，这一步要加的是碱" },
+    { "tag": "text", "when": "stage.naohIn && stage.limeIn && stage.react===0", "x": 300, "y": 112, "font-size": 11.5, "text-anchor": "middle", "fill": "#0277bd", "font-weight": 700, "text": "静置一会儿，观察沉淀的生成" }
+  ],
+
+  "report": [
+    { "title": "实验记录", "lines": [
+      "① CuSO₄ + 2NaOH = Cu(OH)₂↓ + Na₂SO₄   蓝色絮状沉淀",
+      "② FeCl₃ + 3NaOH = Fe(OH)₃↓ + 3NaCl    红褐色沉淀",
+      "③ Na₂CO₃ + Ca(OH)₂ = CaCO₃↓ + 2NaOH   白色沉淀",
+      "操作：分别取三种盐溶液于试管中，再滴加对应的碱溶液，静置观察"
+    ]},
+    { "title": "现象记录", "lines": [
+      "1. 硫酸铜溶液中滴加氢氧化钠，产生蓝色絮状沉淀，上层溶液蓝色变浅",
+      "2. 氯化铁溶液中滴加氢氧化钠，产生红褐色沉淀，溶液棕黄色变浅",
+      "3. 碳酸钠溶液中滴加澄清石灰水，产生白色沉淀"
+    ]},
+    { "title": "实验结论", "lines": [
+      "碱与盐反应生成新碱和新盐，属于复分解反应（双交换、价不变）。",
+      "复分解反应发生的条件是：生成物中有沉淀、气体或水（难电离物质）。",
+      "Cu(OH)₂ 蓝色、Fe(OH)₃ 红褐色、CaCO₃ 白色，是中考常考的特征沉淀颜色。"
+    ]}
+  ],
+
+  "errorTable": [
+    { "op": "把三种溶液倒在同一支试管里", "phen": "沉淀混合",           "result": "无法分辨各自的沉淀颜色", "score": 14 },
+    { "op": "向第三支试管加NaOH而不是石灰水", "phen": "Na₂CO₃与NaOH不反应", "result": "看不到白色沉淀",       "score": 16 },
+    { "op": "把红褐色沉淀误记为黑色",       "phen": "Fe(OH)₃是红褐色",   "result": "颜色错位，推断错误",     "score": 14 },
+    { "op": "认为Cu(OH)₂是蓝色溶液",        "phen": "沉淀与溶液要分清", "result": "应是蓝色絮状沉淀",       "score": 14 },
+    { "op": "加稀盐酸代替碱溶液",           "phen": "酸会溶解沉淀",     "result": "沉淀不出现甚至被溶解",   "score": 16 },
+    { "op": "以为所有反应都能发生",         "phen": "要满足生成沉淀/气体/水", "result": "复分解不一定发生",  "score": 14 }
+  ],
+
+  "steps": [
+    {
+      "id": "cover", "type": "cover", "title": "准备开始", "progress": 0,
+      "headline": "碱与盐的沉淀反应",
+      "subtitle": "蓝、红褐、白——三支试管三种颜色",
+      "buttons": [{ "t": "开始实验", "c": "primary", "goto": "goal" }]
+    },
+
+    {
+      "id": "goal", "type": "doc", "title": "实验目标", "progress": 6,
+      "cols": [
+        { "title": "实验目标", "lines": [
+          "1. 记住三种特征沉淀：Cu(OH)₂ 蓝色、Fe(OH)₃ 红褐色、CaCO₃ 白色",
+          "2. 认识复分解反应：碱 + 盐 → 新碱 + 新盐",
+          "3. 归纳复分解反应发生的条件",
+          "4. 会写三个化学方程式（注意配平与沉淀符号）",
+          "5. 体会「双交换、价不变」的写法规律"
+        ]},
+        { "title": "操作方式", "lines": [
+          "● 拖拽试剂到对应试管的高亮区域",
+          "● 遇到思考题时点选项作答",
+          "● 右侧显示当前实验阶段",
+          "● 卡住时点右下角“？”获取提示"
+        ]},
+        { "title": "安全提示", "lines": [
+          "⚠ 氢氧化钠、氢氧化钙溶液都有腐蚀性",
+          "⚠ 氯化铁溶液有腐蚀性且会染色，注意别滴到衣物上",
+          "⚠ 滴管要专管专用，避免试剂交叉污染",
+          "⚠ 废液倒入指定容器，不要直接倒进水池"
+        ]}
+      ],
+      "buttons": [
+        { "t": "下一步", "c": "primary", "goto": "equip" },
+        { "t": "返回封面", "c": "ghost", "goto": "cover" }
+      ]
+    },
+
+    {
+      "id": "equip", "type": "equip", "title": "选择实验器材", "progress": 12,
+      "tip": "三种盐溶液 + 两种碱溶液（注意第三支要用含钙离子的碱），还要能一滴一滴加",
+      "buttons": [
+        { "t": "确认器材", "c": "primary", "do": [{ "do": "checkEquip", "key": "equip", "goto": "tubes" }] }
+      ]
+    },
+
+    {
+      "id": "tubes", "type": "stage", "title": "排好三支试管", "progress": 18,
+      "shelf": ["tube"],
+      "desc": "三种盐溶液要分开放，三个试管互不干扰。",
+      "help": "把试管拖到桌面上的高亮区域。三支试管各自独立完成一个反应，这样沉淀颜色才看得清楚。",
+      "zones": ["bench"],
+      "drop": [
+        { "equip": "tube", "zone": "bench", "do": [
+          { "do": "set", "k": "tubesOn", "v": true },
+          { "do": "score", "key": "tubes" },
+          { "do": "tip", "text": "三支试管已排好 ✓" },
+          { "do": "goto", "id": "salts", "delay": 1100 }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要准备好三支试管。" }] }
+      ]
+    },
+
+    {
+      "id": "salts", "type": "stage", "title": "分别加入三种盐溶液", "progress": 28,
+      "shelf": ["cuso4", "fecl3", "na2co3"],
+      "desc": "从左到右依次是硫酸铜（蓝）、氯化铁（棕黄）、碳酸钠（无色）。",
+      "help": "把三种溶液分别拖到三支试管里。先记住它们各自的颜色：蓝色来自 Cu²⁺，棕黄色来自 Fe³⁺，碳酸钠溶液是无色的。",
+      "zones": ["zoneA", "zoneB", "zoneC"],
+      "drop": [
+        { "equip": "cuso4", "zone": "zoneA", "do": [
+          { "do": "set", "k": "saltA", "v": true },
+          { "do": "tip", "text": "蓝色硫酸铜溶液已加入 ✓" },
+          { "do": "if", "cond": "stage.saltA && stage.saltB && stage.saltC", "then": [
+            { "do": "score", "key": "salts" },
+            { "do": "goto", "id": "alkali", "delay": 900 }
+          ]}
+        ]},
+        { "equip": "fecl3", "zone": "zoneB", "do": [
+          { "do": "set", "k": "saltB", "v": true },
+          { "do": "tip", "text": "棕黄色氯化铁溶液已加入 ✓" },
+          { "do": "if", "cond": "stage.saltA && stage.saltB && stage.saltC", "then": [
+            { "do": "score", "key": "salts" },
+            { "do": "goto", "id": "alkali", "delay": 900 }
+          ]}
+        ]},
+        { "equip": "na2co3", "zone": "zoneC", "do": [
+          { "do": "set", "k": "saltC", "v": true },
+          { "do": "tip", "text": "碳酸钠溶液已加入 ✓" },
+          { "do": "if", "cond": "stage.saltA && stage.saltB && stage.saltC", "then": [
+            { "do": "score", "key": "salts" },
+            { "do": "goto", "id": "alkali", "delay": 900 }
+          ]}
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要加入的是三种盐溶液，注意各自对应的试管。" }] }
+      ]
+    },
+
+    {
+      "id": "alkali", "type": "stage", "title": "分别加入对应的碱", "progress": 42,
+      "shelf": ["naoh", "limewater"],
+      "desc": "前两支试管加氢氧化钠溶液，第三支要加澄清石灰水（提供钙离子）。",
+      "help": "把氢氧化钠溶液拖到左边两支试管区域，把澄清石灰水拖到最右边那支。第三支要生成碳酸钙，必须提供 Ca²⁺。",
+      "zones": ["zoneAB", "zoneC"],
+      "drop": [
+        { "equip": "naoh", "zone": "zoneAB", "do": [
+          { "do": "set", "k": "naohIn", "v": true },
+          { "do": "tip", "text": "已向左两支试管加入 NaOH 溶液 ✓" },
+          { "do": "if", "cond": "stage.limeIn", "then": [
+            { "do": "score", "key": "alkali" },
+            { "do": "set", "k": "react", "v": 1, "delay": 700 },
+            { "do": "set", "k": "react", "v": 2, "delay": 1500 },
+            { "do": "set", "k": "react", "v": 3, "delay": 2400 },
+            { "do": "goto", "id": "observe", "delay": 3000 }
+          ]}
+        ]},
+        { "equip": "limewater", "zone": "zoneC", "do": [
+          { "do": "set", "k": "limeIn", "v": true },
+          { "do": "tip", "text": "已向第三支试管加入澄清石灰水 ✓" },
+          { "do": "if", "cond": "stage.naohIn", "then": [
+            { "do": "score", "key": "alkali" },
+            { "do": "set", "k": "react", "v": 1, "delay": 700 },
+            { "do": "set", "k": "react", "v": 2, "delay": 1500 },
+            { "do": "set", "k": "react", "v": 3, "delay": 2400 },
+            { "do": "goto", "id": "observe", "delay": 3000 }
+          ]}
+        ]},
+        { "equip": "limewater", "zone": "zoneAB", "do": [
+          { "do": "err", "text": "石灰水是用来提供 Ca²⁺ 的，请加到最右边那支装有碳酸钠的试管里。" }
+        ]},
+        { "equip": "acid", "zone": "zoneAB", "do": [
+          { "do": "set", "k": "wrongAcid", "v": true },
+          { "do": "err", "text": "酸会把已经生成的氢氧化物沉淀溶解掉。这一步要加的是碱溶液。" }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要加入的是碱溶液。" }] }
+      ]
+    },
+
+    {
+      "id": "observe", "type": "doc", "title": "三支试管各是什么颜色？", "progress": 56,
+      "cols": [
+        { "title": "观察结果", "lines": [
+          "第一支：产生蓝色絮状沉淀",
+          "第二支：产生红褐色沉淀",
+          "第三支：产生白色沉淀",
+          "上层溶液的颜色都比原来变浅了"
+        ]},
+        { "title": "想一想", "lines": [
+          "为什么上层溶液会变浅？",
+          "因为 Cu²⁺、Fe³⁺ 等离子进入沉淀被「带走」了，",
+          "留在溶液里的已经不是原来的那种离子。"
+        ]}
+      ],
+      "buttons": [
+        { "t": "蓝色絮状 / 红褐色 / 白色", "c": "primary", "do": [
+          { "do": "score", "key": "observe" },
+          { "do": "tip", "text": "颜色全部对上了 ✓ 这是最常考的一组沉淀颜色" },
+          { "do": "goto", "id": "judge", "delay": 1500 }
+        ]},
+        { "t": "蓝色 / 黑色 / 白色", "c": "ghost", "do": [
+          { "do": "err", "text": "第二支是红褐色不是黑色。Fe(OH)₃ 是红褐色，Fe₃O₄ 和铁粉才是黑色。" }
+        ]},
+        { "t": "浅绿色 / 红褐色 / 无色透明", "c": "ghost", "do": [
+          { "do": "err", "text": "第一支沉淀是蓝色的（注意完全沉淀后上层液体也会变浅）；第三支明显有白色沉淀。" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "judge", "type": "doc", "title": "沉淀各是什么物质？", "progress": 68,
+      "cols": [
+        { "title": "反应①", "lines": [
+          "CuSO₄ + 2NaOH = Cu(OH)₂↓ + Na₂SO₄",
+          "交换离子：Cu²⁺ 与 OH⁻ 结合成沉淀"
+        ]},
+        { "title": "反应②③", "lines": [
+          "FeCl₃ + 3NaOH = Fe(OH)₃↓ + 3NaCl",
+          "Na₂CO₃ + Ca(OH)₂ = CaCO₃↓ + 2NaOH",
+          "规律：互相交换成分，化合价不变"
+        ]}
+      ],
+      "buttons": [
+        { "t": "Cu(OH)₂ / Fe(OH)₃ / CaCO₃", "c": "primary", "do": [
+          { "do": "score", "key": "judge" },
+          { "do": "tip", "text": "正确 ✓ 三个沉淀对应的正是这三种难溶物" },
+          { "do": "goto", "id": "rule", "delay": 1500 }
+        ]},
+        { "t": "CuO / Fe₂O₃ / CaO", "c": "ghost", "do": [
+          { "do": "err", "text": "这三个是氧化物，不是氢氧化物沉淀。复分解反应中元素化合价不变，生成的是碱或盐。" }
+        ]},
+        { "t": "CuCO₃ / FeCO₃ / Ca(OH)₂", "c": "ghost", "do": [
+          { "do": "err", "text": "前两支加的是 NaOH，带来的是 OH⁻；第三支生成的沉淀才是含碳酸根的。" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "rule", "type": "doc", "title": "复分解反应什么时候能发生？", "progress": 80,
+      "cols": [
+        { "title": "发生条件", "lines": [
+          "两种化合物互相交换成分，",
+          "生成物中至少有一样满足：",
+          "① 有沉淀生成",
+          "② 有气体放出",
+          "③ 有水（难电离物质）生成"
+        ]},
+        { "title": "举例对比", "lines": [
+          "能发生：Na₂CO₃ + Ca(OH)₂ → CaCO₃↓",
+          "能发生：NaOH + HCl → H₂O",
+          "能发生：Na₂CO₃ + 2HCl → CO₂↑",
+          "不能发生：NaOH + KCl → 什么都没有"
+        ]}
+      ],
+      "buttons": [
+        { "t": "生成物要有沉淀、气体或水", "c": "primary", "do": [
+          { "do": "score", "key": "rule" },
+          { "do": "tip", "text": "这是判断复分解能否发生的核心依据 ✓" },
+          { "do": "goto", "id": "summary", "delay": 1500 }
+        ]},
+        { "t": "只要两种化合物混合就行", "c": "ghost", "do": [
+          { "do": "err", "text": "如果混合后还是那些离子自由移动，等于什么都没发生。必须有沉淀、气体或水生成才算。" }
+        ]},
+        { "t": "只要生成物里有盐就行", "c": "ghost", "do": [
+          { "do": "err", "text": "NaOH + KCl 交换后同样得到盐，但它在水中完全电离、全都溶着，反应并不会发生。" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "summary", "type": "doc", "title": "把方程式写全", "progress": 90,
+      "cols": [
+        { "title": "第一支", "lines": [
+          "CuSO₄ + 2NaOH = Na₂SO₄ + Cu(OH)₂↓",
+          "注意配平：Cu²⁺ 需要 2 个 OH⁻",
+          "沉淀符号不能漏"
+        ]},
+        { "title": "第二、三支", "lines": [
+          "FeCl₃ + 3NaOH = 3NaCl + Fe(OH)₃↓",
+          "Na₂CO₃ + Ca(OH)₂ = 2NaOH + CaCO₃↓",
+          "口诀：双交换，价不变"
+        ]}
+      ],
+      "buttons": [
+        { "t": "CuSO₄+2NaOH=Na₂SO₄+Cu(OH)₂↓", "c": "primary", "do": [
+          { "do": "score", "key": "summary" },
+          { "do": "tip", "text": "写对了 ✓ 其余两个同理：FeCl₃+3NaOH、Na₂CO₃+Ca(OH)₂" },
+          { "do": "goto", "id": "report", "delay": 1600 }
+        ]},
+        { "t": "CuSO₄+NaOH=Na₂SO₄+CuOH↓", "c": "ghost", "do": [
+          { "do": "err", "text": "化学式 CuOH 不对，铜是 +2 价，需要 2 个 OH⁻，所以要写成 Cu(OH)₂ 且 NaOH 前配 2。" }
+        ]},
+        { "t": "CuSO₄+2NaOH=Cu(OH)₂↓+Na₂SO₄↑", "c": "ghost", "do": [
+          { "do": "err", "text": "↑ 标错了对象：气体符号给 CO₂，沉淀符号给 Cu(OH)₂，硫酸钠是溶解的盐，什么符号都不加。" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "report", "type": "report", "title": "实验报告", "progress": 95,
+      "buttons": [
+        { "t": "提交报告", "c": "primary", "do": [{ "do": "finish" }, { "do": "goto", "id": "score" }] }
+      ]
+    },
+
+    {
+      "id": "score", "type": "score", "title": "实验评分", "progress": 100,
+      "buttons": [
+        { "t": "导出本次成绩", "c": "ghost", "do": [{ "do": "export" }] },
+        { "t": "查看常见错误", "c": "ghost", "goto": "errtable" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    },
+
+    {
+      "id": "errtable", "type": "errors", "title": "常见错误与后果", "progress": 100,
+      "buttons": [
+        { "t": "返回评分", "c": "ghost", "goto": "score" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>方程式记忆卡 · 初中化学虚拟实验训练平台</title>
+<link rel="stylesheet" href="css-style.css">
+</head>
+<body>
+
+<div class="home-wrap">
+  <div class="home-top">
+    <div>
+      <h1>📇 化学方程式记忆卡</h1>
+      <div class="sub">默写 · 四选一 · 看图判断 · 补全 —— 把初中核心方程式一次记牢</div>
+    </div>
+    <div class="home-tools">
+      <input id="drName" class="name-input" placeholder="输入你的姓名" maxlength="20">
+      <button class="ghost" onclick="location.href='index.html'">← 回首页</button>
+    </div>
+  </div>
+
+  <div id="drBody">
+    <div class="empty">正在加载卡片…</div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="js-core.js"></script>
+<script src="data-bundle.js" onerror="window.__noBundle=true"></script>
+<script src="js-drill.js"></script>
+</body>
+</html>

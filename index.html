@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>初中化学虚拟实验训练平台</title>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css-style.css">
 </head>
 <body>
 
@@ -16,6 +16,7 @@
     </div>
     <div class="home-tools">
       <input id="stuName" class="name-input" placeholder="输入你的姓名" maxlength="20">
+      <button class="primary" onclick="location.href='drill.html'">📇 记忆卡练习</button>
       <button class="ghost" onclick="Home.exportAll()">导出全部成绩</button>
       <button class="ghost" onclick="location.href='teacher.html'">教师端</button>
     </div>
@@ -34,17 +35,17 @@
 
 <div id="toast"></div>
 
-<script src="js/core.js"></script>
-<script src="data/bundle.js" onerror="window.__noBundle=true"></script>
-<script src="js/home.js"></script>
+<script src="js-core.js"></script>
+<script src="data-bundle.js" onerror="window.__noBundle=true"></script>
+<script src="js-home.js"></script>
 
 <script>
 /* ------------------------------------------------------------------
  * 兜底实验清单
- * 作用：当 data/bundle.js 或 data/experiments.json 还没同步到最新版时，
+ * 作用：当 data-bundle.js 或 data-experiments.json 还没同步到最新版时，
  *       首页依然能显示全部实验卡片，不会出现"只剩两个实验"的情况。
  * 注意：以后新增实验，把新实验的一行加到下面的数组里即可（同时也要加到
- *       data/experiments.json，两边保持一致）。
+ *       data-experiments.json，两边保持一致）。
  * ------------------------------------------------------------------ */
 window.LAB_LIST_FALLBACK = [
   { "id": "kmno4", "name": "高锰酸钾制取氧气", "iconEmoji": "🔥", "desc": "固体加热型发生装置，排水法收集，带火星木条检验。", "method": "排水法", "group": "气体制取与检验", "max": 100 },
@@ -81,8 +82,9 @@ window.LAB_LIST_FALLBACK = [
     var box = document.getElementById('expGrid');
     var want = window.LAB_LIST_FALLBACK;
     if (!box || !want.length) return;
-    /* 已经渲染出足够多的卡片（说明清单文件是最新的），就不干预 */
-    if (box.querySelectorAll('.exp-card').length >= want.length) return;
+    /* 已经渲染出足够多的卡片（说明清单文件是最新的），就不干预
+     * +1 是因为最后还有一张「记忆卡练习」入口卡 */
+    if (box.querySelectorAll('.exp-card').length >= want.length + 1) return;
     var cnt = document.getElementById('expCount');
     if (cnt) cnt.textContent = '共 ' + want.length + ' 个';
     /* 按 group 分段显示，和 home.js 的正常渲染保持一致 */
@@ -107,7 +109,27 @@ window.LAB_LIST_FALLBACK = [
     box.innerHTML = order.map(function (g) {
       return '<div class="grp-hd"><span>' + esc(g) + '</span><em>' + map[g].length + ' 个</em><i></i></div>'
         + map[g].map(card).join('');
-    }).join('');
+    }).join('') + drillCard();
+  }
+
+  /* 记忆卡练习入口（固定在最后） */
+  function drillCard() {
+    var best = null;
+    try {
+      JSON.parse(localStorage.getItem('lab_records') || '[]').forEach(function (r) {
+        if (String(r.experiment || '').indexOf('drill:') === 0 && (!best || r.rate > best.rate)) best = r;
+      });
+    } catch (e) { }
+    return '<div class="grp-hd"><span>记忆与自测</span><em>34 条</em><i></i></div>'
+      + '<div class="exp-card" style="border-color:#bfdbfe;background:linear-gradient(160deg,#f8fbff,#fff)" '
+      + 'onclick="location.href=\'drill.html\'">'
+      + '<div class="ic">📇</div>'
+      + '<h3>化学方程式记忆卡</h3>'
+      + '<p>34 条核心方程式：默写、四选一、看图判断、补全化学式，自动判分并记入成绩。</p>'
+      + '<div class="meta">'
+      + '<span>满分 100 分</span><span>4 种题型</span>'
+      + (best ? '<span style="background:#dcfce7;color:#15803d">最好正确率 ' + best.rate + '%</span>' : '<span>未练习</span>')
+      + '</div></div>';
   }
   /* home.js 的数据加载是异步的，多刷几次确保覆盖掉旧清单的渲染结果 */
   [0, 200, 700, 1500, 3000].forEach(function (t) { setTimeout(paint, t); });

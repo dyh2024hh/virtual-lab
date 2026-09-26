@@ -1,0 +1,500 @@
+{
+  "id": "h2",
+  "title": "实验室制取氢气",
+  "subtitle": "初中化学虚拟实验 · 固液常温型 + 验纯",
+  "badges": ["锌粒 + 稀硫酸", "点燃前必须验纯", "满分 100 分"],
+  "viewBox": "0 0 600 360",
+
+  "equipments": [
+    { "id": "tube",       "name": "试管",         "need": true },
+    { "id": "zinc",       "name": "锌粒",         "need": true },
+    { "id": "h2so4",      "name": "稀硫酸",       "need": true },
+    { "id": "stopper",    "name": "单孔橡皮塞",   "need": true },
+    { "id": "pipe",       "name": "导管",         "need": true },
+    { "id": "bottle",     "name": "集气瓶",       "need": true },
+    { "id": "match",      "name": "火柴",         "need": true },
+    { "id": "beaker",     "name": "干冷烧杯",     "need": true },
+    { "id": "lamp",       "name": "酒精灯",       "need": true },
+    { "id": "glass",      "name": "玻璃片",       "need": true },
+    { "id": "acid",       "name": "稀盐酸",       "need": false },
+    { "id": "stand",      "name": "铁架台",       "need": false },
+    { "id": "basin",      "name": "水槽",         "need": false },
+    { "id": "kmno4",      "name": "高锰酸钾",     "need": false },
+    { "id": "limewater",  "name": "澄清石灰水",   "need": false }
+  ],
+
+  "dims": [
+    { "key": "skill",  "name": "操作规范" },
+    { "key": "safety", "name": "安全意识" }
+  ],
+
+  "scoreItems": [
+    { "key": "equip",     "name": "器材选择",             "max": 10, "dim": "skill" },
+    { "key": "assemble",  "name": "放置发生装置",         "max": 8,  "dim": "skill" },
+    { "key": "load",      "name": "装入锌粒",             "max": 8,  "dim": "skill" },
+    { "key": "install",   "name": "组装单孔塞与导管",     "max": 10, "dim": "skill" },
+    { "key": "seal",      "name": "检查装置气密性",       "max": 8,  "dim": "safety" },
+    { "key": "pour",      "name": "加入稀硫酸",           "max": 10, "dim": "skill" },
+    { "key": "method",    "name": "选择收集方法",         "max": 8,  "dim": "skill" },
+    { "key": "collect",   "name": "收集一整瓶氢气",       "max": 12, "dim": "skill" },
+    { "key": "purify",    "name": "点燃前先验纯",         "max": 10, "dim": "safety" },
+    { "key": "ignite",    "name": "点燃氢气观察火焰",     "max": 8,  "dim": "safety" },
+    { "key": "water",     "name": "烧杯检验生成的水",     "max": 8,  "dim": "skill" }
+  ],
+
+  "initialStage": {
+    "tubePlaced": false, "zincIn": false, "stopperOn": false, "pipeOn": false,
+    "acidIn": false, "reacting": false, "bottleOn": false, "gas": 0,
+    "lampOn": false, "sampling": false, "boom": false, "ignited": false, "beakerOn": false
+  },
+
+  "dropZones": {
+    "tube":      { "x": 120, "y": 106, "w": 120, "h": 210 },
+    "zinc":      { "x": 148, "y": 200, "w": 60,  "h": 104 },
+    "stopper":   { "x": 146, "y": 96,  "w": 62,  "h": 54 },
+    "mouthTube": { "x": 148, "y": 150, "w": 60,  "h": 110 },
+    "bottle":    { "x": 386, "y": 96,  "w": 112, "h": 190 },
+    "ignite":    { "x": 494, "y": 216, "w": 68,  "h": 64 },
+    "beakerZone":{ "x": 486, "y": 140, "w": 80,  "h": 104 }
+  },
+
+  "scene": [
+    { "tag": "rect", "x": 40, "y": 322, "width": 520, "height": 15, "rx": 5, "fill": "url(#gMetal)" },
+    { "tag": "rect", "x": 40, "y": 322, "width": 520, "height": 4, "rx": 2, "fill": "#e8eef2", "opacity": 0.75 },
+
+    {
+      "tag": "g", "when": "stage.tubePlaced", "children": [
+        { "tag": "path", "d": "M144 294 L206 294 L212 318 L138 318 Z", "fill": "url(#gMetalV)" },
+        { "tag": "rect", "x": 152, "y": 112, "width": 46, "height": 190, "rx": 22, "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.2 },
+        { "tag": "rect", "x": 157, "y": 122, "width": 8, "height": 168, "rx": 4, "fill": "#ffffff", "opacity": 0.7 }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.zincIn", "children": [
+        { "tag": "circle", "cx": 166, "cy": 288, "r": 6,   "fill": "#90a4ae", "stroke": "#546e7a", "stroke-width": 1 },
+        { "tag": "circle", "cx": 184, "cy": 291, "r": 5.5, "fill": "#b0bec5", "stroke": "#546e7a", "stroke-width": 1 },
+        { "tag": "circle", "cx": 174, "cy": 273, "r": 5,   "fill": "#90a4ae", "stroke": "#546e7a", "stroke-width": 1 },
+        { "tag": "circle", "cx": 188, "cy": 277, "r": 4.5, "fill": "#cfd8dc", "stroke": "#546e7a", "stroke-width": 1 },
+        { "tag": "circle", "cx": 165, "cy": 262, "r": 4.5, "fill": "#b0bec5", "stroke": "#546e7a", "stroke-width": 1 }
+      ]
+    },
+
+    { "tag": "path", "when": "stage.acidIn", "d": "M154 206 L196 206 L196 278 Q196 296 175 296 Q154 296 154 278 Z", "fill": "url(#gAcid)", "opacity": 0.75 },
+
+    {
+      "tag": "g", "when": "stage.reacting", "children": [
+        { "tag": "circle", "class": "bub", "cx": 168, "cy": 286, "r": 4, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:0s" },
+        { "tag": "circle", "class": "bub", "cx": 186, "cy": 284, "r": 4.5, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:.35s" },
+        { "tag": "circle", "class": "bub", "cx": 176, "cy": 270, "r": 3, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:.7s" },
+        { "tag": "circle", "class": "bub", "cx": 164, "cy": 258, "r": 3.5, "fill": "#ffffff", "opacity": 0.9, "style": "animation-delay:1.05s" },
+        { "tag": "text", "x": 175, "y": 344, "font-size": 10.5, "text-anchor": "middle", "fill": "#33691e", "font-weight": 700, "text": "锌粒表面产生大量气泡" }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.stopperOn", "children": [
+        { "tag": "ellipse", "cx": 175, "cy": 112, "rx": 20, "ry": 4, "fill": "#8d6e63" },
+        { "tag": "path", "d": "M157 112 L193 112 L189 134 L161 134 Z", "fill": "url(#gRubber)" },
+        { "tag": "circle", "cx": 175, "cy": 122, "r": 3, "fill": "#3e2723" }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.pipeOn", "children": [
+        { "tag": "path", "d": "M175 122 Q250 108 292 152 L292 262 Q292 278 310 278 L414 278 L414 238", "stroke": "#90a4ae", "stroke-width": 7, "fill": "none", "stroke-linecap": "round" },
+        { "tag": "path", "d": "M175 122 Q250 108 292 152 L292 262 Q292 278 310 278 L414 278 L414 238", "stroke": "#e0e8ec", "stroke-width": 2, "fill": "none", "stroke-linecap": "round", "opacity": 0.7 }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.bottleOn", "children": [
+        { "tag": "rect", "x": 370, "y": 110, "width": 86, "height": 142, "rx": 6, "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.2 },
+        { "tag": "rect", "x": 392, "y": 250, "width": 42, "height": 22, "rx": 3, "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.2 },
+        { "tag": "rect", "x": 372, "y": 112, "width": 82, "height": "@ 138*stage.gas/100", "fill": "#dfe3ee", "opacity": 0.6 },
+        { "tag": "text", "when": "stage.gas>=100", "x": 413, "y": 186, "font-size": 14, "text-anchor": "middle", "fill": "#3949ab", "font-weight": 700, "text": "H₂" },
+        { "tag": "text", "x": 413, "y": 306, "font-size": 11, "text-anchor": "middle", "fill": "#0277bd", "text": "向下排空气法 · 瓶口朝下" },
+        { "tag": "g", "when": "stage.reacting && stage.gas<100", "children": [
+          { "tag": "circle", "class": "bub", "cx": 414, "cy": 250, "r": 4, "fill": "#ffffff", "opacity": 0.85, "style": "animation-delay:0s" },
+          { "tag": "circle", "class": "bub", "cx": 406, "cy": 254, "r": 3, "fill": "#ffffff", "opacity": 0.85, "style": "animation-delay:.5s" }
+        ]}
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.lampOn", "children": [
+        { "tag": "rect", "x": 500, "y": 276, "width": 46, "height": 38, "rx": 6, "fill": "url(#gLamp)" },
+        { "tag": "path", "d": "M512 276 L534 276 L530 262 L516 262 Z", "fill": "#b0bec5", "stroke": "#8494a0", "stroke-width": 1 },
+        { "tag": "rect", "x": 520, "y": 254, "width": 7, "height": 9, "rx": 2, "fill": "#cfd8dc" },
+        { "tag": "g", "class": "flame", "children": [
+          { "tag": "ellipse", "cx": 523, "cy": 242, "rx": 8, "ry": 14, "fill": "url(#gFlameOut)" },
+          { "tag": "ellipse", "cx": 523, "cy": 246, "rx": 3.5, "ry": 6.5, "fill": "#fff59d" }
+        ]}
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.sampling && !stage.beakerOn", "children": [
+        { "tag": "rect", "x": 505, "y": 152, "width": 34, "height": 96, "rx": 16, "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.2 },
+        { "tag": "rect", "x": 510, "y": 158, "width": 24, "height": 84, "rx": 12, "fill": "#dfe3ee", "opacity": 0.6 },
+        { "tag": "text", "x": 522, "y": 206, "font-size": 9.5, "text-anchor": "middle", "fill": "#3949ab", "font-weight": 700, "text": "H₂" },
+        { "tag": "text", "x": 522, "y": 142, "font-size": 10.5, "text-anchor": "middle", "fill": "#3949ab", "font-weight": 700, "text": "一小试管 H₂" }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.ignited", "children": [
+        { "tag": "ellipse", "class": "flame", "cx": 522, "cy": 228, "rx": 9, "ry": 15, "fill": "#7ec8ff", "opacity": 0.9 },
+        { "tag": "ellipse", "class": "flame", "cx": 522, "cy": 232, "rx": 4, "ry": 7, "fill": "#e3f6ff" },
+        { "tag": "text", "when": "!stage.beakerOn", "x": 522, "y": 346, "font-size": 12, "text-anchor": "middle", "fill": "#0288d1", "font-weight": 700, "text": "淡蓝色火焰" }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.boom", "class": "shake", "children": [
+        { "tag": "text", "x": 452, "y": 92, "font-size": 13, "text-anchor": "middle", "fill": "#dc2626", "font-weight": 700, "text": "锐利的爆鸣声！氢气不纯" }
+      ]
+    },
+
+    {
+      "tag": "g", "when": "stage.beakerOn", "children": [
+        { "tag": "path", "d": "M496 150 L496 226 Q496 236 506 236 L546 236 Q556 236 556 226 L556 150 Z", "fill": "url(#gGlass)", "opacity": 0.42, "stroke": "#7ba7c7", "stroke-width": 2 },
+        { "tag": "circle", "cx": 510, "cy": 206, "r": 3.2, "fill": "#81d4fa", "opacity": 0.9 },
+        { "tag": "circle", "cx": 524, "cy": 214, "r": 2.6, "fill": "#81d4fa", "opacity": 0.9 },
+        { "tag": "circle", "cx": 540, "cy": 204, "r": 2.9, "fill": "#81d4fa", "opacity": 0.9 },
+        { "tag": "text", "x": 430, "y": 346, "font-size": 11.5, "text-anchor": "middle", "fill": "#0288d1", "font-weight": 700, "text": "淡蓝色火焰 · 烧杯内壁出现水雾 → 生成水" }
+      ]
+    }
+  ],
+
+  "report": [
+    { "title": "实验记录", "lines": [
+      "实验名称：锌粒与稀硫酸反应制取氢气",
+      "反应原理：Zn + H₂SO₄ → ZnSO₄ + H₂↑",
+      "发生装置：固液常温型（试管 + 单孔塞 + 导管）",
+      "收集方法：向下排空气法（或排水法）",
+      "检验方法：点燃，淡蓝色火焰；火焰上方罩干冷烧杯，内壁有水雾"
+    ]},
+    { "title": "现象记录", "lines": [
+      "1. 锌粒表面产生大量气泡，锌粒逐渐溶解",
+      "2. 验纯时听到轻微的“噗”声，说明氢气已纯净",
+      "3. 点燃纯净氢气，产生淡蓝色火焰",
+      "4. 火焰上方罩干冷烧杯，内壁出现水雾"
+    ]},
+    { "title": "实验结论", "lines": [
+      "活泼金属（锌）与稀硫酸发生置换反应生成氢气。",
+      "氢气密度比空气小，可用向下排空气法收集；难溶于水，也可用排水法。",
+      "氢气具有可燃性，点燃前必须验纯，否则会发生爆炸。"
+    ]}
+  ],
+
+  "errorTable": [
+    { "op": "用向上排空气法收集",       "phen": "氢气比空气轻",       "result": "气体向上逸散，收集不到", "score": 12 },
+    { "op": "未验纯直接点燃",           "phen": "混有空气或氧气",     "result": "爆鸣甚至爆炸",           "score": 10 },
+    { "op": "听验纯时正对试管口",       "phen": "危险操作",           "result": "可能被灼伤",             "score": 8 },
+    { "op": "用稀盐酸代替稀硫酸",       "phen": "盐酸有挥发性",       "result": "制得的氢气混有HCl气体",  "score": 8 },
+    { "op": "未检查装置气密性",         "phen": "装置漏气",           "result": "收集不到足量气体",       "score": 8 },
+    { "op": "收集满后正放保存",         "phen": "氢气向上逸出",       "result": "气体很快跑光",           "score": 8 },
+    { "op": "点燃后立刻用湿烧杯罩",     "phen": "烧杯不干燥",         "result": "无法证明生成的是水",     "score": 8 }
+  ],
+
+  "steps": [
+    {
+      "id": "cover", "type": "cover", "title": "准备开始", "progress": 0,
+      "headline": "实验室制取氢气",
+      "subtitle": "初中化学虚拟实验 · 固液常温型 + 验纯",
+      "buttons": [{ "t": "开始实验", "c": "primary", "goto": "goal" }]
+    },
+
+    {
+      "id": "goal", "type": "doc", "title": "实验目标", "progress": 5,
+      "cols": [
+        { "title": "实验目标", "lines": [
+          "1. 学会锌粒与稀硫酸反应制取氢气的操作",
+          "2. 理解为什么用向下排空气法收集氢气",
+          "3. 掌握「点燃前必须验纯」这条安全底线",
+          "4. 学会用干冷烧杯检验氢气燃烧的产物",
+          "5. 与制氧、制二氧化碳三个实验形成完整对比"
+        ]},
+        { "title": "操作方式", "lines": [
+          "● 拖拽器材：从左侧器材架拖到实验台",
+          "● 有些步骤需要判断，选一个按钮继续",
+          "● 右侧显示当前实验阶段",
+          "● 卡住时点右下角“？”获取提示"
+        ]},
+        { "title": "安全提示", "lines": [
+          "⚠ 氢气是可燃性气体，点燃前必须验纯！",
+          "⚠ 验纯时试管口要朝下，远离面部",
+          "⚠ 听到尖锐爆鸣声说明不纯，要重新收集",
+          "⚠ 本实验不用加热、不用棉花"
+        ]}
+      ],
+      "buttons": [
+        { "t": "下一步", "c": "primary", "goto": "equip" },
+        { "t": "返回封面", "c": "ghost", "goto": "cover" }
+      ]
+    },
+
+    {
+      "id": "equip", "type": "equip", "title": "选择实验器材", "progress": 10,
+      "tip": "固液常温型：锌粒 + 稀硫酸；氢气比空气轻且难溶于水，想一想收集方法和检验方法需要什么",
+      "buttons": [
+        { "t": "确认器材", "c": "primary", "do": [{ "do": "checkEquip", "key": "equip", "goto": "assemble" }] }
+      ]
+    },
+
+    {
+      "id": "assemble", "type": "stage", "title": "放置发生装置", "progress": 18,
+      "shelf": ["tube"],
+      "desc": "用试管作反应容器，把它放在桌面左侧。",
+      "help": "把试管拖到桌面左侧的高亮区域。这个实验是固液常温型，试管比锥形瓶更常用。",
+      "zones": ["tube"],
+      "drop": [
+        { "equip": "tube", "zone": "tube", "do": [
+          { "do": "set", "k": "tubePlaced", "v": true },
+          { "do": "score", "key": "assemble" },
+          { "do": "tip", "text": "试管已放好 ✓" },
+          { "do": "goto", "id": "load", "delay": 800 }
+        ]},
+        { "equip": "tube", "do": [{ "do": "err", "text": "试管要放在左侧的高亮区域。" }] },
+        { "do": [{ "do": "err", "text": "这一步先放反应容器。" }] }
+      ]
+    },
+
+    {
+      "id": "load", "type": "stage", "title": "装入锌粒", "progress": 26,
+      "shelf": ["zinc"],
+      "desc": "先把固体药品锌粒加入试管底部。",
+      "help": "把锌粒拖到试管中。取用锌粒要用镊子，把试管横放，让锌粒慢慢滑到试管底部，避免打破试管。",
+      "zones": ["zinc"],
+      "drop": [
+        { "equip": "zinc", "zone": "zinc", "do": [
+          { "do": "set", "k": "zincIn", "v": true },
+          { "do": "score", "key": "load" },
+          { "do": "tip", "text": "锌粒已加到试管底部 ✓" },
+          { "do": "goto", "id": "install", "delay": 900 }
+        ]},
+        { "equip": "zinc", "do": [{ "do": "err", "text": "锌粒要从试管口加入，注意别打破试管底。" }] },
+        { "do": [{ "do": "err", "text": "这一步需要加的是固体药品。" }] }
+      ]
+    },
+
+    {
+      "id": "install", "type": "stage", "title": "组装单孔塞与导管", "progress": 34,
+      "shelf": ["stopper", "pipe"],
+      "desc": "装好单孔橡皮塞和导气管，用来把产生的氢气导出。",
+      "help": "依次把单孔橡皮塞、导气管拖到试管口。组装时要先把导管用玻璃管与橡皮塞连接好再一起塞进试管。",
+      "zones": ["stopper"],
+      "drop": [
+        { "equip": "stopper", "zone": "stopper", "do": [
+          { "do": "set", "k": "stopperOn", "v": true },
+          { "do": "tip", "text": "单孔橡皮塞已塞紧 ✓" },
+          { "do": "if", "cond": "stage.stopperOn && stage.pipeOn", "then": [
+            { "do": "score", "key": "install" },
+            { "do": "goto", "id": "seal", "delay": 1000 }
+          ]}
+        ]},
+        { "equip": "pipe", "zone": "stopper", "do": [
+          { "do": "set", "k": "pipeOn", "v": true },
+          { "do": "tip", "text": "导气管已插进橡皮塞 ✓" },
+          { "do": "if", "cond": "stage.stopperOn && stage.pipeOn", "then": [
+            { "do": "score", "key": "install" },
+            { "do": "goto", "id": "seal", "delay": 1000 }
+          ]}
+        ]},
+        { "do": [{ "do": "err", "text": "塞子和导管都要往试管口的高亮区域装。" }] }
+      ]
+    },
+
+    {
+      "id": "seal", "type": "doc", "title": "检查装置气密性", "progress": 40,
+      "cols": [
+        { "title": "为什么要做", "lines": [
+          "如果装置漏气，产生的氢气会跑掉，",
+          "后面收集一瓶要花很久，还可能把空气混进去。",
+          "凡是制取气体的实验，加药品前都要先查气密性。"
+        ]},
+        { "title": "怎么做", "lines": [
+          "把导管一端浸入水中，用手掌紧握试管外壁。",
+          "若导管口有气泡冒出，松开手后导管内",
+          "形成一段水柱，说明装置气密性良好。"
+        ]}
+      ],
+      "buttons": [
+        { "t": "先检查气密性再继续", "c": "primary", "do": [
+          { "do": "score", "key": "seal" },
+          { "do": "tip", "text": "导管口冒出气泡，松开手后形成水柱 → 气密性良好 ✓" },
+          { "do": "goto", "id": "pour", "delay": 2000 }
+        ]},
+        { "t": "跳过，直接加药品", "c": "ghost", "do": [
+          { "do": "err", "text": "没检查气密性就加药品：万一漏气，收集到的气体量不足且容易混入空气。" },
+          { "do": "goto", "id": "pour", "delay": 3600 }
+        ]}
+      ]
+    },
+
+    {
+      "id": "pour", "type": "stage", "title": "加入稀硫酸", "progress": 48,
+      "shelf": ["h2so4"],
+      "desc": "向试管中加入适量稀硫酸，让液体浸没锌粒。",
+      "help": "把稀硫酸拖到试管口。注意：实验室用稀硫酸而不是稀盐酸，因为盐酸有挥发性会让氢气混有杂质。",
+      "zones": ["mouthTube"],
+      "drop": [
+        { "equip": "h2so4", "zone": "mouthTube", "do": [
+          { "do": "set", "k": "acidIn", "v": true },
+          { "do": "set", "k": "reacting", "v": true },
+          { "do": "score", "key": "pour" },
+          { "do": "tip", "text": "锌粒表面产生大量气泡，反应开始 ✓" },
+          { "do": "goto", "id": "method", "delay": 2000 }
+        ]},
+        { "equip": "h2so4", "do": [{ "do": "err", "text": "稀硫酸要沿试管壁缓缓倒入试管中。" }] },
+        { "do": [{ "do": "err", "text": "这一步要加的是液体药品稀硫酸。" }] }
+      ]
+    },
+
+    {
+      "id": "method", "type": "doc", "title": "选择收集方法", "progress": 55,
+      "cols": [
+        { "title": "氢气的性质", "lines": [
+          "密度比空气小（是最轻的气体）",
+          "难溶于水、也不与水反应",
+          "所以两种收集方法都能用。"
+        ]},
+        { "title": "怎么选", "lines": [
+          "向下排空气法：操作简单，但纯度较低",
+          "排水法：收集到的气体更纯",
+          "绝对不能选向上排空气法。"
+        ]}
+      ],
+      "buttons": [
+        { "t": "向下排空气法收集", "c": "primary", "do": [
+          { "do": "score", "key": "method" },
+          { "do": "tip", "text": "氢气密度比空气小，瓶口朝下收集的气体会留在瓶内 ✓" },
+          { "do": "goto", "id": "collect", "delay": 1800 }
+        ]},
+        { "t": "排水法收集", "c": "ghost", "do": [
+          { "do": "score", "key": "method" },
+          { "do": "tip", "text": "排水法也正确，而且收集到的氢气更纯；本实验演示用向下排空气法 ✓" },
+          { "do": "goto", "id": "collect", "delay": 2200 }
+        ]},
+        { "t": "向上排空气法收集", "c": "ghost", "do": [
+          { "do": "err", "text": "氢气比空气轻，用向上排空气法气体会直接从瓶口向上跑掉，一股也收不到！" },
+          { "do": "goto", "id": "collect", "delay": 4000 }
+        ]}
+      ]
+    },
+
+    {
+      "id": "collect", "type": "stage", "title": "收集一瓶氢气", "progress": 66,
+      "shelf": ["bottle"],
+      "desc": "把集气瓶瓶口朝下，罩在导管上方，氢气上升聚集在瓶底，空气被向下排出。",
+      "help": "把集气瓶拖到右侧高亮区域。注意：向下排空气法要求瓶口朝下，导管要伸到瓶底（此时是最上方）。",
+      "zones": ["bottle"],
+      "drop": [
+        { "equip": "bottle", "zone": "bottle", "do": [
+          { "do": "set", "k": "bottleOn", "v": true },
+          { "do": "tip", "text": "氢气上升聚集在瓶内，空气被向下排出" },
+          { "do": "set", "k": "gas", "v": 30, "delay": 700 },
+          { "do": "set", "k": "gas", "v": 65, "delay": 1500 },
+          { "do": "set", "k": "gas", "v": 100, "delay": 2400 },
+          { "do": "score", "key": "collect", "delay": 2500 },
+          { "do": "goto", "id": "purify", "delay": 3400 }
+        ]},
+        { "equip": "bottle", "do": [{ "do": "err", "text": "集气瓶要瓶口朝下，罩在导管口的上方。" }] },
+        { "do": [{ "do": "err", "text": "这一步要用集气瓶收集氢气。" }] }
+      ]
+    },
+
+    {
+      "id": "purify", "type": "doc", "title": "点燃前必须先验纯", "progress": 76,
+      "cols": [
+        { "title": "为什么", "lines": [
+          "氢气混有空气或氧气时点燃，会剧烈燃烧，",
+          "在有限空间内瞬间放热，就会发生爆炸。",
+          "所以任何可燃性气体点燃前都必须验纯。"
+        ]},
+        { "title": "怎么做", "lines": [
+          "用排水法或向下排空气法收集一小试管氢气，",
+          "用拇指堵住管口（管口始终朝下），",
+          "移近酒精灯火焰后松开拇指听声音。"
+        ]}
+      ],
+      "buttons": [
+        { "t": "先收集一小试管验纯", "c": "primary", "do": [
+          { "do": "set", "k": "lampOn", "v": true },
+          { "do": "set", "k": "sampling", "v": true },
+          { "do": "score", "key": "purify" },
+          { "do": "tip", "text": "听到轻微的“噗”声 → 氢气已纯净，可以点燃 ✓" },
+          { "do": "goto", "id": "ignite", "delay": 2600 }
+        ]},
+        { "t": "直接拿火柴去点燃集气瓶口", "c": "ghost", "do": [
+          { "do": "set", "k": "lampOn", "v": true },
+          { "do": "set", "k": "sampling", "v": true },
+          { "do": "set", "k": "boom", "v": true, "delay": 900 },
+          { "do": "err", "text": "没验纯就点燃，很可能听到尖锐爆鸣声甚至炸裂，这是实验室大忌！" },
+          { "do": "goto", "id": "ignite", "delay": 4600 }
+        ]}
+      ]
+    },
+
+    {
+      "id": "ignite", "type": "stage", "title": "点燃纯净的氢气", "progress": 86,
+      "shelf": ["match"],
+      "desc": "把一小试管纯净氢气靠近酒精灯火焰点燃，观察火焰颜色。",
+      "help": "把火柴或燃着的小试管拖到高亮区域点燃。氢气燃烧的火焰是淡蓝色。",
+      "zones": ["ignite"],
+      "drop": [
+        { "equip": "match", "zone": "ignite", "do": [
+          { "do": "set", "k": "ignited", "v": true },
+          { "do": "score", "key": "ignite" },
+          { "do": "tip", "text": "氢气燃烧产生淡蓝色火焰 ✓ 下一步验证产物" },
+          { "do": "goto", "id": "water", "delay": 1800 }
+        ]},
+        { "equip": "match", "do": [{ "do": "err", "text": "要靠近酒精灯火焰的位置点燃。" }] },
+        { "do": [{ "do": "err", "text": "这一步需要点燃氢气并观察火焰。" }] }
+      ]
+    },
+
+    {
+      "id": "water", "type": "stage", "title": "检验燃烧产物", "progress": 93,
+      "shelf": ["beaker"],
+      "desc": "把干燥的冷烧杯罩在火焰上方，观察烧杯内壁是否出现水雾。",
+      "help": "把干冷烧杯拖到火焰正上方。一定要用干燥的烧杯，湿烧杯无法说明问题。",
+      "zones": ["beakerZone"],
+      "drop": [
+        { "equip": "beaker", "zone": "beakerZone", "do": [
+          { "do": "set", "k": "beakerOn", "v": true },
+          { "do": "score", "key": "water" },
+          { "do": "tip", "text": "烧杯内壁出现水雾 → 氢气燃烧生成水 ✓" },
+          { "do": "goto", "id": "report", "delay": 1800 }
+        ]},
+        { "equip": "beaker", "do": [{ "do": "err", "text": "烧杯要罩在火焰的正上方。" }] },
+        { "do": [{ "do": "err", "text": "这一步用干冷烧杯检验水的生成。" }] }
+      ]
+    },
+
+    {
+      "id": "report", "type": "report", "title": "实验报告", "progress": 96,
+      "buttons": [
+        { "t": "提交报告", "c": "primary", "do": [{ "do": "finish" }, { "do": "goto", "id": "score" }] }
+      ]
+    },
+
+    {
+      "id": "score", "type": "score", "title": "实验评分", "progress": 100,
+      "buttons": [
+        { "t": "导出本次成绩", "c": "ghost", "do": [{ "do": "export" }] },
+        { "t": "查看常见错误", "c": "ghost", "goto": "errtable" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    },
+
+    {
+      "id": "errtable", "type": "errors", "title": "常见错误与后果", "progress": 100,
+      "buttons": [
+        { "t": "返回评分", "c": "ghost", "goto": "score" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    }
+  ]
+}

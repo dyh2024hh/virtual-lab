@@ -1,0 +1,378 @@
+{
+  "id": "ions",
+  "title": "硫酸根与氯离子的检验",
+  "subtitle": "初中化学虚拟实验 · 离子检验 + 排除干扰",
+  "badges": ["BaSO₄ 不溶于酸", "AgCl 不溶于酸", "满分 100 分"],
+  "viewBox": "0 0 600 360",
+
+  "equipments": [
+    { "id": "tube",    "name": "试管（2支）",   "need": true },
+    { "id": "na2so4",  "name": "硫酸钠溶液",    "need": true },
+    { "id": "nacl",    "name": "氯化钠溶液",    "need": true },
+    { "id": "bacl2",   "name": "氯化钡溶液",    "need": true },
+    { "id": "agno3",   "name": "硝酸银溶液",    "need": true },
+    { "id": "hno3",    "name": "稀硝酸",        "need": true },
+    { "id": "dropper", "name": "胶头滴管",      "need": true },
+    { "id": "na2co3",  "name": "碳酸钠溶液",    "need": false },
+    { "id": "water2",  "name": "蒸馏水",        "need": false }
+  ],
+
+  "dims": [
+    { "key": "skill",  "name": "操作规范" },
+    { "key": "safety", "name": "安全意识" }
+  ],
+
+  "scoreItems": [
+    { "key": "equip",   "name": "器材选择",             "max": 10, "dim": "skill" },
+    { "key": "tubes",   "name": "准备两支试管",         "max": 8,  "dim": "skill" },
+    { "key": "samples", "name": "分别取两种待测液",     "max": 12, "dim": "skill" },
+    { "key": "dropA",   "name": "用BaCl₂检验硫酸根",    "max": 14, "dim": "skill" },
+    { "key": "acidA",   "name": "加稀硝酸确认沉淀不溶", "max": 10, "dim": "skill" },
+    { "key": "dropB",   "name": "用AgNO₃检验氯离子",    "max": 12, "dim": "skill" },
+    { "key": "acidB",   "name": "再次加稀硝酸排除干扰", "max": 8,  "dim": "skill" },
+    { "key": "judge",   "name": "解释稀硝酸的作用",     "max": 16, "dim": "skill" },
+    { "key": "summary", "name": "归纳检验思路",         "max": 10, "dim": "skill" }
+  ],
+
+  "initialStage": {
+    "tubesOn": false, "sampleA": false, "sampleB": false,
+    "pptA": 0, "pptB": 0, "hno3A": false, "hno3B": false,
+    "wrongOrder": false
+  },
+
+  "dropZones": {
+    "bench": { "x": 130, "y": 210, "w": 340, "h": 112 },
+    "zoneA": { "x": 150, "y": 128, "w": 106, "h": 186 },
+    "zoneB": { "x": 346, "y": 128, "w": 106, "h": 186 }
+  },
+
+  "scene": [
+    { "tag": "rect", "x": 30, "y": 322, "width": 540, "height": 14, "rx": 5, "fill": "url(#gMetal)" },
+    { "tag": "rect", "x": 30, "y": 322, "width": 540, "height": 4, "rx": 2, "fill": "#e8eef2", "opacity": 0.75 },
+
+    { "tag": "g", "when": "stage.tubesOn", "children": [
+      { "tag": "rect", "x": 138, "y": 292, "width": 324, "height": 12, "rx": 4, "fill": "url(#gMetal)" },
+      { "tag": "rect", "x": 148, "y": 296, "width": 10, "height": 22, "fill": "url(#gMetalV)" },
+      { "tag": "rect", "x": 442, "y": 296, "width": 10, "height": 22, "fill": "url(#gMetalV)" }
+    ]},
+
+    { "tag": "g", "when": "stage.tubesOn", "children": [
+      { "tag": "path", "d": "M172 152 L172 280 Q172 292 184 292 L216 292 Q228 292 228 280 L228 152 Z", "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.2 },
+      { "tag": "rect", "x": 168, "y": 144, "width": 64, "height": 10, "rx": 4, "fill": "url(#gGlassH)", "stroke": "#7ba7c7", "stroke-width": 1.6 },
+      { "tag": "rect", "when": "stage.sampleA", "x": 175, "y": 206, "width": 50, "height": 82, "rx": 4, "fill": "@ stage.pptA>0 ? '#f2f4f7' : '#fafafa'", "opacity": 0.92 },
+      { "tag": "g", "when": "stage.pptA>0", "children": [
+        { "tag": "path", "d": "M175 268 Q186 258 200 266 Q214 256 225 268 L225 286 Q225 290 221 290 L179 290 Q175 290 175 286 Z", "fill": "#ffffff", "stroke": "#e0e0e0", "stroke-width": 1.4 },
+        { "tag": "rect", "x": 175, "y": "@ 268 - 16*stage.pptA/2", "width": 50, "height": "@ 16*stage.pptA/2", "rx": 3, "fill": "#ffffff", "opacity": 0.95 },
+        { "tag": "circle", "cx": 186, "cy": "@ 268 - 18*stage.pptA/2", "r": 4, "fill": "#ffffff", "stroke": "#eceff1", "stroke-width": 1 },
+        { "tag": "circle", "cx": 214, "cy": "@ 270 - 18*stage.pptA/2", "r": 3.4, "fill": "#ffffff", "stroke": "#eceff1", "stroke-width": 1 }
+      ]},
+      { "tag": "text", "when": "stage.pptA>0", "x": 200, "y": 246, "font-size": 11, "text-anchor": "middle", "fill": "#37474f", "font-weight": 700, "text": "白色沉淀" },
+      { "tag": "text", "when": "stage.hno3A", "x": 200, "y": 224, "font-size": 10.5, "text-anchor": "middle", "fill": "#b71c1c", "font-weight": 700, "text": "加稀硝酸：不溶解" },
+      { "tag": "text", "x": 200, "y": 330, "font-size": 11.5, "text-anchor": "middle", "fill": "#455a64", "font-weight": 700, "text": "Na₂SO₄ 溶液" }
+    ]},
+
+    { "tag": "g", "when": "stage.tubesOn", "children": [
+      { "tag": "path", "d": "M368 152 L368 280 Q368 292 380 292 L412 292 Q424 292 424 280 L424 152 Z", "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.2 },
+      { "tag": "rect", "x": 364, "y": 144, "width": 64, "height": 10, "rx": 4, "fill": "url(#gGlassH)", "stroke": "#7ba7c7", "stroke-width": 1.6 },
+      { "tag": "rect", "when": "stage.sampleB", "x": 371, "y": 206, "width": 50, "height": 82, "rx": 4, "fill": "@ stage.pptB>0 ? '#f2f4f7' : '#fafafa'", "opacity": 0.92 },
+      { "tag": "g", "when": "stage.pptB>0", "children": [
+        { "tag": "path", "d": "M371 268 Q382 258 396 266 Q410 256 421 268 L421 286 Q421 290 417 290 L375 290 Q371 290 371 286 Z", "fill": "#ffffff", "stroke": "#e0e0e0", "stroke-width": 1.4 },
+        { "tag": "rect", "x": 371, "y": "@ 268 - 16*stage.pptB/2", "width": 50, "height": "@ 16*stage.pptB/2", "rx": 3, "fill": "#ffffff", "opacity": 0.95 },
+        { "tag": "circle", "cx": 382, "cy": "@ 268 - 18*stage.pptB/2", "r": 4, "fill": "#ffffff", "stroke": "#eceff1", "stroke-width": 1 },
+        { "tag": "circle", "cx": 410, "cy": "@ 270 - 18*stage.pptB/2", "r": 3.4, "fill": "#ffffff", "stroke": "#eceff1", "stroke-width": 1 }
+      ]},
+      { "tag": "text", "when": "stage.pptB>0", "x": 396, "y": 246, "font-size": 11, "text-anchor": "middle", "fill": "#37474f", "font-weight": 700, "text": "白色沉淀" },
+      { "tag": "text", "when": "stage.hno3B", "x": 396, "y": 224, "font-size": 10.5, "text-anchor": "middle", "fill": "#b71c1c", "font-weight": 700, "text": "加稀硝酸：不溶解" },
+      { "tag": "text", "x": 396, "y": 330, "font-size": 11.5, "text-anchor": "middle", "fill": "#455a64", "font-weight": 700, "text": "NaCl 溶液" }
+    ]},
+
+    { "tag": "text", "when": "stage.wrongOrder", "x": 300, "y": 116, "font-size": 11.5, "text-anchor": "middle", "fill": "#dc2626", "font-weight": 700, "text": "试剂加错了试管：硫酸根用BaCl₂，氯离子用AgNO₃" }
+  ],
+
+  "report": [
+    { "title": "实验记录", "lines": [
+      "实验名称：硫酸根离子与氯离子的检验",
+      "SO₄²⁻ 检验：Na₂SO₄ + BaCl₂ = BaSO₄↓ + 2NaCl，再加稀硝酸沉淀不溶解",
+      "Cl⁻ 检验：NaCl + AgNO₃ = AgCl↓ + NaNO₃，再加稀硝酸沉淀不溶解",
+      "操作：取少量待测液于试管中，滴加试剂，观察是否产生不溶于稀硝酸的白色沉淀"
+    ]},
+    { "title": "现象记录", "lines": [
+      "1. 硫酸钠溶液中滴加氯化钡溶液，产生白色沉淀",
+      "2. 再滴加稀硝酸，白色沉淀不溶解 → 证明含 SO₄²⁻",
+      "3. 氯化钠溶液中滴加硝酸银溶液，产生白色沉淀",
+      "4. 再滴加稀硝酸，白色沉淀不溶解 → 证明含 Cl⁻"
+    ]},
+    { "title": "实验结论", "lines": [
+      "BaSO₄ 和 AgCl 都是既不溶于水也不溶于稀硝酸的白色沉淀。",
+      "加稀硝酸的目的是排除 CO₃²⁻ 等离子的干扰：碳酸盐沉淀会溶于酸并放出气体。",
+      "检验离子的思路：选一种能与目标离子生成特征沉淀的试剂，再加酸验证沉淀是否特殊的稳定。"
+    ]}
+  ],
+
+  "errorTable": [
+    { "op": "只加BaCl₂不加稀硝酸",     "phen": "CO₃²⁻也能产生白色沉淀", "result": "无法排除干扰，结论不可靠", "score": 10 },
+    { "op": "把AgNO₃加到硫酸钠里",     "phen": "硫酸银微溶，可能干扰",   "result": "检验对象选错试剂",         "score": 12 },
+    { "op": "先加稀硝酸后加试剂",       "phen": "顺序颠倒",             "result": "失去排除干扰的意义",       "score": 16 },
+    { "op": "用自来水配制溶液",         "phen": "自来水中含Cl⁻",        "result": "氯离子检验出现假阳性",     "score": 12 },
+    { "op": "把BaCl₂和AgNO₃混在一支试管", "phen": "多种沉淀同时生成",   "result": "无法判断是哪一种离子",     "score": 16 },
+    { "op": "误用碳酸钠溶液",           "phen": "那是用来演示干扰的",   "result": "本实验的待测液不是它",     "score": 14 }
+  ],
+
+  "steps": [
+    {
+      "id": "cover", "type": "cover", "title": "准备开始", "progress": 0,
+      "headline": "硫酸根与氯离子的检验",
+      "subtitle": "都是白色沉淀，怎么知道沉淀的是谁？",
+      "buttons": [{ "t": "开始实验", "c": "primary", "goto": "goal" }]
+    },
+
+    {
+      "id": "goal", "type": "doc", "title": "实验目标", "progress": 6,
+      "cols": [
+        { "title": "实验目标", "lines": [
+          "1. 学会检验 SO₄²⁻：BaCl₂ 溶液 + 稀硝酸",
+          "2. 学会检验 Cl⁻：AgNO₃ 溶液 + 稀硝酸",
+          "3. 记住 BaSO₄、AgCl 都是不溶于稀硝酸的白色沉淀",
+          "4. 理解加稀硝酸是为了排除 CO₃²⁻ 的干扰",
+          "5. 养成取少量样品、分两支试管分别检验的习惯"
+        ]},
+        { "title": "操作方式", "lines": [
+          "● 拖拽试剂到对应试管的高亮区域",
+          "● 遇到思考题时点选项作答",
+          "● 右侧显示当前实验阶段",
+          "● 卡住时点右下角“？”获取提示"
+        ]},
+        { "title": "安全提示", "lines": [
+          "⚠ 硝酸银溶液见光易分解，要保存在棕色瓶中",
+          "⚠ 硝酸有腐蚀性，取用时不能滴到皮肤和衣物上",
+          "⚠ 实验后的废液要倒入指定容器，不能随手倒进水池",
+          "⚠ 每取一种试剂滴管要专用，防止交叉污染"
+        ]}
+      ],
+      "buttons": [
+        { "t": "下一步", "c": "primary", "goto": "equip" },
+        { "t": "返回封面", "c": "ghost", "goto": "cover" }
+      ]
+    },
+
+    {
+      "id": "equip", "type": "equip", "title": "选择实验器材", "progress": 12,
+      "tip": "两支试管分别装两种待测液，另需要两种沉淀试剂，以及用来排除干扰的酸",
+      "buttons": [
+        { "t": "确认器材", "c": "primary", "do": [{ "do": "checkEquip", "key": "equip", "goto": "tubes" }] }
+      ]
+    },
+
+    {
+      "id": "tubes", "type": "stage", "title": "准备两支试管", "progress": 18,
+      "shelf": ["tube"],
+      "desc": "两种待测液要分开检验，绝不能倒在同一支试管里。",
+      "help": "把试管拖到桌面上的高亮区域。分开取样是最基本的操作习惯：一旦混在一起，就分不清沉淀来自哪种离子了。",
+      "zones": ["bench"],
+      "drop": [
+        { "equip": "tube", "zone": "bench", "do": [
+          { "do": "set", "k": "tubesOn", "v": true },
+          { "do": "score", "key": "tubes" },
+          { "do": "tip", "text": "两支试管已并排架好 ✓ 左边检验SO₄²⁻，右边检验Cl⁻" },
+          { "do": "goto", "id": "samples", "delay": 1200 }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要准备好盛放待测液的试管。" }] }
+      ]
+    },
+
+    {
+      "id": "samples", "type": "stage", "title": "分别取两种待测液", "progress": 28,
+      "shelf": ["na2so4", "nacl"],
+      "desc": "左试管取少量硫酸钠溶液，右试管取少量氯化钠溶液。",
+      "help": "把硫酸钠溶液拖到左边试管，把氯化钠溶液拖到右边试管。取量不必多，1~2 mL 就够观察了。",
+      "zones": ["zoneA", "zoneB"],
+      "drop": [
+        { "equip": "na2so4", "zone": "zoneA", "do": [
+          { "do": "set", "k": "sampleA", "v": true },
+          { "do": "tip", "text": "已取硫酸钠溶液 ✓" },
+          { "do": "if", "cond": "stage.sampleB", "then": [
+            { "do": "score", "key": "samples" },
+            { "do": "goto", "id": "testA", "delay": 900 }
+          ]}
+        ]},
+        { "equip": "nacl", "zone": "zoneB", "do": [
+          { "do": "set", "k": "sampleB", "v": true },
+          { "do": "tip", "text": "已取氯化钠溶液 ✓" },
+          { "do": "if", "cond": "stage.sampleA", "then": [
+            { "do": "score", "key": "samples" },
+            { "do": "goto", "id": "testA", "delay": 900 }
+          ]}
+        ]},
+        { "equip": "nacl", "zone": "zoneA", "do": [
+          { "do": "err", "text": "左边这支要检验的是硫酸根离子，应该取硫酸钠溶液。" }
+        ]},
+        { "equip": "na2so4", "zone": "zoneB", "do": [
+          { "do": "err", "text": "右边这支要检验的是氯离子，应该取氯化钠溶液。" }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要取的是待测的两种无色溶液。" }] }
+      ]
+    },
+
+    {
+      "id": "testA", "type": "stage", "title": "检验硫酸根离子", "progress": 40,
+      "shelf": ["bacl2"],
+      "desc": "向左边试管滴加氯化钡溶液，观察是否有白色沉淀生成。",
+      "help": "把氯化钡溶液拖到左边试管。Ba²⁺ 遇到 SO₄²⁻ 会生成既不溶于水也不溶于酸的白色硫酸钡沉淀。",
+      "zones": ["zoneA"],
+      "drop": [
+        { "equip": "bacl2", "zone": "zoneA", "do": [
+          { "do": "set", "k": "pptA", "v": 1, "delay": 600 },
+          { "do": "set", "k": "pptA", "v": 2, "delay": 1400 },
+          { "do": "score", "key": "dropA" },
+          { "do": "tip", "text": "出现白色沉淀：Na₂SO₄ + BaCl₂ = BaSO₄↓ + 2NaCl ✓" },
+          { "do": "goto", "id": "acidA", "delay": 2200 }
+        ]},
+        { "equip": "agno3", "zone": "zoneA", "do": [
+          { "do": "set", "k": "wrongOrder", "v": true },
+          { "do": "err", "text": "硝酸银是用来检验氯离子的，硫酸根要用含 Ba²⁺ 的溶液。" }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要滴入能检验硫酸根的试剂。" }] }
+      ]
+    },
+
+    {
+      "id": "acidA", "type": "stage", "title": "加稀硝酸验证", "progress": 50,
+      "shelf": ["hno3"],
+      "desc": "向左边试管的白色沉淀中滴加稀硝酸，看沉淀是否溶解。",
+      "help": "把稀硝酸拖到左边试管。如果沉淀是碳酸钡之类的，会溶于酸并冒气泡；硫酸钡则纹丝不动。",
+      "zones": ["zoneA"],
+      "drop": [
+        { "equip": "hno3", "zone": "zoneA", "do": [
+          { "do": "set", "k": "hno3A", "v": true },
+          { "do": "score", "key": "acidA" },
+          { "do": "tip", "text": "沉淀不溶解，也不产生气泡 → 确实是 BaSO₄ ✓" },
+          { "do": "goto", "id": "testB", "delay": 1900 }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要加入稀硝酸，验证沉淀是否溶于酸。" }] }
+      ]
+    },
+
+    {
+      "id": "testB", "type": "stage", "title": "检验氯离子", "progress": 62,
+      "shelf": ["agno3"],
+      "desc": "向右边试管滴加硝酸银溶液，观察是否有白色沉淀生成。",
+      "help": "把硝酸银溶液拖到右边试管。Ag⁺ 遇到 Cl⁻ 会生成既不溶于水也不溶于稀硝酸的白色氯化银沉淀。",
+      "zones": ["zoneB"],
+      "drop": [
+        { "equip": "agno3", "zone": "zoneB", "do": [
+          { "do": "set", "k": "pptB", "v": 1, "delay": 600 },
+          { "do": "set", "k": "pptB", "v": 2, "delay": 1400 },
+          { "do": "score", "key": "dropB" },
+          { "do": "tip", "text": "出现白色沉淀：NaCl + AgNO₃ = AgCl↓ + NaNO₃ ✓" },
+          { "do": "goto", "id": "acidB", "delay": 2200 }
+        ]},
+        { "equip": "bacl2", "zone": "zoneB", "do": [
+          { "do": "set", "k": "wrongOrder", "v": true },
+          { "do": "err", "text": "氯化钡是用来检验硫酸根的，氯离子要用含 Ag⁺ 的溶液。" }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要滴入能检验氯离子的试剂。" }] }
+      ]
+    },
+
+    {
+      "id": "acidB", "type": "stage", "title": "再次加稀硝酸", "progress": 72,
+      "shelf": ["hno3"],
+      "desc": "同样地，向白色沉淀中滴加稀硝酸，确认它不溶于酸。",
+      "help": "把稀硝酸拖到右边试管。到这一步，你就能踏实地说：这支试管里确实含有氯离子 ✓",
+      "zones": ["zoneB"],
+      "drop": [
+        { "equip": "hno3", "zone": "zoneB", "do": [
+          { "do": "set", "k": "hno3B", "v": true },
+          { "do": "score", "key": "acidB" },
+          { "do": "tip", "text": "沉淀同样不溶解 → 确实是 AgCl ✓" },
+          { "do": "goto", "id": "judge", "delay": 1800 }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步还是要加入稀硝酸。" }] }
+      ]
+    },
+
+    {
+      "id": "judge", "type": "doc", "title": "为什么要多此一举加酸？", "progress": 82,
+      "cols": [
+        { "title": "只用沉淀试剂不行吗", "lines": [
+          "看到白色沉淀就下结论，其实很危险。",
+          "溶液里若含 CO₃²⁻，加 BaCl₂ 也会生成白色的碳酸钡沉淀；",
+          "加 AgNO₃ 也会生成白色的碳酸银沉淀。",
+          "光看白色沉淀，根本分不清是谁。"
+        ]},
+        { "title": "稀硝酸的作用", "lines": [
+          "碳酸盐沉淀遇酸会溶解，还放出二氧化碳气泡；",
+          "而 BaSO₄ 和 AgCl 既不溶于水也不溶于酸。",
+          "加酸后沉淀还在 → 排除了碳酸根的干扰；",
+          "沉淀溶解 → 说明原来只是碳酸盐。"
+        ]}
+      ],
+      "buttons": [
+        { "t": "排除CO₃²⁻等离子的干扰，确认沉淀是BaSO₄/AgCl", "c": "primary", "do": [
+          { "do": "score", "key": "judge" },
+          { "do": "tip", "text": "这正是加稀硝酸的全部意义 ✓" },
+          { "do": "goto", "id": "summary", "delay": 1600 }
+        ]},
+        { "t": "让沉淀更白更明显", "c": "ghost", "do": [
+          { "do": "err", "text": "稀硝酸不会让沉淀更白。它是一道检验：能让杂质沉淀溶解掉，留下真正不溶于酸的那一个。" }
+        ]},
+        { "t": "没有什么用，习惯而已", "c": "ghost", "do": [
+          { "do": "err", "text": "这一步恰恰是结论可靠性的保证。少了它，碳酸盐就能冒充硫酸盐。" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "summary", "type": "doc", "title": "离子检验的通用思路", "progress": 90,
+      "cols": [
+        { "title": "三步走", "lines": [
+          "① 取样：取少量待测液于洁净试管中",
+          "② 加试剂：产生特征现象（沉淀/气体/颜色）",
+          "③ 加酸（或加另一种试剂）确认，排除干扰"
+        ]},
+        { "title": "常考的两对", "lines": [
+          "SO₄²⁻：BaCl₂ 溶液 + 稀硝酸 → 不溶的白色沉淀",
+          "Cl⁻：AgNO₃ 溶液 + 稀硝酸 → 不溶的白色沉淀",
+          "CO₃²⁻：稀盐酸 + 澄清石灰水 → 气体使石灰水变浑浊"
+        ]}
+      ],
+      "buttons": [
+        { "t": "取样 → 加特征试剂 → 再加酸排除干扰", "c": "primary", "do": [
+          { "do": "score", "key": "summary" },
+          { "do": "tip", "text": "思路清晰 ✓ 这套流程适用于绝大多数离子检验题" },
+          { "do": "goto", "id": "report", "delay": 1500 }
+        ]},
+        { "t": "看到白色沉淀就可以直接下结论", "c": "ghost", "do": [
+          { "do": "err", "text": "白色沉淀太多见了。必须经过「加酸不溶」这一步验证，结论才站得住。" }
+        ]},
+        { "t": "把所有试剂都倒进一支试管观察", "c": "ghost", "do": [
+          { "do": "err", "text": "多种沉淀混在一起就无法判断来源。检验必须分开取样、逐一验证。" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "report", "type": "report", "title": "实验报告", "progress": 95,
+      "buttons": [
+        { "t": "提交报告", "c": "primary", "do": [{ "do": "finish" }, { "do": "goto", "id": "score" }] }
+      ]
+    },
+
+    {
+      "id": "score", "type": "score", "title": "实验评分", "progress": 100,
+      "buttons": [
+        { "t": "导出本次成绩", "c": "ghost", "do": [{ "do": "export" }] },
+        { "t": "查看常见错误", "c": "ghost", "goto": "errtable" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    },
+
+    {
+      "id": "errtable", "type": "errors", "title": "常见错误与后果", "progress": 100,
+      "buttons": [
+        { "t": "返回评分", "c": "ghost", "goto": "score" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    }
+  ]
+}

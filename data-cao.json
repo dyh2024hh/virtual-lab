@@ -1,0 +1,387 @@
+{
+  "id": "cao",
+  "title": "生石灰与水反应放热",
+  "subtitle": "初中化学虚拟实验 · 化合反应与干燥剂",
+  "badges": ["CaO + H₂O", "放热反应", "满分 100 分"],
+  "viewBox": "0 0 600 360",
+
+  "equipments": [
+    { "id": "quicklime", "name": "生石灰（块状）", "need": true },
+    { "id": "beaker",    "name": "烧杯",           "need": true },
+    { "id": "water2",    "name": "蒸馏水",         "need": true },
+    { "id": "rod",       "name": "玻璃棒",         "need": true },
+    { "id": "thermo",    "name": "温度计",         "need": true },
+    { "id": "spoon",     "name": "药匙",           "need": true },
+    { "id": "phenol",    "name": "酚酞试液",       "need": true },
+    { "id": "flask",     "name": "锥形瓶",         "need": false },
+    { "id": "lamp",      "name": "酒精灯",         "need": false },
+    { "id": "acid",      "name": "稀盐酸",         "need": false }
+  ],
+
+  "dims": [
+    { "key": "skill",  "name": "操作规范" },
+    { "key": "safety", "name": "安全意识" }
+  ],
+
+  "scoreItems": [
+    { "key": "equip",   "name": "器材选择",             "max": 10, "dim": "skill" },
+    { "key": "beaker",  "name": "放置烧杯",             "max": 6,  "dim": "skill" },
+    { "key": "lime",    "name": "取用块状生石灰",       "max": 10, "dim": "skill" },
+    { "key": "thermo",  "name": "先测水的初温",         "max": 8,  "dim": "skill" },
+    { "key": "water",   "name": "把水加入生石灰",       "max": 12, "dim": "skill" },
+    { "key": "judge",   "name": "判断反应放热",         "max": 12, "dim": "safety" },
+    { "key": "stir",    "name": "用玻璃棒搅拌",         "max": 12, "dim": "skill" },
+    { "key": "verify",  "name": "酚酞检验生成的碱",     "max": 14, "dim": "skill" },
+    { "key": "summary", "name": "归纳用途与原理",       "max": 16, "dim": "skill" }
+  ],
+
+  "initialStage": {
+    "beakerOn": false, "limeIn": false, "thermoIn": false,
+    "lvl": 0, "waterIn": false, "temp": 20, "hot": false,
+    "stirred": false, "sampleOn": false, "phenolIn": false, "pink": false
+  },
+
+  "dropZones": {
+    "bench":  { "x": 180, "y": 206, "w": 200, "h": 118 },
+    "mouth":  { "x": 244, "y": 146, "w": 112, "h": 86 },
+    "thzone": { "x": 274, "y": 96,  "w": 58,  "h": 196 },
+    "sample": { "x": 424, "y": 150, "w": 108, "h": 168 }
+  },
+
+  "scene": [
+    { "tag": "rect", "x": 30, "y": 322, "width": 540, "height": 14, "rx": 5, "fill": "url(#gMetal)" },
+    { "tag": "rect", "x": 30, "y": 322, "width": 540, "height": 4, "rx": 2, "fill": "#e8eef2", "opacity": 0.75 },
+
+    { "tag": "g", "when": "stage.beakerOn", "children": [
+      { "tag": "path", "d": "M240 178 L240 298 Q240 312 254 312 L346 312 Q360 312 360 298 L360 178 Z", "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2.4 },
+      { "tag": "rect", "x": 234, "y": 168, "width": 132, "height": 12, "rx": 5, "fill": "url(#gGlassH)", "stroke": "#7ba7c7", "stroke-width": 1.6 },
+      { "tag": "path", "d": "M234 174 L226 168 L234 162", "fill": "none", "stroke": "#7ba7c7", "stroke-width": 2 },
+      { "tag": "path", "d": "M248 190 L248 292", "stroke": "#ffffff", "stroke-width": 2.2, "opacity": 0.8, "fill": "none" },
+
+      { "tag": "g", "when": "stage.limeIn && !stage.waterIn", "children": [
+        { "tag": "circle", "cx": 268, "cy": 296, "r": 14, "fill": "#ffffff", "stroke": "#cfd8dc", "stroke-width": 1.4 },
+        { "tag": "circle", "cx": 300, "cy": 292, "r": 12, "fill": "#fafafa", "stroke": "#cfd8dc", "stroke-width": 1.4 },
+        { "tag": "circle", "cx": 332, "cy": 297, "r": 13, "fill": "#f5f5f5", "stroke": "#cfd8dc", "stroke-width": 1.4 },
+        { "tag": "path", "d": "M262 292 L274 300 M326 293 L338 301", "stroke": "#e0e0e0", "stroke-width": 1.2, "fill": "none" }
+      ]},
+
+      { "tag": "rect", "when": "stage.lvl>0", "x": 243, "y": "@ 306 - 78*stage.lvl/100", "width": 114, "height": "@ 78*stage.lvl/100", "rx": 3, "fill": "@ stage.stirred ? '#eceff1' : 'url(#gWater)'", "opacity": "@ stage.stirred ? 0.95 : 0.85" },
+
+      { "tag": "g", "when": "stage.waterIn && stage.lvl>60", "children": [
+        { "tag": "circle", "class": "bub", "cx": 272, "cy": 288, "r": 4, "fill": "#ffffff", "opacity": 0.85, "style": "animation-delay:0s" },
+        { "tag": "circle", "class": "bub", "cx": 300, "cy": 284, "r": 5, "fill": "#ffffff", "opacity": 0.85, "style": "animation-delay:.4s" },
+        { "tag": "circle", "class": "bub", "cx": 328, "cy": 288, "r": 3.5, "fill": "#ffffff", "opacity": 0.85, "style": "animation-delay:.8s" }
+      ]},
+
+      { "tag": "g", "when": "stage.stirred", "children": [
+        { "tag": "rect", "x": 243, "y": 286, "width": 114, "height": 22, "rx": 4, "fill": "#ffffff", "opacity": 0.9 },
+        { "tag": "text", "x": 328, "y": 248, "font-size": 10.5, "text-anchor": "middle", "fill": "#455a64", "text": "白色糊状" }
+      ]},
+
+      { "tag": "text", "x": 300, "y": 344, "font-size": 12, "text-anchor": "middle", "fill": "#455a64", "font-weight": 700, "text": "烧杯：生石灰 + 水" }
+    ]},
+
+    { "tag": "g", "when": "stage.hot", "children": [
+      { "tag": "circle", "class": "bub", "cx": 268, "cy": 152, "r": 6, "fill": "#ffffff", "opacity": 0.75, "style": "animation-delay:0s" },
+      { "tag": "circle", "class": "bub", "cx": 300, "cy": 146, "r": 7, "fill": "#ffffff", "opacity": 0.7, "style": "animation-delay:.5s" },
+      { "tag": "circle", "class": "bub", "cx": 332, "cy": 152, "r": 5.5, "fill": "#ffffff", "opacity": 0.75, "style": "animation-delay:1s" },
+      { "tag": "text", "x": 280, "y": 118, "font-size": 11.5, "text-anchor": "end", "fill": "#b71c1c", "font-weight": 700, "text": "冒出大量白汽 · 放出大量的热" }
+    ]},
+
+    { "tag": "g", "when": "stage.thermoIn", "children": [
+      { "tag": "rect", "x": 287, "y": 108, "width": 8, "height": 170, "rx": 4, "fill": "url(#gGlass)", "stroke": "#90a4ae", "stroke-width": 1.4 },
+      { "tag": "rect", "x": 289, "y": "@ 268 - 1.24*stage.temp", "width": 4, "height": "@ 12 + 1.24*stage.temp", "fill": "#ef5350" },
+      { "tag": "circle", "cx": 291, "cy": 272, "r": 8, "fill": "#ef5350", "stroke": "#c62828", "stroke-width": 1.2 },
+      { "tag": "path", "d": "M297 124 L302 124 M297 140 L302 140 M297 156 L302 156 M297 172 L302 172 M297 188 L302 188", "stroke": "#607d8b", "stroke-width": 1, "fill": "none" },
+      { "tag": "text", "x": 316, "y": "@ 272 - 1.24*stage.temp", "font-size": 12, "fill": "@ stage.temp>45 ? '#b71c1c' : '#0277bd'", "font-weight": 700, "text": "@ Math.round(stage.temp) + ' ℃'" }
+    ]},
+
+    { "tag": "g", "when": "stage.sampleOn", "children": [
+      { "tag": "path", "d": "M452 176 L452 284 Q452 298 466 298 L494 298 Q508 298 508 284 L508 176 Z", "fill": "url(#gGlass)", "stroke": "#7ba7c7", "stroke-width": 2 },
+      { "tag": "rect", "x": 448, "y": 168, "width": 64, "height": 10, "rx": 4, "fill": "url(#gGlassH)", "stroke": "#7ba7c7", "stroke-width": 1.4 },
+      { "tag": "rect", "x": 455, "y": 218, "width": 50, "height": 76, "rx": 3, "fill": "@ stage.pink ? 'url(#gPink)' : '#f5f5f5'", "opacity": 0.9 },
+      { "tag": "text", "x": 480, "y": 344, "font-size": 11.5, "text-anchor": "middle", "fill": "#455a64", "font-weight": 700, "text": "上层清液" },
+      { "tag": "text", "when": "stage.pink", "x": 480, "y": 160, "font-size": 11.5, "text-anchor": "middle", "fill": "#ad1457", "font-weight": 700, "text": "变红 → 溶液显碱性" }
+    ]}
+  ],
+
+  "report": [
+    { "title": "实验记录", "lines": [
+      "实验名称：生石灰与水反应",
+      "反应原理：CaO + H₂O = Ca(OH)₂（化合反应，放出大量的热）",
+      "操作：烧杯中放块状生石灰 → 插入温度计记下初温 → 倒入水 → 观察读数与白汽",
+      "检验：取上层清液滴加酚酞，溶液变红，说明生成了碱性的氢氧化钙"
+    ]},
+    { "title": "现象记录", "lines": [
+      "1. 加水后块状生石灰逐渐变成白色粉末，最后成白色糊状",
+      "2. 温度计示数迅速上升，烧杯外壁发烫，有大量白汽冒出",
+      "3. 上层清液滴加酚酞后变红"
+    ]},
+    { "title": "实验结论", "lines": [
+      "生石灰与水发生化合反应生成熟石灰 Ca(OH)₂，同时放出大量的热。",
+      "因为反应放热且能吸水，生石灰常被用作食品等物品的干燥剂。",
+      "熟石灰的水溶液就是澄清石灰水，显碱性，能使酚酞变红。"
+    ]}
+  ],
+
+  "errorTable": [
+    { "op": "先把水倒进烧杯再加生石灰", "phen": "块状固体沉底、可能溅出", "result": "操作顺序不规范，容易烫伤", "score": 12 },
+    { "op": "没测水的初温就加水",       "phen": "不知道升高了多少",       "result": "无法证明反应放热",         "score": 8 },
+    { "op": "直接用手触摸烧杯外壁",     "phen": "反应剧烈放热",           "result": "容易烫伤皮肤",             "score": 12 },
+    { "op": "加水后不使用玻璃棒搅拌",   "phen": "固体结块沉底",           "result": "反应不充分、局部过热",     "score": 12 },
+    { "op": "误用酒精灯加热",           "phen": "本反应常温自发剧烈进行", "result": "装置与操作选择错误",       "score": 10 },
+    { "op": "用锥形瓶代替烧杯",         "phen": "口径小，不便搅拌与取样", "result": "器材选择不当",             "score": 6 },
+    { "op": "用稀盐酸代替水",           "phen": "那是与碱反应",           "result": "研究对象错误",             "score": 14 }
+  ],
+
+  "steps": [
+    {
+      "id": "cover", "type": "cover", "title": "准备开始", "progress": 0,
+      "headline": "生石灰与水反应放热",
+      "subtitle": "一块白石头，遇水竟能烧开水？",
+      "buttons": [{ "t": "开始实验", "c": "primary", "goto": "goal" }]
+    },
+
+    {
+      "id": "goal", "type": "doc", "title": "实验目标", "progress": 6,
+      "cols": [
+        { "title": "实验目标", "lines": [
+          "1. 认识化合反应 CaO + H₂O = Ca(OH)₂",
+          "2. 通过温度计示数变化确认反应放热",
+          "3. 学会用酚酞检验碱性物质",
+          "4. 理解生石灰作干燥剂的原因",
+          "5. 知道熟石灰的水溶液就是澄清石灰水"
+        ]},
+        { "title": "操作方式", "lines": [
+          "● 拖拽器材和试剂到高亮区域",
+          "● 遇到思考题时点选项作答",
+          "● 右侧显示当前实验阶段",
+          "● 卡住时点右下角“？”获取提示"
+        ]},
+        { "title": "安全提示", "lines": [
+          "⚠ 该反应放出大量热，切勿用手直接触摸烧杯外壁",
+          "⚠ 生石灰和熟石灰都有腐蚀性，避免接触皮肤和眼睛",
+          "⚠ 块状固体要沿杯壁缓慢放入，防止水花飞溅",
+          "⚠ 加料顺序：先放固体，后加液体"
+        ]}
+      ],
+      "buttons": [
+        { "t": "下一步", "c": "primary", "goto": "equip" },
+        { "t": "返回封面", "c": "ghost", "goto": "cover" }
+      ]
+    },
+
+    {
+      "id": "equip", "type": "equip", "title": "选择实验器材", "progress": 12,
+      "tip": "要能看到温度的变化、要能搅拌、还要能检验生成的碱——想一想都要哪些东西",
+      "buttons": [
+        { "t": "确认器材", "c": "primary", "do": [{ "do": "checkEquip", "key": "equip", "goto": "beaker" }] }
+      ]
+    },
+
+    {
+      "id": "beaker", "type": "stage", "title": "放置烧杯", "progress": 18,
+      "shelf": ["beaker"],
+      "desc": "先把反应容器放在桌面上。烧杯口径大，方便投料、搅拌和取样。",
+      "help": "把烧杯拖到桌面中间的高亮区域。想一想：为什么要用烧杯而不是锥形瓶？",
+      "zones": ["bench"],
+      "drop": [
+        { "equip": "beaker", "zone": "bench", "do": [
+          { "do": "set", "k": "beakerOn", "v": true },
+          { "do": "score", "key": "beaker" },
+          { "do": "tip", "text": "烧杯已放好 ✓ 接下来先放固体" },
+          { "do": "goto", "id": "lime", "delay": 1000 }
+        ]},
+        { "equip": "flask", "zone": "bench", "do": [
+          { "do": "err", "text": "锥形瓶口径太小，不便于投放块状固体和搅拌。本实验用烧杯更合适。" }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要放的是反应容器。" }] }
+      ]
+    },
+
+    {
+      "id": "lime", "type": "stage", "title": "取用块状生石灰", "progress": 26,
+      "shelf": ["quicklime", "spoon"],
+      "desc": "用药匙取几块生石灰放入烧杯。加料顺序是：先固体，后液体。",
+      "help": "把生石灰拖到烧杯里。生石灰是白色块状固体，化学式 CaO，俗称「白石头」。",
+      "zones": ["mouth"],
+      "drop": [
+        { "equip": "quicklime", "zone": "mouth", "do": [
+          { "do": "set", "k": "limeIn", "v": true },
+          { "do": "score", "key": "lime" },
+          { "do": "tip", "text": "已放入几块生石灰 ✓ 白色块状固体" },
+          { "do": "goto", "id": "thermo", "delay": 1100 }
+        ]},
+        { "equip": "spoon", "zone": "mouth", "do": [
+          { "do": "err", "text": "药匙是用来取药品的工具，本身不是药品。要放进去的是生石灰。" }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要取用的是白色块状固体——生石灰。" }] }
+      ]
+    },
+
+    {
+      "id": "thermo", "type": "stage", "title": "插入温度计，记下初温", "progress": 34,
+      "shelf": ["thermo"],
+      "desc": "先把温度计插进去，记下加水前的温度。没有对照读数，后面就看不出升高了多少。",
+      "help": "把温度计拖到烧杯上方的位置。温度计的玻璃泡要完全浸没在液体中，且不能碰到杯底和杯壁。",
+      "zones": ["thzone"],
+      "drop": [
+        { "equip": "thermo", "zone": "thzone", "do": [
+          { "do": "set", "k": "thermoIn", "v": true },
+          { "do": "score", "key": "thermo" },
+          { "do": "tip", "text": "温度计已放好，当前室温约 20 ℃ ✓" },
+          { "do": "goto", "id": "water", "delay": 1200 }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要把温度计放进去，先测出加水前的初温。" }] }
+      ]
+    },
+
+    {
+      "id": "water", "type": "stage", "title": "加入水", "progress": 44,
+      "shelf": ["water2"],
+      "desc": "沿烧杯壁把水倒入，观察生石灰的变化和温度计读数。",
+      "help": "把蒸馏水拖到烧杯口。注意安全：反应会放出大量的热，千万不要用手去摸烧杯外壁。",
+      "zones": ["mouth"],
+      "drop": [
+        { "equip": "water2", "zone": "mouth", "do": [
+          { "do": "set", "k": "waterIn", "v": true },
+          { "do": "set", "k": "lvl", "v": 45, "delay": 400 },
+          { "do": "set", "k": "lvl", "v": 100, "delay": 1000 },
+          { "do": "set", "k": "temp", "v": 46, "delay": 1200 },
+          { "do": "set", "k": "hot", "v": true, "delay": 1500 },
+          { "do": "set", "k": "temp", "v": 72, "delay": 2000 },
+          { "do": "set", "k": "temp", "v": 94, "delay": 2800 },
+          { "do": "score", "key": "water" },
+          { "do": "tip", "text": "温度迅速上升！块状固体变成白色粉末，白汽冒出" },
+          { "do": "goto", "id": "judge", "delay": 3400 }
+        ]},
+        { "equip": "acid", "zone": "mouth", "do": [
+          { "do": "err", "text": "稀盐酸会与生成的碱发生反应，这里要研究的是生石灰与水。" }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要加入的是水。" }] }
+      ]
+    },
+
+    {
+      "id": "judge", "type": "doc", "title": "这是什么变化？", "progress": 54,
+      "cols": [
+        { "title": "看到的现象", "lines": [
+          "块状固体逐渐松散，变成白色粉末",
+          "温度计示数从 20 ℃ 一路升到 90 ℃ 以上",
+          "烧杯口冒出大量白汽，杯壁发烫"
+        ]},
+        { "title": "想一想", "lines": [
+          "温度升高说明反应过程中能量怎样变化？",
+          "白汽其实是水蒸气遇冷凝成的小水珠，",
+          "说明水被反应放出的热加热了。"
+        ]}
+      ],
+      "buttons": [
+        { "t": "反应放出热量（放热反应）", "c": "primary", "do": [
+          { "do": "score", "key": "judge" },
+          { "do": "tip", "text": "正确！CaO + H₂O = Ca(OH)₂，这是典型的放热反应 ✓" },
+          { "do": "goto", "id": "stir", "delay": 1500 }
+        ]},
+        { "t": "反应吸收热量（吸热反应）", "c": "ghost", "do": [
+          { "do": "err", "text": "吸热反应的温度应该下降。现在示数一路飙升，说明能量是释放出来的。" }
+        ]},
+        { "t": "温度升高是水太多导致的", "c": "ghost", "do": [
+          { "do": "err", "text": "水只会吸收热量、让温度升得更慢。真正让水变热的，是反应放出的能量。" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "stir", "type": "stage", "title": "用玻璃棒搅拌", "progress": 64,
+      "shelf": ["rod"],
+      "desc": "搅拌能让固体与水充分接触，防止结块、防止局部过热。",
+      "help": "把玻璃棒拖到烧杯里搅拌。注意：搅拌时玻璃棒不要碰到杯壁发出响声，更不能用温度计代替玻璃棒搅拌。",
+      "zones": ["mouth"],
+      "drop": [
+        { "equip": "rod", "zone": "mouth", "do": [
+          { "do": "set", "k": "stirred", "v": true },
+          { "do": "score", "key": "stir" },
+          { "do": "tip", "text": "搅拌后固体全部变成熟石灰 Ca(OH)₂，呈白色糊状 ✓" },
+          { "do": "goto", "id": "verify", "delay": 1400 }
+        ]},
+        { "equip": "thermo", "zone": "mouth", "do": [
+          { "do": "err", "text": "温度计是用来测温度的，它的玻璃泡很薄，搅拌很容易打碎。" }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要用搅拌工具。" }] }
+      ]
+    },
+
+    {
+      "id": "verify", "type": "stage", "title": "取上层清液检验", "progress": 76,
+      "shelf": ["phenol"],
+      "desc": "静置后取上层清液，滴加酚酞试液，看它是否变红。",
+      "help": "先拖动右侧的试管完成取样，再把酚酞滴进去。无色酚酞遇碱性溶液变红，这是检验碱的常用方法。",
+      "zones": ["sample"],
+      "drop": [
+        { "equip": "phenol", "zone": "sample", "do": [
+          { "do": "set", "k": "sampleOn", "v": true },
+          { "do": "set", "k": "phenolIn", "v": true },
+          { "do": "set", "k": "pink", "v": true, "delay": 600 },
+          { "do": "score", "key": "verify" },
+          { "do": "tip", "text": "酚酞变红 → 上层清液显碱性 → 生成了 Ca(OH)₂ ✓" },
+          { "do": "goto", "id": "summary", "delay": 1800 }
+        ]},
+        { "do": [{ "do": "err", "text": "这一步要滴加酚酞试液来检验清液的酸碱性。" }] }
+      ]
+    },
+
+    {
+      "id": "summary", "type": "doc", "title": "生石灰有什么用？", "progress": 86,
+      "cols": [
+        { "title": "反应本质", "lines": [
+          "CaO + H₂O = Ca(OH)₂",
+          "两种物质生成一种物质，属于化合反应。",
+          "反应过程中放出大量的热。"
+        ]},
+        { "title": "生活中的应用", "lines": [
+          "● 作干燥剂：能吸收水分（食品、服装、精密仪器包装中常见）",
+          "● 自热食品：放热特性用来加热饭菜",
+          "● 生成物熟石灰：砌砖抹墙、改良酸性土壤",
+          "● 熟石灰的水溶液就是实验室常用的澄清石灰水"
+        ]}
+      ],
+      "buttons": [
+        { "t": "既能吸水又放热，可作干燥剂和发热剂", "c": "primary", "do": [
+          { "do": "score", "key": "summary" },
+          { "do": "tip", "text": "回答完整 ✓ 生石灰的两大用途都抓住了" },
+          { "do": "goto", "id": "report", "delay": 1500 }
+        ]},
+        { "t": "只用来砌墙抹灰", "c": "ghost", "do": [
+          { "do": "err", "text": "砌墙抹灰用的是生成物熟石灰，生石灰本身的价值不止于此。再想想它吸水的本领。" }
+        ]},
+        { "t": "只因为它便宜，没有特别的地方", "c": "ghost", "do": [
+          { "do": "err", "text": "便宜不能解释温度计为什么飙升。关键性质是吸水并放热。" }
+        ]}
+      ]
+    },
+
+    {
+      "id": "report", "type": "report", "title": "实验报告", "progress": 92,
+      "buttons": [
+        { "t": "提交报告", "c": "primary", "do": [{ "do": "finish" }, { "do": "goto", "id": "score" }] }
+      ]
+    },
+
+    {
+      "id": "score", "type": "score", "title": "实验评分", "progress": 100,
+      "buttons": [
+        { "t": "导出本次成绩", "c": "ghost", "do": [{ "do": "export" }] },
+        { "t": "查看常见错误", "c": "ghost", "goto": "errtable" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    },
+
+    {
+      "id": "errtable", "type": "errors", "title": "常见错误与后果", "progress": 100,
+      "buttons": [
+        { "t": "返回评分", "c": "ghost", "goto": "score" },
+        { "t": "重做实验", "c": "primary", "do": [{ "do": "reset" }] }
+      ]
+    }
+  ]
+}
